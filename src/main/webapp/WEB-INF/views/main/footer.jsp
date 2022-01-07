@@ -27,7 +27,7 @@
 					<h3></h3>
 					<span>솔데스크<br>
 					 	    전화번호 : 02-6901-7001<br>
-					        서울특별시 종로구 관철동 13-13</span>
+					       주소 : 서울특별시 종로구 관철동 13-13</span>
 				</div>
 				<div class="footer_content_item">
 					<h1 class="footer_content_item_title">공지사항</h1>
