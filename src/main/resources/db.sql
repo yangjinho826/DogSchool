@@ -35,3 +35,5 @@ create table User_table(
 	u_phonenumber varchar2(15 char) not null,
 	u_gender varchar2(30 char) not null
 );
+
+
