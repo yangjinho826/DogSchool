@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+/* applyHome */
+#applyHomeArea{
+	margin:40px 0 40px 0;
+	height: fill;
+}
+
+#applyTbl{
+	width: 60%;
+	margin-left:auto; margin-right:auto;
+	align-self:center;
+	font-size: 16pt;
+	/*color: #FFFFFF;*/
+	border-spacing: 0px;
+	font-weight: 600;
+}
+
+#applyTbl td{
+	height: 90px;
+	padding:15px;
+}
+
+#applyTbl .td1 {
+	width: 180px;
+	text-align: center;
+}
+
+#applyTbl button{
+	radius: 5px;
+	padding:5px;
+	font-style: bold;
+	background-color: skyblue;
+}
+
+/* acceptHome */
+#acceptHomeArea{
+	margin:40px 0 40px 0;
+	height: fill;
+}
+
+.acceptWaitingList{
+	
+}
+
+#acceptTbl{
+	width: 65%;
+	margin-left:auto; margin-right:auto;
+	align-self:center;
+	font-size: 13pt;
+	/*color: #FFFFFF;*/
+	border-spacing: 0px;
+	font-weight: 500;
+}
+
+#acceptTbl th{
+	height: 40px;
+	padding:15px;
+	text-align: center;
+}
+
+#acceptTbl td{
+	height: 30px;
+	padding:15px;
+	text-align: center;
+}

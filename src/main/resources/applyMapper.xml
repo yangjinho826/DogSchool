@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.apply.ApplyMapper">
+
+<!-- 원장-관리자 유치원 신청 -->
+<insert id="schoolapply" parameterType="com.dog.HC.apply.ApplySchool">
+	insert into Dapply_table values(Dapply_table_seq.nextval, #{Da_id}, 
+		#{Da_name}, #{Da_schoolname}, #{Da_addr}, #{Da_phonenumber}, #{Da_agree})
+</insert>
+
+<!-- 선생님-원장 등록 신청 -->
+<insert id="teacherapply" parameterType="com.dog.HC.apply.ApplyTeacher">
+	insert into Tapply_table values(Tapply_table_seq.nextval, #{Ta_da_no},
+		#{Ta_id}, #{Ta_name}, #{Ta_phonenumber}, #{Ta_gender}, #{Ta_text}, #{Ta_agree})
+</insert>
+
+<!-- 견주-원장 강아지 신청 -->
+<insert id="petapply" parameterType="com.dog.HC.apply.ApplyPet">
+	insert into Uapply_table values(Uapply_table_seq.nextval, #{Ua_da_no},
+		#{Ua_id}, #{Ua_name}, #{Ua_gender}, #{Ua_daterange}, #{Ua_age},
+		#{Ua_img}, #{Ua_tname}, #{Ua_agree})
+</insert>
+
+<!-- 원장-유치원 신청 목록 전체 조회 -->
+<select id="getSchoolApply" resultType="com.dog.HC.apply.ApplySchool">
+	select * from Dapply_table
+</select>
+
+<select id="getTeacherApply" resultType="com.dog.HC.apply.ApplyTeacher">
+	select * from Tapply_table
+</select>
+
+<select id="getPetApply" resultType="com.dog.HC.apply.ApplyPet">
+	select * from Uapply_table
+</select>
+
+</mapper>
