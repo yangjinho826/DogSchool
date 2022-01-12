@@ -15,7 +15,9 @@
 			<button class="member_info_btn">회원가입</button>	
 			<button class="member_info_btn">아이디 찾기</button>	
 			<button class="member_info_btn">비밀번호 찾기</button>	
-			<a href="apply.go" class="member_info_btn">신청하기</a>		
+			<!-- 원장, 선생님, 견주만 -->
+			<a href="apply.go" class="member_info_btn">신청하기</a>
+			<!-- 관리자, 원장만 -->		
 			<a href="accept.go" class="member_info_btn">수락하기</a>
 		</div>
 	</section>
