@@ -14,8 +14,8 @@
 </ul>
 </div>
 누른 그 유치원 메뉴들의 대한 컨텐츠 -----------
-<div>
 <jsp:include page="${yuchiwonContent }"></jsp:include>
+<div>
 </div>
 
 </body>
