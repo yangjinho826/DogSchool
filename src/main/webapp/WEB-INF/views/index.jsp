@@ -7,10 +7,27 @@
 <head>
 <meta charset="UTF-8">
 	<title>Dog School</title>
+	<!-- jQuery -->
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	
+	<!-- validCheck  -->
+	<script type="text/javascript" src="resources/js/validCheck.js"></script>
+	
+	<!-- summernote api -->
+	<script src="resources/summernote/summernote-lite.js"></script>
+	<script src="resources/summernote/summernote-ko-KR.js"></script>
+	<link rel="stylesheet" href="resources/summernote/summernote-lite.css">	
+	
+	
 	<link rel="icon" type="image/png" href="resources/img/dog-solid.svg">
 	<script src="https://kit.fontawesome.com/cb4142df56.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/main.css"/>
+	
+	<script type="text/javascript" src="resources/js/notice.js"></script>
+	<script type="text/javascript" src="resources/js/summernote.js"></script>
+	
+
 </head>
 <body>
 		<jsp:include page="${loginPage }"></jsp:include>

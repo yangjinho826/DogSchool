@@ -19,7 +19,7 @@
 			<div class="footer_content">	
 				<div class="footer_content_item">
 					<h1 class="footer_content_item_title">고객센터</h1>
-					<h3>yangjinho826@gami.com</h3>
+					<h3>yangjinho826@gamil.com</h3>
 					<span>문의사항은 관리자에게 게시판 또는 이메일 주소로 <br> 연락주시면 빠른 시일내에 회신드리도록 하겠습니다</span>
 				</div>
 				<div class="footer_content_item">

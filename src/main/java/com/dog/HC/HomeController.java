@@ -27,4 +27,15 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "HC.go", method = RequestMethod.GET)
+	public String HC(HttpServletRequest req) {
+		
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
 }
