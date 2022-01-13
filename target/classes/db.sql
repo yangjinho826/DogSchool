@@ -38,7 +38,7 @@ create table notice_table(
 	n_da_no number(5) not null,
 	n_id varchar2(20 char) not null,
 	n_title varchar2(30 char) not null,	
-	n_txt varchar2(1000 char) not null,
+	n_txt varchar2(4000 char) not null,
 	n_date date not null
 );
 

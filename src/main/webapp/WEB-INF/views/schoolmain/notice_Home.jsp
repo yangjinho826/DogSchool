@@ -9,28 +9,30 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<section id="notice_Home">
-		<h1 class="notice_title"> 공지사항 </h1>
-		<button onclick="location.href='notice_write.go'"><h3>작성하기</h3></button>
-	</section>
-	<section id="notice_Body">
-		<table border="1">
-			<tr>
-				<td> 글 번호 </td>
-				<td> 제목 </td>
-				<td> 작성자</td>
-				<td> 날짜 </td>
-			</tr>
-			<c:forEach var="n" items="${notices }">
-			<tr>
-				<td>${n.n_no }</td>
-				<td><a href="notice.Detail?n_no=${n.n_no}">${n.n_title }</a></td>
-				<td>${n.n_id }</td>
-				<td><fmt:formatDate value="${n.n_date }" type="both" dateStyle="short" timeStyle="short"/></td>
-			</tr>
-			</c:forEach>
-		</table>
-		
+		<section class="notice_Home">
+			<h1 class="notice_title"> 공지사항 </h1>
+			<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+		</section>
+		<section id="notice_Body">
+			<table class="notice">
+				<tr class="notic_tr">
+					<td class="notic_table_title" style="width:10%;"> 글 번호 </td>
+					<td class="notic_table_title" style="width:40%;"> 제목 </td>
+					<td class="notic_table_title" style="width:20%;"> 작성자</td>
+					<td class="notic_table_title" style="width:30%;"> 날짜 </td>
+				</tr>
+				<c:forEach var="n" items="${notices }">
+				<tr>
+					<td>${n.n_no }</td>
+					<td><a href="notice.Detail?n_no=${n.n_no}">${n.n_title }</a></td>
+					<td>${n.n_id }</td>
+					<td><fmt:formatDate value="${n.n_date }" type="both" dateStyle="short" timeStyle="short"/></td>
+				</tr>
+				</c:forEach>
+			</table>
+		</section>
 	</section>
 </body>
 </html>

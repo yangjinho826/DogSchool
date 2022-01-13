@@ -1,4 +1,4 @@
-$(function() {
+function summernote(){
 	//여기 아래 부분
 	$('#summernote').summernote({
 		  height: 300,                 // 에디터 높이
@@ -22,5 +22,11 @@ $(function() {
 			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 			  	  
 	});
+}
+
+
+
+$(function() {
+	summernote();
 
 });
