@@ -69,4 +69,34 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "apply.info.s", method = RequestMethod.GET)
+	public String applyInfoSchool(ApplySchool s, HttpServletRequest req) {
+		//aDAO.getOneSchool(s, req);
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applySchoolInfo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "apply.info.t", method = RequestMethod.GET)
+	public String applyInfoTeacher(ApplyTeacher t, HttpServletRequest req) {
+		//aDAO.getOneSchool(s, req);
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applySchoolInfo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "apply.info.p", method = RequestMethod.GET)
+	public String applyInfoPet(ApplyPet p, HttpServletRequest req) {
+		//aDAO.getOneSchool(s, req);
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applySchoolInfo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
 }

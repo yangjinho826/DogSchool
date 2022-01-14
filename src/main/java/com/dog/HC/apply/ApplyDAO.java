@@ -147,5 +147,10 @@ public class ApplyDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	//한 유치원 상세 보기
+	public void getOneSchool(ApplySchool s, HttpServletRequest req) {
+		
 	}	
 }

@@ -21,7 +21,7 @@
 					<th>주소</th>
 				</tr>
 			<c:forEach var="s" items="${schools }">
-				<tr>
+				<tr onClick="location.href='apply.info.s?da_no=${s.da_no}'">
 					<td>${s.da_schoolname }</td>
 					<td>${s.da_name }(${s.da_id })</td>
 					<td>${s.da_addr }</td>
@@ -42,7 +42,7 @@
 					<th>소개</th>
 				</tr>
 			<c:forEach var="t" items="${teachers }">
-				<tr>
+				<tr onClick="location.href='apply.info.t?ta_no=${t.ta_no}'">
 					<td>${t.ta_name }(${t.ta_id })</td>
 					<td>${t.ta_phonenumber }</td>
 					<td>${t.ta_text }</td>
@@ -64,7 +64,7 @@
 					<th>희망 선생님</th>
 				</tr>
 			<c:forEach var="p" items="${pets }">
-				<tr>
+				<tr onClick="location.href='apply.info.p?ua_no=${p.ua_no}'">
 					<td>${p.ua_id }</td>
 					<td><img src="resources/img/${p.ua_img }"><br>${p.ua_name }(${p.ua_gender }, ${p.ua_age }세)</td>
 					<td>${p.ua_daterange }</td>
