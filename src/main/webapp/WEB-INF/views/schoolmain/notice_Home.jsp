@@ -19,9 +19,9 @@
 			<table class="notice">
 				<tr class="notic_tr">
 					<td class="notic_table_title" style="width:10%;"> 글 번호 </td>
-					<td class="notic_table_title" style="width:40%;"> 제목 </td>
+					<td class="notic_table_title" style="width:50%;"> 제목 </td>
 					<td class="notic_table_title" style="width:20%;"> 작성자</td>
-					<td class="notic_table_title" style="width:30%;"> 날짜 </td>
+					<td class="notic_table_title" style="width:20%;"> 날짜 </td>
 				</tr>
 				<c:forEach var="n" items="${notices }">
 				<tr>

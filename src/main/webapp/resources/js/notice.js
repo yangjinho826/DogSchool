@@ -7,15 +7,6 @@ function notice_Delete(n){
 	}
 }
 
-function notice_Delete(n){
-	let n_no = n;
-	let ok = confirm("정말로 삭제하시겠습니까?");
-	
-	if(ok){
-		location.href="notice.Delete?n_no="+n_no;
-	}
-}
-
 
 function notice_UpdatePageGo(n){
 	let n_no = n;

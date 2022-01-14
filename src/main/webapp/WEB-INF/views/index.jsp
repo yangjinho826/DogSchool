@@ -24,7 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 	
+	<!-- js -->
 	<script type="text/javascript" src="resources/js/notice.js"></script>
+	<script type="text/javascript" src="resources/js/postscript.js"></script>	
 	<script type="text/javascript" src="resources/js/summernote.js"></script>
 	
 	<!-- CSS -->

@@ -43,13 +43,16 @@ create table notice_table(
 );
 
 alter sequence notice_seq nocache
-drop table notice_table cascade constraint purge;
+drop table postscript_table cascade constraint purge;
 drop sequence notice_seq
-select * from notice_table;
+select * from postscript_table;
 
-
-		
-
-
-
-
+-- 선생님 후기 테이블 --
+create table postscript_table(
+	p_no number(3) primary key,
+	p_da_no number(5),
+	p_id varchar2(20 char) not null,
+	p_title varchar2(30 char) not null,	
+	p_txt varchar2(4000 char) not null,
+	p_date date not null
+);

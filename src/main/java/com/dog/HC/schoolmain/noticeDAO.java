@@ -57,8 +57,6 @@ public class noticeDAO {
 
 	public void noticeUpdate(notice n, HttpServletRequest req) {
 		
-		System.out.println(n.getN_title() +n.getN_no() +n.getN_txt());
-		
 		noticemapper mm = ss.getMapper(noticemapper.class);
 		if(mm.noticeUpdate(n) == 1){
 			System.out.println("수정성공");

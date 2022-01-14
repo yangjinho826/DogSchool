@@ -13,6 +13,9 @@ public class schoolmainController {
 	@Autowired
 	private noticeDAO nDAO;
 	
+	@Autowired
+	private postscriptDAO pDAO;
+	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
 	public String schoolmain(notice n, HttpServletRequest req) {
 		
@@ -24,7 +27,7 @@ public class schoolmainController {
 		return "index";
 	}
 	
-
+	// 공지사항 
 	@RequestMapping(value = "notice.go", method = RequestMethod.GET)
 	public String notice(notice n, HttpServletRequest req) {
 		
@@ -109,5 +112,94 @@ public class schoolmainController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-
+	
+	// 선생님 후기
+	
+	@RequestMapping(value = "postscript.go", method = RequestMethod.GET)
+	public String postscript(postscript p, HttpServletRequest req) {
+		
+		pDAO.getAllpostscript(p, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "postscript_write.go", method = RequestMethod.GET)
+	public String postscriptwirtego(postscript p, HttpServletRequest req) {
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_write.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "postscript.write", method = RequestMethod.POST)
+	public String postscriptwirte(postscript p, HttpServletRequest req) {
+		
+		pDAO.getWrite(p, req);
+		pDAO.getAllpostscript(p, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "postscript.Detail", method = RequestMethod.GET)
+	public String postscriptDetail(postscript p, HttpServletRequest req) {
+		
+		pDAO.getpostscript(p, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_Detail.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "postscript.Delete", method = RequestMethod.GET)
+	public String postscriptDelete(postscript p, HttpServletRequest req) {
+		
+		pDAO.postscriptDelete(p, req);
+		pDAO.getAllpostscript(p, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "postscript.UpdatePageGo", method = RequestMethod.GET)
+	public String postscriptUpdatePage(postscript p, HttpServletRequest req) {
+		
+		pDAO.getpostscript(p, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_updatePage.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	
+	
+	@RequestMapping(value = "postscript.update", method = RequestMethod.POST)
+	public String postscriptUpdate(postscript p, HttpServletRequest req) {
+		
+		pDAO.postscriptUpdate(p, req);
+		pDAO.getpostscript(p, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/postscript_Detail.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
 }

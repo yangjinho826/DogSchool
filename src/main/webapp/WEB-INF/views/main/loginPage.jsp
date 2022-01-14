@@ -8,6 +8,9 @@
 </head>
 <body>
 	<section id="member" >
+		<div>
+			<button onclick="location.href='HC.go'" class="member_info_btn">홈페이지</button>
+		</div>
 		<div  class="member_info">
 			<input placeholder="아이디">
 			<input placeholder="비밀번호">
