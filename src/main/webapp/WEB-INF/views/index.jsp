@@ -32,6 +32,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="resources/css/main.css"/>
 	<link rel="stylesheet" href="resources/css/notice.css"/>
+	<link rel="stylesheet" href="resources/css/postscript.css"/>
 	
 
 </head>

@@ -10,14 +10,14 @@
 	<section id="postscript_write">
 		<section class="postscript_write">
 			<div class="postscript_write_title">
-				<h1 class="postscript_write_title">선생님후기 작성</h1>
+				<h1 class="postscript_write_title">선생님 후기 작성</h1>
 			</div>
 		</section>
 		<section id="postscript_write_body">
 			<form action="postscript.write" name ="myForm" onsubmit="return call()" method="post" >
 				<div class="postscript_write_input">
 					<span class="postscript_write_input_w">제목</span>
-					<input name="p_title" class="postscript">
+					<input name="p_title" class="p_title">
 				</div>
 				<div class="postscript_write_input">
 					<span class="postscript_write_input_w">내용</span>

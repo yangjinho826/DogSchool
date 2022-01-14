@@ -1,12 +1,12 @@
-/*notice home*/
+/*postscript home*/
 
- #notice_Home{
+ #postscript_Home{
 	margin: 20px;
 	padding: 30px;
  	height:700px;
  }
  
- .notice_Home{
+ .postscript_Home{
  	display: flex;
  	justify-content: space-between;
  	background-color: #e5edf1;
@@ -14,13 +14,13 @@
  	
  }
  
- .notice_title{
+ .postscript_title{
  	margin-left: 10px;
  	font-size: 30px;
  	margin-bottom: 15px;
  }
  
-  .notice_writebtn{
+  .postscript_writebtn{
  	border: 3px solid;
  	border-top-width: thin;
  	font-size: 20px;
@@ -31,14 +31,14 @@
  	transition: all ease 0.5s;
  }
  
-  .notice_writebtn:hover{
+  .postscript_writebtn:hover{
   	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	
  }
 
 
-  .notice{
+  .postscript{
   	width: 100%;
   	text-align: center;
   	font-size: 20px;
@@ -49,39 +49,39 @@
   }
   
   
-  .notic_table_title{
+  .postscript_table_title{
   	font-size: 25px;
   	font-weight: bold;
   }
   
-/* 공지사항 작성 */
-   #notice_write{
+/* 선생님후기 작성 */
+   #postscript_write{
 	margin: 20px;
 	padding: 30px;
  	height:700px;
  }
   
-  .notice_write_title{
+  .postscript_write_title{
   	font-size: 35px;
  	margin-bottom: 15px;
   }
   
-  .notice_write_input{
+  .postscript_write_input{
   	margin-bottom: 5px;
   }
   
-  .notice_write_input_w{
+  .postscript_write_input_w{
   	font-size: 20px;
   	padding-left: 10px;	
   }
   
-  .n_title{
+  .p_title{
   	margin-left: 35px;
   	height:30px;
   	width: 300px;
   }
   
- .notice_write_btn{
+ .postscript_write_btn{
  	float :right;
  	border: 3px solid black;
  	border-top-width: thin;
@@ -93,48 +93,48 @@
  	transition: all ease 0.5s;
  }
  
-  .notice_write_btn:hover{
+  .postscript_write_btn:hover{
   	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	
  }
    
-  #notice_write_btn{
+  #postscript_write_btn{
   	 display: flex;
   	justify-content: space-between;
   }
  
 /* 공지사항 수정페이지 */
-  #notice_update{
+  #postscript_update{
 	margin: 20px;
 	padding: 30px;
  	height:700px;
  }
  
-  .notice_update_title{
+  .postscript_update_title{
   	font-size: 35px;
  	margin-bottom: 15px;
   }
  
-  .notice_update_smalltitle{
+  .postscript_update_smalltitle{
   	display: flex;
   	justify-content: space-between;
   }
   
-   .notice_update_input{
+   .postscript_update_input{
   	margin-bottom: 5px;
   }
   
-  .notice_update_input_w{
+  .postscript_update_input_w{
   	font-size: 20px;
   }
   
-  #notice_update_Button{
+  #postscript_update_Button{
   	 display: flex;
   	justify-content: space-between;
   }
   
-   .notice_update_btn{
+   .postscript_update_btn{
  	border: 3px solid black;
  	border-top-width: thin;
  	font-size: 20px;
@@ -145,41 +145,41 @@
  	transition: all ease 0.5s;
  }
  
-  .notice_update_btn:hover{
+  .postscript_update_btn:hover{
   	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	}
  
- /* 공지사항 디테일페이지 */
-  #notice_Detail{
+ /* 선생님후기 디테일페이지 */
+  #postscript_Detail{
 	margin: 20px;
 	padding: 30px;
  	height:700px;
   }
   
-  .notice_title{
+  .postscript_title{
   	font-size: 35px;
   }
   
-  .notice_Detail_title{
+  .postscript_Detail_title{
   	text-align: center;
   	border-bottom:2px solid black;
   	
   }
   
-  .notice_Detail_smtitle{
+  .postscript_Detail_smtitle{
   	font-size: 30px;
   	margin-top: 15px;
   	margin-bottom: 2px;
   }
   
-  #notice_Detail_body{
+  #postscript_Detail_body{
   	height:400px;
   	border-bottom:3px solid black;
   	margin-bottom: 5px;
   }
   
-  .notice_Detail_body{
+  .postscript_Detail_body{
   	display: flex;
   	justify-content: space-between;
   	margin-top: 10px;	
@@ -187,16 +187,16 @@
   	border-bottom:2px solid black;
   }
   
-  .notice_Detail_bodytitle{
+  .postscript_Detail_bodytitle{
   	margin-left: 5px;	
   }
   
-  #notice_Detail_Button{
+  #postscript_Detail_Button{
   	display: flex;
   	justify-content: space-between;
   }
   
-  .notice_Detail_Btn{
+  .postscript_Detail_Btn{
   	border: 3px solid black;
  	border-top-width: thin;
  	font-size: 20px;
@@ -207,7 +207,7 @@
  	transition: all ease 0.5s;
   }
   
-   .notice_Detail_Btn:hover{
+   .postscript_Detail_Btn:hover{
   	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	}

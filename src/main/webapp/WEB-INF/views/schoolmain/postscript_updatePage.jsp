@@ -12,7 +12,7 @@
 	<form action="postscript.update" name ="myForm" onsubmit="return call()" method="post" >
 		<section id="postscript_update">
 			<section class="postscript_update">
-				<h1 class="postscript_update_title">게시물 수정</h1>
+				<h1 class="postscript_update_title">선생님 후기 수정</h1>
 				<div class="postscript_update_title">
 						<span class="postscript_update_input_w">제목</span>
 						<input class="postscript_update_input_w" name="p_title" value="${ps.p_title }">

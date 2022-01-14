@@ -11,7 +11,7 @@
 <body>
 	<section id="postscript_Detail">
 		<section class="postscript_Detail">
-			<h1 class="postscript_title">게시물</h1>
+			<h1 class="postscript_title">선생님 후기</h1>
 			<div class="postscript_Detail_title">
 				<div class="postscript_Detail_title"><h1 class="postscript_Detail_smtitle">${ps.p_title }</h1></div>
 			</div>
