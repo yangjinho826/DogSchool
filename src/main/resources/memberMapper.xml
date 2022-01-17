@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.member.MemberMapper">
+	<select id="getUserID" resultType="com.dog.HC.member.Member">
+		select * from User_table where u_id = #{id}
+	</select>
+	
+	<insert id="usignup" parameterType="com.dog.HC.member.Member">
+		insert into User_table
+		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender} )	
+	</insert>
+	
+	<insert id="tsignup" parameterType="com.dog.HC.member.Member">
+		insert into teacher_table
+		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender} )	
+	</insert>
+	
+	<insert id="dsignup" parameterType="com.dog.HC.member.Member">
+		insert into director_table
+		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender} )	
+	</insert>
+</mapper>

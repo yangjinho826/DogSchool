@@ -5,8 +5,8 @@ create table root_table(
 	r_pw varchar2(20 char) not null
 );
 
-drop table teacher_table cascade constraint purge;
-select * from User_table;
+drop table User_table cascade constraint purge;
+select * from director_table;
 insert into root_table values('root','1234');
 
 -- 원장 테이블 --
