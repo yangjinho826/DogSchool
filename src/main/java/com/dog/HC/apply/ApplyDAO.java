@@ -149,8 +149,27 @@ public class ApplyDAO {
 		}
 	}
 
-	//한 유치원 상세 보기
-	public void getOneSchool(ApplySchool s, HttpServletRequest req) {
+	//원장님-관리자 유치원 승인!
+	public void schoolPass(ApplySchool s, HttpServletRequest req) {
+		//Da_no 유치원 구분 코드 받아서
+		//Da_agree 1로 update
+
+		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
 		
+		if (ss.getMapper(ApplyMapper.class).schoolPass(s) == 1) {
+			System.out.println("수락 성공적");
+		} else {
+			System.out.println("수락 실패");
+		}
+	}
+
+	//원장님-관리자 유치원 거절 -> 재신청해야 함
+	public void schoolFail(ApplySchool s, HttpServletRequest req) {
+		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		if (ss.getMapper(ApplyMapper.class).schoolFail(s) == 1) {
+			System.out.println("거절 성공적");
+		} else {
+			System.out.println("거절 실패");
+		}
 	}	
 }

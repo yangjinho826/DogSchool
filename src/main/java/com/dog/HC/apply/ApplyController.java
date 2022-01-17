@@ -70,33 +70,35 @@ public class ApplyController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "apply.info.s", method = RequestMethod.GET)
-	public String applyInfoSchool(ApplySchool s, HttpServletRequest req) {
-		//aDAO.getOneSchool(s, req);
+	@RequestMapping(value = "apply.pass.s", method = RequestMethod.GET)
+	public String applyPassSchool(ApplySchool s, HttpServletRequest req) {
+		//해당 유치원 승인 0->1 작업
+		aDAO.schoolPass(s, req);
+		
+		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
+		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
+		aDAO.getAllPetApply(req); //			강아지전체목록조회
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "apply/applySchoolInfo.jsp");
+		req.setAttribute("contentPage", "apply/acceptHome.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "apply.info.t", method = RequestMethod.GET)
-	public String applyInfoTeacher(ApplyTeacher t, HttpServletRequest req) {
-		//aDAO.getOneSchool(s, req);
+	@RequestMapping(value = "apply.fail.s", method = RequestMethod.GET)
+	public String applyFailSchool(ApplySchool s, HttpServletRequest req) {
+		//해당 유치원 거절 -> 다시 신청하게 테이블에서 삭제
+		aDAO.schoolFail(s, req);
+		
+		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
+		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
+		aDAO.getAllPetApply(req); //			강아지전체목록조회
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "apply/applySchoolInfo.jsp");
+		req.setAttribute("contentPage", "apply/acceptHome.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "apply.info.p", method = RequestMethod.GET)
-	public String applyInfoPet(ApplyPet p, HttpServletRequest req) {
-		//aDAO.getOneSchool(s, req);
-		req.setAttribute("loginPage", "main/loginPage.jsp");
-		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "apply/applySchoolInfo.jsp");
-		req.setAttribute("footer", "main/footer.jsp");
-		return "index";
-	}
+	
 }

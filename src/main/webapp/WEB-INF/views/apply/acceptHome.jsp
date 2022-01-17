@@ -18,15 +18,20 @@
 				<tr>
 					<th>유치원 이름</th>
 					<th>원장님</th>
+					<th>연락처</th>
 					<th>주소</th>
+					<th colspan="2"></th>
 				</tr>
-			<c:forEach var="s" items="${schools }">
-				<tr onClick="location.href='apply.info.s?da_no=${s.da_no}'">
+				<c:forEach var="s" items="${schools }">
+				<tr>
 					<td>${s.da_schoolname }</td>
 					<td>${s.da_name }(${s.da_id })</td>
+					<td>${s.da_phonenumber }</td>
 					<td>${s.da_addr }</td>
+					<td><button onclick="location.href='apply.pass.s?Da_no=${s.da_no}'">수락</button></td>
+					<td><button onclick="location.href='apply.fail.s?Da_no=${s.da_no}'">거절</button></td>
 				</tr>
-			</c:forEach>
+				</c:forEach>
 			</table>
 		</div>
 		
@@ -42,7 +47,7 @@
 					<th>소개</th>
 				</tr>
 			<c:forEach var="t" items="${teachers }">
-				<tr onClick="location.href='apply.info.t?ta_no=${t.ta_no}'">
+				<tr>
 					<td>${t.ta_name }(${t.ta_id })</td>
 					<td>${t.ta_phonenumber }</td>
 					<td>${t.ta_text }</td>
@@ -64,7 +69,7 @@
 					<th>희망 선생님</th>
 				</tr>
 			<c:forEach var="p" items="${pets }">
-				<tr onClick="location.href='apply.info.p?ua_no=${p.ua_no}'">
+				<tr>
 					<td>${p.ua_id }</td>
 					<td><img src="resources/img/${p.ua_img }"><br>${p.ua_name }(${p.ua_gender }, ${p.ua_age }세)</td>
 					<td>${p.ua_daterange }</td>

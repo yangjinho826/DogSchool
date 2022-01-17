@@ -9,4 +9,6 @@ public interface ApplyMapper {
 	public List<ApplySchool> getSchoolApply();
 	public List<ApplyTeacher> getTeacherApply();
 	public List<ApplyPet> getPetApply();
+	int schoolPass(ApplySchool s);
+	int schoolFail(ApplySchool s);
 }
