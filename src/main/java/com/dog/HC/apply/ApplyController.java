@@ -19,8 +19,9 @@ public class ApplyController {
 	@Autowired
 	private ApplyDAO aDAO;
 	
+	//신청하는 폼으로 이동
 	@RequestMapping(value = "apply.go", method = RequestMethod.GET)
-	public String home(HttpServletRequest req) {
+	public String apply(HttpServletRequest req) {
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/applyHome.jsp");
@@ -28,6 +29,7 @@ public class ApplyController {
 		return "index";
 	}
 	
+	//원장-관리자 유치원 신청 테이블에 등록
 	@RequestMapping(value = "apply.school", method = RequestMethod.GET)
 	public String applySchool(ApplySchool s, HttpServletRequest req) {
 		aDAO.applySchool(s, req);
@@ -37,7 +39,7 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-	
+	//선생님-원장 신청 테이블에 등록
 	@RequestMapping(value = "apply.teacher", method = RequestMethod.GET)
 	public String applyTeacher(ApplyTeacher t, HttpServletRequest req) {
 		aDAO.applyTeacher(t, req);
@@ -47,7 +49,7 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-	
+	//견주-원장 강아지 신청 테이블에 등록
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
 	public String applyPet(ApplyPet p, HttpServletRequest req) {
 		aDAO.applyPet(p, req);
@@ -58,8 +60,9 @@ public class ApplyController {
 		return "index";
 	}
 	
+	//수락하기 페이지로 이동: 추후에 권한마다 보이는 목록 나눠 줘야 함
 	@RequestMapping(value = "accept.go", method = RequestMethod.GET)
-	public String home2(HttpServletRequest req) {
+	public String accept(HttpServletRequest req) {
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회
@@ -70,6 +73,7 @@ public class ApplyController {
 		return "index";
 	}
 	
+	//관리자: 유치원 수락
 	@RequestMapping(value = "apply.pass.s", method = RequestMethod.GET)
 	public String applyPassSchool(ApplySchool s, HttpServletRequest req) {
 		//해당 유치원 승인 0->1 작업
@@ -84,7 +88,7 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-	
+	//관리자: 유치원 거절(재신청하게 컬럼 삭제 진행)
 	@RequestMapping(value = "apply.fail.s", method = RequestMethod.GET)
 	public String applyFailSchool(ApplySchool s, HttpServletRequest req) {
 		//해당 유치원 거절 -> 다시 신청하게 테이블에서 삭제
@@ -100,5 +104,65 @@ public class ApplyController {
 		return "index";
 	}
 	
-	
+	//원장: 선생님 등록 수락
+	@RequestMapping(value = "apply.pass.t", method = RequestMethod.GET)
+	public String applyPassTeacher(ApplyTeacher t, HttpServletRequest req) {
+		//승인 0->1 작업
+		aDAO.teacherPass(t, req);
+			
+		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
+		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
+		aDAO.getAllPetApply(req); //			강아지전체목록조회
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/acceptHome.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//원장: 선생님 등록 거절(재신청하게 컬럼 삭제 진행)
+	@RequestMapping(value = "apply.fail.t", method = RequestMethod.GET)
+	public String applyFailTeacher(ApplyTeacher t, HttpServletRequest req) {
+		//거절 -> 다시 신청하게 테이블에서 삭제
+		aDAO.teacherFail(t, req);
+			
+		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
+		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
+		aDAO.getAllPetApply(req); //			강아지전체목록조회
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/acceptHome.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+
+	//원장: 강아지(견주) 등록 수락
+	@RequestMapping(value = "apply.pass.p", method = RequestMethod.GET)
+	public String applyPassPet(ApplyPet p, HttpServletRequest req) {
+		//승인 0->1 작업
+		aDAO.petPass(p, req);
+			
+		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
+		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
+		aDAO.getAllPetApply(req); //			강아지전체목록조회
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/acceptHome.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//원장: 강아지(견주) 등록 거절(재신청하게 컬럼 삭제 진행)
+	@RequestMapping(value = "apply.fail.p", method = RequestMethod.GET)
+	public String applyFailPet(ApplyPet p, HttpServletRequest req) {
+		//거절 -> 다시 신청하게 테이블에서 삭제
+		aDAO.petFail(p, req);
+			
+		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
+		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
+		aDAO.getAllPetApply(req); //			강아지전체목록조회
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/acceptHome.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
 }

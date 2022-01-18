@@ -48,7 +48,6 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 select * from Dapply_table;
-
 drop table Dapply_table cascade constraint purge;
 drop sequence Dapply_table_seq;
 
@@ -60,12 +59,13 @@ create table Tapply_table(
 	Ta_name varchar2(20 char) not null,
 	Ta_phonenumber varchar2(20 char) not null,
 	Ta_gender varchar2(20 char)not null,
-	Ta_text varchar2(20 char)not null,
+	Ta_text varchar2(300 char)not null,
 	Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-
 select * from Tapply_table;
+drop table Tapply_table cascade constraint purge;
+drop sequence Tapply_table_seq;
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(

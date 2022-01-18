@@ -130,7 +130,6 @@ public class ApplyDAO {
 			e.printStackTrace();
 		}
 	}
-	
 	//신청 중인 선생님-원장 선생님 전체 조회
 	public void getAllTeacherApply(HttpServletRequest req) {
 		try {
@@ -138,8 +137,7 @@ public class ApplyDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-		
+	}	
 	//신청 중인 견주-원장 강아지 전체 조회
 	public void getAllPetApply(HttpServletRequest req) {
 		try {
@@ -149,7 +147,7 @@ public class ApplyDAO {
 		}
 	}
 
-	//원장님-관리자 유치원 승인!
+	//유치원 승인(관리자)
 	public void schoolPass(ApplySchool s, HttpServletRequest req) {
 		//Da_no 유치원 구분 코드 받아서
 		//Da_agree 1로 update
@@ -157,19 +155,58 @@ public class ApplyDAO {
 		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
 		
 		if (ss.getMapper(ApplyMapper.class).schoolPass(s) == 1) {
-			System.out.println("수락 성공적");
+			System.out.println("유치원 수락 성공");
 		} else {
-			System.out.println("수락 실패");
+			System.out.println("유치원 수락 실패");
 		}
 	}
-
-	//원장님-관리자 유치원 거절 -> 재신청해야 함
+	//유치원 거절(관리자)
 	public void schoolFail(ApplySchool s, HttpServletRequest req) {
 		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
 		if (ss.getMapper(ApplyMapper.class).schoolFail(s) == 1) {
-			System.out.println("거절 성공적");
+			System.out.println("유치원 거절 성공");
 		} else {
-			System.out.println("거절 실패");
+			System.out.println("유치원 거절 실패");
+		}
+	}
+
+	//선생님 승인(원장)
+	public void teacherPass(ApplyTeacher t, HttpServletRequest req) {
+		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		if (ss.getMapper(ApplyMapper.class).teacherPass(t) == 1) {
+			System.out.println("선생님 수락 성공"); //Ta_agree: 0->1
+		} else {
+			System.out.println("선생님 수락 실패");
+		}
+	}
+	//선생님 거절(원장)
+	public void teacherFail(ApplyTeacher t, HttpServletRequest req) {
+		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		if (ss.getMapper(ApplyMapper.class).teacherFail(t) == 1) {
+			System.out.println("선생님 거절 성공"); //테이블에서 해당 컬럼 삭제
+		} else {
+			System.out.println("선생님 거절 실패");
+		}
+	}
+
+	//강아지 승인(원장)
+	public void petPass(ApplyPet p, HttpServletRequest req) {
+		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
+		if (ss.getMapper(ApplyMapper.class).petPass(p) == 1) {
+			System.out.println("강아지 수락 성공"); //Ta_agree: 0->1
+		} else {
+			System.out.println("강아지 수락 실패");
+		}
+	}
+	//강아지 거절(원장)
+	public void petFail(ApplyPet p, HttpServletRequest req) {
+		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
+		if (ss.getMapper(ApplyMapper.class).petFail(p) == 1) {
+			System.out.println("강아지 거절 성공"); //테이블에서 해당 컬럼 삭제
+		} else {
+			System.out.println("강아지 거절 실패");
 		}
 	}	
+	
+	
 }
