@@ -11,7 +11,7 @@
 <section id="member" >
 		<div  class="member_info">
 			${sessionScope.loginMember.id} 
-			<button class="member_info_btn"> 내 정보 </button>	
+			<button class="member_info_btn" onclick="Memberinfo()"> 내 정보 </button>	
 			<button class="member_info_btn" onclick="logout()"> 로그아웃 </button>	
 		</div>
 	</section>

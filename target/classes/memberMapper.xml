@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dog.HC.member.MemberMapper">
-	<select id="getUserID" resultType="com.dog.HC.member.Member">
-		select * from User_table where u_id = #{id}
+	<select id="getUserID1" resultType="com.dog.HC.member.Member">
+		select * from signup_table where id=#{id}
 	</select>
 	
 	<insert id="usignup" parameterType="com.dog.HC.member.Member">
-		insert into User_table
-		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender} )	
+		insert into signup_table
+		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender}, 1 )	
 	</insert>
 	
 	<insert id="tsignup" parameterType="com.dog.HC.member.Member">
-		insert into teacher_table
-		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender} )	
+		insert into signup_table
+		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender}, 2 )	
 	</insert>
 	
 	<insert id="dsignup" parameterType="com.dog.HC.member.Member">
-		insert into director_table
-		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender} )	
+		insert into signup_table
+		values(#{id}, #{pw}, #{name}, #{phonenumber}, #{gender}, 3 )	
 	</insert>
+	
+	<update id="update"
+		parameterType="com.dog.HC.member.Member">
+		update signup_table
+		set 
+		pw=#{pw}, name=#{name}, phonenumber=#{phonenumber}
+		where
+		id=#{id}
+	</update>
 </mapper>

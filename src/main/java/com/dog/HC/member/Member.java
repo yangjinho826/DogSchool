@@ -7,18 +7,20 @@ public class Member {
 	private String name;
 	private String phonenumber;
 	private String gender;
+	private int typee;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String id, String pw, String name, String phonenumber, String gender) {
+	public Member(String id, String pw, String name, String phonenumber, String gender, int typee) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.phonenumber = phonenumber;
 		this.gender = gender;
+		this.typee = typee;
 	}
 
 	public String getId() {
@@ -60,6 +62,16 @@ public class Member {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+	public int getTypee() {
+		return typee;
+	}
+
+	public void setTypee(int typee) {
+		this.typee = typee;
+	}
+
+
 	
 	
 }

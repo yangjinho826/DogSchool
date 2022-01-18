@@ -15,7 +15,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "member.login", method = RequestMethod.POST)
 	public String home(HttpServletRequest req , Member m) {
-		
 		mDAO.login(req, m);
 		mDAO.loginCheck(req);
 		
@@ -71,5 +70,42 @@ public class MemberController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "member.info", method = RequestMethod.GET)
+	public String memberinfo(HttpServletRequest req) {
+		
+		if(mDAO.loginCheck(req)) {
+			req.setAttribute("contentPage", "member/info.jsp");
+		} else {
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/signupgo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		}
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.update", method = RequestMethod.POST)
+	public String memberUpdate(HttpServletRequest req, Member m) {
+		if (mDAO.loginCheck(req)) {
+			mDAO.update(req,m);
+			req.setAttribute("contentPage", "member/info.jsp");
+		} else {
+			req.setAttribute("MenuBar", "main/menu.jsp");
+			req.setAttribute("contentPage", "main/signupgo.jsp");
+			req.setAttribute("footer", "main/footer.jsp");
+		}
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.bye", method = RequestMethod.GET)
+	public String memberBye(HttpServletRequest req) {
+		if (mDAO.loginCheck(req)) {
+			mDAO.bye(req);
+		}
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/signupgo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
 	
 }

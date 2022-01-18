@@ -13,3 +13,11 @@ function signup(){
 function signupgo(n){
 	location.href = "member.signupgo?type="+n 
 }
+
+function login(n){
+	location.href = "member.login?type="+n 
+}
+
+function Memberinfo(){
+	location.href = "member.info"; 
+}

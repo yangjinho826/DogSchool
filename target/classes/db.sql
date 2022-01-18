@@ -5,33 +5,45 @@ create table root_table(
 	r_pw varchar2(20 char) not null
 );
 
-drop table User_table cascade constraint purge;
-select * from director_table;
-insert into root_table values('root','1234');
+drop table signup_table cascade constraint purge;
+select * from signup_table;
+insert into signup_table values('id','123','김김','0101234','남',1);
+
+select * from User_table where u_id = 'jy';
+
+create table signup_table(
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null,
+	typee int not null
+);
+
 
 -- 원장 테이블 --
 create table director_table(
-	d_id varchar2(20 char) primary key,
-	d_pw varchar2(20 char) not null,
-	d_name varchar2(50 char) not null,
-	d_phonenumber varchar2(15 char) not null,
-	d_gender varchar2(30 char) not null
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null
 );
 
 -- 선생님 테이블 --
 create table teacher_table(
-	t_id varchar2(20 char) primary key,
-	t_pw varchar2(20 char) not null,
-	t_name varchar2(50 char) not null,
-	t_phonenumber varchar2(15 char) not null,
-	t_gender varchar2(30 char) not null
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null
 );
 
 -- 유저 테이블 --
 create table User_table(
-	u_id varchar2(20 char) primary key,
-	u_pw varchar2(20 char) not null,
-	u_name varchar2(50 char) not null,
-	u_phonenumber varchar2(15 char) not null,
-	u_gender varchar2(30 char) not null
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null
 );
