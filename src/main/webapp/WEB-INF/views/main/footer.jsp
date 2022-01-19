@@ -10,11 +10,11 @@
 	<section id="footer">
 	  <div class="footer">
 			<div class="footer_menu">
-				<span><a href="#">개인정보취급방침</a></span>
+				<span><a href="home">개인정보취급방침</a></span>
 				<span>|</span>
-				<span><a href="#">제휴문의</a></span>
+				<span><a href="home">제휴문의</a></span>
 				<span>|</span>
-				<span><a href="#">이용약관</a></span>
+				<span><a href="home">이용약관</a></span>
 			</div>
 			<div class="footer_content">	
 				<div class="footer_content_item">

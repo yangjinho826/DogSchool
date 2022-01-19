@@ -15,7 +15,7 @@
 		<c:choose>
 			<c:when test="${empty schools}">
 			    <div class="acceptWaitingList">
-					<h2 align="center">수락 대기 목록</h2>
+					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr><th>신청 내역 없음</th></tr>
 					</table>
@@ -24,7 +24,7 @@
 			
 		 	<c:otherwise>
 				<div class="acceptWaitingList">
-					<h2 align="center">수락 대기 목록</h2>
+					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
 							<th>유치원 이름</th>
@@ -55,7 +55,7 @@
 		<c:choose>
 			<c:when test="${empty teachers}">
 				<div class="acceptWaitingList">
-					<h2 align="center">수락 대기 목록</h2>
+					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr><th>신청 내역 없음</th></tr>
 					</table>
@@ -64,7 +64,7 @@
 			 
 		 	<c:otherwise>
 				<div class="acceptWaitingList">
-					<h2 align="center">수락 대기 목록</h2>
+					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
 							<th>선생님</th>
@@ -93,7 +93,7 @@
 		<c:choose>
 			<c:when test="${empty pets}">
 				<div class="acceptWaitingList">
-					<h2 align="center">수락 대기 목록</h2>
+					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr><th>신청 내역 없음</th></tr>
 					</table>
@@ -102,7 +102,7 @@
 			
 		 	<c:otherwise>
 				<div class="acceptWaitingList">
-					<h2 align="center">수락 대기 목록</h2>
+					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
 							<th>견주 ID</th>

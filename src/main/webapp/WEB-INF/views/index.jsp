@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/main.css"/>
 	<link rel="stylesheet" href="resources/css/applyHome.css"/>
+	<link rel="stylesheet" href="resources/css/manageHome.css"/>
 	
 	<script type="text/javascript" src="resources/js/jQuery.js"></script>
 	<script type="text/javascript" src="resources/js/jsApply.js"></script>

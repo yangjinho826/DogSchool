@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* manageHome */
+#manageHomeArea{
+	margin:40px 0 40px 0;
+	height: fill;
+}
+
+#manageHomeTitle{
+	padding:10px;
+}
+
+#manageTbl{
+	width: 70%;
+	margin-left:auto; margin-right:auto;
+	align-self:center;
+	font-size: 13pt;
+	border-spacing: 0px;
+	font-weight: 500;
+}
+
+#manageTbl th{
+	height: 40px;
+	padding:15px;
+	text-align: center;
+}
+
+#manageTbl td{
+	height: 30px;
+	padding:15px;
+	text-align: center;
+}
+

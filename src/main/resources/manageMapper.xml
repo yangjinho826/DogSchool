@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.manage.ManageMapper">
+
+<!-- 관리 유치원 조회(승인된) -->
+<select id="getAllSchool" resultType="com.dog.HC.apply.ApplySchool">
+select * from Dapply_table where Da_agree = 1
+</select>
+
+</mapper>

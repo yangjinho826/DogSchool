@@ -206,7 +206,5 @@ public class ApplyDAO {
 		} else {
 			System.out.println("강아지 거절 실패");
 		}
-	}	
-	
-	
+	}
 }
