@@ -174,4 +174,11 @@ public class MemberDAO {
 		
 	}
 
+
+
+	public void Member(HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");	
+		
+	}
+
 }
