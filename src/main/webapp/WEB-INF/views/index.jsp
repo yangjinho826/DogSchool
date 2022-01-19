@@ -37,7 +37,7 @@
 	
 
 </head>
-<body>
+<body>aaa
 		<jsp:include page="${loginPage }"></jsp:include>
 		<jsp:include page="${MenuBar }"></jsp:include>
 		<jsp:include page="${contentPage }"></jsp:include>
