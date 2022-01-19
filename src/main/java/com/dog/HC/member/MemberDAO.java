@@ -168,17 +168,15 @@ public class MemberDAO {
 	}
 
 
-
 	public void bye(HttpServletRequest req) {
 		// TODO Auto-generated method stub
 		
 	}
 
+<<<<<<< HEAD
 
 
-	public void Member(HttpServletRequest req) {
-		Member m = (Member) req.getSession().getAttribute("loginMember");	
-		
-	}
 
+=======
+>>>>>>> parent of b14e82c (root login)
 }
