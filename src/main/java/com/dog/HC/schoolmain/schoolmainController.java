@@ -16,6 +16,9 @@ public class schoolmainController {
 	@Autowired
 	private postscriptDAO pDAO;
 	
+	@Autowired
+	private priceTagDAO pTDAO;
+	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
 	public String schoolmain(notice n, HttpServletRequest req) {
 		
@@ -200,6 +203,47 @@ public class schoolmainController {
 		req.setAttribute("contentPage", "schoolmain/postscript_Detail.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
+	}
+	
+	
+	// 가격표
+	@RequestMapping(value = "priceTag.go", method = RequestMethod.GET)
+	public String priceTaggo(priceTag pT, HttpServletRequest req) {
+		
+		pTDAO.getAllpriceTag(pT, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "priceTag_write.go", method = RequestMethod.GET)
+	public String pricewritego(priceTag pT, HttpServletRequest req) {
+		
+		return "schoolmain/priceTag_write";
+	}
+	
+	@RequestMapping(value = "priceTag.write", method = RequestMethod.GET)
+	public String priceTagwirte(priceTag pT, HttpServletRequest req) {
+		
+		pTDAO.getWrite(pT, req);
+		pTDAO.getAllpriceTag(pT, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "priceTag_Detail", method = RequestMethod.GET)
+	public String priceTaDetail(priceTag pT, HttpServletRequest req) {
+		
+		pTDAO.getpriceTag(pT, req);
+		
+		return "schoolmain/priceTag_Detail";
 	}
 	
 }

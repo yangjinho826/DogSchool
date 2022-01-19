@@ -19,6 +19,8 @@ public class postscriptDAO {
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		List<postscript> postscripts = mm.getAllpostscript();
 		req.setAttribute("postscripts", postscripts);
+		
+	
 	}
 
 	public void getWrite(postscript p, HttpServletRequest req) {
@@ -56,6 +58,7 @@ public class postscriptDAO {
 	}
 
 	public void postscriptUpdate(postscript p, HttpServletRequest req) {
+		
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		if(mm.postscriptUpdate(p) == 1){
 			System.out.println("수정성공");

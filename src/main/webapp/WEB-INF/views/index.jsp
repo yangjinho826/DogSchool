@@ -28,6 +28,7 @@
 	<script type="text/javascript" src="resources/js/notice.js"></script>
 	<script type="text/javascript" src="resources/js/postscript.js"></script>	
 	<script type="text/javascript" src="resources/js/summernote.js"></script>
+	<script type="text/javascript" src="resources/js/priceTag.js"></script>
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="resources/css/main.css"/>

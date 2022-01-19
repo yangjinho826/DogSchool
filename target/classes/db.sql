@@ -5,13 +5,13 @@ create table root_table(
 	r_pw varchar2(20 char) not null
 );
 
--- 원장 테이블 --
+
 create table director_table(
 	d_id varchar2(20 char) primary key,
 	d_pw varchar2(20 char) not null,
 	d_name varchar2(50 char) not null,
 	d_phonenumber varchar2(15 char) not null,
-	d_gender varchar2(30 char) not null
+	d_gender varchar2(30 char) not null  
 );
 
 -- 선생님 테이블 --
@@ -42,10 +42,11 @@ create table notice_table(
 	n_date date not null
 );
 
-alter sequence notice_seq nocache
-drop table postscript_table cascade constraint purge;
-drop sequence notice_seq
-select * from postscript_table;
+alter sequence notice_seq nocaches
+drop table priceTag_table cascade constraint purge;
+drop sequence priceTag_seq
+select * from priceTag_table;
+create sequence priceTag_seq
 
 -- 선생님 후기 테이블 --
 create table postscript_table(
@@ -55,4 +56,17 @@ create table postscript_table(
 	p_title varchar2(30 char) not null,	
 	p_txt varchar2(4000 char) not null,
 	p_date date not null
+	
 );
+
+
+-- 가격표 테이블
+create table priceTag_table(
+	p_no number(3) primary key,
+	p_da_no number(5) not null,
+	p_Dogkind varchar2(20 char) not null,
+	p_price number(10) not null,
+	p_date number(10) not null
+	
+);
+

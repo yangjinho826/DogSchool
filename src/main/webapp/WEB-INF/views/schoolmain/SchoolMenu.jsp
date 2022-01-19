@@ -18,7 +18,7 @@
 					<a href="notice.go" class="menu_menubar_item">공지사항</a>
 					<a href="postscript.go" class="menu_menubar_item">선생님 후기</a>
 					<a href="#" class="menu_menubar_item">시간표</a>
-					<a href="#" class="menu_menubar_item">가격표</a>
+					<a href="priceTag.go" class="menu_menubar_item">가격표</a>
 			</div>
 		</div>
 	</section>
