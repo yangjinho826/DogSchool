@@ -49,6 +49,11 @@ a {
 }
 
 /*menu */
+#member{
+	display: flex;
+	justify-content:space-between ;
+}
+
 .menu{
 	display: flex;
 	background: #98c5e4;

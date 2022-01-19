@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.schoolmain.noticemapper">
+
+	<select id="getAllnotice" resultType="com.dog.HC.schoolmain.notice">
+		select rn, n_no,n_da_no,n_id,n_title,n_txt,n_date
+		from(	
+			select rownum as rn, n_no,n_da_no,n_id,n_title,n_txt,n_date
+				from(
+					select n_no,n_da_no,n_id,n_title,n_txt,n_date
+					from NOTICE_TABLE
+					order by n_date asc ))
+		order by rn desc
+	</select>
+
+	<select id="getnotice" parameterType="com.dog.HC.schoolmain.notice" resultType="com.dog.HC.schoolmain.notice">
+		select * 
+		from notice_table
+		where n_no = #{n_no}
+	</select>
+	
+	<insert id="noticeWrite" parameterType="com.dog.HC.schoolmain.notice">
+		insert into notice_table values(notice_seq.nextval,#{n_da_no},#{n_id},#{n_title},#{n_txt},sysdate)
+	</insert>
+	
+	<delete id="noticeDelete" parameterType="com.dog.HC.schoolmain.notice">
+		delete from notice_table
+		where n_no = #{n_no}
+	</delete>
+	
+	<update id="noticeUpdate" parameterType="com.dog.HC.schoolmain.notice">
+		update notice_table
+		set n_title = #{n_title },n_txt=#{n_txt }
+		where n_no = #{n_no}
+	</update>
+	
+</mapper>

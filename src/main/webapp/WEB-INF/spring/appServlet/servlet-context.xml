@@ -44,6 +44,9 @@
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:mapper.xml</beans:value>
+				<beans:value>classpath:noticeMapper.xml</beans:value>
+				<beans:value>classpath:postscriptMapper.xml</beans:value>
+				<beans:value>classpath:priceTagMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
