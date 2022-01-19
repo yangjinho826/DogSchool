@@ -25,6 +25,7 @@ create table teacher_table(
 	t_name varchar2(50 char) not null,
 	t_phonenumber varchar2(15 char) not null,
 	t_gender varchar2(30 char) not null
+	
 );
 
 -- 유저 테이블 --
@@ -36,4 +37,6 @@ create table User_table(
 	u_gender varchar2(30 char) not null
 );
 
+create table (
 
+);

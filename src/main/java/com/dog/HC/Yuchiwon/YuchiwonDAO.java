@@ -15,4 +15,10 @@ public class YuchiwonDAO {
 	public void getAllPuppy(HttpServletRequest req) {
 		req.setAttribute("puppies", ss.getMapper(YuchiwonMapper.class).getAllPuppy());
 	}
+
+	public void getPuppy(HttpServletRequest req, puppy puppy) {
+		
+		req.setAttribute("puppie", ss.getMapper(YuchiwonMapper.class).getPuppy(puppy));
+		
+	}
 }

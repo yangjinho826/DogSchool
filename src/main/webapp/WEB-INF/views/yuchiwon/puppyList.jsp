@@ -9,16 +9,14 @@
 </head>
 <body>
 강아지들 여기에 출력
-<table>
+<table border="1">
 	<tr>
-		<th>마이펫 목록</th>
+		<th colspan="2">마이펫 목록</th>
 	</tr>
 	<c:forEach var="p" items="${puppies }">
 	<tr>
 		<td>${p.uA_img }</td> 
-		
-		<td onclick="location.href='puppyC?puppyName=${p.uA_name}'">${p.uA_name }</td>
-		
+		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
 	</tr>
 	</c:forEach>
 </table>

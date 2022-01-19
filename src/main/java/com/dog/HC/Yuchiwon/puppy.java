@@ -1,8 +1,8 @@
 package com.dog.HC.Yuchiwon;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class Puppy {
+public class puppy {
 	private int uA_no;
 	private int uA_da_no;
 	private String uA_id;
@@ -15,11 +15,11 @@ public class Puppy {
 	private String uA_tname;
 	private int uA_agree;
 	
-	public Puppy() {
+	public puppy() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Puppy(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, Date uA_start, Date uA_end,
+	public puppy(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, Date uA_start, Date uA_end,
 			int uA_age, String uA_img, String uA_tname, int uA_agree) {
 		super();
 		this.uA_no = uA_no;
@@ -122,8 +122,5 @@ public class Puppy {
 	public void setuA_agree(int uA_agree) {
 		this.uA_agree = uA_agree;
 	}
-
-
-	
 	
 }

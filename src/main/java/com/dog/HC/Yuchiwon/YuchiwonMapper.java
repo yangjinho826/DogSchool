@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface YuchiwonMapper {
 
-	public List<Puppy> getAllPuppy();
+	public List<puppy> getAllPuppy();
+
+	public puppy getPuppy(puppy puppy);
 
 }
