@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="resources/js/priceTag.js"></script>
+<script type="text/javascript" src="resources/js/validCheck.js"></script>
 </head>
 <body>
 	<section id="priceTag_write">
@@ -15,7 +16,7 @@
 			</div>
 		</section>
 		<section id="priceTag_write_body">
-			<form action="priceTag.write" name="popupForm" >
+			<form action="priceTag.write" name="popupForm" onsubmit="return callme()">
 				<div class="priceTag_write_input">
 						<span class="priceTag_write_input_w">강아지 종류 </span>
 					<div>
@@ -35,12 +36,12 @@
 						<span class="priceTag_write_input_w">날짜 </span>
 						<input type="number" name="p_date" placeholder="1일 이상 입력" min="1">일
 				</div>
-			</form>
 			<section id="priceTag_write_btn">
 					<div>
-						<button class="priceTag_write_btn" onclick="closeWithSubmit();">작성하기 </button>
+						<button class="priceTag_write_btn">작성하기 </button>
 					</div>
 			</section>
+			</form>
 		</section>
 	</section>
 </body>

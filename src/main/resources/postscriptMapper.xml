@@ -23,7 +23,7 @@
 	
 	<update id="postscriptUpdate" parameterType="com.dog.HC.schoolmain.postscript">
 		update postscript_table
-		set p_title = #{p_title },p_txt=#{p_txt }
+		set p_price = #{p_price },p_Dogkind=#{p_Dogkind }
 		where p_no = #{p_no}
 	</update>
 

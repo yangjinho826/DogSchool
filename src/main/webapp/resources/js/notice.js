@@ -14,11 +14,11 @@ function notice_UpdatePageGo(n){
 }
 
 
-function call(){
+function callnotice(){
 	let n_title = document.myForm.n_title;	
 	let n_txt = document.myForm.n_txt;	
 	
-	if (isEmpty(n_title)) {
+	if (isEmpty(p_title)) {
 		alert('제목을 입력하세요');
 		n_title.value = "";
 		n_title.focus();
@@ -26,7 +26,7 @@ function call(){
 		return false;
 	}
 	
-	if (isEmpty(n_txt)) {
+	if (isEmpty(p_txt)) {
 		alert('내용을 입력하세요');
 		n_txt.value = "";
 		n_txt.focus();
@@ -35,4 +35,3 @@ function call(){
 	}
 	
 }
- 

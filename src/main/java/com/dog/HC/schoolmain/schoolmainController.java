@@ -246,4 +246,33 @@ public class schoolmainController {
 		return "schoolmain/priceTag_Detail";
 	}
 	
+	@RequestMapping(value = "priceTag.Delete", method = RequestMethod.GET)
+	public String priceTagDelete(priceTag pT, HttpServletRequest req) {
+		
+		pTDAO.priceTagDelete(pT, req);
+		pTDAO.getAllpriceTag(pT, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+
+		return "index";
+		
+	}
+	
+	@RequestMapping(value = "priceTag.Update", method = RequestMethod.GET)
+	public String priceTagUpdate(priceTag pT, HttpServletRequest req) {
+		
+		pTDAO.priceTagUpdate(pT, req);
+		pTDAO.getAllpriceTag(pT, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+
+		return "index";
+		
+	}
 }

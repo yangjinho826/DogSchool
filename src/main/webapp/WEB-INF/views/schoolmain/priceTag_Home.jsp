@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="resources/js/priceTag.js"></script>
 </head>
 <body>
 	<section id="priceTag_Home">
@@ -22,7 +24,7 @@
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
 					<c:if test="${pT.p_Dogkind eq '대형견'}">
-						<td class="priceTag_table_title"><button onclick="priceDetailWindow(${pT.p_no});">${pT.p_date }일</button> </td>
+						<td class="priceTag_table_title"><a href="#" onclick="priceDetailWindow(${pT.p_no});">${pT.p_date }일</a> </td>
 					</c:if>
 					</c:forEach>
 				</tr>
@@ -41,7 +43,7 @@
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
 					<c:if test="${pT.p_Dogkind eq '중형견'}">
-						<td class="priceTag_table_title"><a href="#" onclick="priceDetailWindow(${pT.p_price});">${pT.p_date }일</a> </td>
+						<td class="priceTag_table_title"><a href="#" onclick="priceDetailWindow(${pT.p_no});">${pT.p_date }일</a> </td>
 					</c:if>
 					</c:forEach>
 				</tr>
@@ -60,7 +62,7 @@
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
 					<c:if test="${pT.p_Dogkind eq '소형견'}">
-						<td class="priceTag_table_title"><a href="#" onclick="priceDetailWindow(${pT.p_price});">${pT.p_date }일</a> </td>
+						<td class="priceTag_table_title"><a href="#" onclick="priceDetailWindow(${pT.p_no});">${pT.p_date }일</a> </td>
 					</c:if>
 					</c:forEach>
 				</tr>
