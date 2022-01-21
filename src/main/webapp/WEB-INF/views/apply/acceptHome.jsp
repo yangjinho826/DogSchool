@@ -36,7 +36,7 @@
 						<c:forEach var="s" items="${schools }">
 						<tr>
 							<td>${s.da_schoolname }</td>
-							<td>${s.da_name }(${s.da_id })</td>
+							<td>${s.da_name }<br>(${s.da_id })</td>
 							<td>${s.da_phonenumber }</td>
 							<td>${s.da_addr }</td>
 							<td style="width:80px;"><button onclick="passSchool(${s.da_no})">수락</button></td>

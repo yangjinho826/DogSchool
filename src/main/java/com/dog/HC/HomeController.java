@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "main/menu.jsp");
@@ -25,4 +25,12 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	public String home2(HttpServletRequest req) {
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
 }

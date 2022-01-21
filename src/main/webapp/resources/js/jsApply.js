@@ -52,6 +52,14 @@ function failPet(no){
 	}
 }
 
+function deleteSchool(no){
+	var ok = confirm("해당 유치원을 삭제하시겠습니까?");
+	if(ok) {
+		location.href = "manage.delete?Da_no=" + no;
+		alert("삭제가 완료되었습니다!");
+	}
+}
+
 $(function() {
 	connectAddrSearchEvent();
 	daterangeSelectEvent();

@@ -2,7 +2,7 @@
 
 /* applyHome */
 #applyHomeArea{
-	margin:40px 0 40px 0;
+	margin:60px 0 60px 0;
 	height: fill;
 }
 
@@ -10,28 +10,57 @@
 	width: 60%;
 	margin-left:auto; margin-right:auto;
 	align-self:center;
-	font-size: 16pt;
 	/*color: #FFFFFF;*/
 	border-spacing: 0px;
 	font-weight: 600;
 }
 
+#addrSearchBtn{
+	font-size:14pt;
+}
+
 #applyTbl td{
-	height: 90px;
-	padding:15px;
+	height: 110px;
+	padding:10px;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 #applyTbl .td1 {
-	width: 180px;
+	font-size: 16pt;
+	width: 220px;
 	text-align: center;
 }
 
-#applyTbl button{
-	radius: 5px;
-	padding:5px;
-	font-style: bold;
-	background-color: skyblue;
+#applyTbl .tdTitle{
+	font-size:20pt;
 }
+
+#applyTbl button{
+	border-radius: 3px;
+	padding:7px;
+	font-size:13pt;
+	font-weight:600;
+	color:white;
+	background-color: #98c5e4;
+}
+
+#applyTbl input{
+	font-size:12pt;
+	margin:3px 0 3px 10px;
+	height:33px;
+	width:300px;
+}
+
+#selectOption{
+	font-size:11pt;
+	margin:5px;
+	height:30px;
+	width:fill;
+}
+
+
 
 /* acceptHome */
 #acceptHomeArea{
@@ -44,13 +73,12 @@
 }
 
 #acceptTbl{
-	width: 70%;
+	width: 80%;
 	margin-left:auto; margin-right:auto;
 	align-self:center;
 	font-size: 13pt;
-	/*color: #FFFFFF;*/
-	border-spacing: 0px;
-	font-weight: 500;
+	border-spacing:0px;
+	font-weight:500;
 }
 
 #acceptTbl th{

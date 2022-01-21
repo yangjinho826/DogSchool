@@ -14,14 +14,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dog.HC.manage.ManageDAO;
+
 @Controller
 public class ApplyController {
 	@Autowired
 	private ApplyDAO aDAO;
 	
+	@Autowired
+	private ManageDAO mDAO;
+	
 	//신청하는 폼으로 이동
 	@RequestMapping(value = "apply.go", method = RequestMethod.GET)
-	public String apply(HttpServletRequest req) {
+	public String apply(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
+		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/applyHome.jsp");
