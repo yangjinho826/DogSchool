@@ -173,10 +173,4 @@ public class MemberDAO {
 		
 	}
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> parent of b14e82c (root login)
 }
