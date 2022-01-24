@@ -24,8 +24,15 @@
 		parameterType="com.dog.HC.member.Member">
 		update signup_table
 		set 
-		pw=#{pw}, name=#{name}, phonenumber=#{phonenumber}
+		pw=#{pw}, name=#{name}, 
+		phonenumber=#{phonenumber}, gender=#{gender}
 		where
 		id=#{id}
 	</update>
+	
+	<delete id="bye"
+		parameterType="com.dog.HC.member.Member">
+		delete from signup_table
+		where id = #{id}	
+	</delete>
 </mapper>

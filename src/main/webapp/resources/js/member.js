@@ -21,3 +21,10 @@ function login(n){
 function Memberinfo(){
 	location.href = "member.info"; 
 }
+
+function bye() {
+	var ok = confirm("탈퇴 하시겠습니까?");
+	if (ok) {
+		location.href = "member.bye";
+	}
+}

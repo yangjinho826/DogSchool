@@ -169,7 +169,21 @@ public class MemberDAO {
 
 
 	public void bye(HttpServletRequest req) {
-		// TODO Auto-generated method stub
+		try {
+			Member m = (Member) req.getSession().getAttribute("loginMember");
+
+			if (ss.getMapper(MemberMapper.class).bye(m) == 1) {
+				req.setAttribute("result", "탈퇴성공");
+
+				logout(req);
+				loginCheck(req);
+			} else {
+				req.setAttribute("result", "탈퇴실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "탈퇴실패");
+		}
 		
 	}
 
