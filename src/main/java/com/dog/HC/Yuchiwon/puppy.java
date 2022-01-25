@@ -14,13 +14,14 @@ public class puppy {
 	private String uA_img;
 	private String uA_tname;
 	private int uA_agree;
+	private int tA_no;
 	
 	public puppy() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public puppy(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, Date uA_start, Date uA_end,
-			int uA_age, String uA_img, String uA_tname, int uA_agree) {
+			int uA_age, String uA_img, String uA_tname, int uA_agree, int tA_no) {
 		super();
 		this.uA_no = uA_no;
 		this.uA_da_no = uA_da_no;
@@ -33,6 +34,7 @@ public class puppy {
 		this.uA_img = uA_img;
 		this.uA_tname = uA_tname;
 		this.uA_agree = uA_agree;
+		this.tA_no = tA_no;
 	}
 
 	public int getuA_no() {
@@ -121,6 +123,14 @@ public class puppy {
 
 	public void setuA_agree(int uA_agree) {
 		this.uA_agree = uA_agree;
+	}
+
+	public int gettA_no() {
+		return tA_no;
+	}
+
+	public void settA_no(int tA_no) {
+		this.tA_no = tA_no;
 	}
 	
 }

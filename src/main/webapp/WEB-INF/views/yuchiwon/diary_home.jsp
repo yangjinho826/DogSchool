@@ -8,24 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	다이어리인가..!
 	<h1>알림장</h1>
-	<button onclick="location.href='diary.write'">작성하기</button>
+	<button onclick="location.href='diary.write.go'">작성하기</button>
 	<table border="1">
 		<tr>
 			<td>글 번호</td>
 			<td>제목</td>
 			<td>날짜</td>
 		</tr>
-		<c:forEach var="" items="">
-		<tr>
-		<!-- 
-			<td>${ }</td>
-			<td>${ }</td>
-			<td>${ }</td>
-			 -->
-		</tr>
-		</c:forEach>
+		<c:forEach var="d" items="${diaries }">
+				<tr>
+					<td>${d.mp_no }</td>
+					<td><a href="diary.Detail?mp_no=${d.mp_no}">${d.mp_title }</a></td>
+					<td>${d.mp_id }</td>
+					<td><fmt:formatDate value="${d.mp_date }" type="both" dateStyle="short" timeStyle="short"/></td>
+				</tr>
+				</c:forEach>
 	</table>
 </body>
 </html>

@@ -8,4 +8,6 @@ public interface YuchiwonMapper {
 
 	public puppy getPuppy(puppy puppy);
 
+	public Object getAllDiary();
+
 }

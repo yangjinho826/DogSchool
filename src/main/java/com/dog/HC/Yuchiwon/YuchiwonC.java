@@ -12,13 +12,9 @@ public class YuchiwonC {
 	
 	@Autowired
 	private YuchiwonDAO ydao;
-
-	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
-	public String pList(HttpServletRequest req) {
-		ydao.getAllPuppy(req);
-		req.setAttribute("yuchiwonContent", "puppyList.jsp");
-		return "yuchiwon/yuchiwon";
-	}
+	
+	@Autowired
+	private DiaryDAO ddao;
 
 	
 	@RequestMapping(value = "yuchiwon.get", method = RequestMethod.GET)
@@ -28,6 +24,12 @@ public class YuchiwonC {
 		return "yuchiwon/yuchiwon";
 	}
 	
+	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
+	public String pList(HttpServletRequest req) {
+		ydao.getAllPuppy(req);
+		req.setAttribute("yuchiwonContent", "puppyList.jsp");
+		return "yuchiwon/yuchiwon";
+	}
 
 	@RequestMapping(value = "yuchiwon.get.puppy", method = RequestMethod.GET)
 	public String getPuppy(HttpServletRequest req, puppy puppy) {
@@ -37,12 +39,31 @@ public class YuchiwonC {
 		return "yuchiwon/puppyPage";
 	}
 	
+	// 알림장
 	@RequestMapping(value = "yuchiwon.get.diary", method = RequestMethod.GET)
-	public String puppyDiary(HttpServletRequest req, puppy puppy) {
+	public String diarygo(HttpServletRequest req, puppy puppy) {
 		ydao.getPuppy(req, puppy);
 		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("puppyContent", "pDiary.jsp");
+		req.setAttribute("puppyContent", "diary_home.jsp");
 		return "yuchiwon/puppyPage";
 	}
 
+	@RequestMapping(value = "diary.write.go", method = RequestMethod.GET)
+	public String diarywritego(HttpServletRequest req) {
+		req.setAttribute("loginPage", "../main/loginPage.jsp");
+		req.setAttribute("puppyContent", "diary_write.jsp");
+		return "yuchiwon/puppyPage";
+	}
+
+	@RequestMapping(value = "diary.write", method = RequestMethod.GET)
+	public String diarywrite(HttpServletRequest req, diary d) {
+		
+		ddao.getWrite(req, d);
+		ddao.getAllDiary(req, d);
+		
+		req.setAttribute("loginPage", "../main/loginPage.jsp");
+		req.setAttribute("puppyContent", "diary_home.jsp");
+		return "yuchiwon/puppyPage";
+	}
+	
 }
