@@ -43,10 +43,10 @@ create table notice_table(
 );
 
 alter sequence notice_seq nocaches
-drop table priceTag_table cascade constraint purge;
+drop table schedule_table cascade constraint purge;
 drop sequence priceTag_seq
-select * from priceTag_table;
-create sequence priceTag_seq
+select * from schedule_table;
+create sequence schedule_seq;
 
 -- 선생님 후기 테이블 --
 create table postscript_table(
@@ -70,3 +70,18 @@ create table priceTag_table(
 	
 );
 
+-- 스케줄 테이블
+create table schedule_table(
+	s_no number(3) primary key,
+	s_da_no number(5) not null,
+	s_month number(5) not null,
+	s_text varchar2(30 char) not null,	
+	s_day date not null
+);
+
+insert into schedule_table values(schedule_seq.nextval,1,1,'휴식1', sysdate)
+
+
+update schedule_table
+set s_month = 3,s_text=3,s_day=sysdate
+where s_no = 85

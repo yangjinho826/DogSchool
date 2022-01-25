@@ -1,5 +1,7 @@
 package com.dog.HC.schoolmain;
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class schoolmainController {
 	
 	@Autowired
 	private priceTagDAO pTDAO;
+	
+	@Autowired
+	private scheduleDAO sDAO;
 	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
 	public String schoolmain(notice n, HttpServletRequest req) {
@@ -270,6 +275,75 @@ public class schoolmainController {
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+
+		return "index";
+		
+	}
+	
+	// 스케줄
+	@RequestMapping(value = "schedule.go", method = RequestMethod.GET)
+	public String schedulemain(schedule s, HttpServletRequest req) {
+		
+		sDAO.getAllschedule(s, req);
+	
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "sechdule_write.go", method = RequestMethod.GET)
+	public String schedulewritego(schedule s, HttpServletRequest req) {
+		
+		return "schoolmain/schedule_write";
+	}
+	
+	@RequestMapping(value = "schedule.write", method = RequestMethod.GET)
+	public String schedulewirte(schedule s, HttpServletRequest req) throws ParseException {
+		
+		sDAO.getschedulewirte(s, req);
+		sDAO.getAllschedule(s, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "schedule_Detail", method = RequestMethod.GET)
+	public String scheduleDetail(schedule s, HttpServletRequest req) {
+		
+		sDAO.getschedule(s, req);
+		
+		return "schoolmain/schedule_Detail";
+	}
+	
+	@RequestMapping(value = "schedule.update", method = RequestMethod.GET)
+	public String scheduleUpdate(schedule s, HttpServletRequest req) {
+		
+		sDAO.scheduleUpdate(s, req);
+		sDAO.getAllschedule(s, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+
+		return "index";
+		
+	}
+	@RequestMapping(value = "schedule.Delete", method = RequestMethod.GET)
+	public String scheduleDelete(schedule s, HttpServletRequest req) {
+		
+		sDAO.scheduleDelete(s, req);
+		sDAO.getAllschedule(s, req);
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 
 		return "index";

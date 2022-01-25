@@ -38,7 +38,7 @@
 				</div>
 			<section id="priceTag_write_btn">
 					<div>
-						<button class="priceTag_write_btn">작성하기 </button>
+						<button class="priceTag_write_btn">작성 </button>
 					</div>
 			</section>
 			</form>
