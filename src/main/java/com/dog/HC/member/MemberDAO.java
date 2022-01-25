@@ -1,9 +1,5 @@
 package com.dog.HC.member;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -188,4 +184,54 @@ public class MemberDAO {
 	}
 
 
+
+	public void findid(HttpServletRequest req, Member m) {
+		Member dbMember = ss.getMapper(MemberMapper.class).findid(m);
+
+		//사용자가 입력한 값
+		m.getName();
+		m.getPhonenumber();
+		
+		System.out.println(m.getName());
+		System.out.println(m.getPhonenumber());
+		System.out.println(dbMember.getName());
+		System.out.println(dbMember.getPhonenumber());
+		// 이 값으로 select
+		if(dbMember != null) {
+			if(m.getName().equals(dbMember.getName())) {
+				req.setAttribute("result", dbMember.getId());
+			}else {
+			System.out.println("아이디 찾기 실패(가입안된 ID)");
+			req.setAttribute("result", "아이디 찾기 실패(가입안된 ID)");
+		}
+
+		}
+}
+
+
+
+	public void findpw(HttpServletRequest req, Member m) {
+		Member dbMember = ss.getMapper(MemberMapper.class).findid(m);
+
+		//사용자가 입력한 값
+		m.getId();
+		m.getName();
+		m.getPhonenumber();
+		
+		System.out.println(m.getName());
+		System.out.println(m.getPhonenumber());
+		System.out.println(dbMember.getName());
+		System.out.println(dbMember.getPhonenumber());
+		// 이 값으로 select
+		if(dbMember != null) {
+			if(m.getName().equals(dbMember.getName())) {
+				req.setAttribute("result", dbMember.getPw());
+			}else {
+			System.out.println("비밀번호 찾기 실패");
+			req.setAttribute("result", "비밀번호 찾기 실패");
+		}
+
+		}
+		
+	}
 }

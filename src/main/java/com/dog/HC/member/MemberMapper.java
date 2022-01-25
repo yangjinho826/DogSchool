@@ -15,6 +15,10 @@ public interface MemberMapper {
 
 	public int bye(Member m);
 
+	public Member findid(Member m);
+
+	
+
 
 
 }

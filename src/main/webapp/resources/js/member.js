@@ -28,3 +28,11 @@ function bye() {
 		location.href = "member.bye";
 	}
 }
+
+function findidgo(){
+	location.href="member.findidgo"
+}
+
+function findpwgo(){
+	location.href = "member.findpwgo"
+}

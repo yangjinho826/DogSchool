@@ -111,4 +111,51 @@ public class MemberController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "member.findidgo", method = RequestMethod.GET)
+	public String findidgo(HttpServletRequest req) {
+		
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/findidgo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.findid", method = RequestMethod.POST)
+	public String findid(HttpServletRequest req, Member m) {
+		
+		mDAO.findid(req, m);
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/findid.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.findpwgo", method = RequestMethod.GET)
+	public String findpwgo(HttpServletRequest req) {
+		
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/findpwgo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.findpw", method = RequestMethod.POST)
+	public String findpw(HttpServletRequest req, Member m) {
+		
+		mDAO.findpw(req, m);
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "main/findpw.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+
+	
 }

@@ -35,4 +35,17 @@
 		delete from signup_table
 		where id = #{id}	
 	</delete>
+	
+	<select id="findid" resultType="com.dog.HC.member.Member">
+		select * from signup_table
+        where name= #{name} and phonenumber = #{phonenumber}
+	</select>
+	
+	<select id="findpw" resultType="com.dog.HC.member.Member">
+		select * from signup_table
+        where id = #{id} and name= #{name} and phonenumber = #{phonenumber}
+	</select>
+	
+	
+
 </mapper>
