@@ -30,9 +30,9 @@
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
-
 		<beans:property name="username" value="c##jh" />
 		<beans:property name="password" value="jh" />
+
 
 
 	</beans:bean>
@@ -49,6 +49,7 @@
 			<beans:list>
 				<beans:value>classpath:mapper.xml</beans:value>
 
+
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:noticeMapper.xml</beans:value>
 				<beans:value>classpath:postscriptMapper.xml</beans:value>
@@ -58,6 +59,10 @@
 
 				<beans:value>classpath:applyMapper.xml</beans:value>
 				<beans:value>classpath:manageMapper.xml</beans:value>
+
+
+				<beans:value>classpath:yuchiwonMapper.xml</beans:value>
+				<beans:value>classpath:diaryMapper.xml</beans:value>
 
 			</beans:list>
 		</beans:property>
