@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.schoolmain.schedulemapper">
+	<select id="getAllschedule" resultType="com.dog.HC.schoolmain.schedule">
+		select * from schedule_table
+	</select>
+	
+		<select id="getschedule" resultType="com.dog.HC.schoolmain.schedule"  parameterType="com.dog.HC.schoolmain.schedule">
+		select * 
+		from schedule_table
+		where s_no = #{s_no}
+	</select>
+	
+	<insert id="scheduleWrite" parameterType="com.dog.HC.schoolmain.schedule">
+		insert into schedule_table values(schedule_seq.nextval,#{s_da_no},#{s_month},#{s_text},#{s_day})
+	</insert>
+	
+	<update id="scheduleUpdate" parameterType="com.dog.HC.schoolmain.schedule">
+		update schedule_table
+		set s_month = #{s_month },s_text=#{s_text },s_day=#{s_day }
+		where s_no = #{s_no}
+	</update>
+	
+	<delete id="scheduleDelete" parameterType="com.dog.HC.schoolmain.schedule">
+		delete from schedule_table
+		where s_no = #{s_no}
+	</delete>
+</mapper>

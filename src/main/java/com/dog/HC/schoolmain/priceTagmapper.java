@@ -12,4 +12,10 @@ public interface priceTagmapper {
 
 	priceTag getpriceTag(priceTag pT);
 
+	int priceTagDelete(priceTag pT);
+
+	int priceTagUpdate(priceTag pT);
+
+	
+
 }

@@ -6,7 +6,7 @@
 		select * from priceTag_table
 	</select>
 	
-		<select id="getpriceTag" resultType="com.dog.HC.schoolmain.priceTag" parameterType="com.dog.HC.schoolmain.priceTag">
+	<select id="getpriceTag" resultType="com.dog.HC.schoolmain.priceTag" parameterType="com.dog.HC.schoolmain.priceTag">
 		select * 
 		from priceTag_table
 		where p_no = #{p_no}
@@ -15,4 +15,15 @@
 	<insert id="priceTagWrite" parameterType="com.dog.HC.schoolmain.priceTag">
 		insert into priceTag_table values(priceTag_seq.nextval,#{p_da_no},#{p_Dogkind},#{p_price},#{p_date})
 	</insert>
+	
+	<delete id="priceTagDelete" parameterType="com.dog.HC.schoolmain.priceTag">
+		delete from priceTag_table
+		where p_no = #{p_no}
+	</delete>
+	
+	<update id="priceTagUpdate" parameterType="com.dog.HC.schoolmain.priceTag">
+		update  priceTag_table
+		set p_price = #{p_price },p_date=#{p_date }
+		where p_no = #{p_no}
+	</update>
 </mapper>

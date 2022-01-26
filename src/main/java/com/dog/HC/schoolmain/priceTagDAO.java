@@ -36,6 +36,7 @@ public class priceTagDAO {
 	public void getpriceTag(priceTag pT, HttpServletRequest req) {
 		
 	    int p_no = Integer.parseInt(req.getParameter("p_no"));
+	    pT.setP_no(p_no);
 		 
 		priceTagmapper mm = ss.getMapper(priceTagmapper.class);
 		priceTag pTag = mm.getpriceTag(pT);
@@ -52,6 +53,33 @@ public class priceTagDAO {
 			System.out.println("등록성공");
 		}else {
 			System.out.println("등록실패");
+		}
+		
+	}
+
+	public void priceTagDelete(priceTag pT, HttpServletRequest req) {
+	    int p_no = Integer.parseInt(req.getParameter("p_no"));
+	    pT.setP_no(p_no);
+	    
+	    
+	    
+		priceTagmapper mm = ss.getMapper(priceTagmapper.class);
+		if(mm.priceTagDelete(pT) == 1){
+			System.out.println("삭제성공");
+		}else {
+			System.out.println("삭제실패");
+		}
+		
+		
+	}
+
+	public void priceTagUpdate(priceTag pT, HttpServletRequest req) {
+		    
+		priceTagmapper mm = ss.getMapper(priceTagmapper.class);
+		if(mm.priceTagUpdate(pT) == 1){
+			System.out.println("수정성공");
+		}else {
+			System.out.println("수정실패");
 		}
 		
 	}

@@ -1,13 +1,11 @@
-
-function pricewriteWindow(){
+// 스케줄 작성
+function schedulewriteWindow(){
 	document.domain = "localhost";
-	window.open("priceTag_write.go", "Popup", "width=500,height=600")
+	window.open("sechdule_write.go", "Popup", "width=350,height=400")
 }
-
 
 function closeWithSubmit()
 {
-
     let f= document.forms.popupForm;
     document.domain = "localhost"; //document.domain 값이 팝업과 부모창 동일해야 합니다.
     opener.name = "openerNames"; //유니크한 이름이어야 합니다.
@@ -16,12 +14,40 @@ function closeWithSubmit()
     self.close();
 }
 
-function priceDetailWindow(n){
-	let p_no = n;
+
+function call(){
+	 let s_day = document.popupForm.s_day;
+	 let s_text = document.popupForm.s_text;
+	 
+	 if(isEmpty(s_day)){
+		alert('날짜를 선택해주세요.');
+		s_day.value = "";
+		s_day.focus();
+
+		 return false;
+	 }
+	 
+	 if(isEmpty(s_text)){
+		alert('텍스트를 입력해주세요.');
+		s_text.value = "";
+		s_text.focus();
+
+		 return false;
+	 }
+	 closeWithSubmit();
+}
+
+// 디테일 페이지 
+function scheduleDetailWindow(n){
+	let s_no = n;
 	
 	document.domain = "localhost";
-	window.open("priceTag_Detail?p_no="+p_no, "Popup", "width=500,height=600")
+	window.open("schedule_Detail?s_no="+s_no, "Popup", "width=500,height=600")
 }
+
+
+
+
 
 
 function closeWithDSubmit()
@@ -56,46 +82,35 @@ function closeupdateSubmit()
 	}
 }
 
-function callme(){
- let p_price = document.popupForm.p_price;
- let p_date = document.popupForm.p_date;
- 
- if(isEmpty(p_price)){
-	alert('가격을 입력하세요');
-	p_price.value = "";
-	p_price.focus();
 
-	 return false;
- }
- 
- if(isEmpty(p_date)){
-	alert('날짜 입력하세요');
-	p_date.value = "";
-	p_date.focus();
-
-	 return false;
- }
- closeWithSubmit();
-}
 
 function callme1(){
-	 let p_price = document.popupForm2.p_price;
-	 let p_date = document.popupForm2.p_date;
+	 let s_day = document.popupForm2.s_day;
+	 let s_text = document.popupForm2.s_text;
 	 
-	 if(isEmpty(p_price)){
-		alert('가격을 입력하세요');
-		p_price.value = "";
-		p_price.focus();
+	 if(isEmpty(s_day)){
+		alert('날짜를 선택해주세요.');
+		s_day.value = "";
+		s_day.focus();
 
 		 return false;
 	 }
 	 
-	 if(isEmpty(p_date)){
-		alert('날짜 입력하세요');
-		p_date.value = "";
-		p_date.focus();
+	 if(isEmpty(s_text)){
+		 alert('텍스트를 입력해주세요.');
+		s_text.value = "";
+		s_text.focus();
 
 		 return false;
 	 }
-	 closeupdateSubmit()
+	 closeupdateSubmit();
 	}
+
+
+
+$(function() {
+	  $( "#datepicker1" ).datepicker({
+	    dateFormat: 'yy-mm-dd',
+	    minDate: 0
+	  });
+	});
