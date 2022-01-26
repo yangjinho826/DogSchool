@@ -62,7 +62,9 @@ public class MemberDAO {
 				String id = req.getParameter("id");
 				String pw = req.getParameter("pw");
 				String name = req.getParameter("name");
-				String phonenumber = req.getParameter("phonenumber");
+				String phonenumber = req.getParameter("phonefirst")
+			 			 + req.getParameter("phonesecond")
+			 			 + req.getParameter("phonethird");
 				String gender = req.getParameter("gender");
 				
 				m.setId(id);
@@ -211,27 +213,29 @@ public class MemberDAO {
 
 
 	public void findpw(HttpServletRequest req, Member m) {
-		Member dbMember = ss.getMapper(MemberMapper.class).findid(m);
+		Member dbMember = ss.getMapper(MemberMapper.class).findpw(m);
 
-		//사용자가 입력한 값
+		// 사용자가 입력한 값
 		m.getId();
 		m.getName();
 		m.getPhonenumber();
-		
+
+		System.out.println(m.getId());
 		System.out.println(m.getName());
 		System.out.println(m.getPhonenumber());
+		System.out.println(dbMember.getId());
 		System.out.println(dbMember.getName());
 		System.out.println(dbMember.getPhonenumber());
 		// 이 값으로 select
-		if(dbMember != null) {
-			if(m.getName().equals(dbMember.getName())) {
+		if (dbMember != null) {
+			if (m.getName().equals(dbMember.getName())) {
 				req.setAttribute("result", dbMember.getPw());
-			}else {
-			System.out.println("비밀번호 찾기 실패");
-			req.setAttribute("result", "비밀번호 찾기 실패");
-		}
+			} else {
+				System.out.println("비밀번호 찾기 실패");
+				req.setAttribute("result", "비밀번호 찾기 실패");
+			}
 
 		}
-		
+
 	}
 }

@@ -8,8 +8,6 @@ create table root_table(
 
 drop table signup_table cascade constraint purge;
 select * from signup_table;
-select * from signup_table
-        where name= '개발자' and phonenumber = '01012345678'
         
 insert into signup_table values('id','123','김김','0101234','남',1);
 
