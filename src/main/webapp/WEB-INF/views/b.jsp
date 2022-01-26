@@ -7,14 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section id="home">
-		<section class="home_list">
-			<div><a href="yuchiwon.get">유치원 목록1</a></div>
-		</section>
-		<section class="home_review">
-			<div>2</div>
-		</section>
-	
-	</section>
+b지롱~~
 </body>
 </html>
