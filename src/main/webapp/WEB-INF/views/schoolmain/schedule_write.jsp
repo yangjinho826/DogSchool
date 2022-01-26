@@ -46,15 +46,9 @@
 						<input type="text" name="s_text" placeholder="20자 이하로 입력하세요.">
 				</div>
 					<div>
-						<button class="schedule_write_btn">수정 </button>
+						<button class="schedule_write_btn">작성 </button>
 					</div>
 			</form>
-			<section id="schedule_write_btn">
-			
-					<div>
-						<button class="priceTag_write_btn" onclick="closeWithDSubmit();">삭제 </button>
-					</div>
-			</section>
 		</section>
 	</section>
 </body>
