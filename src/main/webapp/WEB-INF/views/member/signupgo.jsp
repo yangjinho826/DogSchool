@@ -16,9 +16,6 @@
 			비밀번호 <input name="pw" type="password" placeholder="필수, 영어/숫자만" maxlength="20" autocomplete="off">
 		</div>
 		<div>
-			비밀번호확인 <input name="pw1" type="password" placeholder="필수, 영어/숫자만" maxlength="20" autocomplete="off">
-		</div>
-		<div>
 			이름 <input name="name" placeholder="필수" maxlength="20" autocomplete="off">
 		</div>
 		<div>
