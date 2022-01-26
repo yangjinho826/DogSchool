@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+/* applyHome */
+#applyHomeArea{
+	margin:60px 0 60px 0;
+	height: fill;
+}
+
+#applyTbl{
+	width: 60%;
+	margin-left:auto; margin-right:auto;
+	align-self:center;
+	/*color: #FFFFFF;*/
+	border-spacing: 0px;
+	font-weight: 600;
+}
+
+#addrSearchBtn{
+	font-size:14pt;
+}
+
+#applyTbl td{
+	height: 110px;
+	padding:10px;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
+}
+
+#applyTbl .td1 {
+	font-size: 16pt;
+	width: 220px;
+	text-align: center;
+}
+
+#applyTbl .tdTitle{
+	font-size:20pt;
+}
+
+#applyTbl button{
+	border-radius: 3px;
+	padding:7px;
+	font-size:13pt;
+	font-weight:600;
+	color:white;
+	background-color: #98c5e4;
+}
+
+#applyTbl input{
+	font-size:12pt;
+	margin:3px 0 3px 10px;
+	height:33px;
+	width:300px;
+}
+
+#selectOption{
+	font-size:11pt;
+	margin:5px;
+	height:30px;
+	width:fill;
+}
+
+#showSchoolArea{
+	display:flex;
+	justify-content : flex-center;
+	flex-wrap : wrap;
+	text-align:center;
+	
+}
+
+#showOneSchool{
+	border:#98c5e4 4px solid;
+	width:310px;
+	height:150px;
+	margin:30px;
+}
+
+
+
+/* acceptHome */
+#acceptHomeArea{
+	margin:40px 0 40px 0;
+	height: fill;
+}
+
+#acceptHomeTitle{
+	padding:10px;
+}
+
+#acceptTbl{
+	width: 80%;
+	margin-left:auto; margin-right:auto;
+	align-self:center;
+	font-size: 13pt;
+	border-spacing:0px;
+	font-weight:500;
+}
+
+#acceptTbl th{
+	height: 40px;
+	padding:15px;
+	text-align: center;
+}
+
+#acceptTbl td{
+	height: 30px;
+	padding:15px;
+	text-align: center;
+}
+
+#acceptTbl img {
+	width:110px;
+}
