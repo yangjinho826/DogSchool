@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.manage.ManageMapper">
+
+
+<!-- 관리자: 유치원 조회(승인된) -->
+<select id="getAllSchool" resultType="com.dog.HC.apply.ApplySchool">
+select * from Dapply_table where Da_agree = 1 order by Da_no desc
+</select>
+
+<!-- 관리자: 유치원 삭제 -->
+<delete id="deleteSchool" parameterType="com.dog.HC.apply.ApplySchool">
+delete Dapply_table where Da_no = #{Da_no}
+</delete>
+
+<!-- 원장: 선생님 조회(승인된) -->
+<select id="getAllTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
+select * from Tapply_table where Ta_agree = 1 order by Ta_name
+</select>
+
+</mapper>

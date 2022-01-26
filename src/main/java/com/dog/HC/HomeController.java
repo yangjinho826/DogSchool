@@ -12,8 +12,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
-		
-		
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
@@ -21,10 +19,16 @@ public class HomeController {
 		return "index";
 	}
 	
+
 	@RequestMapping(value = "HC.go", method = RequestMethod.GET)
 	public String HC(HttpServletRequest req) {
 		
 		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+
+
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	public String home2(HttpServletRequest req) {
 		req.setAttribute("loginPage", "main/loginPage.jsp");
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
@@ -32,5 +36,7 @@ public class HomeController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
+
 	
+
 }
