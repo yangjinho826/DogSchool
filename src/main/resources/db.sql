@@ -8,6 +8,7 @@ create table root_table(
 
 drop table signup_table cascade constraint purge;
 select * from signup_table;
+        
 insert into signup_table values('id','123','김김','0101234','남',1);
 
 select * from User_table where u_id = 'jy';

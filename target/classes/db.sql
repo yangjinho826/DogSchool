@@ -8,6 +8,7 @@ create table root_table(
 
 drop table signup_table cascade constraint purge;
 select * from signup_table;
+        
 insert into signup_table values('id','123','김김','0101234','남',1);
 
 select * from User_table where u_id = 'jy';
@@ -37,12 +38,12 @@ create table director_table(
 	d_name varchar2(50 char) not null,
 	d_phonenumber varchar2(15 char) not null,
 	d_gender varchar2(30 char) not null  
->>>>>>> 51aeecb3aa847aa3c7594e5fbf334d88a4baf7ae
+
 );
 
 -- 선생님 테이블 --
 create table teacher_table(
-<<<<<<< HEAD
+
 	id varchar2(20 char) primary key,
 	pw varchar2(20 char) not null,
 	name varchar2(50 char) not null,
@@ -65,6 +66,7 @@ create table User_table(
 	name varchar2(50 char) not null,
 	phonenumber varchar2(15 char) not null,
 	gender varchar2(30 char) not null
+);
 
 	u_id varchar2(20 char) primary key,
 	u_pw varchar2(20 char) not null,

@@ -1,9 +1,5 @@
 package com.dog.HC.member;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -66,7 +62,9 @@ public class MemberDAO {
 				String id = req.getParameter("id");
 				String pw = req.getParameter("pw");
 				String name = req.getParameter("name");
-				String phonenumber = req.getParameter("phonenumber");
+				String phonenumber = req.getParameter("phonefirst")
+			 			 + req.getParameter("phonesecond")
+			 			 + req.getParameter("phonethird");
 				String gender = req.getParameter("gender");
 				
 				m.setId(id);
@@ -169,9 +167,75 @@ public class MemberDAO {
 
 
 	public void bye(HttpServletRequest req) {
-		// TODO Auto-generated method stub
+		try {
+			Member m = (Member) req.getSession().getAttribute("loginMember");
+
+			if (ss.getMapper(MemberMapper.class).bye(m) == 1) {
+				req.setAttribute("result", "탈퇴성공");
+
+				logout(req);
+				loginCheck(req);
+			} else {
+				req.setAttribute("result", "탈퇴실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "탈퇴실패");
+		}
 		
 	}
 
 
+
+	public void findid(HttpServletRequest req, Member m) {
+		Member dbMember = ss.getMapper(MemberMapper.class).findid(m);
+
+		//사용자가 입력한 값
+		m.getName();
+		m.getPhonenumber();
+		
+		System.out.println(m.getName());
+		System.out.println(m.getPhonenumber());
+		System.out.println(dbMember.getName());
+		System.out.println(dbMember.getPhonenumber());
+		// 이 값으로 select
+		if(dbMember != null) {
+			if(m.getName().equals(dbMember.getName())) {
+				req.setAttribute("result", dbMember.getId());
+			}else {
+			System.out.println("아이디 찾기 실패(가입안된 ID)");
+			req.setAttribute("result", "아이디 찾기 실패(가입안된 ID)");
+		}
+
+		}
+}
+
+
+
+	public void findpw(HttpServletRequest req, Member m) {
+		Member dbMember = ss.getMapper(MemberMapper.class).findpw(m);
+
+		// 사용자가 입력한 값
+		m.getId();
+		m.getName();
+		m.getPhonenumber();
+
+		System.out.println(m.getId());
+		System.out.println(m.getName());
+		System.out.println(m.getPhonenumber());
+		System.out.println(dbMember.getId());
+		System.out.println(dbMember.getName());
+		System.out.println(dbMember.getPhonenumber());
+		// 이 값으로 select
+		if (dbMember != null) {
+			if (m.getName().equals(dbMember.getName())) {
+				req.setAttribute("result", dbMember.getPw());
+			} else {
+				System.out.println("비밀번호 찾기 실패");
+				req.setAttribute("result", "비밀번호 찾기 실패");
+			}
+
+		}
+
+	}
 }

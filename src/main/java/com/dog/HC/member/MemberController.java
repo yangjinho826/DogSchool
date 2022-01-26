@@ -42,7 +42,7 @@ public class MemberController {
 		mDAO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "main/signup.jsp");
+		req.setAttribute("contentPage", "member/signup.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
@@ -53,7 +53,7 @@ public class MemberController {
 		mDAO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "main/signupgo.jsp");
+		req.setAttribute("contentPage", "member/signupgo.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
@@ -71,27 +71,30 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "member.info", method = RequestMethod.GET)
-	public String memberinfo(HttpServletRequest req) {
-		
-		if(mDAO.loginCheck(req)) {
+	public String memberInfo(HttpServletRequest req) {
+		if (mDAO.loginCheck(req)) {
+			req.setAttribute("MenuBar", "main/menu.jsp");
 			req.setAttribute("contentPage", "member/info.jsp");
+			req.setAttribute("footer", "main/footer.jsp");
 		} else {
-		
-		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "main/signupgo.jsp");
-		req.setAttribute("footer", "main/footer.jsp");
+			req.setAttribute("MenuBar", "main/menu.jsp");
+			req.setAttribute("contentPage", "main/home.jsp");
+			req.setAttribute("footer", "main/footer.jsp");
 		}
 		return "index";
 	}
 	
+	
 	@RequestMapping(value = "member.update", method = RequestMethod.POST)
 	public String memberUpdate(HttpServletRequest req, Member m) {
 		if (mDAO.loginCheck(req)) {
-			mDAO.update(req,m);
-			req.setAttribute("contentPage", "member/info.jsp");
+			mDAO.update(req, m);
+			req.setAttribute("MenuBar", "main/menu.jsp");
+			req.setAttribute("contentPage", "member/update.jsp");
+			req.setAttribute("footer", "main/footer.jsp");
 		} else {
 			req.setAttribute("MenuBar", "main/menu.jsp");
-			req.setAttribute("contentPage", "main/signupgo.jsp");
+			req.setAttribute("contentPage", "main/home.jsp");
 			req.setAttribute("footer", "main/footer.jsp");
 		}
 		return "index";
@@ -103,9 +106,56 @@ public class MemberController {
 			mDAO.bye(req);
 		}
 		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "main/signupgo.jsp");
+		req.setAttribute("contentPage", "member/bye.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "member.findidgo", method = RequestMethod.GET)
+	public String findidgo(HttpServletRequest req) {
+		
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "member/findidgo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.findid", method = RequestMethod.POST)
+	public String findid(HttpServletRequest req, Member m) {
+		
+		mDAO.findid(req, m);
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "member/findid.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.findpwgo", method = RequestMethod.GET)
+	public String findpwgo(HttpServletRequest req) {
+		
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "member/findpwgo.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "member.findpw", method = RequestMethod.POST)
+	public String findpw(HttpServletRequest req, Member m) {
+		
+		mDAO.findpw(req, m);
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "member/findpw.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+
 	
 }

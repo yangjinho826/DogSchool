@@ -11,26 +11,16 @@
 <body>
 <form action="member.login" method="post" name="loginForm">
 	<section id="member" >
-		<div  class="member_info">
-			<input name="id" placeholder="아이디" autocomplete="off" >
-			<input name="pw" placeholder="비밀번호" type="password" autocomplete="off">
-			<button class="member_info_btn" value="${param.type}">로그인</button>
-			<button class="member_info_btn" type="button" onclick="signup()">회원가입</button>	
-
-</head>
-<body>
-	<section id="member" >
-		<div>
+	<div>
 			<button onclick="location.href='HC.go'" class="member_info_btn">홈페이지</button>
 		</div>
 		<div  class="member_info">
-			<input placeholder="아이디">
-			<input placeholder="비밀번호">
-			<button class="member_info_btn">로그인</button>
-			<button class="member_info_btn">회원가입</button>	
-
-			<button class="member_info_btn">아이디 찾기</button>	
-			<button class="member_info_btn">비밀번호 찾기</button>	
+			<input name="id" placeholder="아이디" autocomplete="off" >
+			<input name="pw" placeholder="비밀번호" type="password" autocomplete="off">
+			<button class="member_info_btn" type="button" onclick="findidgo()">아이디 찾기</button>
+			<button class="member_info_btn" type="button" onclick="findpwgo()">비밀번호 찾기</button>
+			<button class="member_info_btn" value="${param.type}">로그인</button>
+			<button class="member_info_btn" type="button" onclick="signup()">회원가입</button>	
 		</div>
 	</section>
 

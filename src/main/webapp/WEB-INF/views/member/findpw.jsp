@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-aa
+비밀번호는 ${result} 입니다.
 </body>
 </html>
