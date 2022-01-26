@@ -2,6 +2,7 @@ package com.dog.HC.apply;
 
 import java.io.File;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,11 +10,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.manage.ManageMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Service
 public class ApplyDAO {
+	
 	@Autowired
 	private SqlSession ss;
 
@@ -205,6 +208,19 @@ public class ApplyDAO {
 			System.out.println("강아지 거절 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
 			System.out.println("강아지 거절 실패");
+		}
+	}
+	
+	public void getOneSchoolTeacher(ApplyTeacher t, HttpServletRequest req) {
+		t.setTa_da_no(Integer.parseInt(req.getParameter("Da_no")));
+		req.setAttribute("getOneSchoolTeacher", ss.getMapper(ApplyMapper.class).getOneSchoolTeacher(t));
+	}
+	public void getOneSchool(ApplySchool s, HttpServletRequest req) {
+		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		try {
+			req.setAttribute("getOneSchool", ss.getMapper(ApplyMapper.class).getOneSchool(s));
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

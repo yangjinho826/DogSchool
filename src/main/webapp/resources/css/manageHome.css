@@ -6,10 +6,6 @@
 	height: fill;
 }
 
-#manageHomeTitle{
-	padding:10px;
-}
-
 #manageTbl{
 	width: 80%;
 	margin:40px auto 60px auto;
@@ -38,13 +34,21 @@
 	font-weight: 600;
 }
 
+#manageHomeTitle{
+	width: 80%;
+	line-height:120px;
+	background: #eeeeee;
+	margin-left:auto; margin-right:auto;
+	margin-bottom:15px;
+}
+
 #manageMenuBar{
 	width: 80%;
 	align-self:center;
 	margin-left:auto; margin-right:auto;
 	display:flex;
 	justify-content: space-between;
-	background-color:lightyellow;
+	background: #98c5e4;
 	radius:10px;
 	padding:10px;
 }

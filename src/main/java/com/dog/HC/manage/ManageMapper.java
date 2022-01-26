@@ -9,5 +9,4 @@ public interface ManageMapper {
 	public List<ApplySchool> getAllSchool();
 	public int deleteSchool(ApplySchool s);
 	public List<ApplyTeacher> getAllTeacher();
-
 }

@@ -10,6 +10,7 @@
 <body>
 <section id="manageHomeArea">
 	<div>
+
 		<h2 align="center" id="manageHomeTitle">이용 중인 유치원</h2>
 		<div id="manageMenuBar">
 			<select class="manageSelect">
@@ -17,14 +18,19 @@
 				<option>오래된 순</option>
 			</select>
 			<div id="searchMenu">
+				<!--
 				<select class="searchSelect">
 					<option>제목</option>
 					<option>주소</option>
 				</select>
-				<input name="search" class="searchBar" placeholder="검색어를 입력하시오"> 
-				<button onClick="" class="searchBtn">검색</button>
+				-->
+				<form>
+					<input name="searchWord" class="searchBar" placeholder="검색어를 입력하시오"> 
+					<button class="searchBtn">검색</button>
+				</form>
 			</div>
 		</div>
+		
 		<c:forEach var="s" items="${passSchools }">
 		<table border="1" id="manageTbl">
 			<tr>
@@ -47,6 +53,7 @@
 			</tr>
 		</table>
 		</c:forEach>
+		
 	</div>
 	
 </section>

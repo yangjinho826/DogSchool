@@ -36,6 +36,18 @@ public class ApplyController {
 		return "index";
 	}
 	
+	//유치원 선택 후 견주 등록하는 폼으로 이동
+	@RequestMapping(value = "apply.go.pet", method = RequestMethod.GET)
+	public String applyGoPet(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
+		aDAO.getOneSchool(s, req);
+		aDAO.getOneSchoolTeacher(t, req);
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyHomePet.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
 	//원장-관리자 유치원 신청 테이블에 등록
 	@RequestMapping(value = "apply.school", method = RequestMethod.GET)
 	public String applySchool(ApplySchool s, HttpServletRequest req) {

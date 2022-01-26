@@ -15,4 +15,6 @@ public interface ApplyMapper {
 	int teacherFail(ApplyTeacher t);
 	int petPass(ApplyPet p);
 	int petFail(ApplyPet p);
+	public List<ApplyTeacher> getOneSchoolTeacher(ApplyTeacher t);
+	public List<ApplySchool> getOneSchool(ApplySchool s);
 }

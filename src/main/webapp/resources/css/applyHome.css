@@ -60,6 +60,21 @@
 	width:fill;
 }
 
+#showSchoolArea{
+	display:flex;
+	justify-content : flex-center;
+	flex-wrap : wrap;
+	text-align:center;
+	
+}
+
+#showOneSchool{
+	border:#98c5e4 4px solid;
+	width:310px;
+	height:150px;
+	margin:30px;
+}
+
 
 
 /* acceptHome */

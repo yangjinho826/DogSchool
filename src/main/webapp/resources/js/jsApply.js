@@ -13,6 +13,7 @@ function daterangeSelectEvent(){
 	$('input[name="Ua_daterange"]').daterangepicker();
 }
 
+
 function passSchool(no){
 	var ok = confirm("수락하시겠습니까?");
 	if(ok) {

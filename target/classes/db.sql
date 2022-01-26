@@ -48,7 +48,6 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 select * from Dapply_table;
-select * from Dapply_table where Da_agree = 1;
 drop table Dapply_table cascade constraint purge;
 drop sequence Dapply_table_seq;
 

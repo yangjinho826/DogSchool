@@ -41,5 +41,5 @@ public class ManageDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}	
+	}
 }
