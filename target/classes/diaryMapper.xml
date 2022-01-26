@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.Yuchiwon.DiaryMapper">
+
+<select id="getAllDiary" resultType="com.dog.HC.Yuchiwon.diary">
+	select * from mypet_table
+	<!-- where mp_da_no = #{mp_da_no} and mp_tid = #{mp_tid} -->
+</select>
+
+<insert id="writeDiary" parameterType="com.dog.HC.Yuchiwon.diary">
+	insert into MYPET_TABLE values(mypet_table_seq.nextval, #{mp_title}, #{mp_condition}, #{mp_meal}, #{mp_defecate}, #{mp_supplies}, #{mp_txt}, #{mp_da_no}, #{mp_tid}, #{mp_uid}, #{mp_uname}, to_date(sysdate, 'yy.mm.dd'))
+</insert>
+
+
+</mapper>

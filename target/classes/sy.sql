@@ -15,6 +15,8 @@ insert into SIGNUP_TABLE values('mz', '1004', '엠지', '11111111', '남', 1)
 insert into SIGNUP_TABLE values('mzz', '1004', '선생엠지', '11111111', '남', 2)
 insert into SIGNUP_TABLE values('sy', '1004', '승연', '22222222', '남', 2)
 insert into SIGNUP_TABLE values('syy', '1004', '유저승연', '22222222', '남', 1)
+
+
 -- 유저 –> 원장 신청 테이블 --
 create table uapply_table(
 ua_no number(5) primary key,				-- 유저 번호
@@ -29,6 +31,7 @@ ua_img varchar2(100 char)not null,			-- 강아지 사진
 ua_tname varchar2(20 char)not null,			-- 담당 선생님 이름
 ua_agree number(3) not null					-- 신청 수락/거절
 );
+create sequence uapply_table_seq;
 
 insert into UAPPLY_TABLE values(Uapply_table_seq.nextval,
 1, 'syy', '요미', '여아', to_date('2022-01-11', 'YYYY-MM-DD'), to_date('2022-01-20', 'YYYY-MM-DD'),
@@ -39,6 +42,8 @@ insert into UAPPLY_TABLE values(Uapply_table_seq.nextval,
 insert into UAPPLY_TABLE values(Uapply_table_seq.nextval, 1, 'sy', 'sy2', 'w', to_date('2022-01-11', 'YYYY-MM-DD'), to_date('2022-01-20', 'YYYY-MM-DD'), 3, 'a.jpg', 'mz', 1)
 delete UAPPLY_TABLE
 select * from uapply_table;
+
+
 -- 원장 -> 관리자 신청 테이블 --
 create table dapply_table(
 da_no number(5) primary key,				-- 유치원 번호
@@ -76,17 +81,12 @@ create sequence tapply_table_seq;
 select * from tapply_table;
 
 
-
-create sequence uapply_table_seq;
-
-
-
 -- 알림장 테이블 --
 create table mypet_table(
 mp_no number(3) primary key,				-- 알림장 번호
 mp_title varchar2(30 char) not null,		-- 알림장 제목
 mp_condition varchar2(30 char) not null,	-- 강아지 건강상태
-mp_meal number(3) not null,					-- 우유량
+mp_meal number(8) not null,					-- 우유량
 mp_defecate number(3) not null,				-- 배변량
 mp_supplies  varchar2(30 char) not null,	-- 준비물
 mp_txt varchar2 (200 char) not null,		-- 내용
@@ -97,10 +97,12 @@ mp_uname varchar2(30 char) not null, 		-- 강아지 이름
 mp_date date not null						-- 알림장 작성 날짜
 );
 
+drop table mypet_table;
+drop sequence mypet_table_seq;
 create sequence mypet_table_seq;
 select * from mypet_table;
 
-insert into MYPET_TABLE values(mypet_table_seq.nextval, '알림장1', '좋음', 100, 1, '이불', '오늘의 알림', 1, 'sy', 'mz', '초코', to_date(sysdate, 'yyyy.mm.dd hh24:mi'))
+insert into MYPET_TABLE values(mypet_table_seq.nextval, '알림장2', '쏘쏘', 200, 3, '장난감', '오늘의 알림2', 1, 'sy', 'mz', '초코', to_date(sysdate, 'yy.mm.dd'))
 
 -- 갤러리 테이블 --
 create table gallery_table(

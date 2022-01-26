@@ -45,6 +45,7 @@
 			<beans:list>
 				<beans:value>classpath:mapper.xml</beans:value>
 				<beans:value>classpath:yuchiwonMapper.xml</beans:value>
+				<beans:value>classpath:diaryMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
