@@ -6,25 +6,68 @@ create table root_table(
 );
 
 
+drop table signup_table cascade constraint purge;
+select * from signup_table;
+        
+insert into signup_table values('id','123','김김','0101234','남',1);
+
+select * from User_table where u_id = 'jy';
+
+create table signup_table(
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null,
+	typee int not null
+);
+
+
+-- 원장 테이블 --
+create table director_table(
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null
+
+
 create table director_table(
 	d_id varchar2(20 char) primary key,
 	d_pw varchar2(20 char) not null,
 	d_name varchar2(50 char) not null,
 	d_phonenumber varchar2(15 char) not null,
 	d_gender varchar2(30 char) not null  
+
 );
 
 -- 선생님 테이블 --
 create table teacher_table(
+
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null
+
 	t_id varchar2(20 char) primary key,
 	t_pw varchar2(20 char) not null,
 	t_name varchar2(50 char) not null,
 	t_phonenumber varchar2(15 char) not null,
 	t_gender varchar2(30 char) not null
+
 );
 
 -- 유저 테이블 --
 create table User_table(
+
+	id varchar2(20 char) primary key,
+	pw varchar2(20 char) not null,
+	name varchar2(50 char) not null,
+	phonenumber varchar2(15 char) not null,
+	gender varchar2(30 char) not null
+);
+
 	u_id varchar2(20 char) primary key,
 	u_pw varchar2(20 char) not null,
 	u_name varchar2(50 char) not null,
@@ -70,6 +113,7 @@ create table priceTag_table(
 	
 );
 
+
 -- 스케줄 테이블
 create table schedule_table(
 	s_no number(3) primary key,
@@ -80,8 +124,3 @@ create table schedule_table(
 );
 
 insert into schedule_table values(schedule_seq.nextval,1,1,'휴식1', sysdate)
-
-
-update schedule_table
-set s_month = 3,s_text=3,s_day=sysdate
-where s_no = 85

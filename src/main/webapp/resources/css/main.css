@@ -49,10 +49,13 @@ a {
 }
 
 /*menu */
+
+
 #member{
 	display: flex;
 	justify-content:space-between ;
 }
+
 
 .menu{
 	display: flex;
