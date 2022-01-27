@@ -12,10 +12,8 @@ create table signup_table(
 select * from signup_table 
 insert into signup_table values('root','1234','관리자','00000000000','남',0)
 
-
 drop table gallery_table cascade constraint purge;
 drop sequence gallery_table_seq;
-
 
 -- 공지 테이블 --
 create table notice_table(
@@ -28,7 +26,6 @@ create table notice_table(
 );
 
 create sequence notice_seq;
-
 -- 선생님 후기 테이블 --
 create table postscript_table(
 	p_no number(3) primary key,
@@ -39,7 +36,7 @@ create table postscript_table(
 	p_date date not null
 	
 );
-create sequence postscript_seq;
+create sequence postscript_table_seq;
 
 
 -- 가격표 테이블
@@ -51,7 +48,7 @@ create table priceTag_table(
 	p_date number(10) not null
 	
 );
-create sequence priceTag_seq;
+create sequence priceTag_table_seq;
 
 -- 스케줄 테이블
 create table schedule_table(
@@ -61,12 +58,10 @@ create table schedule_table(
 	s_text varchar2(30 char) not null,	
 	s_day date not null
 );
+
 create sequence schedule_seq;
 
-
-
 select * from schedule_table
-
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
     Da_no number(5) primary key, -- 유치원 구분
