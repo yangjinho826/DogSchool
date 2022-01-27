@@ -14,7 +14,7 @@
 			</div>
 		</section>
 		<section id="notice_write_body">
-			<form action="notice.write" name ="myForm" onsubmit="return callnotice()" >
+			<form action="notice.write" name ="myForm" onsubmit="return notice_call()" >
 				<div class="notice_write_input">
 					<span class="notice_write_input_w">제목</span>
 					<input name="n_title" class="n_title">

@@ -1,7 +1,7 @@
 // 스케줄 작성
 function schedulewriteWindow(){
 	document.domain = "localhost";
-	window.open("sechdule_write.go", "Popup", "width=350,height=400")
+	window.open("sechdule_write.go", "Popup", "width=500,height=600")
 }
 
 function closeWithSubmit()
@@ -15,7 +15,7 @@ function closeWithSubmit()
 }
 
 
-function call(){
+function call_schedule(){
 	 let s_day = document.popupForm.s_day;
 	 let s_text = document.popupForm.s_text;
 	 
@@ -84,7 +84,7 @@ function closeupdateSubmit()
 
 
 
-function callme1(){
+function call_schedule1(){
 	 let s_day = document.popupForm2.s_day;
 	 let s_text = document.popupForm2.s_text;
 	 
