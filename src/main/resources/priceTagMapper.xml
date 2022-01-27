@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="priceTagWrite" parameterType="com.dog.HC.schoolmain.priceTag">
-		insert into priceTag_table values(priceTag_table_seq.nextval,#{p_da_no},#{p_Dogkind},#{p_price},#{p_date})
+		insert into priceTag_table values(priceTag_seq.nextval,#{p_da_no},#{p_Dogkind},#{p_price},#{p_date})
 	</insert>
 	
 	<delete id="priceTagDelete" parameterType="com.dog.HC.schoolmain.priceTag">
