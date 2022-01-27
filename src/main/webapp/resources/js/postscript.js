@@ -12,7 +12,7 @@ function postscript_UpdatePageGo(p){
 	location.href="postscript.UpdatePageGo?p_no="+p_no;
 }
 
-function call(){
+function postscript_call(){
 	let p_title = document.myForm.p_title;	
 	let p_txt = document.myForm.p_txt;	
 	

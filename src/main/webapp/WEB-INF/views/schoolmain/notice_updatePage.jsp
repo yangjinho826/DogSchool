@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="notice.update" name ="myForm" onsubmit="return callnotice()" method="post" >
+	<form action="notice.update" name ="myForm" onsubmit="return notice_call()" method="post" >
 		<section id="notice_update">
 			<section class="notice_update">
 				<h1 class="notice_update_title">게시물 수정</h1>

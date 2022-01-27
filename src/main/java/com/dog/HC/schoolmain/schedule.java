@@ -5,15 +5,15 @@ import java.sql.Date;
 public class schedule {
 	private int s_no;
 	private int s_da_no;
-	private int s_month;
+	private String s_month;
 	private String s_text;
 	private Date s_day;
-	
+
 	public schedule() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public schedule(int s_no, int s_da_no, int s_month, String s_text, Date s_day) {
+	public schedule(int s_no, int s_da_no, String s_month, String s_text, Date s_day) {
 		super();
 		this.s_no = s_no;
 		this.s_da_no = s_da_no;
@@ -38,11 +38,11 @@ public class schedule {
 		this.s_da_no = s_da_no;
 	}
 
-	public int getS_month() {
+	public String getS_month() {
 		return s_month;
 	}
 
-	public void setS_month(int s_month) {
+	public void setS_month(String s_month) {
 		this.s_month = s_month;
 	}
 
@@ -61,7 +61,7 @@ public class schedule {
 	public void setS_day(Date s_day) {
 		this.s_day = s_day;
 	}
-	
+
 	
 	
 	

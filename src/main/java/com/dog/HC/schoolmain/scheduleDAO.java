@@ -30,7 +30,6 @@ public class scheduleDAO {
 		int s_da_no = 1;
 		s.setS_da_no(s_da_no);
 		
-		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);
 		if(mm.scheduleWrite(s) == 1){
 			System.out.println("등록성공");

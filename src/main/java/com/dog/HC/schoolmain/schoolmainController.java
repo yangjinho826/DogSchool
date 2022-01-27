@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dog.HC.member.MemberDAO;
+
 @Controller
 public class schoolmainController {
 	
@@ -24,11 +26,13 @@ public class schoolmainController {
 	@Autowired
 	private scheduleDAO sDAO;
 	
+	@Autowired
+	private MemberDAO mDAOO;
+	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
 	public String schoolmain(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 	
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -38,10 +42,9 @@ public class schoolmainController {
 	// 공지사항 
 	@RequestMapping(value = "notice.go", method = RequestMethod.GET)
 	public String notice(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		nDAO.getAllnotice(n, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -50,21 +53,19 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice_write.go", method = RequestMethod.GET)
 	public String noticewirtego(notice n, HttpServletRequest req) {
-		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
+		mDAOO.loginCheck(req);
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_write.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "notice.write", method = RequestMethod.POST)
+	@RequestMapping(value = "notice.write", method = RequestMethod.GET)
 	public String noticewirte(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		nDAO.getWrite(n, req);
 		nDAO.getAllnotice(n, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -73,10 +74,9 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice.Detail", method = RequestMethod.GET)
 	public String noticeDetail(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		nDAO.getnotice(n, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Detail.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -85,11 +85,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice.Delete", method = RequestMethod.GET)
 	public String noticeDelete(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		nDAO.noticeDelete(n, req);
 		nDAO.getAllnotice(n, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -98,10 +97,9 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice.UpdatePageGo", method = RequestMethod.GET)
 	public String noticeUpdatePage(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		nDAO.getnotice(n, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_updatePage.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -110,11 +108,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice.update", method = RequestMethod.POST)
 	public String noticeUpdate(notice n, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		nDAO.noticeUpdate(n, req);
 		nDAO.getnotice(n, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Detail.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -125,10 +122,9 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript.go", method = RequestMethod.GET)
 	public String postscript(postscript p, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pDAO.getAllpostscript(p, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -137,8 +133,8 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript_write.go", method = RequestMethod.GET)
 	public String postscriptwirtego(postscript p, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_write.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -147,11 +143,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript.write", method = RequestMethod.POST)
 	public String postscriptwirte(postscript p, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pDAO.getWrite(p, req);
 		pDAO.getAllpostscript(p, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -160,10 +155,9 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript.Detail", method = RequestMethod.GET)
 	public String postscriptDetail(postscript p, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pDAO.getpostscript(p, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Detail.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -172,11 +166,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript.Delete", method = RequestMethod.GET)
 	public String postscriptDelete(postscript p, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pDAO.postscriptDelete(p, req);
 		pDAO.getAllpostscript(p, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -185,10 +178,9 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript.UpdatePageGo", method = RequestMethod.GET)
 	public String postscriptUpdatePage(postscript p, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pDAO.getpostscript(p, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_updatePage.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -199,11 +191,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "postscript.update", method = RequestMethod.POST)
 	public String postscriptUpdate(postscript p, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pDAO.postscriptUpdate(p, req);
 		pDAO.getpostscript(p, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Detail.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -214,10 +205,9 @@ public class schoolmainController {
 	// 가격표
 	@RequestMapping(value = "priceTag.go", method = RequestMethod.GET)
 	public String priceTaggo(priceTag pT, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pTDAO.getAllpriceTag(pT, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -226,17 +216,16 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "priceTag_write.go", method = RequestMethod.GET)
 	public String pricewritego(priceTag pT, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		return "schoolmain/priceTag_write";
 	}
 	
 	@RequestMapping(value = "priceTag.write", method = RequestMethod.GET)
 	public String priceTagwirte(priceTag pT, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pTDAO.getWrite(pT, req);
 		pTDAO.getAllpriceTag(pT, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -245,7 +234,7 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "priceTag_Detail", method = RequestMethod.GET)
 	public String priceTaDetail(priceTag pT, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pTDAO.getpriceTag(pT, req);
 		
 		return "schoolmain/priceTag_Detail";
@@ -253,11 +242,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "priceTag.Delete", method = RequestMethod.GET)
 	public String priceTagDelete(priceTag pT, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pTDAO.priceTagDelete(pT, req);
 		pTDAO.getAllpriceTag(pT, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -268,11 +256,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "priceTag.Update", method = RequestMethod.GET)
 	public String priceTagUpdate(priceTag pT, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		pTDAO.priceTagUpdate(pT, req);
 		pTDAO.getAllpriceTag(pT, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -284,10 +271,9 @@ public class schoolmainController {
 	// 스케줄
 	@RequestMapping(value = "schedule.go", method = RequestMethod.GET)
 	public String schedulemain(schedule s, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		sDAO.getAllschedule(s, req);
 	
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -296,17 +282,16 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "sechdule_write.go", method = RequestMethod.GET)
 	public String schedulewritego(schedule s, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		return "schoolmain/schedule_write";
 	}
 	
 	@RequestMapping(value = "schedule.write", method = RequestMethod.GET)
 	public String schedulewirte(schedule s, HttpServletRequest req) throws ParseException {
-		
+		mDAOO.loginCheck(req);
 		sDAO.getschedulewirte(s, req);
 		sDAO.getAllschedule(s, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -315,7 +300,7 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "schedule_Detail", method = RequestMethod.GET)
 	public String scheduleDetail(schedule s, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		sDAO.getschedule(s, req);
 		
 		return "schoolmain/schedule_Detail";
@@ -323,11 +308,10 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "schedule.update", method = RequestMethod.GET)
 	public String scheduleUpdate(schedule s, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		sDAO.scheduleUpdate(s, req);
 		sDAO.getAllschedule(s, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -337,11 +321,10 @@ public class schoolmainController {
 	}
 	@RequestMapping(value = "schedule.Delete", method = RequestMethod.GET)
 	public String scheduleDelete(schedule s, HttpServletRequest req) {
-		
+		mDAOO.loginCheck(req);
 		sDAO.scheduleDelete(s, req);
 		sDAO.getAllschedule(s, req);
 		
-		req.setAttribute("loginPage", "main/loginPage.jsp");
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
