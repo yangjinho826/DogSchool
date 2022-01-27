@@ -9,6 +9,9 @@ create table signup_table(
     typee int not null
 );
 
+select * from signup_table 
+insert into signup_table values('root','1234','관리자','00000000000','남',0)
+
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -47,12 +50,13 @@ create sequence priceTag_table_seq;
 create table schedule_table(
 	s_no number(3) primary key,
 	s_da_no number(5) not null,
-	s_month number(5) not null,
+	s_month varchar2(30 char) not null,
 	s_text varchar2(30 char) not null,	
 	s_day date not null
 );
-create sequence schedule_table_seq;
 
+create sequence schedule_table_seq;
+select * from schedule_table
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
     Da_no number(5) primary key, -- 유치원 구분

@@ -19,27 +19,27 @@
 			</div>
 		</section>
 		<section id="priceTag_write_body">
-			<form action="schedule.update" name="popupForm2" onsubmit="return callme1()">
+			<form action="schedule.update" name="popupForm2" onsubmit="return call_schedule1()">
 					<div class="schedule_write_input">
 						<span class="schedule_write_input_w">해당월 </span>
-						<select name="s_month">
-							<option value = 1> 1월 </option>
-							<option value = 2> 2월 </option>
-							<option value = 3> 3월 </option>
-							<option value = 4> 4월 </option>
-							<option value = 5> 5월 </option>
-							<option value = 6> 6월 </option>
-							<option value = 7> 7월 </option>
-							<option value = 8> 8월 </option>
-							<option value = 9> 9월 </option>
-							<option value = 10> 10월 </option>
-							<option value = 11> 11월 </option>
-							<option value = 12> 12월 </option>						
+						<select name="s_month" >
+							<option value = "1월"> 1월 </option>
+							<option value = "2월"> 2월 </option>
+							<option value = "3월"> 3월 </option>
+							<option value = "4월"> 4월 </option>
+							<option value = "5월"> 5월 </option>
+							<option value = "6월"> 6월 </option>
+							<option value = "7월"> 7월 </option>
+							<option value = "8월"> 8월 </option>
+							<option value = "9월"> 9월 </option>
+							<option value = "10월"> 10월 </option>
+							<option value = "11월"> 11월 </option>
+							<option value = "12월"> 12월 </option>						
 						</select>
 				</div>
 				<div class="schedule_write_input">
 						<span class="schedule_write_input_w">날짜 </span>
-						<input id="datepicker1" name="s_day" value="${sc.s_day} ">
+						<input id="datepicker1" name="s_day" value="${sc.s_day}">
 						<input name="s_no" value="${sc.s_no }" type="hidden">
 				</div>
 				<div class="schedule_write_input">
