@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="postscriptWrite" parameterType="com.dog.HC.schoolmain.postscript">
-		insert into postscript_table values(notice_seq.nextval,#{p_da_no},#{p_id},#{p_title},#{p_txt},sysdate)
+		insert into postscript_table values(postscript_seq.nextval,#{p_da_no},#{p_id},#{p_title},#{p_txt},sysdate)
 	</insert>
 	
 	<delete id="postscriptDelete" parameterType="com.dog.HC.schoolmain.postscript">
