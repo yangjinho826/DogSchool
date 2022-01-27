@@ -11,19 +11,15 @@
 <link rel="stylesheet" href="resources/css/main.css"/>
 </head>
 <body>
-	<jsp:include page="${loginPage }"></jsp:include>
-	<section id="menu">
-		<div class="menu">
-			<div class="menu_title">
-				<img class="menu_title_img" src="resources/img/dog-solid-1.png">
-				<h1 class="menu_title_t">강아지 유치원</h1>
-			</div>
-			<div class="menu_menubar">
-				<a href="yuchiwon.get.diary">알림장</a>
-				<a href="yuchiwon.get.gallery">갤러리</a>
-			</div>
-		</div>
+	<section id="home">
+		<section class="home_list">
+			<a href="yuchiwon.get.diary">알림장</a>
+		</section>
+		<section class="home_review">
+			<a href="yuchiwon.get.gallery">갤러리</a>
+		</section>
+	
 	</section>
-	<jsp:include page="${puppyContent }"></jsp:include>
+	
 </body>
 </html>

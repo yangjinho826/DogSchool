@@ -17,26 +17,30 @@ public class YuchiwonC {
 	private DiaryDAO ddao;
 
 	
-	@RequestMapping(value = "yuchiwon.get", method = RequestMethod.GET)
-	public String yhome(HttpServletRequest req) {
-		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("yuchiwonContent", "yhome.jsp");
-		return "yuchiwon/yuchiwon";
-	}
 	
 	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
 	public String pList(HttpServletRequest req) {
 		ydao.getAllPuppy(req);
-		req.setAttribute("yuchiwonContent", "puppyList.jsp");
-		return "yuchiwon/yuchiwon";
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/puppyList.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+	
+		return "index";
 	}
 
 	@RequestMapping(value = "yuchiwon.get.puppy", method = RequestMethod.GET)
 	public String getPuppy(HttpServletRequest req, puppy puppy) {
 		ydao.getPuppy(req, puppy);
-		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("yuchiwonContent", "yPuppy.jsp");
-		return "yuchiwon/puppyPage";
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+	
+		
+		return "index";
 	}
 	
 	// 알림장
@@ -44,16 +48,25 @@ public class YuchiwonC {
 	public String diarygo(HttpServletRequest req, puppy puppy, diary d) {
 		ydao.getPuppy(req, puppy);
 		ddao.getAllDiary(req, d);
-		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("puppyContent", "diary_home.jsp");
-		return "yuchiwon/puppyPage";
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/diary_home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		
+		return "index";
 	}
 
 	@RequestMapping(value = "diary.write.go", method = RequestMethod.GET)
 	public String diarywritego(HttpServletRequest req) {
-		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("puppyContent", "diary_write.jsp");
-		return "yuchiwon/puppyPage";
+		
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/diary_write.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		
+		
+		return "index";
 	}
 
 	@RequestMapping(value = "diary.write", method = RequestMethod.GET)
@@ -62,19 +75,13 @@ public class YuchiwonC {
 		ddao.writeDiary(req, d);
 		ddao.getAllDiary(req, d);
 		
-		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("puppyContent", "diary_home.jsp");
-		return "yuchiwon/puppyPage";
+		req.setAttribute("loginPage", "main/loginPage.jsp");
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/diary_home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		
+		return "index";
 	}
 	
-	@RequestMapping(value = "diary.detail", method = RequestMethod.GET)
-	public String diarydetail(HttpServletRequest req, diary d) {
-		
-		ddao.getDiary(req, d);
-		
-		req.setAttribute("loginPage", "../main/loginPage.jsp");
-		req.setAttribute("puppyContent", "diary_home.jsp");
-		return "yuchiwon/puppyPage";
-	}
 
 }

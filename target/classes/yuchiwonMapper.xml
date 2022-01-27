@@ -4,9 +4,11 @@
 
 	<select id="getAllPuppy" resultType="com.dog.HC.Yuchiwon.puppy"
 		parameterType="com.dog.HC.Yuchiwon.signup">
-		select * from SIGNUP_TABLE, UAPPLY_TABLE
-			where id = ua_id and id = 'mz' and ua_agree = 1
+		select * from UAPPLY_TABLE
+			where ua_agree = 1
 		<!-- 
+		id = ua_id and id = 'mz' and 
+		
 		<if test='typee == "1"'>
 			select * from SIGNUP_TABLE, UAPPLY_TABLE
 			where id = ua_id and id = #{ua_id} and ua_agree = 1
