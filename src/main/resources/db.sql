@@ -8,8 +8,7 @@ create table signup_table(
     gender varchar2(30 char) not null,
     typee int not null
 );
-
-select * from signup_table 
+select * from signup_table
 insert into signup_table values('root','1234','관리자','00000000000','남',0)
 
 
@@ -36,6 +35,7 @@ create table postscript_table(
 );
 create sequence postscript_seq;
 
+
 -- 가격표 테이블
 create table priceTag_table(
 	p_no number(3) primary key,
@@ -47,6 +47,7 @@ create table priceTag_table(
 );
 create sequence priceTag_seq;
 
+
 -- 스케줄 테이블
 create table schedule_table(
 	s_no number(3) primary key,
@@ -56,7 +57,8 @@ create table schedule_table(
 	s_day date not null
 );
 create sequence schedule_seq;
-
+drop table schedule_table;
+drop sequence schedule_seq;
 
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(

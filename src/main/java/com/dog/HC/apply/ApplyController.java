@@ -32,7 +32,6 @@ public class ApplyController {
 	@RequestMapping(value = "apply.go", method = RequestMethod.GET)
 	public String apply(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		
 		mDAO.getAllSchool(req);
 		mDAO.getAllTeacher(req);
 
@@ -60,6 +59,7 @@ public class ApplyController {
 	public String applySchool(ApplySchool s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		aDAO.applySchool(s, req);
+		mDAO.getAllSchool(req);
 	
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/applyHome.jsp");
@@ -71,6 +71,7 @@ public class ApplyController {
 	public String applyTeacher(ApplyTeacher t, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		aDAO.applyTeacher(t, req);
+		mDAO.getAllSchool(req);
 	
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/applyHome.jsp");
@@ -82,6 +83,7 @@ public class ApplyController {
 	public String applyPet(ApplyPet p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		aDAO.applyPet(p, req);
+		mDAO.getAllSchool(req);
 	
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/applyHome.jsp");
@@ -110,7 +112,6 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		//해당 유치원 승인 0->1 작업
 		aDAO.schoolPass(s, req);
-		
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회
@@ -126,7 +127,6 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		//해당 유치원 거절 -> 다시 신청하게 테이블에서 삭제
 		aDAO.schoolFail(s, req);
-		
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회
@@ -143,7 +143,6 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		//승인 0->1 작업
 		aDAO.teacherPass(t, req);
-			
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회
@@ -159,7 +158,6 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		//거절 -> 다시 신청하게 테이블에서 삭제
 		aDAO.teacherFail(t, req);
-			
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회
@@ -176,7 +174,6 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		//승인 0->1 작업
 		aDAO.petPass(p, req);
-			
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회
@@ -192,7 +189,6 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		//거절 -> 다시 신청하게 테이블에서 삭제
 		aDAO.petFail(p, req);
-			
 		aDAO.getAllSchoolApply(req); //신청대기중인유치원전체목록조회
 		aDAO.getAllTeacherApply(req); //		선생님전체목록조회
 		aDAO.getAllPetApply(req); //			강아지전체목록조회

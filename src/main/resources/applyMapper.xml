@@ -70,7 +70,7 @@ delete Uapply_table where Ua_no = #{Ua_no}
 
 <!-- 한 유치원에 대한 선생님 조회 -->
 <select id="getOneSchoolTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
-select * from Tapply_table where Ta_da_no = #{Ta_da_no}
+select * from Tapply_table where Ta_da_no = #{Ta_da_no} and Ta_agree = 1
 </select>
 <!-- 한 유치원 정보 조회 -->
 <select id="getOneSchool" resultType="com.dog.HC.apply.ApplySchool">
