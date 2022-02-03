@@ -86,5 +86,17 @@ public class YuchiwonC {
 		return "index";
 	}
 	
+	@RequestMapping(value = "diary.reply.write", method = RequestMethod.GET)
+	public String diaryreplywrite(HttpServletRequest req, diaryReply dr, diary d) {
+		mDAOO.loginCheck(req);
+		ddao.writeReply(req, dr);
+		ddao.getAllDiary(req, d);
+		
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/diary_home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		
+		return "index";
+	}
 
 }

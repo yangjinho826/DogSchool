@@ -1,6 +1,7 @@
 package com.dog.HC.Yuchiwon;
 
 import java.sql.Date;
+import java.util.List;
 
 public class diary {
 	private int mp_no;
@@ -16,12 +17,15 @@ public class diary {
 	private String mp_uname;
 	private Date mp_date;
 	
+	private List<diaryReply> mp_replys;
+	
 	public diary() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public diary(int mp_no, String mp_title, String mp_condition, int mp_meal, int mp_defecate, String mp_supplies,
-			String mp_txt, int mp_da_no, String mp_tid, String mp_uid, String mp_uname, Date mp_date) {
+			String mp_txt, int mp_da_no, String mp_tid, String mp_uid, String mp_uname, Date mp_date,
+			List<diaryReply> mp_replys) {
 		super();
 		this.mp_no = mp_no;
 		this.mp_title = mp_title;
@@ -35,6 +39,7 @@ public class diary {
 		this.mp_uid = mp_uid;
 		this.mp_uname = mp_uname;
 		this.mp_date = mp_date;
+		this.mp_replys = mp_replys;
 	}
 
 	public int getMp_no() {
@@ -131,6 +136,14 @@ public class diary {
 
 	public void setMp_date(Date mp_date) {
 		this.mp_date = mp_date;
+	}
+
+	public List<diaryReply> getMp_replys() {
+		return mp_replys;
+	}
+
+	public void setMp_replys(List<diaryReply> mp_replys) {
+		this.mp_replys = mp_replys;
 	}
 
 }
