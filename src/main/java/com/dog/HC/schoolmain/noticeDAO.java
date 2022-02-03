@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.member.Member;
+
 @Service
 public class noticeDAO {
 	
@@ -22,9 +24,10 @@ public class noticeDAO {
 	}
 
 	public void getWrite(notice n, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
 		int n_da_no = 1;
-		String n_id = "작성용 아이디";
+		String n_id = m.getName();
 		
 		n.setN_da_no(n_da_no);
 		n.setN_id(n_id);

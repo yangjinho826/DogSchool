@@ -8,150 +8,280 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="resources/js/schedule.js"></script>
+<link rel="stylesheet" href="resources/css/schedule.css"/>
 </head>
 <body>
 
 <section id="schedule_home">
-	<section id="schedule_button">
-		<div class="schedule_button">
-			<h1 class="schedule_title"> ${r }유치원 캘린더 </h1>
-			<button class="schedule_writebtn" onclick="schedulewriteWindow();">작성하기</button>
-		</div>
+	<section class="schedule_home">
+		<h1 class="schedule_title"> ${r }유치원 캘린더 </h1>
+		<c:choose>
+			<c:when test="${memberTypee eq '2'}">
+				<button class="schedule_writebtn" onclick="schedulewriteWindow();">작성하기</button>
+			</c:when>
+			<c:when test="${memberTypee eq '3'}">
+				<button class="schedule_writebtn" onclick="schedulewriteWindow();">작성하기</button>
+				</c:when>
+			</c:choose>
 	</section>
 	<section id="schedule_Body">
 		<div class="schedule_main">
-		<h3 class="schedule_month">1월</h3>
+			<h3 class="schedule_month_title">01월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '1월'}">
+		  	<c:if test="${s.s_month eq '01월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">2월</h3>
+		<h3 class="schedule_month_title">02월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '2월'}">
+		  	<c:if test="${s.s_month eq '02월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">3월</h3>
+		<h3 class="schedule_month_title">03월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '3월'}">
+		  	<c:if test="${s.s_month eq '03월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">4월</h3>
+		<h3 class="schedule_month_title">04월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '4월'}">
+		  	<c:if test="${s.s_month eq '04월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">5월</h3>
+		<h3 class="schedule_month_title">05월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '5월'}">
+		  	<c:if test="${s.s_month eq '05월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">6월</h3>
+		<h3 class="schedule_month_title">06월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '6월'}">
+		  	<c:if test="${s.s_month eq '06월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		  	</c:if>
+		</c:forEach>
+		</div>
+
+	</section>
+	<section id="schedule_Body">
+		<div class="schedule_main">
+		<h3 class="schedule_month_title">07월</h3>
+		<c:forEach var="s" items="${sh }">
+		  	<c:if test="${s.s_month eq '07월'}">
+			<div class="schedule_month_body">
+				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">7월</h3>
+		<h3 class="schedule_month_title">08월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '7월'}">
+		  	<c:if test="${s.s_month eq '08월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">8월</h3>
+		<h3 class="schedule_month_title">09월</h3>
 		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '8월'}">
+		  	<c:if test="${s.s_month eq '09월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">9월</h3>
-		<c:forEach var="s" items="${sh }">
-		  	<c:if test="${s.s_month eq '9월'}">
-			<div class="schedule_month_body">
-				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
-			</div>
-		  	</c:if>
-		</c:forEach>
-		</div>
-		<div class="schedule_main">
-		<h3 class="schedule_month">10월</h3>
+		<h3 class="schedule_month_title">10월</h3>
 		<c:forEach var="s" items="${sh }">
 		  	<c:if test="${s.s_month eq '10월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">11월</h3>
+		<h3 class="schedule_month_title">11월</h3>
 		<c:forEach var="s" items="${sh }">
 		  	<c:if test="${s.s_month eq '11월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">· ${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">· ${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 		<div class="schedule_main">
-		<h3 class="schedule_month">12월</h3>
+		<h3 class="schedule_month_title">12월</h3>
 		<c:forEach var="s" items="${sh }">
 		  	<c:if test="${s.s_month eq '12월'}">
 			<div class="schedule_month_body">
 				<span class="schedule_month_day"><fmt:formatDate value="${s.s_day }" pattern="YY-MM-dd"/></span>
-				<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+				<c:choose> 
+					<c:when test="${memberTypee eq '2'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+					</c:when>
+					<c:when test="${memberTypee eq '3'}">
+						<span class="schedule_month_text"><a href="#" onclick="scheduleDetailWindow(${s.s_no});">${s.s_text }</a></span>
+					</c:when>
+					<c:otherwise>
+						<span class="schedule_month_text">${s.s_text }</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		  	</c:if>
 		</c:forEach>
 		</div>
 	</section>
+	
 </section>
 
 

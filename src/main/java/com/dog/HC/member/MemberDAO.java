@@ -17,7 +17,6 @@ public class MemberDAO {
 		//int nn = dbMember.getType(); // ==1 or ==2 or ==3
 		
 		//int n = Integer.parseInt(req.getParameter("type"));
-			
 
 		if(dbMember != null) {
 			if(m.getPw().equals(dbMember.getPw())) {
@@ -38,8 +37,11 @@ public class MemberDAO {
 	
 	public boolean loginCheck(HttpServletRequest req) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		
 		if(m != null) {
 			req.setAttribute("loginPage", "main/loginSuccess.jsp");
+			req.setAttribute("memberTypee", m.getTypee());
 			return true;
 		}else {
 			req.setAttribute("loginPage", "main/loginPage.jsp");
@@ -89,7 +91,9 @@ public class MemberDAO {
 				String id = req.getParameter("id");
 				String pw = req.getParameter("pw");
 				String name = req.getParameter("name");
-				String phonenumber = req.getParameter("phonenumber");
+				String phonenumber = req.getParameter("phonefirst")
+			 			 + req.getParameter("phonesecond")
+			 			 + req.getParameter("phonethird");
 				String gender = req.getParameter("gender");
 
 				m.setId(id);
@@ -113,7 +117,9 @@ public class MemberDAO {
 				String id = req.getParameter("id");
 				String pw = req.getParameter("pw");
 				String name = req.getParameter("name");
-				String phonenumber = req.getParameter("phonenumber");
+				String phonenumber = req.getParameter("phonefirst")
+			 			 + req.getParameter("phonesecond")
+			 			 + req.getParameter("phonethird");
 				String gender = req.getParameter("gender");
 
 				m.setId(id);

@@ -3,7 +3,7 @@
 <mapper namespace="com.dog.HC.schoolmain.postscriptmapper">
 
 	<select id="getAllpostscript" resultType="com.dog.HC.schoolmain.postscript">
-		select * from postscript_table
+		select * from postscript_table order by p_date desc
 	</select>
 	
 	<select id="getpostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">

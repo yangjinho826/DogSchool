@@ -28,8 +28,10 @@
 				<button class="postscript_Detail_Btn" onclick="location.href='postscript.go'">목록</button>
 			</div>
 			<div class="postscript_Detail_Button">
-				<button class="postscript_Detail_Btn" onclick="postscript_UpdatePageGo(${postscript.p_no});">수정</button>
-				<button class="postscript_Detail_Btn" onclick="postscript_Delete(${postscript.p_no});">삭제</button>
+				<c:if test="${memberTypee eq '1'}">
+					<button class="postscript_Detail_Btn" onclick="postscript_UpdatePageGo(${postscript.p_no});">수정</button>
+					<button class="postscript_Detail_Btn" onclick="postscript_Delete(${postscript.p_no});">삭제</button>
+				</c:if>
 			</div>
 		</section>
 	</section>

@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.member.Member;
+
 @Service
 public class postscriptDAO {
 	
@@ -24,8 +26,10 @@ public class postscriptDAO {
 	}
 
 	public void getWrite(postscript p, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
 		int p_da_no = 1;
-		String p_id = "작성용 아이디";
+		String p_id = m.getName();
 		
 		p.setP_da_no(p_da_no);
 		p.setP_id(p_id);

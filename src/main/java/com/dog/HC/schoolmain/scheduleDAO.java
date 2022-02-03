@@ -25,12 +25,19 @@ public class scheduleDAO {
 
 	}
 	
-	public void getschedulewirte(schedule s, HttpServletRequest req) throws ParseException {
+	public void getschedulewirte(schedule s, HttpServletRequest req){
 		
 		int s_da_no = 1;
 		s.setS_da_no(s_da_no);
 		
+		String s_day = req.getParameter("s_day");
+        String s_day2 =  s_day.substring(5,7);
+        s_day2 +="월";
+        s.setS_month(s_day2);
+        
+		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);
+		
 		if(mm.scheduleWrite(s) == 1){
 			System.out.println("등록성공");
 		}else {
@@ -50,6 +57,11 @@ public class scheduleDAO {
 	}
 
 	public void scheduleUpdate(schedule s, HttpServletRequest req) {
+		
+		String s_day = req.getParameter("s_day");
+        String s_day2 =  s_day.substring(5,7);
+        s_day2 +="월";
+        s.setS_month(s_day2);
 		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);
 		if(mm.scheduleUpdate(s) == 1){

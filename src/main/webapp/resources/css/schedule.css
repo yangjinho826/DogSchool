@@ -1,0 +1,133 @@
+/*시간표 메인*/
+
+ #schedule_home{
+	margin: 20px;
+	padding: 30px;
+ }
+ 
+ .schedule_home{
+ 	display: flex;
+ 	justify-content: space-between;
+ 	background-color: #e5edf1;
+ 	align-items: center;
+ 	
+ }
+ 
+ .schedule_title{
+ 	margin-left: 10px;
+ 	font-size: 30px;
+ 	margin-bottom: 15px;
+ }
+ 
+  .schedule_writebtn{
+ 	border: 3px solid;
+ 	border-top-width: thin;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	height:30px;
+ 	border-radius : 4px;
+ 	margin-right: 10px;
+ 	transition: all ease 0.5s;
+ }
+ 
+  .schedule_writebtn:hover{
+ 	transform: scale(1.1) ;
+ 	
+ }
+
+ #schedule_Body{
+ 	display: flex;
+ 	margin-top: 10px;
+  }
+  
+
+  .schedule_main{
+  	width: 20%;
+  	margin: 10px;
+  	padding: 5px;
+  }
+  
+   .schedule_month_title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  	font-size: 32px;
+  	font-weight: bold;
+  	text-align: center;
+  	color: #98c5e4;
+  	border-bottom: 2px solid;
+  }
+  
+  .schedule_month_body{
+  	display: flex;
+  	margin-bottom: 10px;
+  	flex-direction : column;
+  	border-bottom: 2px dotted #D3D3D3;
+  	padding: 5px;
+  	
+  }
+  
+  .schedule_month_text{
+ 	 margin-bottom: 5px;
+  }
+  
+    .schedule_month_day{
+  	font-size: 18px;
+  	font-weight: bold;
+  }
+  
+  .schedule_month_text{
+  	font-size: 14px;
+  	padding-left: 3px;
+  }
+  
+
+  
+/* 시간표 작성 */
+   #schedule_write{
+	margin: 5px;
+ }
+  
+  .schedule_write_title{
+  	font-size: 35px;
+  	text-align: center;
+  	margin-top: 0;
+  	background-color: #e5edf1;
+  }
+  
+  .schedule_write_input{
+  	margin-bottom: 5px;
+  }
+  
+  .schedule_write_input_w{
+    font-weight: bold;
+  	font-size: 20px;
+  	padding-left: 10px;	
+  }
+  
+  .schedule{
+  	margin-left: 30px;
+  }
+  
+ .schedule_write_btn{
+ 	float :left;
+ 	border: 3px solid black;
+ 	border-top-width: thin;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	height:30px;
+ 	border-radius : 4px;
+ 	margin: 10px;
+ 	transition: all ease 0.5s;
+ }
+ 
+  .schedule_write_btn:hover{
+ 	transform: scale(1.1) ;
+ 	
+ }
+
+ /* 시간표 디테일페이지 */
+ 
+  .p_price2{
+  	margin-left: 60px;
+  }
+ 

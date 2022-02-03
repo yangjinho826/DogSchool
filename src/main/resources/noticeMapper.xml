@@ -3,7 +3,7 @@
 <mapper namespace="com.dog.HC.schoolmain.noticemapper">
 
 	<select id="getAllnotice" resultType="com.dog.HC.schoolmain.notice">
-		select * from notice_table
+		select * from notice_table order by n_date desc
 	</select>
 
 	<select id="getnotice" parameterType="com.dog.HC.schoolmain.notice" resultType="com.dog.HC.schoolmain.notice">

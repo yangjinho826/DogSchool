@@ -28,8 +28,17 @@
 				<button class="notice_Detail_Btn" onclick="location.href='notice.go'">목록</button>
 			</div>
 			<div class="notice_Detail_Button">
-				<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${notice.n_no});">수정</button>
+				<c:choose> 
+				 	<c:when test="${memberTypee eq '2'}">
+						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${notice.n_no});">수정</button>
 				<button class="notice_Detail_Btn" onclick="notice_Delete(${notice.n_no});">삭제</button>
+					</c:when>
+				 	<c:when test="${memberTypee eq '3'}">
+						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${notice.n_no});">수정</button>
+				<button class="notice_Detail_Btn" onclick="notice_Delete(${notice.n_no});">삭제</button>
+					</c:when>
+				</c:choose>
+				
 			</div>
 		</section>
 	</section>
