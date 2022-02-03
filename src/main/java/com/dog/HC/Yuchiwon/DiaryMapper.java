@@ -9,5 +9,9 @@ public interface DiaryMapper {
 	public int writeDiary(diary d);
 
 	public diary getDiary(diary d);
+
+	public int writeReply(diaryReply dr);
+
+	public List<diaryReply> getReply(diary diary);
 	
 }

@@ -90,8 +90,8 @@ public class MemberDAO {
 				String pw = req.getParameter("pw");
 				String name = req.getParameter("name");
 				String phonenumber = req.getParameter("phonefirst")
-			 			 + req.getParameter("phonesecond")
-			 			 + req.getParameter("phonethird");
+                        + req.getParameter("phonesecond")
+                        + req.getParameter("phonethird");
 				String gender = req.getParameter("gender");
 
 				m.setId(id);
@@ -116,8 +116,8 @@ public class MemberDAO {
 				String pw = req.getParameter("pw");
 				String name = req.getParameter("name");
 				String phonenumber = req.getParameter("phonefirst")
-			 			 + req.getParameter("phonesecond")
-			 			 + req.getParameter("phonethird");
+                        + req.getParameter("phonesecond")
+                        + req.getParameter("phonethird");
 				String gender = req.getParameter("gender");
 
 				m.setId(id);
