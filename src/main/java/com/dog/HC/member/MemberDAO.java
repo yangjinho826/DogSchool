@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.manage.ManageMapper;
+
 @Service
 public class MemberDAO {
 
@@ -38,7 +40,9 @@ public class MemberDAO {
 	
 	public boolean loginCheck(HttpServletRequest req) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
+
 		if(m != null) {
+			req.setAttribute("getTypee", ss.getMapper(ManageMapper.class).getType(m));
 			req.setAttribute("loginPage", "main/loginSuccess.jsp");
 			return true;
 		}else {

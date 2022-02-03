@@ -9,7 +9,8 @@
 </head>
 <body>
 	<section id="applyHomeArea">
-	
+		<c:forEach var="g" items="${getTypee }">
+		<c:if test="${g.typee eq 3}">
 		<!-- if 원장 권한 로그인 시 -->
 		<form action="apply.school">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
@@ -46,9 +47,9 @@
 				</tr>
 			</table>
 		</form>
-		<br>
-		
-		
+		</c:if>
+
+		<c:if test="${g.typee eq 2}">
 		<!-- if 선생님 권한 로그인 시 -->
 		<form action="apply.teacher">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
@@ -95,8 +96,9 @@
 				</tr>
 			</table>
 		</form>
-		<br>
+		</c:if>
 		
+		<c:if test="${g.typee eq 1}">
 		<!-- if 견주 권한 로그인 시 -->
 		<form action="apply.go.pet">
 		<section id="showSchoolArea">
@@ -114,6 +116,8 @@
 			</c:forEach>	
 		</section>
 		</form>
+		</c:if>
+		</c:forEach>
 	</section>
 </body>
 </html>

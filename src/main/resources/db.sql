@@ -23,6 +23,7 @@ create table notice_table(
 );
 create sequence notice_seq;
 
+
 -- 선생님 후기 테이블 --
 create table postscript_table(
 	p_no number(3) primary key,

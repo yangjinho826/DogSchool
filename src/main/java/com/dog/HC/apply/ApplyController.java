@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dog.HC.manage.ManageDAO;
+import com.dog.HC.member.Member;
 import com.dog.HC.member.MemberDAO;
 
 @Controller
@@ -30,13 +31,14 @@ public class ApplyController {
 	
 	//신청하는 폼으로 이동
 	@RequestMapping(value = "apply.go", method = RequestMethod.GET)
-	public String apply(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
+	public String apply(Member m, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
+		//mDAO.getType(m, req);
 		mDAO.getAllSchool(req);
 		mDAO.getAllTeacher(req);
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "apply/applyHome.jsp");
+		req.setAttribute("contentPage", "apply/applyHome.jsp");			
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}

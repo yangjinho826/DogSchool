@@ -9,22 +9,22 @@
 </head>
 <body>
 <section id="acceptHomeArea">
+		<c:forEach var="g" items="${getTypee }">
 		
+		<c:if test="${g.typee eq 0}">
 		<!-- if 관리자 권한 로그인 시 -->
 		<!-- 유치원 수락 대기 목록! -->
+		<h2 id="acceptHomeTitle" align="center">유치원 수락 대기 목록</h2>
 		<c:choose>
 			<c:when test="${empty schools}">
 			    <div class="acceptWaitingList">
-					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr><th>신청 내역 없음</th></tr>
 					</table>
 				</div>
 			</c:when>
-			
 		 	<c:otherwise>
 				<div class="acceptWaitingList">
-					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
 							<th>유치원 이름</th>
@@ -47,24 +47,22 @@
 				</div>
 		    </c:otherwise>
 		</c:choose>
-		<br>
+		</c:if>
 		
-		
+		<c:if test="${g.typee eq 3}">
 		<!-- if 원장 권한 로그인 시 -->
 		<!-- 선생님 수락 대기 목록! -->
+		<h2 id="acceptHomeTitle" align="center">선생님 수락 대기 목록</h2>
 		<c:choose>
 			<c:when test="${empty teachers}">
 				<div class="acceptWaitingList">
-					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr><th>신청 내역 없음</th></tr>
 					</table>
 				</div>
 			</c:when>
-			 
 		 	<c:otherwise>
 				<div class="acceptWaitingList">
-					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
 							<th>선생님</th>
@@ -87,22 +85,18 @@
 		</c:choose>
 		<br>
 		
-		
-		<!-- if 원장 권한 로그인 시 -->
 		<!-- 강아지 수락 대기 목록! -->
+		<h2 id="acceptHomeTitle" align="center">강아지 수락 대기 목록</h2>
 		<c:choose>
 			<c:when test="${empty pets}">
 				<div class="acceptWaitingList">
-					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr><th>신청 내역 없음</th></tr>
 					</table>
 				</div>
 			</c:when>
-			
 		 	<c:otherwise>
 				<div class="acceptWaitingList">
-					<h2 id="acceptHomeTitle" align="center">수락 대기 목록</h2>
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
 							<th>견주 ID</th>
@@ -125,7 +119,8 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
-		
+		</c:if>
+		</c:forEach>
 </section>
 </body>
 </html>
