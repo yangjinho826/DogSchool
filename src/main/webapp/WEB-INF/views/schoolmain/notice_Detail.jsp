@@ -30,12 +30,12 @@
 			<div class="notice_Detail_Button">
 				<c:choose> 
 				 	<c:when test="${memberTypee eq '2'}">
-						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${notice.n_no});">수정</button>
-				<button class="notice_Detail_Btn" onclick="notice_Delete(${notice.n_no});">삭제</button>
+						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${note.n_no});">수정</button>
+						<button id="notice_TDelete" class="notice_Detail_Btn" value="${note.n_no}">삭제</button>
 					</c:when>
 				 	<c:when test="${memberTypee eq '3'}">
-						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${notice.n_no});">수정</button>
-				<button class="notice_Detail_Btn" onclick="notice_Delete(${notice.n_no});">삭제</button>
+						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${note.n_no});">수정</button>
+						<button id="notice_DDelete" class="notice_Detail_Btn" value="${note.n_no }">삭제</button>
 					</c:when>
 				</c:choose>
 				

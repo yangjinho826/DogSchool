@@ -32,7 +32,6 @@
  }
  
   .notice_writebtn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	
  }
@@ -94,7 +93,6 @@
  }
  
   .notice_write_btn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	
  }
@@ -146,7 +144,6 @@
  }
  
   .notice_update_btn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	}
  
@@ -164,6 +161,7 @@
   .notice_Detail_title{
   	text-align: center;
   	border-bottom:2px solid black;
+  	background-color: #e5edf1;
   	
   }
   
@@ -208,7 +206,6 @@
   }
   
    .notice_Detail_Btn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	}
   

@@ -48,15 +48,39 @@ public class noticeDAO {
 		
 	}
 
-	public void noticeDelete(notice n, HttpServletRequest req) {
+	public int noticeTDelete(notice n, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		String n_id = m.getName();
+		n.setN_id(n_id);
+		
 		noticemapper mm = ss.getMapper(noticemapper.class);
-		if(mm.noticeDelete(n) == 1){
+		if(mm.noticeTDelete(n) == 1){
 			System.out.println("삭제성공");
+			return 1;
 		}else {
 			System.out.println("삭제실패");
+			return 0;
 		}
 		
 	}
+	
+	public int noticeDDelete(notice n, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		String n_id = m.getName();
+		n.setN_id(n_id);
+		
+		noticemapper mm = ss.getMapper(noticemapper.class);
+		if(mm.noticeDDelete(n) == 1){
+			System.out.println("삭제성공");
+			return 1;
+		}else {
+			System.out.println("삭제실패");
+			return 0;
+		}
+	}
+	
 
 	public void noticeUpdate(notice n, HttpServletRequest req) {
 		
@@ -68,6 +92,7 @@ public class noticeDAO {
 		}
 		
 	}
-	
+
+
 	
 }

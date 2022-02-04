@@ -16,7 +16,12 @@
 		insert into notice_table values(notice_seq.nextval,#{n_da_no},#{n_id},#{n_title},#{n_txt},sysdate)
 	</insert>
 	
-	<delete id="noticeDelete" parameterType="com.dog.HC.schoolmain.notice">
+	<delete id="noticeTDelete" parameterType="com.dog.HC.schoolmain.notice">
+		delete from notice_table
+		where n_no = #{n_no} and n_id=#{n_id}
+	</delete>
+	
+	<delete id="noticeDDelete" parameterType="com.dog.HC.schoolmain.notice">
 		delete from notice_table
 		where n_no = #{n_no}
 	</delete>

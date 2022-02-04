@@ -10,7 +10,9 @@ public interface noticemapper {
 	
 	public notice getnotice(notice n);
 	
-	public int noticeDelete(notice n);
+	public int noticeTDelete(notice n);
+	
+	public int noticeDDelete(notice n);
 	
 	public int noticeUpdate(notice n);
 	

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dog.HC.member.MemberDAO;
 
@@ -83,16 +84,16 @@ public class schoolmainController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "notice.Delete", method = RequestMethod.GET)
-	public String noticeDelete(notice n, HttpServletRequest req) {
-		mDAOO.loginCheck(req);
-		nDAO.noticeDelete(n, req);
-		nDAO.getAllnotice(n, req);
+	@RequestMapping(value = "notice.DDelete", method = RequestMethod.GET)
+	public @ResponseBody int noticeDDelete(notice n, HttpServletRequest req) {
+
+		return nDAO.noticeDDelete(n, req);
+	}
+	
+	@RequestMapping(value = "notice.TDelete", method = RequestMethod.GET)
+	public @ResponseBody int noticeTDelete(notice n, HttpServletRequest req) {
 		
-		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
-		req.setAttribute("footer", "main/footer.jsp");
-		return "index";
+		return nDAO.noticeTDelete(n, req);
 	}
 	
 	@RequestMapping(value = "notice.UpdatePageGo", method = RequestMethod.GET)
