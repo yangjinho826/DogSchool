@@ -73,6 +73,10 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 
+select * from DAPPLY_TABLE dt
+ INNER JOIN TAPPLY_TABLE tt
+ ON dt.Da_no = tt.Ta_da_no
+where dt.Da_id = 'd1' and tt.Ta_agree = 0;
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -86,6 +90,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
+select * from TAPPLY_TABLE
 
 
 -- 견주-원장 신청 테이블 --

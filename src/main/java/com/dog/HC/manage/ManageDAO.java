@@ -26,6 +26,22 @@ public class ManageDAO {
 			e.printStackTrace();
 		}
 	}
+	//승인된 선생님 조회
+	public void getAllTeacher(HttpServletRequest req) {
+		try {
+			req.setAttribute("passTeachers", ss.getMapper(ManageMapper.class).getAllTeacher());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//승인된 유저(강아지) 조회
+	public void getAllPet(HttpServletRequest req) {
+		try {
+			req.setAttribute("passPets", ss.getMapper(ManageMapper.class).getAllPet());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	//관리자가 등록된 유치원 삭제(사이트 이용 불가)
 	public void deleteSchool(ApplySchool s, HttpServletRequest req) {
@@ -37,14 +53,7 @@ public class ManageDAO {
 		}
 	}
 
-	public void getAllTeacher(HttpServletRequest req) {
-		try {
-			req.setAttribute("passTeachers", ss.getMapper(ManageMapper.class).getAllTeacher());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	//타입 반환
 	public void getType(Member m, HttpServletRequest req) {
 		Member mm = (Member) req.getSession().getAttribute("loginMember");
 		m.setId(mm.getId());
@@ -54,4 +63,25 @@ public class ManageDAO {
 			e.printStackTrace();
 		}
 	}
+
+	//주체자 입장에서 승인한 목록 전체 조회
+	public void getMyTeacher(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
+		m.setId(mm.getId());
+		try {
+			req.setAttribute("myPassTeachers", ss.getMapper(ManageMapper.class).getMyTeacher(m));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void getMyPet(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
+		m.setId(mm.getId());
+		try {
+			req.setAttribute("myPassPets", ss.getMapper(ManageMapper.class).getMyPet(m));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

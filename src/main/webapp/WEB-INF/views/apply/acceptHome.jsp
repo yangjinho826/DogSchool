@@ -65,6 +65,7 @@
 				<div class="acceptWaitingList">
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
+							<th>유치원 구분</th>
 							<th>선생님</th>
 							<th>연락처</th>
 							<th>소개</th>
@@ -72,6 +73,11 @@
 						</tr>
 					<c:forEach var="t" items="${teachers }">
 						<tr>
+							<td>
+								<c:forEach var="s" items="${passSchools }">
+								<c:if test="${t.ta_da_no eq s.da_no }">${s.da_schoolname }</c:if>
+								</c:forEach>
+							</td>
 							<td>${t.ta_name }(${t.ta_id })<br>(${t.ta_gender })</td>
 							<td>${t.ta_phonenumber }</td>
 							<td style="max-width:350px;">${t.ta_text }</td>
@@ -99,6 +105,7 @@
 				<div class="acceptWaitingList">
 					<table border="1" style="border-collapse: collapse;" id="acceptTbl">
 						<tr>
+							<th>유치원 구분</th>
 							<th>견주 ID</th>
 							<th>강아지 정보</th>
 							<th>신청 기간</th>
@@ -107,6 +114,11 @@
 						</tr>
 					<c:forEach var="p" items="${pets }">
 						<tr>
+							<td>
+								<c:forEach var="s" items="${passSchools }">
+								<c:if test="${p.ua_da_no eq s.da_no }">${s.da_schoolname }</c:if>
+								</c:forEach>
+							</td>
 							<td>${p.ua_id }</td>
 							<td><img src="resources/img/${p.ua_img }"><br>${p.ua_name }(${p.ua_gender }, ${p.ua_age }세)</td>
 							<td>${p.ua_daterange }</td>

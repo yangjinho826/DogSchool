@@ -18,9 +18,29 @@ delete Dapply_table where Da_no = #{Da_no}
 select * from Tapply_table where Ta_agree = 1 order by Ta_name
 </select>
 
+<!-- 원장: 강아지 조회(승인된) -->
+<select id="getAllPet" resultType="com.dog.HC.apply.ApplyPet">
+select * from Uapply_table where Ua_agree = 1 order by Ua_name
+</select>
+
 <!-- jsp에서 구분할 type 구분(원장, 선생님, 유저, 관리자) -->
 <select id="getType" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.member.Member">
 select typee from signup_table where id = #{id}
+</select>
+
+<!-- 원장이 수락한 선생님 목록 -->
+<select id="getMyTeacher" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyTeacher">
+select * from DAPPLY_TABLE dt
+INNER JOIN TAPPLY_TABLE tt
+ON dt.Da_no = tt.Ta_da_no
+where dt.Da_id = #{id} and tt.Ta_agree = 1
+</select>
+<!-- 원장이 수락한 강아지 목록 -->
+<select id="getMyPet" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyPet">
+select * from DAPPLY_TABLE dt
+INNER JOIN UAPPLY_TABLE ut
+ON dt.Da_no = ut.Ua_da_no
+where dt.Da_id = #{id} and ut.Ua_agree = 1
 </select>
 
 </mapper>

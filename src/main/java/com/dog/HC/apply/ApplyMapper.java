@@ -2,13 +2,15 @@ package com.dog.HC.apply;
 
 import java.util.List;
 
+import com.dog.HC.member.Member;
+
 public interface ApplyMapper {
 	int schoolapply(ApplySchool s);
 	int teacherapply(ApplyTeacher t);
 	int petapply(ApplyPet p);
 	public List<ApplySchool> getSchoolApply();
-	public List<ApplyTeacher> getTeacherApply();
-	public List<ApplyPet> getPetApply();
+	public List<ApplyTeacher> getTeacherApply(Member mm);
+	public List<ApplyPet> getPetApply(Member mm);
 	int schoolPass(ApplySchool s);
 	int schoolFail(ApplySchool s);
 	int teacherPass(ApplyTeacher t);
@@ -17,4 +19,7 @@ public interface ApplyMapper {
 	int petFail(ApplyPet p);
 	public List<ApplyTeacher> getOneSchoolTeacher(ApplyTeacher t);
 	public List<ApplySchool> getOneSchool(ApplySchool s);
+	public List<ApplySchool> getMySchoolApply(Member m);
+	public List<ApplyTeacher> getMyTeacherApply(Member m);
+	public List<ApplyPet> getMyPetApply(Member m);
 }
