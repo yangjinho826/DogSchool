@@ -24,6 +24,12 @@ public class noticeDAO {
 	}
 
 	public void getWrite(notice n, HttpServletRequest req) {
+		
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+				
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
 		int n_da_no = 1;
@@ -35,6 +41,7 @@ public class noticeDAO {
 		noticemapper mm = ss.getMapper(noticemapper.class);
 		if(mm.noticeWrite(n) == 1){
 			System.out.println("등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}else {
 			System.out.println("등록실패");
 		}
@@ -51,8 +58,8 @@ public class noticeDAO {
 	public int noticeTDelete(notice n, HttpServletRequest req) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		String n_id = m.getName();
-		n.setN_id(n_id);
+		String n_name = m.getName();
+		n.setN_id(n_name);
 		
 		noticemapper mm = ss.getMapper(noticemapper.class);
 		if(mm.noticeTDelete(n) == 1){
@@ -68,8 +75,8 @@ public class noticeDAO {
 	public int noticeDDelete(notice n, HttpServletRequest req) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		String n_id = m.getName();
-		n.setN_id(n_id);
+		String n_name = m.getName();
+		n.setN_id(n_name);
 		
 		noticemapper mm = ss.getMapper(noticemapper.class);
 		if(mm.noticeDDelete(n) == 1){

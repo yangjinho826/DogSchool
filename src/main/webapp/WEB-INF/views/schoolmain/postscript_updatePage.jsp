@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="postscript.update" name ="myForm" onsubmit="return postscript_call()" method="post" >
+	<form action="postscript.update" name ="myForm" onsubmit="return postscript_call2()" method="post" >
 		<section id="postscript_update">
 			<section class="postscript_update">
 				<h1 class="postscript_update_title">선생님 후기 수정</h1>

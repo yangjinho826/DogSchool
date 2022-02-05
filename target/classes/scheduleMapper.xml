@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dog.HC.schoolmain.schedulemapper">
 	<select id="getAllschedule" resultType="com.dog.HC.schoolmain.schedule">
-		select * from schedule_table
+		select * from schedule_table order by s_day asc
 	</select>
 	
 		<select id="getschedule" resultType="com.dog.HC.schoolmain.schedule"  parameterType="com.dog.HC.schoolmain.schedule">

@@ -26,6 +26,11 @@ public class postscriptDAO {
 	}
 
 	public void getWrite(postscript p, HttpServletRequest req) {
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
 		int p_da_no = 1;
@@ -37,6 +42,7 @@ public class postscriptDAO {
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		if(mm.postscriptWrite(p) == 1){
 			System.out.println("등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}else {
 			System.out.println("등록실패");
 		}
@@ -50,12 +56,19 @@ public class postscriptDAO {
 		
 	}
 
-	public void postscriptDelete(postscript p, HttpServletRequest req) {
+	public int postscriptDelete(postscript p, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		String p_name = m.getName();
+		p.setP_id(p_name);
+
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		if(mm.postscriptDelete(p) == 1){
 			System.out.println("삭제성공");
+			return 1;
 		}else {
 			System.out.println("삭제실패");
+			return 0;
 		}
 		
 		

@@ -26,6 +26,10 @@ public class scheduleDAO {
 	}
 	
 	public void getschedulewirte(schedule s, HttpServletRequest req){
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
 		
 		int s_da_no = 1;
 		s.setS_da_no(s_da_no);
@@ -40,6 +44,7 @@ public class scheduleDAO {
 		
 		if(mm.scheduleWrite(s) == 1){
 			System.out.println("등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}else {
 			System.out.println("등록실패");
 		}

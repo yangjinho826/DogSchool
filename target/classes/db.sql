@@ -9,7 +9,8 @@ create table signup_table(
     typee int not null
 );
 
-select * from notice_table
+select * from signup_table
+select * from postscript_table
 insert into signup_table values('zxc','zxc','관리자','00000000000','남',0)
 
 -- 공지 테이블 --

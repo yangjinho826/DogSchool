@@ -16,6 +16,7 @@
 		<section id="postscript_write_body">
 			<form action="postscript.write" name ="myForm" onsubmit="return postscript_call()" method="post" >
 				<div class="postscript_write_input">
+					<input name="token" value="${token }" hidden="hidden">
 					<span class="postscript_write_input_w">제목</span>
 					<input name="p_title" class="p_title">
 				</div>

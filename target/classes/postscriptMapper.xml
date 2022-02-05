@@ -18,7 +18,7 @@
 	
 	<delete id="postscriptDelete" parameterType="com.dog.HC.schoolmain.postscript">
 		delete from postscript_table
-		where p_no = #{p_no}
+		where p_no = #{p_no} and p_id = #{p_id}
 	</delete>
 	
 	<update id="postscriptUpdate" parameterType="com.dog.HC.schoolmain.postscript">

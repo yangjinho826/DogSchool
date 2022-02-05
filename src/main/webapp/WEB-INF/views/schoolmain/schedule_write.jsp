@@ -23,6 +23,7 @@
 			<form action="schedule.write" name="popupForm" onsubmit="return call_schedule()">
 
 				<div class="schedule_write_input">
+						<input name="token" value="${token }" hidden="hidden">
 						<span class="schedule_write_input_w">날 짜 </span>
 						<input id="datepicker1" class="schedule" name="s_day">
 				</div>

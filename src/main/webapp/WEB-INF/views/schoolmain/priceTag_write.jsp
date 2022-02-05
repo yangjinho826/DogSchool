@@ -30,6 +30,7 @@
 					</span>
 				</div>
 				<div class="priceTag_write_input">
+						<input name="token" value="${token }" hidden="hidden">
 						<span class="priceTag_write_input_w">가격 </span>
 						<input type="number" name="p_price" class="p_price" placeholder="1000원 이상 입력" min="0">원
 				</div>

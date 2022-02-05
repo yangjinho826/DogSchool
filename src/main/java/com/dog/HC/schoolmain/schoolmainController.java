@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dog.HC.TokenMaker;
 import com.dog.HC.member.MemberDAO;
 
 @Controller
@@ -55,6 +56,8 @@ public class schoolmainController {
 	@RequestMapping(value = "notice_write.go", method = RequestMethod.GET)
 	public String noticewirtego(notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
+		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_write.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -135,6 +138,7 @@ public class schoolmainController {
 	@RequestMapping(value = "postscript_write.go", method = RequestMethod.GET)
 	public String postscriptwirtego(postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_write.jsp");
@@ -166,15 +170,9 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "postscript.Delete", method = RequestMethod.GET)
-	public String postscriptDelete(postscript p, HttpServletRequest req) {
-		mDAOO.loginCheck(req);
-		pDAO.postscriptDelete(p, req);
-		pDAO.getAllpostscript(p, req);
-		
-		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
-		req.setAttribute("footer", "main/footer.jsp");
-		return "index";
+	public @ResponseBody int postscriptDelete(postscript p, HttpServletRequest req) {
+
+		return 	pDAO.postscriptDelete(p, req);
 	}
 	
 	@RequestMapping(value = "postscript.UpdatePageGo", method = RequestMethod.GET)
@@ -218,6 +216,8 @@ public class schoolmainController {
 	@RequestMapping(value = "priceTag_write.go", method = RequestMethod.GET)
 	public String pricewritego(priceTag pT, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
+		
 		return "schoolmain/priceTag_write";
 	}
 	
@@ -284,6 +284,8 @@ public class schoolmainController {
 	@RequestMapping(value = "sechdule_write.go", method = RequestMethod.GET)
 	public String schedulewritego(schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
+		
 		return "schoolmain/schedule_write";
 	}
 	

@@ -42,6 +42,7 @@ public class MemberDAO {
 		if(m != null) {
 			req.setAttribute("loginPage", "main/loginSuccess.jsp");
 			req.setAttribute("memberTypee", m.getTypee());
+			req.setAttribute("memberName", m.getName());
 			return true;
 		}else {
 			req.setAttribute("loginPage", "main/loginPage.jsp");
