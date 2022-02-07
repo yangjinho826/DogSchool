@@ -9,7 +9,7 @@ create table signup_table(
     typee int not null
 );
 
-
+select * from signup_table
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
