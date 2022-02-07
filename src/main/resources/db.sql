@@ -9,9 +9,9 @@ create table signup_table(
     typee int not null
 );
 
-select * from signup_table 
-insert into signup_table values('root','1234','관리자','00000000000','남',0)
-
+select * from signup_table
+select * from postscript_table
+insert into signup_table values('zxc','zxc','관리자','00000000000','남',0)
 
 -- 공지 테이블 --
 create table notice_table(
@@ -23,6 +23,7 @@ create table notice_table(
 	n_date date not null
 );
 create sequence notice_seq;
+
 
 -- 선생님 후기 테이블 --
 create table postscript_table(

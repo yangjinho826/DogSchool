@@ -3,7 +3,7 @@
 <mapper namespace="com.dog.HC.schoolmain.postscriptmapper">
 
 	<select id="getAllpostscript" resultType="com.dog.HC.schoolmain.postscript">
-		select * from postscript_table
+		select * from postscript_table order by p_date desc
 	</select>
 	
 	<select id="getpostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">
@@ -18,7 +18,7 @@
 	
 	<delete id="postscriptDelete" parameterType="com.dog.HC.schoolmain.postscript">
 		delete from postscript_table
-		where p_no = #{p_no}
+		where p_no = #{p_no} and p_id = #{p_id}
 	</delete>
 	
 	<update id="postscriptUpdate" parameterType="com.dog.HC.schoolmain.postscript">

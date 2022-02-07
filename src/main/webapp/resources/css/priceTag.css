@@ -1,0 +1,107 @@
+/*가격표 메인*/
+
+ #priceTag_Home{
+	margin: 20px;
+	padding: 30px;
+ 	height:700px;
+ }
+ 
+ .priceTag_Home{
+ 	display: flex;
+ 	justify-content: space-between;
+ 	background-color: #e5edf1;
+ 	align-items: center;
+ 	
+ }
+ 
+ .priceTag_title{
+ 	margin-left: 10px;
+ 	font-size: 30px;
+ 	margin-bottom: 15px;
+ }
+ 
+  .priceTag_writebtn{
+ 	border: 3px solid;
+ 	border-top-width: thin;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	height:30px;
+ 	border-radius : 4px;
+ 	margin-right: 10px;
+ 	transition: all ease 0.5s;
+ }
+ 
+  .priceTag_writebtn:hover{
+ 	transform: scale(1.1) ;
+ 	
+ }
+
+ .priceTag_table_title{
+  	width: 100%;
+  	text-align: center;
+  	font-size: 23px;
+  	background: #98c5e4;
+  	font-weight: bold;
+  	margin-top: 10px;
+  	padding: 5px;
+  	color: white;
+  }
+
+  .priceTag{
+  	width: 100%;
+  	padding: 10px 0px 10px 0px;
+  	border-top:2px solid black;
+  	border-bottom:2px solid black;
+  	text-align: center;
+  }
+  
+  
+/* 가격표 작성 */
+   #priceTag_write{
+	margin: 5px;
+ }
+  
+  .priceTag_write_title{
+  	font-size: 35px;
+  	text-align: center;
+  	margin-top: 0;
+  	background-color: #e5edf1;
+  }
+  
+  .priceTag_write_input{
+  	margin-bottom: 5px;
+  }
+  
+  .priceTag_write_input_w{
+    font-weight: bold;
+  	font-size: 20px;
+  	padding-left: 10px;	
+  }
+  
+  .p_price{
+  	margin-left: 30px;
+  }
+  
+ .priceTag_write_btn{
+ 	float :left;
+ 	border: 3px solid black;
+ 	border-top-width: thin;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	height:30px;
+ 	border-radius : 4px;
+ 	margin: 10px;
+ 	transition: all ease 0.5s;
+ }
+ 
+  .priceTag_write_btn:hover{
+ 	transform: scale(1.1) ;
+ 	
+ }
+
+ /* 공지사항 디테일페이지 */
+ 
+  .p_price2{
+  	margin-left: 60px;
+  }
+ 

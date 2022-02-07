@@ -23,10 +23,6 @@
 	<link rel="stylesheet" href="resources/summernote/summernote-lite.css">	
 	<script type="text/javascript" src="resources/js/summernote.js"></script>
 	
-	<link rel="icon" type="image/png" href="resources/img/dog-solid.svg">
-	<script src="https://kit.fontawesome.com/cb4142df56.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-	
 	<!-- js -->
 	<script type="text/javascript" src="resources/js/notice.js"></script>
 	<script type="text/javascript" src="resources/js/postscript.js"></script>	
@@ -34,6 +30,10 @@
 	<script type="text/javascript" src="resources/js/jsApply.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+
+	<link rel="icon" type="image/png" href="resources/img/dog-solid.svg">
+	<script src="https://kit.fontawesome.com/cb4142df56.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="resources/css/main.css"/>
