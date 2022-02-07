@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MemberController {
@@ -155,6 +156,13 @@ public class MemberController {
 		req.setAttribute("contentPage", "member/findpw.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
+	}
+	
+	@RequestMapping(value = "member.get", 
+			method = RequestMethod.GET, 
+			produces = "application/json; charset=utf-8")
+	public @ResponseBody int memberGet(HttpServletRequest req, Member m) {
+		return mDAO.getMemberNum(req, m);
 	}
 
 	

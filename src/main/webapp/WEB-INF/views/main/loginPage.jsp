@@ -12,7 +12,8 @@
 			<button onclick="location.href='HC.go'" class="member_info_btn">홈페이지</button>
 		</div>
 		<div  class="member_info">
-		<form action="member.login" method="post" name="loginForm">
+		<form action="member.login" method="post" name="loginForm" onsubmit="return logincall()">
+		${result }
        		<input name="id" placeholder="아이디" autocomplete="off">
             <input name="pw" placeholder="비밀번호" type="password" autocomplete="off">
             <button class="member_info_btn">로그인</button>

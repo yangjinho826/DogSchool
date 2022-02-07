@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3> 비밀번호 찾기 </h3>
-	<form action="member.findpw" method="post">
+	<form action="member.findpw" method="post" name="myForm" onsubmit="return findpwcall()">
 		<div>
 			아이디 <input name="id"> <br>
 		</div>
