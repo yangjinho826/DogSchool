@@ -52,6 +52,22 @@ public class ManageDAO {
 			System.out.println("유치원 삭제 실패");
 		}
 	}
+	public void deleteSchoolT(ApplySchool s, HttpServletRequest req) {
+		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		if (ss.getMapper(ManageMapper.class).deleteSchoolT(s) == 1) {
+			System.out.println("해당 유치원에 등록된 선생님 삭제 성공"); //테이블에서 해당 컬럼 삭제
+		} else {
+			System.out.println("해당 유치원에 등록된 선생님 삭제 실패");
+		}
+	}
+	public void deleteSchoolU(ApplySchool s, HttpServletRequest req) {
+		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		if (ss.getMapper(ManageMapper.class).deleteSchoolU(s) == 1) {
+			System.out.println("해당 유치원에 등록된 강아지(견주) 삭제 성공"); //테이블에서 해당 컬럼 삭제
+		} else {
+			System.out.println("해당 유치원에 등록된 강아지(견주) 삭제 실패");
+		}
+	}
 
 	//타입 반환
 	public void getType(Member m, HttpServletRequest req) {

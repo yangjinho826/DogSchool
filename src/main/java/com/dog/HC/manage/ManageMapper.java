@@ -10,6 +10,8 @@ import com.dog.HC.member.Member;
 public interface ManageMapper {
 	public List<ApplySchool> getAllSchool();
 	public int deleteSchool(ApplySchool s);
+	public int deleteSchoolT(ApplySchool s);
+	public int deleteSchoolU(ApplySchool s);
 	public List<ApplyTeacher> getAllTeacher();
 	public List<Member> getType(Member m);
 	public List<ApplyPet> getAllPet();

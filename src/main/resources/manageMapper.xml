@@ -12,6 +12,12 @@ select * from Dapply_table where Da_agree = 1 order by Da_no desc
 <delete id="deleteSchool" parameterType="com.dog.HC.apply.ApplySchool">
 delete Dapply_table where Da_no = #{Da_no}
 </delete>
+<delete id="deleteSchoolT" parameterType="com.dog.HC.apply.ApplySchool">
+delete Tapply_table where Ta_da_no = #{Da_no}
+</delete>
+<delete id="deleteSchoolU" parameterType="com.dog.HC.apply.ApplySchool">
+delete Uapply_table where Ua_da_no = #{Da_no}
+</delete>
 
 <!-- 원장: 선생님 조회(승인된) -->
 <select id="getAllTeacher" resultType="com.dog.HC.apply.ApplyTeacher">

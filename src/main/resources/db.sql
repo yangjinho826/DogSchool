@@ -107,7 +107,6 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-
 select * from Uapply_table
 
 -- 알림장 테이블 --
