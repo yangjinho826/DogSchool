@@ -9,9 +9,6 @@ create table signup_table(
     typee int not null
 );
 
-select * from signup_table
-select * from postscript_table
-insert into signup_table values('zxc','zxc','관리자','00000000000','남',0)
 
 -- 공지 테이블 --
 create table notice_table(
@@ -37,6 +34,7 @@ create table postscript_table(
 );
 create sequence postscript_seq;
 
+
 -- 가격표 테이블
 create table priceTag_table(
 	p_no number(3) primary key,
@@ -48,6 +46,7 @@ create table priceTag_table(
 );
 create sequence priceTag_seq;
 
+
 -- 스케줄 테이블
 create table schedule_table(
 	s_no number(3) primary key,
@@ -58,8 +57,6 @@ create table schedule_table(
 );
 create sequence schedule_seq;
 
-drop table schedule_table cascade constraint purge;
-drop sequence schedule_seq
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
     Da_no number(5) primary key, -- 유치원 구분
@@ -72,7 +69,12 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 
-select * from DAPPLY_TABLE
+
+select * from DAPPLY_TABLE dt
+ INNER JOIN TAPPLY_TABLE tt
+ ON dt.Da_no = tt.Ta_da_no
+where dt.Da_id = 'd1' and tt.Ta_agree = 0;
+
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -86,6 +88,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
+select * from TAPPLY_TABLE
 
 
 -- 견주-원장 신청 테이블 --
@@ -102,7 +105,6 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-
 select * from Uapply_table
 
 -- 알림장 테이블 --
