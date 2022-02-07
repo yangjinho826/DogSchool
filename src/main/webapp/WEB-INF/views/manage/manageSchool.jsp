@@ -13,10 +13,9 @@
 
 		<h2 align="center" id="manageHomeTitle">이용 중인 유치원</h2>
 		<div id="manageMenuBar">
-			<select class="manageSelect">
-				<option>최근순</option>
-				<option>오래된 순</option>
-			</select>
+			<div id="managePaging">
+				[◀] [1] [2] [▶] (페이징 들어갈 예정)
+			</div>
 			<div id="searchMenu">
 				<!--
 				<select class="searchSelect">
@@ -25,7 +24,7 @@
 				</select>
 				-->
 				<form>
-					<input name="searchWord" class="searchBar" placeholder="검색어를 입력하시오"> 
+					<input name="searchWord" class="searchBar" placeholder="유치원 이름을 입력하세요"> 
 					<button class="searchBtn">검색</button>
 				</form>
 			</div>

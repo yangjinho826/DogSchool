@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dog.HC.manage.ManageMapper;
+import com.dog.HC.member.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -133,18 +134,21 @@ public class ApplyDAO {
 			e.printStackTrace();
 		}
 	}
+
 	//신청 중인 선생님-원장 선생님 전체 조회
-	public void getAllTeacherApply(HttpServletRequest req) {
+	public void getAllTeacherApply(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
 		try {
-			req.setAttribute("teachers", ss.getMapper(ApplyMapper.class).getTeacherApply());
+			req.setAttribute("teachers", ss.getMapper(ApplyMapper.class).getTeacherApply(mm));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}	
 	//신청 중인 견주-원장 강아지 전체 조회
-	public void getAllPetApply(HttpServletRequest req) {
+	public void getAllPetApply(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
 		try {
-			req.setAttribute("pets", ss.getMapper(ApplyMapper.class).getPetApply());
+			req.setAttribute("pets", ss.getMapper(ApplyMapper.class).getPetApply(mm));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -211,10 +215,12 @@ public class ApplyDAO {
 		}
 	}
 	
+	//한 유치원에 존재하는 모든 선생님 조회
 	public void getOneSchoolTeacher(ApplyTeacher t, HttpServletRequest req) {
 		t.setTa_da_no(Integer.parseInt(req.getParameter("Da_no")));
 		req.setAttribute("getOneSchoolTeacher", ss.getMapper(ApplyMapper.class).getOneSchoolTeacher(t));
 	}
+	//한 유치원 정보 조회
 	public void getOneSchool(ApplySchool s, HttpServletRequest req) {
 		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
 		try {
@@ -223,4 +229,35 @@ public class ApplyDAO {
 			e.printStackTrace();
 		}
 	}
+
+	//로그인 후 내가 신청해서 수락 대기 중인 목록 보기
+	public void getMySchoolApply(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
+		m.setId(mm.getId());
+		try {
+			req.setAttribute("myWaitingSchools", ss.getMapper(ApplyMapper.class).getMySchoolApply(m));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void getMyTeacherApply(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
+		m.setId(mm.getId());
+		try {
+			req.setAttribute("myWaitingTeachers", ss.getMapper(ApplyMapper.class).getMyTeacherApply(m));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void getMyPetApply(Member m, HttpServletRequest req) {
+		Member mm = (Member) req.getSession().getAttribute("loginMember");
+		m.setId(mm.getId());
+		try {
+			req.setAttribute("myWaitingPets", ss.getMapper(ApplyMapper.class).getMyPetApply(m));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
