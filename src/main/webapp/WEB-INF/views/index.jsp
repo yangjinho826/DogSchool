@@ -10,7 +10,7 @@
 	
 	<!-- jQuery -->
 	<script type="text/javascript" src="resources/js/jquery.js"></script>
-	<script type="text/javascript" src="resources/js/member_jquery.js"></script>
+	
 	
 	<!-- validCheck  -->
 	<script type="text/javascript" src="resources/js/validCheck.js"></script>
@@ -23,6 +23,7 @@
 	<script src="resources/summernote/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="resources/summernote/summernote-lite.css">	
 	<script type="text/javascript" src="resources/js/summernote.js"></script>
+	<script type="text/javascript" src="resources/js/member_jquery.js"></script>
 	
 	<!-- js -->
 	<script type="text/javascript" src="resources/js/notice.js"></script>
