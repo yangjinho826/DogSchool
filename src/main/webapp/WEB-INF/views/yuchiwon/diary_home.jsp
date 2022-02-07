@@ -10,7 +10,9 @@
 </head>
 <body>
 	<h1>알림장</h1>
+	<c:if test="${sessionScope.loginMember.typee ==  2}">
 	<button onclick="location.href='diary.write.go'">작성하기</button>
+	</c:if>
 	<c:forEach var="d" items="${diaries }">
 		<table>
 			<tr>
@@ -40,6 +42,12 @@
 				<td>${dr.r_owner }</td>
 				<td>${dr.r_txt }</td>
 				<td>(<fmt:formatDate value="${dr.r_when }" type="both" dateStyle="short" timeStyle="short"/>)</td>
+				<td>
+				<c:if test="${sessionScope.loginMember.id == dr.r_owner }">
+				<button onclick="deleteReply(${dr.r_no});">삭제</button>
+				</c:if>
+				<br>
+			</td>
 			</tr>
 			</c:forEach>
 			<tr>
@@ -51,6 +59,12 @@
 					</form>
 				</td>
 			</tr>
+				<tr>
+					<td>
+						<button onclick="updateDiary(${d.mp_no})">수정</button>
+						<button onclick="deleteDiary(${d.mp_no})">삭제</button>
+					</td>
+				</tr>
 		</table>
 	</c:forEach>
 </body>
