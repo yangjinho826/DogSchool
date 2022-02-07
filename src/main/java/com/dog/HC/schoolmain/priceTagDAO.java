@@ -45,12 +45,18 @@ public class priceTagDAO {
 	}
 
 	public void getWrite(priceTag pT, HttpServletRequest req) {
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+		
 		int p_da_no = 1;
 		pT.setP_da_no(p_da_no);
 		
 		priceTagmapper mm = ss.getMapper(priceTagmapper.class);
 		if(mm.priceTagWrite(pT) == 1){
 			System.out.println("등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}else {
 			System.out.println("등록실패");
 		}

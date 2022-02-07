@@ -32,7 +32,6 @@
  }
  
   .postscript_writebtn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	
  }
@@ -94,7 +93,7 @@
  }
  
   .postscript_write_btn:hover{
-  	background-color: #fff7d1;
+
  	transform: scale(1.1) ;
  	
  }
@@ -146,7 +145,6 @@
  }
  
   .postscript_update_btn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	}
  
@@ -162,6 +160,7 @@
   }
   
   .postscript_Detail_title{
+  	background-color: #e5edf1;
   	text-align: center;
   	border-bottom:2px solid black;
   	
@@ -208,7 +207,6 @@
   }
   
    .postscript_Detail_Btn:hover{
-  	background-color: #fff7d1;
  	transform: scale(1.1) ;
  	}
   

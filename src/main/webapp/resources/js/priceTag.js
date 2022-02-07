@@ -1,7 +1,7 @@
 
 function pricewriteWindow(){
 	document.domain = "localhost";
-	window.open("priceTag_write.go", "Popup", "width=500,height=600")
+	window.open("priceTag_write.go", "Popup", "width=450,height=250")
 }
 
 
@@ -20,7 +20,7 @@ function priceDetailWindow(n){
 	let p_no = n;
 	
 	document.domain = "localhost";
-	window.open("priceTag_Detail?p_no="+p_no, "Popup", "width=500,height=600")
+	window.open("priceTag_Detail?p_no="+p_no, "Popup", "width=450,height=250")
 }
 
 

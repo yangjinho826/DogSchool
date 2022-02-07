@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="resources/js/priceTag.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
+<link rel="stylesheet" href="resources/css/priceTag.css"/>
 </head>
 <body>
 	<section id="priceTag_write">
@@ -18,17 +19,17 @@
 		<section id="priceTag_write_body">
 			<form action="priceTag.Update" name="popupForm2" onsubmit="return callme1()">
 				<div class="priceTag_write_input">
-						<span class="priceTag_write_input_w">강아지 종류 : </span>
+						<span class="priceTag_write_input_w">강아지 종류</span>
 						<label for="BigDog">${pTag.p_Dogkind }</label>
 						<input name="p_no" value="${pTag.p_no }" type="hidden">
 				</div>
 				<div class="priceTag_write_input">
-						<span class="priceTag_write_input_w">가격 </span>
-						<input type="number" name="p_price" id="p_price" placeholder="1000원 이상 입력"value="${pTag.p_price }">원
+						<span class="priceTag_write_input_w">가 격 </span>
+						<input type="number" name="p_price" class="p_price2" id="p_price" placeholder="1000원 이상 입력"value="${pTag.p_price }">원
 				</div>
 				<div class="priceTag_write_input">
-						<span class="priceTag_write_input_w">날짜 </span>
-						<input type="number" name="p_date" placeholder="1일 이상 입력" value="${pTag.p_date }">일
+						<span class="priceTag_write_input_w">날 짜 </span>
+						<input type="number" name="p_date" class="p_price2" placeholder="1일 이상 입력" value="${pTag.p_date }">일
 				</div>
 				<div>	<button class="priceTag_write_btn">수정 </button></div>
 			</form>
