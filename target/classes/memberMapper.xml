@@ -46,6 +46,9 @@
         where id = #{id} and name= #{name} and phonenumber = #{phonenumber}
 	</select>
 	
+	<select id="getMemberNum" parameterType="com.dog.HC.member.Member" resultType="java.lang.Integer">
+		select count(*) from signup_table where id = #{id}
+	</select>
 	
 
 </mapper>

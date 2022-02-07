@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-아이디는 ${result} 입니다.
+${result}
 </body>
 </html>
