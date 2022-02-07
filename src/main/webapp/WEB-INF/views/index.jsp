@@ -10,6 +10,7 @@
 	
 	<!-- jQuery -->
 	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/member_jquery.js"></script>
 	
 	<!-- validCheck  -->
 	<script type="text/javascript" src="resources/js/validCheck.js"></script>

@@ -18,6 +18,8 @@ public interface MemberMapper {
 	public Member findid(Member m);
 
 	public Member findpw(Member m);
+	
+	public int getMemberNum(Member m);
 
 	
 

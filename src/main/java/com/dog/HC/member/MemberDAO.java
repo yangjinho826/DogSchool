@@ -1,6 +1,7 @@
 package com.dog.HC.member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.stream.events.Namespace;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,7 +148,9 @@ public class MemberDAO {
 			String id = req.getParameter("id");
 			String pw = req.getParameter("pw");
 			String name = req.getParameter("name");
-			String phonenumber = req.getParameter("phonenumber");
+			String phonenumber = req.getParameter("phonefirst")
+		 			 + req.getParameter("phonesecond")
+		 			 + req.getParameter("phonethird");
 			String gender = req.getParameter("gender");
 
 			m.setId(id);
@@ -192,6 +195,7 @@ public class MemberDAO {
 
 
 	public void findid(HttpServletRequest req, Member m) {
+		try {
 		Member dbMember = ss.getMapper(MemberMapper.class).findid(m);
 
 		//사용자가 입력한 값
@@ -200,23 +204,26 @@ public class MemberDAO {
 		
 		System.out.println(m.getName());
 		System.out.println(m.getPhonenumber());
-		System.out.println(dbMember.getName());
-		System.out.println(dbMember.getPhonenumber());
+		
 		// 이 값으로 select
-		if(dbMember != null) {
-			if(m.getName().equals(dbMember.getName())) {
-				req.setAttribute("result", dbMember.getId());
-			}else {
-			System.out.println("아이디 찾기 실패(가입안된 ID)");
-			req.setAttribute("result", "아이디 찾기 실패(가입안된 ID)");
-		}
-
+			if (dbMember != null) {
+				if (m.getName().equals(dbMember.getName())) {
+					req.setAttribute("result", "아이디는 " + dbMember.getId() + " 입니다.");
+				} 
+			} else {
+				System.out.println("아이디 찾기 실패(가입안된 ID)");
+				req.setAttribute("result", "아이디 찾기 실패(가입안된 ID)");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "찾을 수 없습니다.");
 		}
 }
 
 
 
 	public void findpw(HttpServletRequest req, Member m) {
+		try {
 		Member dbMember = ss.getMapper(MemberMapper.class).findpw(m);
 
 		// 사용자가 입력한 값
@@ -227,19 +234,29 @@ public class MemberDAO {
 		System.out.println(m.getId());
 		System.out.println(m.getName());
 		System.out.println(m.getPhonenumber());
-		System.out.println(dbMember.getId());
-		System.out.println(dbMember.getName());
-		System.out.println(dbMember.getPhonenumber());
+
 		// 이 값으로 select
 		if (dbMember != null) {
 			if (m.getName().equals(dbMember.getName())) {
-				req.setAttribute("result", dbMember.getPw());
-			} else {
-				System.out.println("비밀번호 찾기 실패");
-				req.setAttribute("result", "비밀번호 찾기 실패");
-			}
-
+				req.setAttribute("result", "비밀번호는 " + dbMember.getPw() + " 입니다.");
+			} 
+		}else {
+			System.out.println("비밀번호 찾기 실패");
+			req.setAttribute("result", "비밀번호 찾기에 실패하였습니다.");
 		}
-
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "찾을 수 없습니다.");
+		}
+	
 	}
+
+
+
+	public int getMemberNum(HttpServletRequest req, Member m) {
+		System.out.println(ss.getMapper(MemberMapper.class).getMemberNum(m));
+		return ss.getMapper(MemberMapper.class).getMemberNum(m);
+	}
+
 }

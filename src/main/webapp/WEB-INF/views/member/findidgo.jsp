@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3> 아이디 찾기 </h3>
-	<form action="member.findid" method="post">
+	<form action="member.findid" method="post" name="myForm" onsubmit="return findidcall()">
 		<div>
 			이름 <input name="name"> <br>
 		</div>
