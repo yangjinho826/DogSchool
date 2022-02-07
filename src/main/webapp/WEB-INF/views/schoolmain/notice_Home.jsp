@@ -13,7 +13,14 @@
 	<section id="notice_Home">
 		<section class="notice_Home">
 			<h1 class="notice_title"> 공지사항 </h1>
-			<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+			<c:choose> 
+			 	<c:when test="${memberTypee eq '2'}">
+					<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+				</c:when>
+			 	<c:when test="${memberTypee eq '3'}">
+					<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+				</c:when>
+			</c:choose>
 		</section>
 		<section id="notice_Body">
 			<table class="notice">

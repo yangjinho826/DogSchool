@@ -36,6 +36,8 @@ public class ManageController {
 	public String deleteSchool(ApplySchool s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		mDAO.deleteSchool(s, req); //삭제 후
+		mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Teacher
+		mDAO.deleteSchoolU(s, req); //						User(Pet)
 		mDAO.getAllSchool(req); //다시 조회
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "manage/manageSchool.jsp");

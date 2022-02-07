@@ -37,8 +37,9 @@ function findpwgo(){
 	location.href = "member.findpwgo"
 }
 
-function call(){
+function membercall(){
 	let id = document.myForm.id;
+	let id2 = document.myForm.id2;
 	let pw= document.myForm.pw;
 	let pw1 = document.myForm.pw1;
 	let name = document.myForm.name;
@@ -55,17 +56,17 @@ function call(){
 
 	if (isEmpty(pw) || lessThan(pw1, 3)) {
 		alert('비밀번호를 입력해주세요.');
-		password.value = "";
-		password.focus();
+		pw.value = "";
+		pw.focus();
 
 		return false;
 	}
 	if (notEquals(pw, pw1)) {
 		alert('비밀번호가 다릅니다.');
-		password.value = "";
-		password.focus();
-		password1.value = "";
-		password1.focus();
+		pw.value = "";
+		pw.focus();
+		pw1.value = "";
+		pw1.focus();
 		return false;
 	}
 
@@ -125,7 +126,93 @@ function call(){
 
         return false;
 	}
+	
+	if(id2.value == 0){
+		alert('사용할 수 없는 아이디 입니다.')
+		return false;
+	} else {
+		return true;
+	}
+		
+	
 
+	
+}
+
+function logincall(){
+	let id = document.loginForm.id;
+	let pw= document.loginForm.pw;
+	
+	if (isEmpty(id)) {
+        alert('아이디를 입력해주세요.');
+        id.value = "";
+        id.focus();
+
+        return false;
+	}
+	
+	if (isEmpty(pw)) {
+        alert('비밀번호를 입력해주세요.');
+        pw.value = "";
+        pw.focus();
+
+        return false;
+	}	 
+	
+}
+
+function findidcall(){
+	
+	let name = document.myForm.name;
+	let phonenumber= document.myForm.phonenumber;
+	
+	
+	if (isEmpty(name)) {
+        alert('이름을 입력해주세요.');
+        name.value = "";
+        name.focus();
+
+        return false;
+	}
+	
+	if (isEmpty(phonenumber)) {
+        alert('전화번호를 입력해주세요.');
+        phonenumber.value = "";
+        phonenumber.focus();
+
+        return false;
+	}	 
+	
+}
+
+function findpwcall(){
+	let id = document.myForm.id;
+	let name = document.myForm.name;
+	let phonenumber= document.myForm.phonenumber;
+	
+	if (isEmpty(id)) {
+        alert('아이디를 입력해주세요.');
+        id.value = "";
+        id.focus();
+
+        return false;
+	}
+	
+	if (isEmpty(name)) {
+        alert('이름을 입력해주세요.');
+        name.value = "";
+        name.focus();
+
+        return false;
+	}
+	
+	if (isEmpty(phonenumber)) {
+        alert('전화번호를 입력해주세요.');
+        phonenumber.value = "";
+        phonenumber.focus();
+
+        return false;
+	}	 
 	
 }
 

@@ -9,12 +9,7 @@ create table signup_table(
     typee int not null
 );
 
-select * from signup_table 
-insert into signup_table values('root','1234','관리자','00000000000','남',0)
-
-drop table gallery_table cascade constraint purge;
-drop sequence gallery_table_seq;
-
+select * from signup_table
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -24,8 +19,9 @@ create table notice_table(
 	n_txt varchar2(4000 char) not null,
 	n_date date not null
 );
-
 create sequence notice_seq;
+
+
 -- 선생님 후기 테이블 --
 create table postscript_table(
 	p_no number(3) primary key,
@@ -36,7 +32,7 @@ create table postscript_table(
 	p_date date not null
 	
 );
-create sequence postscript_table_seq;
+create sequence postscript_seq;
 
 
 -- 가격표 테이블
@@ -48,7 +44,8 @@ create table priceTag_table(
 	p_date number(10) not null
 	
 );
-create sequence priceTag_table_seq;
+create sequence priceTag_seq;
+
 
 -- 스케줄 테이블
 create table schedule_table(
@@ -58,10 +55,8 @@ create table schedule_table(
 	s_text varchar2(30 char) not null,	
 	s_day date not null
 );
-
 create sequence schedule_seq;
 
-select * from schedule_table
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
     Da_no number(5) primary key, -- 유치원 구분
@@ -72,7 +67,14 @@ create table Dapply_table(
     Da_phonenumber varchar2(20 char) not null,
     Da_agree number(3) not null --<- 0 수락시 1
 );
+
 create sequence Dapply_table_seq;
+
+select * from UAPPLY_TABLE
+select * from DAPPLY_TABLE dt
+ INNER JOIN TAPPLY_TABLE tt
+ ON dt.Da_no = tt.Ta_da_no
+where dt.Da_id = 'd1' and tt.Ta_agree = 0;
 
 
 -- 선생님-원장 신청 테이블 --
@@ -87,6 +89,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
+select * from TAPPLY_TABLE
 
 
 -- 견주-원장 신청 테이블 --
@@ -103,7 +106,6 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-
 select * from Uapply_table
 
 -- 알림장 테이블 --
@@ -122,6 +124,8 @@ create table mypet_table(
 	mp_date date not null						-- 알림장 작성 날짜
 );
 create sequence mypet_table_seq;
+
+select * from MYPET_TABLE
 
 -- 갤러리 테이블 --
 create table gallery_table(

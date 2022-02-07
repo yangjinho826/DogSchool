@@ -3,34 +3,43 @@
 <mapper namespace="com.dog.HC.Yuchiwon.YuchiwonMapper">
 
 	<select id="getAllPuppy" resultType="com.dog.HC.Yuchiwon.puppy"
-		parameterType="com.dog.HC.Yuchiwon.signup">
-		select * from UAPPLY_TABLE
-			where ua_agree = 1
-		<!-- 
-		id = ua_id and id = 'mz' and 
-		
-		<if test='typee == "1"'>
-			select * from SIGNUP_TABLE, UAPPLY_TABLE
-			where id = ua_id and id = #{ua_id} and ua_agree = 1
-		</if>
-		<if test='typee == "2"'>
-			select ua_name
-			from uapply_table
-			where ua_tname = (
-			select ta_name
-			from tapply_table
-			where ta_no = #{ta_no} and ta_agree = 1
-			)
-		</if>
-		 -->
-		 
+		parameterType="map">
+		<choose>
+			<when test="typeee == 1">
+				select ua_name
+				from UAPPLY_TABLE
+				where ua_id = #{iddd} and ua_agree = 1
+			</when>
+			<when test="typeee == 2">
+				select ua_name
+				from uapply_table
+				where ua_tname in (
+					select ta_name
+					from tapply_table
+					where ta_agree = 1
+					and ta_no in (
+						select ta_no
+						from TAPPLY_TABLE, SIGNUP_TABLE
+						where ta_id = id and
+						id = #{iddd}
+						)
+					)
+			</when>
+		</choose>
+		<!-- select * from UAPPLY_TABLE where ua_agree = 1 id = ua_id and id = 
+			'mz' and <if test='typee == "1"'> select * from SIGNUP_TABLE, UAPPLY_TABLE 
+			where id = ua_id and id = #{ua_id} and ua_agree = 1 </if> <if test='typee 
+			== "2"'> select ua_name from uapply_table where ua_tname = ( select ta_name 
+			from tapply_table where ta_no = #{ta_no} and ta_agree = 1 ) </if> -->
+
 		<!-- where ua_da_no = #{uA_da_no} and ua_id = #{uA_id} and ua_name = #{uA_name} 
 			and ua_tname = #{uA_tname} where ua_da_no = #{uA_da_no} and ua_id = #{uA_id} 
 			and ua_name = #{uA_name} and ua_tname = #{uA_tname} -->
 	</select>
 
 	<select id="getPuppy" resultType="com.dog.HC.Yuchiwon.puppy">
-		select * from Uapply_table where ua_no = #{uA_no}
+		select * from Uapply_table
+		where ua_no = #{uA_no}
 	</select>
 
 </mapper>

@@ -3,7 +3,7 @@
 <mapper namespace="com.dog.HC.schoolmain.priceTagmapper">
 
 	<select id="getAllpriceTag" resultType="com.dog.HC.schoolmain.priceTag">
-		select * from priceTag_table
+		select * from priceTag_table  order by p_date asc
 	</select>
 	
 	<select id="getpriceTag" resultType="com.dog.HC.schoolmain.priceTag" parameterType="com.dog.HC.schoolmain.priceTag">

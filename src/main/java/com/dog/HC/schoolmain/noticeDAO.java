@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.member.Member;
+
 @Service
 public class noticeDAO {
 	
@@ -23,8 +25,15 @@ public class noticeDAO {
 
 	public void getWrite(notice n, HttpServletRequest req) {
 		
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+				
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
 		int n_da_no = 1;
-		String n_id = "작성용 아이디";
+		String n_id = m.getName();
 		
 		n.setN_da_no(n_da_no);
 		n.setN_id(n_id);
@@ -32,6 +41,7 @@ public class noticeDAO {
 		noticemapper mm = ss.getMapper(noticemapper.class);
 		if(mm.noticeWrite(n) == 1){
 			System.out.println("등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}else {
 			System.out.println("등록실패");
 		}
@@ -45,15 +55,39 @@ public class noticeDAO {
 		
 	}
 
-	public void noticeDelete(notice n, HttpServletRequest req) {
+	public int noticeTDelete(notice n, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		String n_name = m.getName();
+		n.setN_id(n_name);
+		
 		noticemapper mm = ss.getMapper(noticemapper.class);
-		if(mm.noticeDelete(n) == 1){
+		if(mm.noticeTDelete(n) == 1){
 			System.out.println("삭제성공");
+			return 1;
 		}else {
 			System.out.println("삭제실패");
+			return 0;
 		}
 		
 	}
+	
+	public int noticeDDelete(notice n, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		String n_name = m.getName();
+		n.setN_id(n_name);
+		
+		noticemapper mm = ss.getMapper(noticemapper.class);
+		if(mm.noticeDDelete(n) == 1){
+			System.out.println("삭제성공");
+			return 1;
+		}else {
+			System.out.println("삭제실패");
+			return 0;
+		}
+	}
+	
 
 	public void noticeUpdate(notice n, HttpServletRequest req) {
 		
@@ -65,6 +99,7 @@ public class noticeDAO {
 		}
 		
 	}
-	
+
+
 	
 }
