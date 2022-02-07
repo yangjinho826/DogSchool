@@ -58,7 +58,8 @@ create table schedule_table(
 );
 create sequence schedule_seq;
 
-
+drop table schedule_table cascade constraint purge;
+drop sequence schedule_seq
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
     Da_no number(5) primary key, -- 유치원 구분
@@ -71,6 +72,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 
+select * from DAPPLY_TABLE
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -119,6 +121,8 @@ create table mypet_table(
 	mp_date date not null						-- 알림장 작성 날짜
 );
 create sequence mypet_table_seq;
+
+select * from MYPET_TABLE
 
 -- 갤러리 테이블 --
 create table gallery_table(
