@@ -13,5 +13,9 @@ public interface DiaryMapper {
 	public int writeReply(diaryReply dr);
 
 	public List<diaryReply> getReply(diary diary);
+
+	public int deleteReply(diaryReply dr);
+
+	public int updateDiary(diary d);
 	
 }

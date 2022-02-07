@@ -64,4 +64,34 @@ public class DiaryDAO {
 			System.out.println("댓글실패");
 		}
 	}
+
+	public void deleteReply(HttpServletRequest req, diaryReply dr) {
+		
+		try {
+			if (ss.getMapper(DiaryMapper.class).deleteReply(dr) == 1) {
+				req.setAttribute("result", "댓글삭제성공");
+			} else {
+				req.setAttribute("result", "댓글삭제실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "댓글삭제실패");
+		}
+		
+	}
+
+	public void updateDiary(HttpServletRequest req, diary d) {
+
+		try {
+			if (ss.getMapper(DiaryMapper.class).updateDiary(d) == 1) {
+				req.setAttribute("result", "알림장수정성공");
+			} else {
+				req.setAttribute("result", "알림장수정실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "알림장수정실패");
+		}
+		
+	}
 }

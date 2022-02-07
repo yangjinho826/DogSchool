@@ -48,7 +48,7 @@
 			</c:forEach>
 
 			<!-- 강아지목록 -->
-			<button onClick="location.href='yuchiwon.get.allpuppy'" class="member_info_btn">강아지 목록</button>
+			<button onClick="location.href='yuchiwon.get.allpuppy?id=${sessionScope.loginMember.id}&typee=${sessionScope.loginMember.typee}'" class="member_info_btn">강아지 목록</button>
 		</div>
 	</section>
 </body>
