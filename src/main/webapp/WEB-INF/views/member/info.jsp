@@ -15,14 +15,14 @@
 			아이디 <input readonly="readonly" value="${sessionScope.loginMember.id}" name="id">
 		</div>
 		<div>
-			비밀번호 <input value="${sessionScope.loginMember.pw}" name="pw" type="password">
+			비밀번호 <input value="${sessionScope.loginMember.pw}" name="pw" type="password" maxlength="15">
 		</div>
 		<div>
 			비밀번호 확인
-			<input name="pw1" type="password">
+			<input name="pw1" type="password" maxlength="15">
 		</div>
 		<div>
-			이름 <input value="${sessionScope.loginMember.name}" name="name" >
+			이름 <input value="${sessionScope.loginMember.name}" name="name" maxlength="10">
 		</div>
 		<div>
 			휴대전화번호<br>

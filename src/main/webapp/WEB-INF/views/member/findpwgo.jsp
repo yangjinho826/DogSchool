@@ -13,7 +13,7 @@
 			아이디 <input name="id"> <br>
 		</div>
 		<div>
-			이름 <input name="name"> <br>
+			이름 <input name="name" maxlength="10"> <br>
 		</div>
 		<div>
 			휴대전화번호 <input name="phonenumber"> <br>

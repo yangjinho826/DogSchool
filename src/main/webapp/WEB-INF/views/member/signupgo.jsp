@@ -9,19 +9,19 @@
 <body>
 	<form action="member.usignup" method="post" name="myForm" onsubmit="return membercall()">
 		<div>
-			아이디 <input id="id_Input" name="id" placeholder="필수, 영어/숫자만" maxlength="20" autocomplete="off">
+			아이디 <input id="id_Input" name="id" placeholder="필수, 영어/숫자만" maxlength="15" autocomplete="off">
 			<input id="id2" name="id2" value="0" type="hidden">
 			<span id = "idcheck"></span>
 		</div>
 		<div>
-			비밀번호 <input name="pw" type="password" placeholder="필수, 영어/숫자만" maxlength="20" autocomplete="off">
+			비밀번호 <input name="pw" type="password" placeholder="필수, 영어/숫자만" maxlength="15" autocomplete="off">
 		</div>
 		<div>
 			비밀번호 확인
-			<input name="pw1" type="password" placeholder="필수, 영어/숫자만" maxlength="20" autocomplete="off">
+			<input name="pw1" type="password" placeholder="필수, 영어/숫자만" maxlength="15" autocomplete="off">
 		</div>
 		<div>
-			이름 <input name="name" placeholder="필수" maxlength="20" autocomplete="off">
+			이름 <input name="name" placeholder="필수" maxlength="10" autocomplete="off">
 		</div>
 		<div>
 			휴대전화번호<br>
