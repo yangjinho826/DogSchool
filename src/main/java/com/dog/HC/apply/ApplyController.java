@@ -42,6 +42,7 @@ public class ApplyController {
 		return "index";
 	}
 	
+	
 	//유치원 선택 후 견주 등록하는 폼으로 이동
 	@RequestMapping(value = "apply.go.pet", method = RequestMethod.GET)
 	public String applyGoPet(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
@@ -55,6 +56,7 @@ public class ApplyController {
 		return "index";
 	}
 	
+	
 	//원장->관리자 유치원 신청
 	@RequestMapping(value = "apply.school", method = RequestMethod.GET)
 	public String applySchool(Member m, ApplySchool s, HttpServletRequest req) {
@@ -62,7 +64,8 @@ public class ApplyController {
 		aDAO.applySchool(s, req);
 		
 		//주체: 원장
-		mDAO.getMyTeacher(m, req); //승인한 목록 조회
+		//승인한 목록 조회
+		mDAO.getMyTeacher(m, req);
 		mDAO.getMyPet(m, req);
 		
 		mDAO.getAllSchool(req);
@@ -91,7 +94,7 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-	//견주->원장 강아지 신청 테이블에 등록
+	//견주->원장 강아지 신청
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
 	public String applyPet(Member m, ApplyPet p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
@@ -106,6 +109,7 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
+	
 	
 	//(각자)신청수락 내역 페이지로 이동
 	@RequestMapping(value = "apply.waiting", method = RequestMethod.GET)
@@ -128,6 +132,7 @@ public class ApplyController {
 		return "index";
 	}
 	
+	
 	//수락하기 페이지로 이동: 추후에 권한마다 보이는 목록 나눠 줘야 함
 	@RequestMapping(value = "accept.go", method = RequestMethod.GET)
 	public String accept(Member m, HttpServletRequest req) {
@@ -144,6 +149,8 @@ public class ApplyController {
 		return "index";
 	}
 	
+	
+	////////////////////////////////////////////////////////////////
 	//관리자: 유치원 수락
 	@RequestMapping(value = "apply.pass.s", method = RequestMethod.GET)
 	public String applyPassSchool(Member m, ApplySchool s, HttpServletRequest req) {
@@ -178,7 +185,6 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-	
 	//원장: 선생님 등록 수락
 	@RequestMapping(value = "apply.pass.t", method = RequestMethod.GET)
 	public String applyPassTeacher(Member m, ApplyTeacher t, HttpServletRequest req) {
@@ -213,7 +219,6 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
-
 	//원장: 강아지(견주) 등록 수락
 	@RequestMapping(value = "apply.pass.p", method = RequestMethod.GET)
 	public String applyPassPet(Member m, ApplyPet p, HttpServletRequest req) {
@@ -245,6 +250,121 @@ public class ApplyController {
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	
+	/////////////////////////////////////////////////////////////
+	//원장->관리자 유치원 신청 취소!
+	@RequestMapping(value = "apply.cancel.da", method = RequestMethod.GET)
+	public String applyCancelSchool(Member m, ApplySchool s, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		aDAO.applyCancelSchool(s, req);
+
+		// 주체: 원장
+		mDAO.getMyTeacher(m, req); // 승인한 목록 조회
+		mDAO.getMyPet(m, req);
+
+		mDAO.getAllSchool(req);
+
+		aDAO.getMySchoolApply(m, req); // 신청내역 유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); // 		선생님전체목록조회
+		aDAO.getMyPetApply(m, req); // 			강아지전체목록조회
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//선생님->원장 등록 신청 취소!
+	@RequestMapping(value = "apply.cancel.ta", method = RequestMethod.GET)
+	public String applyCancelTeacher(Member m, ApplyTeacher t, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		aDAO.applyCancelTeacher(t, req);
+		
+		// 수락: 원장
+		// 승인한 목록 조회
+		mDAO.getMyTeacher(m, req); 
+		mDAO.getMyPet(m, req);
+
+		mDAO.getAllSchool(req);
+
+		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
+		aDAO.getMyPetApply(m, req); // 		강아지전체목록조회
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//견주->원장 등록 신청 취소!
+	@RequestMapping(value = "apply.cancel.ua", method = RequestMethod.GET)
+	public String applyCancelPet(Member m, ApplyPet p, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		aDAO.applyCancelPet(p, req);
+
+		// 수락: 원장
+		// 승인한 목록 조회
+		mDAO.getMyTeacher(m, req);
+		mDAO.getMyPet(m, req);
+
+		mDAO.getAllSchool(req);
+
+		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
+		aDAO.getMyPetApply(m, req); //		 강아지전체목록조회
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	
+	//////////////////////////////////////////////////
+	//원장: 선생님, 견주 삭제
+	@RequestMapping(value = "apply.delete.t", method = RequestMethod.GET)
+	public String applyDeleteT(Member m, ApplyTeacher t, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		aDAO.applyDeleteTeacherP(t, req); //해당 강아지 선생님 컬럼 수정
+		aDAO.applyDeleteTeacher(t, req); //선생님 삭제
+
+		// 수락: 원장
+		// 승인한 목록 조회
+		mDAO.getMyTeacher(m, req);
+		mDAO.getMyPet(m, req);
+
+		mDAO.getAllSchool(req);
+
+		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
+		aDAO.getMyPetApply(m, req); //		 강아지전체목록조회
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}	
+	@RequestMapping(value = "apply.delete.p", method = RequestMethod.GET)
+	public String applyDeletePet(Member m, ApplyPet p, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		aDAO.applyDeletePet(p, req);
+
+		// 수락: 원장
+		// 승인한 목록 조회
+		mDAO.getMyTeacher(m, req);
+		mDAO.getMyPet(m, req);
+
+		mDAO.getAllSchool(req);
+
+		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
+		aDAO.getMyPetApply(m, req); //		 강아지전체목록조회
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}

@@ -88,13 +88,27 @@ select * from Dapply_table where Da_no = #{Da_no}
 
 <!-- 나의 신청 내역 조회 -->
 <select id="getMySchoolApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplySchool">
-select * from Dapply_table where Da_id = #{id}
+select * from Dapply_table where Da_id = #{id} order by Da_no desc
 </select>
 <select id="getMyTeacherApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyTeacher">
-select * from Tapply_table where Ta_id = #{id}
+select * from Tapply_table where Ta_id = #{id} order by Ta_no desc
 </select>
 <select id="getMyPetApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyPet">
-select * from Uapply_table where Ua_id = #{id}
+select * from Uapply_table where Ua_id = #{id} order by Ua_no desc
 </select>
+
+
+<!-- 원장: 선생님, 견주 삭제 -->
+<delete id="deleteTeacher" parameterType="com.dog.HC.apply.ApplyTeacher">
+delete Tapply_table where Ta_no = #{Ta_no} 
+</delete>
+<delete id="deleteTeacherInPet" parameterType="com.dog.HC.apply.ApplyTeacher">
+update Uapply_table set Ua_tname = '선생님 재신청 필요' 
+where Ua_tname = (select Ta_name from Tapply_table where Ta_no = #{Ta_no})
+</delete>
+<delete id="deletePet" parameterType="com.dog.HC.apply.ApplyPet">
+delete Uapply_table where Ua_no = #{Ua_no}
+</delete>
+
 
 </mapper>

@@ -111,3 +111,13 @@
 #acceptTbl img {
 	width:110px;
 }
+
+#btnCancel{
+	border-radius: 5px;
+	padding:4px;
+	margin:5px;
+	font-size:12pt;
+	font-weight:550;
+	color:#303030;
+	background-color: #eaeaea;
+}

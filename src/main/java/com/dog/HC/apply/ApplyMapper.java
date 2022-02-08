@@ -22,4 +22,7 @@ public interface ApplyMapper {
 	public List<ApplySchool> getMySchoolApply(Member m);
 	public List<ApplyTeacher> getMyTeacherApply(Member m);
 	public List<ApplyPet> getMyPetApply(Member m);
+	int deleteTeacher(ApplyTeacher t);
+	int deleteTeacherInPet(ApplyTeacher t);
+	int deletePet(ApplyPet p);
 }

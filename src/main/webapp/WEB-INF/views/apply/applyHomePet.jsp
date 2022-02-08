@@ -9,22 +9,22 @@
 </head>
 <body>
 	<section id="applyHomeArea">
-		<form action="apply.pet" method="post" enctype="multipart/form-data">
+		<form action="apply.pet" method="post" enctype="multipart/form-data" name="myForm3" onsubmit="return applyCheck3()">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
 					<td class="tdTitle" colspan="2" align="center">
 					<b><c:forEach var="ps" items="${getOneSchool }">
 						<input name="Ua_da_no" value="${ps.da_no }" hidden="true">
-						${ps.da_schoolname }
+						"${ps.da_schoolname }"
 					</c:forEach></b> 강아지 등록 양식</td>
 				</tr>
 				<tr>
 					<td class="td1">견주 아이디</td>
-					<td class="td2"><input name="Ua_id" autocomplete="off" placeholder="아이디" value="${sessionScope.loginMember.id}"></td>
+					<td class="td2"><input name="Ua_id" autocomplete="off" placeholder="견주 아이디" value="${sessionScope.loginMember.id}"></td>
 				</tr>
 				<tr>
 					<td class="td1">강아지 이름</td>
-					<td class="td2"><input name="Ua_name" autocomplete="off" placeholder="이름"></td>
+					<td class="td2"><input name="Ua_name" autocomplete="off" placeholder="강아지 이름"></td>
 				</tr>
 				<tr>
 					<td class="td1">강아지 성별</td>
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<td class="td1">강아지 이미지</td>
-					<td class="td2"><input type="file" name="Ua_img"></td>
+					<td class="td2"><input type="file" id="img" name="Ua_img" accept="image/*"></td>
 				</tr>
 				<tr>
 					<td class="td1">희망 선생님 선택</td>

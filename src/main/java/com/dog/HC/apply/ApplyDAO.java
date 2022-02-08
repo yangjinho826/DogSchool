@@ -50,7 +50,6 @@ public class ApplyDAO {
 			req.setAttribute("result", "가입실패");
 		}
 	}
-
 	//선생님-원장 등록 신청
 	public void applyTeacher(ApplyTeacher t, HttpServletRequest req) {
 		try {
@@ -79,7 +78,6 @@ public class ApplyDAO {
 			req.setAttribute("result", "가입실패");
 		}
 	}
-
 	//견주-원장 강아지 신청
 	public void applyPet(ApplyPet p, HttpServletRequest req) {
 		String path = req.getSession().getServletContext().getRealPath("resources/img");
@@ -125,7 +123,9 @@ public class ApplyDAO {
 			req.setAttribute("result", "가입실패");
 		}
 	}
-
+	
+	
+	//////////////////////////////////////////////////////////////
 	//신청 중인 원장-관리자 유치원 전체 조회
 	public void getAllSchoolApply(HttpServletRequest req) {
 		try {
@@ -134,7 +134,6 @@ public class ApplyDAO {
 			e.printStackTrace();
 		}
 	}
-
 	//신청 중인 선생님-원장 선생님 전체 조회
 	public void getAllTeacherApply(Member m, HttpServletRequest req) {
 		Member mm = (Member) req.getSession().getAttribute("loginMember");
@@ -154,6 +153,8 @@ public class ApplyDAO {
 		}
 	}
 
+	
+	/////////////////////////////////////////////////////////////////
 	//유치원 승인(관리자)
 	public void schoolPass(ApplySchool s, HttpServletRequest req) {
 		//Da_no 유치원 구분 코드 받아서
@@ -176,7 +177,6 @@ public class ApplyDAO {
 			System.out.println("유치원 거절 실패");
 		}
 	}
-
 	//선생님 승인(원장)
 	public void teacherPass(ApplyTeacher t, HttpServletRequest req) {
 		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
@@ -195,7 +195,6 @@ public class ApplyDAO {
 			System.out.println("선생님 거절 실패");
 		}
 	}
-
 	//강아지 승인(원장)
 	public void petPass(ApplyPet p, HttpServletRequest req) {
 		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
@@ -215,6 +214,8 @@ public class ApplyDAO {
 		}
 	}
 	
+	
+	//////////////////////////////////////////////////////////
 	//한 유치원에 존재하는 모든 선생님 조회
 	public void getOneSchoolTeacher(ApplyTeacher t, HttpServletRequest req) {
 		t.setTa_da_no(Integer.parseInt(req.getParameter("Da_no")));
@@ -230,6 +231,8 @@ public class ApplyDAO {
 		}
 	}
 
+	
+	////////////////////////////////////////////////////
 	//로그인 후 내가 신청해서 수락 대기 중인 목록 보기
 	public void getMySchoolApply(Member m, HttpServletRequest req) {
 		Member mm = (Member) req.getSession().getAttribute("loginMember");
@@ -260,4 +263,59 @@ public class ApplyDAO {
 		}
 	}
 
+	
+	/////////////////////////////////////////////////////////////
+	//신청 취소
+	public void applyCancelSchool(ApplySchool s, HttpServletRequest req) {
+		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		if (ss.getMapper(ApplyMapper.class).schoolFail(s) == 1) {
+			System.out.println("유치원 신청 취소 성공");
+		} else {
+			System.out.println("유치원 신청 취소 실패");
+		}
+	}
+	public void applyCancelTeacher(ApplyTeacher t, HttpServletRequest req) {
+		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		if (ss.getMapper(ApplyMapper.class).teacherFail(t) == 1) {
+			System.out.println("선생님 신청 취소 성공");
+		} else {
+			System.out.println("선생님 신청 취소 실패");
+		}
+	}
+	public void applyCancelPet(ApplyPet p, HttpServletRequest req) {
+		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
+		if (ss.getMapper(ApplyMapper.class).petFail(p) == 1) {
+			System.out.println("강아지 신청 취소 성공");
+		} else {
+			System.out.println("강아지 신청 취소 실패");
+		}
+	}
+	
+	
+	///////////////////////////////////////////////////////
+	//원장: 선생님, 견주 삭제
+	public void applyDeleteTeacher(ApplyTeacher t, HttpServletRequest req) {
+		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		if (ss.getMapper(ApplyMapper.class).deleteTeacher(t) == 1) {
+			System.out.println("선생님 삭제 성공"); //테이블에서 해당 컬럼 삭제
+		} else {
+			System.out.println("선생님 삭제 실패");
+		}
+	}
+	public void applyDeleteTeacherP(ApplyTeacher t, HttpServletRequest req) {
+		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		if(ss.getMapper(ApplyMapper.class).deleteTeacherInPet(t) >= 1) {
+			System.out.println("해당 강아지 선생님 빈칸 처리 완료");
+		} else {
+			System.out.println("해당 강아지 선생님 빈칸 처리 실패(또는 맡은 강아지 없음)");
+		}
+	}
+	public void applyDeletePet(ApplyPet p, HttpServletRequest req) {
+		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
+		if (ss.getMapper(ApplyMapper.class).deletePet(p) == 1) {
+			System.out.println("강아지 삭제 성공"); //테이블에서 해당 컬럼 삭제
+		} else {
+			System.out.println("강아지 삭제 실패");
+		}
+	}
 }

@@ -101,12 +101,13 @@ create table Uapply_table(
     Ua_gender varchar2(30 char) not null, --(강아지성별)
     Ua_daterange varchar2(30 char) not null, --(기간)
     Ua_age number(3) not null, --(강아지 나이)
-    Ua_img varchar2(100 char)not null, --(강아지이미지)
+    Ua_img varchar2(100 char) not null, --(강아지이미지)
     Ua_tname varchar2(20 char)not null, --(선생님 목록)
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
 select * from Uapply_table
+
 
 -- 알림장 테이블 --
 create table mypet_table(

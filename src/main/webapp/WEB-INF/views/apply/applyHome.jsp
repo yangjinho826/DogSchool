@@ -51,7 +51,7 @@
 
 		<c:if test="${g.typee eq 2}">
 		<!-- if 선생님 권한 로그인 시 -->
-		<form action="apply.teacher">
+		<form action="apply.teacher" name="myForm2" onsubmit="return applyCheck2()">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
 					<td class="tdTitle" colspan="2" align="center">선생님 등록 양식</td>
