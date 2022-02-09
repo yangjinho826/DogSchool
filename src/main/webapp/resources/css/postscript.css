@@ -210,5 +210,9 @@
  	transform: scale(1.1) ;
  	}
   
-  
+  /* 페이징 css */
+  #postscript_paging{
+  	margin: auto;
+  }
+ 
  
