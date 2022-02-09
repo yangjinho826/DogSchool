@@ -144,7 +144,6 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
-<<<<<<< HEAD
 -- 유치원 후기 테이블 --
 create table review_table(
 	r_no number(3) primary key,
@@ -156,7 +155,7 @@ create table review_table(
 	
 );
 create sequence review_table_seq;
-=======
+
 	select rn, n_no,n_id,n_title,n_txt,n_date
 		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
 		from (select n_no,n_id,n_title,n_txt,n_date
@@ -164,4 +163,3 @@ create sequence review_table_seq;
 		order by n_date desc))
 	where rn < 5
 
->>>>>>> 3e76162021a301332026f982a692ec96cd8591e8

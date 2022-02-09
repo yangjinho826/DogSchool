@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dog.HC.TokenMaker;
+import com.dog.HC.apply.ApplyDAO;
+import com.dog.HC.apply.ApplySchool;
+import com.dog.HC.apply.ApplyTeacher;
+import com.dog.HC.manage.ManageDAO;
+import com.dog.HC.member.Member;
 import com.dog.HC.member.MemberDAO;
 
 
@@ -16,16 +21,24 @@ import com.dog.HC.member.MemberDAO;
 public class ReviewController {
 	
 	@Autowired
+	private ManageDAO mDAO;
+	
+	@Autowired
 	private MemberDAO mDAOO;
 	
 	@Autowired
 	private ReviewDAO rDAO;
 	
+	@Autowired
+	private ApplyDAO aDAO;
+	
 	
 	@RequestMapping(value = "review.go", method = RequestMethod.GET)
 	public String review(review r, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		rDAO.getAllreview(r, req);
+		rDAO.getTotal();
+		rDAO.pageView(r, req);
+		rDAO.page(r, req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "review/review_Home.jsp");
@@ -48,7 +61,9 @@ public class ReviewController {
 	public String reviewwirte(review r, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		rDAO.getWrite(r, req);
-		rDAO.getAllreview(r, req);
+		rDAO.getTotal();
+		rDAO.pageView(r, req);
+		rDAO.page(r, req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "review/review_Home.jsp");
@@ -96,5 +111,18 @@ public class ReviewController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "list.go", method = RequestMethod.GET)
+	public String apply(Member m, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		mDAO.getAllSchool(req);
+
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "review/list.jsp");			
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
 	
 }

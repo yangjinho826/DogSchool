@@ -14,4 +14,10 @@ public interface ReviewMapper {
 
 	public int reviewUpdate(review r);
 
+	public int getreviewTotalCount();
+
+	public List<review> getAllreview(review r);
+
+	public List<review> getfivereview(review r);
+
 }
