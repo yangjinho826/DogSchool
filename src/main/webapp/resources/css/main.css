@@ -44,6 +44,12 @@ a {
 	font-weight: bold;
 }
 
+#loginInfo{
+	padding:3px;
+	font-weight:600;
+	font-size:12pt;
+}
+
 .member_info_btn:hover{
 	transform: scale(1.1);
 }

@@ -13,8 +13,14 @@
 		<div>
 			<button onclick="location.href='HC.go'" class="member_info_btn">홈페이지</button>
 		</div>
-		<div  class="member_info">
-			${sessionScope.loginMember.id} 
+		<div class="member_info">
+			<span id="loginInfo">
+				${sessionScope.loginMember.id} 
+				<c:if test="${sessionScope.loginMember.typee eq 3}">(원장님)</c:if>
+				<c:if test="${sessionScope.loginMember.typee eq 2}">(선생님)</c:if>
+				<c:if test="${sessionScope.loginMember.typee eq 1}">(견주님)</c:if>
+				<c:if test="${sessionScope.loginMember.typee eq 0}">(관리자)</c:if>
+			</span>
 			<button class="member_info_btn" onclick="Memberinfo()"> 내 정보 </button>	
 			<button class="member_info_btn" onclick="logout()"> 로그아웃 </button>	
 			

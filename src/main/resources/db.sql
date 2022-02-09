@@ -128,6 +128,7 @@ create sequence mypet_table_seq;
 
 select * from MYPET_TABLE
 
+
 -- 갤러리 테이블 --
 create table gallery_table(
 	g_no number(3) primary key,

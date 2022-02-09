@@ -85,6 +85,8 @@ public class ApplyController {
 		mDAOO.loginCheck(req);
 		aDAO.applyTeacher(t, req);
 		
+		mDAO.getAllSchool(req);
+		
 		aDAO.getMySchoolApply(m, req); //       유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회
 		aDAO.getMyPetApply(m, req); //			강아지전체목록조회
@@ -99,6 +101,8 @@ public class ApplyController {
 	public String applyPet(Member m, ApplyPet p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		aDAO.applyPet(p, req);
+		
+		mDAO.getAllSchool(req);
 		
 		aDAO.getMySchoolApply(m, req); //       유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회

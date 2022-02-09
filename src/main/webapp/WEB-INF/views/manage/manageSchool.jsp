@@ -10,7 +10,6 @@
 <body>
 <section id="manageHomeArea">
 	<div>
-
 		<h2 align="center" id="manageHomeTitle">이용 중인 유치원</h2>
 		<div id="manageMenuBar">
 			<div id="managePaging">
