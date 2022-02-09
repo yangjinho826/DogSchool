@@ -39,13 +39,11 @@ public class noticeDAO {
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
 	    n.setN_da_no(from);
-	    n.setN_no(to);
-	    
+	    n.setN_no(to); 
 	    
 	    noticemapper mm = ss.getMapper(noticemapper.class);
 		List<notice> notices = mm.getAllnotice(n);
 		req.setAttribute("notices", notices);
-  
 	}
 	
 	public void page(notice n, HttpServletRequest req) {

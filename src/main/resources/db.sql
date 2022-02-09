@@ -70,8 +70,6 @@ create table Dapply_table(
     Da_phonenumber varchar2(20 char) not null,
     Da_agree number(3) not null --<- 0 수락시 1
 );
-
-	
 create sequence Dapply_table_seq;
 
 select * from UAPPLY_TABLE
