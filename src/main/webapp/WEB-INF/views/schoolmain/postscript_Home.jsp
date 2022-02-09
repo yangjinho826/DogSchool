@@ -25,18 +25,60 @@
 					<td class="postscript_table_title" style="width:20%;"> 작성자</td>
 					<td class="postscript_table_title" style="width:20%;"> 날짜 </td>
 				</tr>
-
+				
+				<c:set var="num" value="${TotalCount - ((pg-1) * rowSize) }"/>
 				<c:forEach var="p" items="${postscripts }">
 				<tr>
-					<td>${p.p_no }</td>
+					<td>${num}</td>
 					<td><a href="postscript.Detail?p_no=${p.p_no}">${p.p_title }</a></td>
 					<td>${p.p_id }</td>
 					<td><fmt:formatDate value="${p.p_date }" type="both" dateStyle="short" timeStyle="short"/></td>
 				</tr>
+				<c:set var="num" value="${num-1 }"></c:set>
 				</c:forEach>
-
 			</table>
 		</section>
+		<table id ="postscript_paging">
+			<tr>
+			<td>
+			<c:choose>
+	        <c:when test = "${pg > block}">
+	            [<a href="postscript.go?pg=1">◀◀</a>]
+	            [<a href="postscript.go?pg=${fromPage -1}">◀</a>] 
+	        </c:when>
+	
+	        <c:otherwise>
+	            [<span style="color:gray">◀◀</span>]   
+	            [<span style="color:gray">◀</span>]
+	        </c:otherwise>
+	     	</c:choose>
+	
+	        <c:forEach var="i" begin="${fromPage }" end="${toPage }">
+	        	<c:choose>
+	        	<c:when test = "${i == pg }">
+	        		[${i }]
+	        	</c:when>
+	        	
+	        	<c:otherwise>
+	        		[<a href="postscript.go?pg=${i }">${i }</a>]
+	        	</c:otherwise>
+	        	</c:choose>
+	        	
+	        </c:forEach>
+	       
+	        <c:choose>
+	        	<c:when test = "${toPage < allPage }">
+	        		[<a href="postscript.go?pg=${toPage + 1}">▶</a>]
+	                [<a href="postscript.go?pg=${allPage}">▶▶</a>]
+	        	</c:when>
+	        	<c:otherwise>
+	        		[<span style="color:gray">▶</span>]
+	                [<span style="color:gray">▶▶</span>]
+	        	</c:otherwise>       
+	        </c:choose>
+	        </td>
+	        </tr>
+		</table>
 	</section>
 </body>
 </html>

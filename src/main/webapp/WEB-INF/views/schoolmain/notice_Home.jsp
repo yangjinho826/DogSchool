@@ -30,16 +30,60 @@
 					<td class="notic_table_title" style="width:20%;"> 작성자</td>
 					<td class="notic_table_title" style="width:20%;"> 날짜 </td>
 				</tr>
+		
+				<c:set var="num" value="${TotalCount - ((pg-1) * rowSize) }"/>
 				<c:forEach var="n" items="${notices }">
-				<tr>
-					<td>${n.n_no }</td>
-					<td><a href="notice.Detail?n_no=${n.n_no}">${n.n_title }</a></td>
-					<td>${n.n_id }</td>
-					<td><fmt:formatDate value="${n.n_date }" type="both" dateStyle="short" timeStyle="short"/></td>
-				</tr>
+					<tr>
+						<td>${num }</td>
+						<td><a href="notice.Detail?n_no=${n.n_no}">${n.n_title }</a></td>
+						<td>${n.n_id }</td>
+						<td><fmt:formatDate value="${n.n_date }" type="both" dateStyle="short" timeStyle="short"/></td>
+					</tr>
+					<c:set var="num" value="${num-1 }"></c:set>
 				</c:forEach>
 			</table>
 		</section>
+		<table id ="notic_paging">
+			<tr>
+			<td>
+			<c:choose>
+	        <c:when test = "${pg > block}">
+	            [<a href="notice.go?pg=1">◀◀</a>]
+	            [<a href="notice.go?pg=${fromPage -1}">◀</a>] 
+	        </c:when>
+	
+	        <c:otherwise>
+	            [<span style="color:gray">◀◀</span>]   
+	            [<span style="color:gray">◀</span>]
+	        </c:otherwise>
+	     	</c:choose>
+	
+	        <c:forEach var="i" begin="${fromPage }" end="${toPage }">
+	        	<c:choose>
+	        	<c:when test = "${i == pg }">
+	        		[${i }]
+	        	</c:when>
+	        	
+	        	<c:otherwise>
+	        		[<a href="notice.go?pg=${i }">${i }</a>]
+	        	</c:otherwise>
+	        	</c:choose>
+	        	
+	        </c:forEach>
+	       
+	        <c:choose>
+	        	<c:when test = "${toPage < allPage }">
+	        		[<a href="notice.go?pg=${toPage + 1}">▶</a>]
+	                [<a href="notice.go?pg=${allPage}">▶▶</a>]
+	        	</c:when>
+	        	<c:otherwise>
+	        		[<span style="color:gray">▶</span>]
+	                [<span style="color:gray">▶▶</span>]
+	        	</c:otherwise>       
+	        </c:choose>
+	        </td>
+	        </tr>
+		</table>
 	</section>
 </body>
 </html>

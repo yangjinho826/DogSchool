@@ -1,6 +1,6 @@
 package com.dog.HC.schoolmain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -87,6 +87,50 @@ public class scheduleDAO {
 			System.out.println("삭제실패");
 		}
 	}
+
+	public void getmonschedule(schedule s, HttpServletRequest req) {
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String month = sdf.format(d);
+		String month2 =  month.substring(5,7);
+		month2 +="월";
+		
+		s.setS_month(month2);
+		
+		schedulemapper mm = ss.getMapper(schedulemapper.class);
+		List<schedule> monethschedule = mm.getmonschedule(s);
+		req.setAttribute("ms", monethschedule);
+		
+		for (schedule mon : monethschedule) {
+			if(mon.getS_month().equals("01월")) {
+				req.setAttribute("mon", "01월");
+			}else if(mon.getS_month().equals("02월")){
+				req.setAttribute("mon", "02월");
+			}else if(mon.getS_month().equals("03월")){
+				req.setAttribute("mon", "03월");
+			}else if(mon.getS_month().equals("04월")){
+				req.setAttribute("mon", "04월");
+			}else if(mon.getS_month().equals("05월")){
+				req.setAttribute("mon", "05월");
+			}else if(mon.getS_month().equals("06월")){
+				req.setAttribute("mon", "06월");
+			}else if(mon.getS_month().equals("07월")){
+				req.setAttribute("mon", "07월");
+			}else if(mon.getS_month().equals("08월")){
+				req.setAttribute("mon", "08월");
+			}else if(mon.getS_month().equals("09월")){
+				req.setAttribute("mon", "09월");
+			}else if(mon.getS_month().equals("10월")){
+				req.setAttribute("mon", "10월");
+			}else if(mon.getS_month().equals("11월")){
+				req.setAttribute("mon", "11월");
+			}else if(mon.getS_month().equals("12월")){
+				req.setAttribute("mon", "12월");
+			}
+		}
+	}
+
+
 
 }
 

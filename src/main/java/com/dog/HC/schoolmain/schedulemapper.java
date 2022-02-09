@@ -14,4 +14,6 @@ public interface schedulemapper {
 
 	int scheduleDelete(schedule s);
 
+	List<schedule> getmonschedule(schedule s);
+
 }

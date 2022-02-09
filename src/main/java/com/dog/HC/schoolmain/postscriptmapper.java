@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface postscriptmapper {
 
-	List<postscript> getAllpostscript();
+	List<postscript> getAllpostscript(postscript p);
 
 	int postscriptWrite(postscript p);
 
@@ -14,6 +14,8 @@ public interface postscriptmapper {
 
 	int postscriptUpdate(postscript p);
 
+	int getpostscripTotalCount();
 
+	List<postscript> getfivepostscript(postscript p);
 
 }

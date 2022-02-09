@@ -32,11 +32,15 @@ public class schoolmainController {
 	private MemberDAO mDAOO;
 	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
-	public String schoolmain(notice n, HttpServletRequest req) {
+	public String schoolmain(notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-	
+		nDAO.getfivenotice(n, req);
+		pDAO.getfivepostscript(p, req);
+		pTDAO.getAllpriceTag(pT, req);
+		sDAO.getmonschedule(s, req);
+		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "main/home.jsp");
+		req.setAttribute("contentPage", "schoolmain/Schoolhome.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
@@ -45,7 +49,9 @@ public class schoolmainController {
 	@RequestMapping(value = "notice.go", method = RequestMethod.GET)
 	public String notice(notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		nDAO.getAllnotice(n, req);
+		nDAO.getTotal();
+		nDAO.pageView(n, req);
+		nDAO.page(n, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
@@ -68,7 +74,9 @@ public class schoolmainController {
 	public String noticewirte(notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		nDAO.getWrite(n, req);
-		nDAO.getAllnotice(n, req);
+		nDAO.getTotal();
+		nDAO.pageView(n, req);
+		nDAO.page(n, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
@@ -127,7 +135,10 @@ public class schoolmainController {
 	@RequestMapping(value = "postscript.go", method = RequestMethod.GET)
 	public String postscript(postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		pDAO.getAllpostscript(p, req);
+		pDAO.getpTotal();
+		pDAO.ppageView(p, req);
+		pDAO.ppage(p, req);
+		
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
@@ -150,7 +161,10 @@ public class schoolmainController {
 	public String postscriptwirte(postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pDAO.getWrite(p, req);
-		pDAO.getAllpostscript(p, req);
+		pDAO.getpTotal();
+		pDAO.ppageView(p, req);
+		pDAO.ppage(p, req);
+		
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
