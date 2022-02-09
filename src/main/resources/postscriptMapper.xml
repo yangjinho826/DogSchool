@@ -2,8 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dog.HC.schoolmain.postscriptmapper">
 
-	<select id="getAllpostscript" resultType="com.dog.HC.schoolmain.postscript">
-		select * from postscript_table order by p_date desc
+	<select id="getAllpostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">
+			select rn, p_no, p_da_no, p_id,p_title,p_txt, p_date
+			from (select Rownum as rn,p_no, p_da_no, p_id,p_title,p_txt, p_date
+				from (select p_no, p_da_no, p_id,p_title,p_txt, p_date
+					  from postscript_table
+				      order by p_date desc))
+		where RN between #{p_da_no} and #{p_no}
 	</select>
 	
 	<select id="getpostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">
@@ -26,5 +31,17 @@
 		set p_txt = #{p_txt },p_title=#{p_title }
 		where p_no = #{p_no}
 	</update>
-
+	
+	<select id="getpostscripTotalCount" resultType="int">
+		select count(*) from postscript_table
+	</select>
+	
+	<select id="getfivepostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">
+		select rn, p_no, p_da_no, p_id,p_title,p_txt, p_date
+			from (select Rownum as rn,p_no, p_da_no, p_id,p_title,p_txt, p_date
+				from (select p_no, p_da_no, p_id,p_title,p_txt, p_date
+					  from postscript_table
+				      order by p_date desc))
+		where rn &lt; 6
+	</select>
 </mapper>
