@@ -25,4 +25,10 @@
 		delete from schedule_table
 		where s_no = #{s_no}
 	</delete>
+	
+	<select id="getmonschedule" resultType="com.dog.HC.schoolmain.schedule"  parameterType="com.dog.HC.schoolmain.schedule">
+		select * 
+		from schedule_table
+		where s_month = #{s_month}
+	</select>
 </mapper>

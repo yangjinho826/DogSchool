@@ -21,6 +21,9 @@ create table notice_table(
 );
 create sequence notice_seq;
 
+	select *
+		from notice_table
+		order by n_date desc
 
 -- 선생님 후기 테이블 --
 create table postscript_table(
@@ -68,6 +71,7 @@ create table Dapply_table(
     Da_agree number(3) not null --<- 0 수락시 1
 );
 
+	
 create sequence Dapply_table_seq;
 
 select * from UAPPLY_TABLE
@@ -140,6 +144,7 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
+<<<<<<< HEAD
 -- 유치원 후기 테이블 --
 create table review_table(
 	r_no number(3) primary key,
@@ -151,3 +156,12 @@ create table review_table(
 	
 );
 create sequence review_table_seq;
+=======
+	select rn, n_no,n_id,n_title,n_txt,n_date
+		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
+		from (select n_no,n_id,n_title,n_txt,n_date
+		from notice_table
+		order by n_date desc))
+	where rn < 5
+
+>>>>>>> 3e76162021a301332026f982a692ec96cd8591e8
