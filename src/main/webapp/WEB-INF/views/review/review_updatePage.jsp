@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="review.update" name ="myForm" onsubmit="return review_call2()" method="post" >
+		<section id="postscript_update">
+			<section class="postscript_update">
+				<h1 class="postscript_update_title">유치원 후기 수정</h1>
+				<div class="postscript_update_title">
+						<span class="postscript_update_input_w">제목</span>
+						<input class="postscript_update_input_w" name="r_title" value="${rv.r_title }">
+				</div>
+				    <input name="r_no" value="${rv.r_no }" type="hidden">
+				<div class="postscript_update_body">
+					<section class="postscript_update_smalltitle">
+					<div>작성자 : ${rv.r_id }</div>
+					<div>작성일 : <fmt:formatDate value="${rv.r_date }" type="both" dateStyle="short" timeStyle="short"/></div>
+					</section>
+					<textarea id="summernote" name="r_txt" >${rv.r_txt }</textarea>
+				</div>
+			</section>
+			<section id="postscript_update_Button">
+				<div class="postscript_update_Button">
+					<button type="button" onclick="location.href='review.go'" class="postscript_update_btn">목록</button>
+				</div>
+				<div class="postscript_update_Button">
+					<button class="postscript_update_btn">확인</button>
+				</div>
+			</section>
+		</section>
+	</form>
+</body>
+</html>

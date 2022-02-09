@@ -55,7 +55,7 @@
 				<beans:value>classpath:manageMapper.xml</beans:value>
 				<beans:value>classpath:yuchiwonMapper.xml</beans:value>
 				<beans:value>classpath:diaryMapper.xml</beans:value>
-
+				<beans:value>classpath:reviewMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

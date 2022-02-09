@@ -31,6 +31,7 @@
 	<script type="text/javascript" src="resources/js/member.js"></script>
 	<script type="text/javascript" src="resources/js/jsApply.js"></script>
 	<script type="text/javascript" src="resources/js/diary.js"></script>
+	<script type="text/javascript" src="resources/js/review.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
