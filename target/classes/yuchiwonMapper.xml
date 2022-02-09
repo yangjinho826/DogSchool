@@ -6,24 +6,24 @@
 		parameterType="map">
 		<choose>
 			<when test="typeee == 1">
-				select ua_name
+				select *
 				from UAPPLY_TABLE
 				where ua_id = #{iddd} and ua_agree = 1
 			</when>
 			<when test="typeee == 2">
-				select ua_name
-				from uapply_table
+				select distinct *
+				from uapply_table, mypet_table 
 				where ua_tname in (
 					select ta_name
 					from tapply_table
 					where ta_agree = 1
 					and ta_no in (
-						select ta_no
+						select  ta_no
 						from TAPPLY_TABLE, SIGNUP_TABLE
 						where ta_id = id and
 						id = #{iddd}
-						)
-					)
+						) 
+					)  and ua_id = mp_uid
 			</when>
 		</choose>
 		<!-- select * from UAPPLY_TABLE where ua_agree = 1 id = ua_id and id = 

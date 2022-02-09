@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.member.Member;
+
 @Service
 public class DiaryDAO {
 
@@ -27,12 +29,10 @@ public class DiaryDAO {
 	}
 
 	public void writeDiary(HttpServletRequest req, diary d) {
-		int mp_da_no = 1;
-		String mp_tid = "sy";
-		String mp_uid = "mz";
-		String mp_uname = "초코";
+		String mp_tid = req.getParameter("mp_tid");
+		String mp_uid = req.getParameter("mp_uid");
+		String mp_uname = req.getParameter("mp_uname");
 		
-		d.setMp_da_no(mp_da_no);
 		d.setMp_tid(mp_tid);
 		d.setMp_uid(mp_uid);
 		d.setMp_uname(mp_uname);
@@ -45,16 +45,16 @@ public class DiaryDAO {
 		}
 	}
 
-//	public void getDiary(HttpServletRequest req, diary d) {
-//		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
-//		diary dr= dm.getDiary(d);
-//			
-//		req.setAttribute("dr", dr);
-//	}
+	public void getDiary(HttpServletRequest req, diary d) {
+		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
+		diary dr= dm.getDiary(d);
+			
+		req.setAttribute("d", dr);
+	}
 	
 	public void writeReply(HttpServletRequest req, diaryReply dr) {
-		String r_owner = "mz";
-		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		String r_owner = m.getName();
 		dr.setR_owner(r_owner);
 		
 		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
@@ -91,6 +91,21 @@ public class DiaryDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("result", "알림장수정실패");
+		}
+		
+	}
+
+	public void deleteDiary(HttpServletRequest req, diary d) {
+		
+		try {
+			if (ss.getMapper(DiaryMapper.class).deleteDiary(d) == 1) {
+				req.setAttribute("result", "알림장삭제성공");
+			} else {
+				req.setAttribute("result", "알림장삭제실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "알림장삭제실패");
 		}
 		
 	}

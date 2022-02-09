@@ -51,7 +51,7 @@ public class YuchiwonC {
 	@RequestMapping(value = "yuchiwon.get.diary", method = RequestMethod.GET)
 	public String diarygo(HttpServletRequest req, puppy puppy, diary d) {
 		mDAOO.loginCheck(req);
-		ydao.getPuppy(req, puppy);
+		//ydao.getPuppy(req, puppy);
 		ddao.getAllDiary(req, d);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
@@ -102,9 +102,10 @@ public class YuchiwonC {
 	@RequestMapping(value = "diary.update.go", method = RequestMethod.GET)
 	public String diaryupdatego(HttpServletRequest req, diaryReply dr, diary d) {
 		mDAOO.loginCheck(req);
+		ddao.getDiary(req, d);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "yuchiwon/diary_detail.jsp");
+		req.setAttribute("contentPage", "yuchiwon/diary_update.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		
 		return "index";
@@ -114,6 +115,20 @@ public class YuchiwonC {
 	public String diaryupdate(HttpServletRequest req, diary d) {
 		if (mDAOO.loginCheck(req)) {
 			ddao.updateDiary(req, d);
+		}
+		ddao.getAllDiary(req, d);
+		
+		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
+		req.setAttribute("contentPage", "yuchiwon/diary_home.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = "diary.delete", method = RequestMethod.GET)
+	public String diarydelete(HttpServletRequest req, diary d) {
+		if (mDAOO.loginCheck(req)) {
+			ddao.deleteDiary(req, d);
 		}
 		ddao.getAllDiary(req, d);
 		

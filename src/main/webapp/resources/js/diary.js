@@ -18,3 +18,16 @@ function deleteDiary(n){
 		location.href = "diary.delete?mp_no=" + n;
 	}
 }
+
+function writeDiaryGo() {
+	let uid = $(".uid").val();
+	let tid = $(".tid").val();
+	let uname = $(".uname").val();
+	
+	location.href="diary.write.go?mp_uid=" + uid + "mp_tid=" + tid + "mp_uname="+ uname;
+	
+}
+
+function getAllPuppy() {
+
+}

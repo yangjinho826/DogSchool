@@ -17,5 +17,7 @@ public interface DiaryMapper {
 	public int deleteReply(diaryReply dr);
 
 	public int updateDiary(diary d);
+
+	public int deleteDiary(diary d);
 	
 }

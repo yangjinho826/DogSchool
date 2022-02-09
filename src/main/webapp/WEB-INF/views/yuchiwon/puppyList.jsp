@@ -15,7 +15,7 @@
 	</tr>
 	<c:forEach var="p" items="${puppies }">
 	<tr>
-		<td>${p.uA_img }</td> 
+		<td><img src="resources/img/${p.uA_img }"></td>
 		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
 	</tr>
 	</c:forEach>
