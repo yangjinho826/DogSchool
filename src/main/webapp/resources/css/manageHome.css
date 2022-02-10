@@ -20,6 +20,9 @@
 	height: 90px;
 	padding:15px;
 	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 #manageTbl td{
@@ -27,6 +30,9 @@
 	padding:15px;
 	font-size: 14pt;
 	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 .manageDelete{

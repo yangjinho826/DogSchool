@@ -25,4 +25,6 @@ public interface ApplyMapper {
 	int deleteTeacher(ApplyTeacher t);
 	int deleteTeacherInPet(ApplyTeacher t);
 	int deletePet(ApplyPet p);
+	public List<ApplyPet> getPetOne(ApplyPet p);
+	int reapplyPetOnlyTeacher(ApplyPet p);
 }

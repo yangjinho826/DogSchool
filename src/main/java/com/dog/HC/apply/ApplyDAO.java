@@ -24,6 +24,11 @@ public class ApplyDAO {
 	//원장-관리자 유치원 신청
 	public void applySchool(ApplySchool s, HttpServletRequest req) {
 		try {
+			String token = req.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+			
+			if(token.equals(successToken)){ return; }
+			
 			String Da_id = req.getParameter("Da_id");
 			String Da_name = req.getParameter("Da_name");
 			String Da_schoolname = req.getParameter("Da_schoolname");
@@ -42,6 +47,7 @@ public class ApplyDAO {
 
 			if (ss.getMapper(ApplyMapper.class).schoolapply(s) == 1) {
 				req.setAttribute("result", "가입성공");
+				req.getSession().setAttribute("successToken", token);
 			} else {
 				req.setAttribute("result", "가입실패");
 			}
@@ -53,6 +59,11 @@ public class ApplyDAO {
 	//선생님-원장 등록 신청
 	public void applyTeacher(ApplyTeacher t, HttpServletRequest req) {
 		try {
+			String token = req.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+			
+			if(token.equals(successToken)){ return; }
+			
 			int Ta_da_no = Integer.parseInt(req.getParameter("Ta_da_no"));
 			String Ta_id = req.getParameter("Ta_id");
 			String Ta_name = req.getParameter("Ta_name");
@@ -70,6 +81,7 @@ public class ApplyDAO {
 
 			if (ss.getMapper(ApplyMapper.class).teacherapply(t) == 1) {
 				req.setAttribute("result", "가입성공");
+				req.getSession().setAttribute("successToken", token);
 			} else {
 				req.setAttribute("result", "가입실패");
 			}
@@ -79,7 +91,7 @@ public class ApplyDAO {
 		}
 	}
 	//견주-원장 강아지 신청
-	public void applyPet(ApplyPet p, HttpServletRequest req) {
+	public void applyPet(ApplyPet p, HttpServletRequest req) {		
 		String path = req.getSession().getServletContext().getRealPath("resources/img");
 		MultipartRequest mr = null;
 		try {
@@ -91,6 +103,11 @@ public class ApplyDAO {
 		}
 
 		try {
+			String token = mr.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+			
+			if(token.equals(successToken)){ return; }
+			
 			int Ua_da_no = Integer.parseInt(mr.getParameter("Ua_da_no"));
 			String Ua_id = mr.getParameter("Ua_id");
 			String Ua_name = mr.getParameter("Ua_name");
@@ -113,6 +130,7 @@ public class ApplyDAO {
 
 			if (ss.getMapper(ApplyMapper.class).petapply(p) == 1) {
 				req.setAttribute("result", "가입성공");
+				req.getSession().setAttribute("successToken", token);
 			} else {
 				req.setAttribute("result", "가입실패");
 			}
@@ -316,6 +334,33 @@ public class ApplyDAO {
 			System.out.println("강아지 삭제 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
 			System.out.println("강아지 삭제 실패");
+		}
+	}
+	
+	//견주가 선생님 재신청 시에 넘겨질 나머지 견주&강아지 정보
+	public void myPetInfo(ApplyPet p, HttpServletRequest req) {
+		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
+		try {
+			req.setAttribute("myPetOne", ss.getMapper(ApplyMapper.class).getPetOne(p));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//재신청
+	public void applyPetOnlyTeacher(ApplyPet p, HttpServletRequest req) {
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+		
+		p.setUa_no(Integer.parseInt(req.getParameter("Ua_no")));
+		p.setUa_tname(req.getParameter("Ua_tname"));
+
+		if (ss.getMapper(ApplyMapper.class).reapplyPetOnlyTeacher(p) == 1) {
+			System.out.println("선생님 재신청 성공");
+			req.getSession().setAttribute("successToken", token);
+		} else {
+			System.out.println("선생님 재신청 실패");
 		}
 	}
 }

@@ -46,6 +46,11 @@
 	background-color: #98c5e4;
 }
 
+#applyTbl img {
+	margin:10px;
+	width:110px;
+}
+
 #applyTbl input{
 	font-size:12pt;
 	margin:3px 0 3px 10px;
@@ -91,21 +96,28 @@
 	width: 80%;
 	margin-left:auto; margin-right:auto;
 	align-self:center;
-	font-size: 13pt;
 	border-spacing:0px;
 	font-weight:500;
 }
 
 #acceptTbl th{
-	height: 40px;
-	padding:15px;
+	font-size: 14pt;
+	height: 60px;
+	padding:30px;
 	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 #acceptTbl td{
+	font-size: 13pt;
 	height: 30px;
 	padding:15px;
 	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 #acceptTbl img {

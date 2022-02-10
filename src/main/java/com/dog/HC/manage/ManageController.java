@@ -38,11 +38,11 @@ public class ManageController {
 	//(관리자) 시스템 이용 중인 유치원 삭제
 	@RequestMapping(value = "manage.delete", method = RequestMethod.GET)
 	public String deleteSchool(ApplySchool s, HttpServletRequest req) {
-		mDAOO.loginCheck(req);
-		
-		mDAO.deleteSchool(s, req); //삭제 후
-		mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Teacher
-		mDAO.deleteSchoolU(s, req); //						User(Pet)
+		if(mDAOO.loginCheck(req)) {
+			mDAO.deleteSchool(s, req); //삭제 후
+			mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Teacher
+			mDAO.deleteSchoolU(s, req); //						User(Pet)
+		}
 
 		//다시 조회
 		mDAO.getTotal();

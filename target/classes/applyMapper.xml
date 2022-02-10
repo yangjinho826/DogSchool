@@ -111,4 +111,14 @@ delete Uapply_table where Ua_no = #{Ua_no}
 </delete>
 
 
+<!-- 재신청 시 갖고 갈 견주&강아지 정보 조회 -->
+<select id="getPetOne" resultType="com.dog.HC.apply.ApplyPet">
+select * from Uapply_table where Ua_no = #{Ua_no}
+</select>
+<!-- 재신청 진행 -->
+<update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
+update Uapply_table set Ua_agree = 0, Ua_tname = #{Ua_tname} where Ua_no = #{Ua_no}
+</update>
+
+
 </mapper>

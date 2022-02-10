@@ -13,6 +13,7 @@
 		<c:if test="${g.typee eq 3}">
 		<!-- if 원장 권한 로그인 시 -->
 		<form action="apply.school" name="myForm" onsubmit="return applyCheck1()">
+			<input name="token" value="${token }" hidden="hidden">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
 					<td class="tdTitle" colspan="2" align="center">유치원 등록 양식</td>
@@ -52,6 +53,7 @@
 		<c:if test="${g.typee eq 2}">
 		<!-- if 선생님 권한 로그인 시 -->
 		<form action="apply.teacher" name="myForm2" onsubmit="return applyCheck2()">
+			<input name="token" value="${token }" hidden="hidden">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
 					<td class="tdTitle" colspan="2" align="center">선생님 등록 양식</td>
