@@ -94,7 +94,13 @@ select * from Dapply_table where Da_id = #{id}
 select * from Tapply_table where Ta_id = #{id}
 </select>
 <select id="getMyPetApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyPet">
-select * from Uapply_table where Ua_id = #{id}
+	select * from Uapply_table where Ua_id = #{id}
+</select>
+
+<!-- 세션 받아오기 -->
+<select id="getSchoolSession" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
+	select * from Dapply_table
+	where Da_no = #{Da_no} and Da_agree = 1
 </select>
 
 </mapper>

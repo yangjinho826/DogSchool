@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
+import com.dog.HC.schoolmain.priceTag;
+import com.dog.HC.schoolmain.priceTagmapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -258,6 +260,22 @@ public class ApplyDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// 학원 세션 받아오기
+	public void getSchoolSession(ApplySchool d, HttpServletRequest req) {
+		
+		int Da_no = Integer.parseInt(req.getParameter("ps.da_no"));
+		d.setDa_no(Da_no);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool getSchoolSession = mm.getSchoolSession(d);
+	
+		req.getSession().setAttribute("school", getSchoolSession.getDa_no());
+		req.getSession().setAttribute("schoolname", getSchoolSession.getDa_name());
+		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
+		req.getSession().setMaxInactiveInterval(60 * 10);
+		
 	}
 
 }

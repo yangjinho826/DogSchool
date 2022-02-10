@@ -26,7 +26,7 @@
 		</section>
 		<section id="priceTag_Body">
 		
-			<div class="priceTag_table_title"> ${BigDog } </div>
+			<div class="priceTag_table_title">대형견</div>
 			<table class="priceTag">
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
@@ -54,7 +54,7 @@
 				</tr>
 			</table>
 			
-			<div class="priceTag_table_title"> ${MiddleDog } </div>
+			<div class="priceTag_table_title">중형견</div>
 			<table class="priceTag">
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
@@ -82,7 +82,7 @@
 				</tr>
 			</table>
 			
-			<div class="priceTag_table_title"> ${SmallDog } </div>
+			<div class="priceTag_table_title">소형견 </div>
 			<table class="priceTag">
 				<tr class="priceTag_tr">
 				</tr>

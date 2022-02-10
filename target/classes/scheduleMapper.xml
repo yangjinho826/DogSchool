@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dog.HC.schoolmain.schedulemapper">
-	<select id="getAllschedule" resultType="com.dog.HC.schoolmain.schedule">
-		select * from schedule_table order by s_day asc
+	<select id="getAllschedule" resultType="com.dog.HC.schoolmain.schedule" parameterType="com.dog.HC.schoolmain.schedule">
+		select * 
+		from schedule_table 
+		where s_da_no = #{s_da_no}
+		order by s_day asc
 	</select>
 	
 		<select id="getschedule" resultType="com.dog.HC.schoolmain.schedule"  parameterType="com.dog.HC.schoolmain.schedule">
@@ -29,6 +32,6 @@
 	<select id="getmonschedule" resultType="com.dog.HC.schoolmain.schedule"  parameterType="com.dog.HC.schoolmain.schedule">
 		select * 
 		from schedule_table
-		where s_month = #{s_month}
+		where s_month = #{s_month} and s_da_no = #{s_da_no}
 	</select>
 </mapper>

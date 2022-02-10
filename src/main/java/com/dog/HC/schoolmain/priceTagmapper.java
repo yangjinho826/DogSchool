@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface priceTagmapper {
 
-	List<priceTag> getAllpriceTag();
+	List<priceTag> getAllpriceTag(priceTag pT);
 
 	priceTag getBogdog(String bigDog);
 

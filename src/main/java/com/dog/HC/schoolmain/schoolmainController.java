@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dog.HC.TokenMaker;
+import com.dog.HC.apply.ApplyDAO;
+import com.dog.HC.apply.ApplyPet;
+import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.member.MemberDAO;
 
 @Controller
@@ -31,9 +34,14 @@ public class schoolmainController {
 	@Autowired
 	private MemberDAO mDAOO;
 	
+	@Autowired
+	private ApplyDAO aDAO;
+	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
-	public String schoolmain(notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
+	public String schoolmain(ApplySchool d, notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
+		
 		mDAOO.loginCheck(req);
+		aDAO.getSchoolSession(d, req);
 		nDAO.getfivenotice(n, req);
 		pDAO.getfivepostscript(p, req);
 		pTDAO.getAllpriceTag(pT, req);
@@ -49,7 +57,7 @@ public class schoolmainController {
 	@RequestMapping(value = "notice.go", method = RequestMethod.GET)
 	public String notice(notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		nDAO.getTotal();
+		nDAO.getTotal(n, req);
 		nDAO.pageView(n, req);
 		nDAO.page(n, req);
 		
@@ -74,7 +82,7 @@ public class schoolmainController {
 	public String noticewirte(notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		nDAO.getWrite(n, req);
-		nDAO.getTotal();
+		nDAO.getTotal(n, req);
 		nDAO.pageView(n, req);
 		nDAO.page(n, req);
 		
@@ -135,7 +143,7 @@ public class schoolmainController {
 	@RequestMapping(value = "postscript.go", method = RequestMethod.GET)
 	public String postscript(postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		pDAO.getpTotal();
+		pDAO.getpTotal(p, req);
 		pDAO.ppageView(p, req);
 		pDAO.ppage(p, req);
 		
@@ -161,7 +169,7 @@ public class schoolmainController {
 	public String postscriptwirte(postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pDAO.getWrite(p, req);
-		pDAO.getpTotal();
+		pDAO.getpTotal(p, req);
 		pDAO.ppageView(p, req);
 		pDAO.ppage(p, req);
 		

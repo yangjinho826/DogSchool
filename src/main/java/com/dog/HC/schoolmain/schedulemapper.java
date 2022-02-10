@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface schedulemapper {
 
-	List<schedule> getAllschedule();
+	List<schedule> getAllschedule(schedule s);
 
 	int scheduleWrite(schedule s);
 

@@ -9,7 +9,11 @@ create table signup_table(
     typee int not null
 );
 
-select * from signup_table
+select * 
+from signup_table s, Uapply_table u
+where s.id = u.Ua_id
+
+
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -74,11 +78,12 @@ create table Dapply_table(
 	
 create sequence Dapply_table_seq;
 
-select * from UAPPLY_TABLE
-select * from DAPPLY_TABLE dt
- INNER JOIN TAPPLY_TABLE tt
- ON dt.Da_no = tt.Ta_da_no
-where dt.Da_id = 'd1' and tt.Ta_agree = 0;
+
+select * 
+from 
+where d.Da_no = t.Ta_da_no
+
+
 
 
 -- 선생님-원장 신청 테이블 --
@@ -93,7 +98,8 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from TAPPLY_TABLE
+select * from Dapply_table
+
 
 
 -- 견주-원장 신청 테이블 --
@@ -110,7 +116,8 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-select * from Uapply_table
+select * from Tapply_table
+
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -144,10 +151,5 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
-	select rn, n_no,n_id,n_title,n_txt,n_date
-		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
-		from (select n_no,n_id,n_title,n_txt,n_date
-		from notice_table
-		order by n_date desc))
-	where rn < 5
+
 
