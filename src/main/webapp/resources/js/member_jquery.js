@@ -30,6 +30,7 @@ function connectJoinIdInputEvent() {
 function connectJoinpwInputEvent() {
 	
 			$("input").keyup(function() {
+//				var pw = $("#pw").val();
 				var pw = $("#pw").val();
 				var pw1 = $("#pw1").val();
 					if (pw == pw1) {
