@@ -24,4 +24,9 @@ public interface ApplyMapper {
 	public List<ApplyPet> getMyPetApply(Member m);
 	
 	public ApplySchool getSchoolSession(ApplySchool d);
+	
+	public ApplyTeacher TeachCheck(ApplyTeacher a);
+	public ApplySchool DirectorCheck(ApplySchool aps);
+	public ApplyPet UserCheck(ApplyPet ap);
+	
 }

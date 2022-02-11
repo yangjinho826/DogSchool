@@ -17,10 +17,14 @@
 			<h1 class="priceTag_title"> 가격표 </h1>
 			<c:choose> 
 				<c:when test="${memberTypee eq '2'}">
-					<button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					<c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
+					 <button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					</c:if>
 				</c:when>
 				<c:when test="${memberTypee eq '3'}">
-					<button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					<c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+					 <button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					</c:if>
 				</c:when>
 			</c:choose>
 		</section>

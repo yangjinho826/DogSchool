@@ -274,8 +274,81 @@ public class ApplyDAO {
 		req.getSession().setAttribute("school", getSchoolSession.getDa_no());
 		req.getSession().setAttribute("schoolname", getSchoolSession.getDa_name());
 		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
-		req.getSession().setMaxInactiveInterval(60 * 10);
+		req.getSession().setMaxInactiveInterval(60 * 100);
 		
 	}
+
+	public void TeachCheck(ApplyTeacher a, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		if(m == null) {
+			return;
+		}
+		
+		int Ta_da_no = as.getDa_no();
+		String Ta_id = m.getId();
+		
+		a.setTa_da_no(Ta_da_no);
+		a.setTa_id(Ta_id);
+		
+		System.out.println(Ta_da_no);
+		System.out.println(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplyTeacher TCheck = mm.TeachCheck(a);
+		
+		req.setAttribute("TCheck",TCheck);
+
+	}
+
+	public void DirectorCheck(ApplySchool aps, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		if(m == null) {
+			return;
+		}
+		
+		int Ta_da_no = as.getDa_no();
+		String Ta_id = m.getId();
+		
+		aps.setDa_no(Ta_da_no);
+		aps.setDa_id(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool DCheck = mm.DirectorCheck(aps);
+		
+		req.setAttribute("DCheck",DCheck);
+	}
+
+	public void UserCheck(ApplyPet ap, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		if(m == null) {
+			return;
+		}
+		
+		int Ta_da_no = as.getDa_no();
+		String Ta_id = m.getId();
+		
+		ap.setUa_da_no(Ta_da_no);
+		ap.setUa_id(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplyPet UCheck = mm.UserCheck(ap);
+		
+		req.setAttribute("UCheck",UCheck);
+
+	}
+
+	
+
+
+
 
 }

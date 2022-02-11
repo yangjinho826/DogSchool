@@ -20,5 +20,7 @@ public interface noticemapper {
 	public int getNoticeTotalCount(notice n);
 
 	public List<notice> getfivenotice(notice n);
+
+	
 	
 }

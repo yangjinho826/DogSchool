@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,14 +33,26 @@
 						<span class="schedule_write_input_w">내 용 </span>
 						<input type="text"class="schedule" name="s_text" value="${sc.s_text }" placeholder="20자 이하로 입력하세요.">
 				</div>
-				<div>	<button class="schedule_write_btn">수 정 </button></div>
+				<div>	
+				 <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
+				    <button class="schedule_write_btn">수 정 </button>
+				 </c:if> 
+				 <c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+				    <button class="schedule_write_btn">수 정 </button>
+				 </c:if>
+				</div>
 			</form>
 			<section id="schedule_write_btn" >
 			<form action="schedule.Delete" name="popupForm1" >
 					<input name="s_no" value="${sc.s_no }"  type="hidden">
 			</form>
 					<div>
+					 <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
 						<button class="schedule_write_btn" onclick="closeWithDSubmit();">삭 제 </button>
+					</c:if> 
+					<c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+						<button class="schedule_write_btn" onclick="closeWithDSubmit();">삭 제 </button>
+					</c:if>
 					</div>
 			</section>
 	</section>

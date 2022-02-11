@@ -9,11 +9,9 @@ create table signup_table(
     typee int not null
 );
 
-select * 
-from signup_table s, Uapply_table u
-where s.id = u.Ua_id
+select * from Tapply_table
 
-
+and t.Ta_da_no = 1 and s.id = 123
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -74,17 +72,13 @@ create table Dapply_table(
     Da_phonenumber varchar2(20 char) not null,
     Da_agree number(3) not null --<- 0 수락시 1
 );
-
-	
 create sequence Dapply_table_seq;
 
+select Da_no from 
 
-select * 
-from 
-where d.Da_no = t.Ta_da_no
-
-
-
+select *
+from signup_table s, Dapply_table d
+where s.id = d.Da_id and d.DA_NO = 41 
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -98,9 +92,8 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
+
 select * from Dapply_table
-
-
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -151,5 +144,7 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
-
+select *
+	from signup_table s, Dapply_table d
+	where s.id = d.Da_id and d.Da_no = 1 and d.Da_id = 'dfg'
 

@@ -55,7 +55,6 @@ public class noticeDAO {
 		}
 	
 	public void page(notice n, HttpServletRequest req) {
-		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		String strPg = req.getParameter("pg");
 	   	 
 	    int rowSize = 3; //한페이지에 보여줄 글의 수
@@ -182,7 +181,4 @@ public class noticeDAO {
 		
 	}
 
-
-
-	
 }

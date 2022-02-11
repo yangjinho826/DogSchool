@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.apply.ApplyPet;
 import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.member.Member;
 
@@ -154,7 +155,8 @@ public class postscriptDAO {
 		req.setAttribute("fivepostscript", fivepostscript);
 		
 	}
-	
+
+
 	
 	
 }
