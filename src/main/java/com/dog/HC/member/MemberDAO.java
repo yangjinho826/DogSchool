@@ -20,12 +20,14 @@ public class MemberDAO {
 		//int nn = dbMember.getType(); // ==1 or ==2 or ==3
 		
 		//int n = Integer.parseInt(req.getParameter("type"));
+		
 
 		if(dbMember != null) {
 			if(m.getPw().equals(dbMember.getPw())) {
 				req.getSession().setAttribute("loginMember", dbMember);
 				req.getSession().setMaxInactiveInterval(60 * 5);
 			} else {
+
 				req.setAttribute("result", "로그인 실패(비밀번호 오류)");
 				System.out.println("로그인 실패(비밀번호 오류)");
 			}
@@ -264,6 +266,8 @@ public class MemberDAO {
 		System.out.println(ss.getMapper(MemberMapper.class).getMemberNum(m));
 		return ss.getMapper(MemberMapper.class).getMemberNum(m);
 	}
+
+
 
 
 }

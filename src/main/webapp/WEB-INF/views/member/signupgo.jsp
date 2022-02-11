@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 id="findidpw">회원가입</h1>
+	<h1 id="mtitle">회원가입</h1>
 		<form action="member.usignup" method="post" name="myForm" onsubmit="return membercall()">
 			
 			<div id="memberh3">
@@ -20,6 +20,7 @@
 				<span id = "idcheck" class="int"></span>
 			</div>
 			
+			<div></div>
 			<div id="memberh3">
 				<h2>비밀번호 </h2>
 				<span class="box int_"> 

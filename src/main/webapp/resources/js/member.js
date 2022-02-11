@@ -208,17 +208,17 @@ function findidcall(){
 		phonenumber.focus();
 
         return false;
-        
-      if(lessThan(phonenumber,11)){
-    	alert('전화번호에 11자리를 입력해주세요.');
-    	phonenumber.value = "";
-    	phonenumber.focus();
-
-          return false;
-          
-		  }
 	}
+        if(lessThan(phonenumber,11)){
+    		alert('전화번호에 11자리를 입력해주세요.');
+    		phonenumber.value = "";
+    		phonenumber.focus();
+
+            return false;
+      
+    }
 }
+
 
 function findpwcall(){
 	let id = document.myForm.id;
@@ -281,6 +281,6 @@ function findpwcall(){
 		phonenumber.focus();
 
         return false;
-	}
+		}
 }
 

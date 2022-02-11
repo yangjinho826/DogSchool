@@ -22,8 +22,6 @@ public interface MemberMapper {
 	public int getMemberNum(Member m);
 
 
-	
-
 
 
 }

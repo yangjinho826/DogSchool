@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 id="findidpw"> 비밀번호 찾기 </h1>
+	<h1 id="mtitle"> 비밀번호 찾기 </h1>
 		<form action="member.findpw" method="post" name="myForm" onsubmit="return findpwcall()">
 			
 			<div id="memberh3">

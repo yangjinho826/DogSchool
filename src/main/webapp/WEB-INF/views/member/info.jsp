@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 id="findidpw">회원 정보 수정</h1>
+	<h1 id="mtitle">회원 정보 수정</h1>
 		<form action="member.update" method="post" name="myForm" onsubmit="return membercall()">
 			
 			<div id="memberh3">
