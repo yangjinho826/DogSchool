@@ -46,6 +46,7 @@
 	<link rel="stylesheet" href="resources/css/applyHome.css"/>
 	<link rel="stylesheet" href="resources/css/manageHome.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<link rel="stylesheet" href="resources/css/member.css"/>
 	
 </head>
 <body>

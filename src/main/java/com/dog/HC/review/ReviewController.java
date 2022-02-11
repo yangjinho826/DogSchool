@@ -112,17 +112,5 @@ public class ReviewController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "list.go", method = RequestMethod.GET)
-	public String apply(Member m, HttpServletRequest req) {
-		mDAOO.loginCheck(req);
-		mDAO.getAllSchool(req);
-
-
-		req.setAttribute("MenuBar", "main/menu.jsp");
-		req.setAttribute("contentPage", "review/list.jsp");			
-		req.setAttribute("footer", "main/footer.jsp");
-		return "index";
-	}
-	
 	
 }

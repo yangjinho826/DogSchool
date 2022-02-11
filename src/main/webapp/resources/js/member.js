@@ -81,7 +81,7 @@ function membercall(){
 	}
 	
 	if(!kor.test(name.value)){
-		alert('한글만 사용 가능합니다.');
+		alert('이름을 정확하게 입력해 주세요.');
 		name.value = "";
         name.focus();
 
@@ -153,6 +153,7 @@ function logincall(){
 	let id = document.loginForm.id;
 	let pw= document.loginForm.pw;
 	
+	
 	if (isEmpty(id)) {
         alert('아이디를 입력해주세요.');
         id.value = "";
@@ -186,7 +187,7 @@ function findidcall(){
 	}
 	
 	if(!kor.test(name.value)){
-		alert('한글만 사용 가능합니다.');
+		alert('이름을 정확하게 입력해 주세요.');
 		name.value = "";
         name.focus();
 
@@ -201,6 +202,22 @@ function findidcall(){
         return false;
 	}	 
 	
+	if(isNotNumber(phonenumber)){
+		alert('전화번호에 숫자만 입력해주세요.');
+		phonenumber.value = "";
+		phonenumber.focus();
+
+        return false;
+        
+      if(lessThan(phonenumber,11)){
+    	alert('전화번호에 11자리를 입력해주세요.');
+    	phonenumber.value = "";
+    	phonenumber.focus();
+
+          return false;
+          
+		  }
+	}
 }
 
 function findpwcall(){
@@ -208,10 +225,19 @@ function findpwcall(){
 	let name = document.myForm.name;
 	let phonenumber= document.myForm.phonenumber;
 	let kor =  /^[가-힣]+$/;
+	let engnum = /^[a-zA-Z0-9]*$/;
 	
 	if (isEmpty(id)) {
         alert('아이디를 입력해주세요.');
         id.value = "";
+        id.focus();
+
+        return false;
+	}
+	
+	if(!engnum.test(id.value)){
+		alert('아이디를 정확하게 입력해 주세요.');
+		id.value = "";
         id.focus();
 
         return false;
@@ -226,7 +252,7 @@ function findpwcall(){
 	}
 	
 	if(!kor.test(name.value)){
-		alert('한글만 사용 가능합니다.');
+		alert('이름을 정확하게 입력해 주세요.');
 		name.value = "";
         name.focus();
 
@@ -241,5 +267,20 @@ function findpwcall(){
         return false;
 	}	 
 	
+	if(isNotNumber(phonenumber)){
+		alert('전화번호에 숫자만 입력해주세요.');
+		phonenumber.value = "";
+		phonenumber.focus();
+
+        return false;
+	}
+	
+	if(lessThan(phonenumber,11)){
+		alert('전화번호에 11자리를 입력해주세요.');
+		phonenumber.value = "";
+		phonenumber.focus();
+
+        return false;
+	}
 }
 

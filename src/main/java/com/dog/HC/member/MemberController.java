@@ -164,6 +164,6 @@ public class MemberController {
 	public @ResponseBody int memberGet(HttpServletRequest req, Member m) {
 		return mDAO.getMemberNum(req, m);
 	}
-
+	
 	
 }
