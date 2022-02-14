@@ -3,7 +3,7 @@
 /* manageHome */
 #manageHomeArea{
 	margin:40px 0 40px 0;
-	height: fill;
+	min-height: 58%
 }
 
 #manageTbl{

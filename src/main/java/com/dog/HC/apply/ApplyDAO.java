@@ -293,9 +293,6 @@ public class ApplyDAO {
 		a.setTa_da_no(Ta_da_no);
 		a.setTa_id(Ta_id);
 		
-		System.out.println(Ta_da_no);
-		System.out.println(Ta_id);
-		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplyTeacher TCheck = mm.TeachCheck(a);
 		
@@ -345,10 +342,5 @@ public class ApplyDAO {
 		req.setAttribute("UCheck",UCheck);
 
 	}
-
-	
-
-
-
 
 }
