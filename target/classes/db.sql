@@ -72,13 +72,20 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 
-select * from UAPPLY_TABLE
+select * from TAPPLY_TABLE
+
 select * from DAPPLY_TABLE dt
  INNER JOIN TAPPLY_TABLE tt
  ON dt.Da_no = tt.Ta_da_no
 where dt.Da_id = 'd1' and tt.Ta_agree = 0;
 
 
+select count(*) from signup_table st 
+inner join tapply_table tt 
+on st.id = tt.ta_id 
+where st.id = 't4';
+	
+	
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -92,6 +99,8 @@ create table Tapply_table(
 );
 create sequence Tapply_table_seq;
 select * from TAPPLY_TABLE
+where ta_name = 'Lee'
+
 
 
 -- 견주-원장 신청 테이블 --

@@ -53,9 +53,14 @@
 
 #applyTbl input{
 	font-size:12pt;
-	margin:3px 0 3px 10px;
+	margin:3px 0px 3px 10px;
 	height:33px;
 	width:300px;
+}
+
+#applyTbl .idcheck{
+	margin:3px 0px 0px 10px;
+	font-size:11pt;
 }
 
 #selectOption{

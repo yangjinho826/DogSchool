@@ -97,7 +97,6 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice.DDelete", method = RequestMethod.GET)
 	public @ResponseBody int noticeDDelete(notice n, HttpServletRequest req) {
-
 		return nDAO.noticeDDelete(n, req);
 	}
 	

@@ -120,6 +120,7 @@ function applyCheck1(){
 //선생님->원장등록신청
 function applyCheck2(){
 	let id = document.myForm2.Ta_id;
+	let id2 = document.myForm2.id2;
 	let name = document.myForm2.Ta_name;
 	let pn = document.myForm2.Ta_phonenumber;
 	let txt = document.myForm2.Ta_text;
@@ -129,7 +130,7 @@ function applyCheck2(){
         id.value = "";
         id.focus();
         return false;
-	}
+	}	
 	if (isEmpty(name)) {
         alert('이름을 입력해 주세요.');
         name.value = "";
@@ -148,10 +149,35 @@ function applyCheck2(){
 		txt.focus();
 		return false;
 	}
-	if(!isEmpty(id) && !isEmpty(name) && !isEmpty(pn) && !isEmpty(txt)){
+	if(id2.value == 0){
+		alert('신청할 수 없는 아이디입니다.');
+		location.href = "/HC/apply.waiting";
+		return false;
+	}
+	if(!isEmpty(id) && !isEmpty(name) && !isEmpty(pn) && !isEmpty(txt) && id2.value == 1){
 		alert('신청이 성공적으로 완료되었습니다!');
 		return true;
 	}
+}
+function checkTeacher(){
+	$(document).ready(function(){
+		var idd = $("#Ta_id").val();
+		$.ajax({
+			url : "/HC/apply.getTeacher",
+			data : {"id" : idd },
+			success : function(getData){
+				if(getData >= 1){
+					$("#idcheck").css("color", "#F44336");
+					$("#idcheck").html("이미 신청 완료된  아이디입니다. (중복 근무 불가능)");
+					$("id2").val("0");
+				} else {
+					$("#idcheck").css("color", "black");
+					$("#idcheck").html("신청 가능한 아이디입니다.");
+					$("#id2").val("1");
+				}
+			}
+		});
+	});
 }
 //견주->원장강아지등록신청
 function applyCheck3(){
@@ -199,10 +225,7 @@ function applyCheck3(){
 		img.focus();
 		return false;
 	}
-	if(!isEmpty(id) && !isEmpty(name) && !isEmpty(age) && !isEmpty(img) && (file == "jpg" || file == "png")){
-		alert('신청이 성공적으로 완료되었습니다!');
-		return true;
-	}
+
 }
 
 
@@ -251,4 +274,5 @@ function deletePet(num){
 $(function() {
 	connectAddrSearchEvent();
 	daterangeSelectEvent();
+	checkTeacher();
 });

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
+import com.dog.HC.schoolmain.noticemapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -29,20 +30,16 @@ public class ApplyDAO {
 			
 			if(token.equals(successToken)){ return; }
 			
-			String Da_id = req.getParameter("Da_id");
-			String Da_name = req.getParameter("Da_name");
-			String Da_schoolname = req.getParameter("Da_schoolname");
 			String Da_addr1 = req.getParameter("Da_addr1");
 			String Da_addr2 = req.getParameter("Da_addr2");
 			String Da_addr3 = req.getParameter("Da_addr3");
 			String Da_addr = Da_addr1 + " " + Da_addr2 + " " + Da_addr3 + "(우편번호)";
-			String Da_phonenumber = req.getParameter("Da_phonenumber");
 			
-			s.setDa_id(Da_id); 
-			s.setDa_name(Da_name);
-			s.setDa_schoolname(Da_schoolname);
+			s.setDa_id(req.getParameter("Da_id")); 
+			s.setDa_name(req.getParameter("Da_name"));
+			s.setDa_schoolname(req.getParameter("Da_schoolname"));
 			s.setDa_addr(Da_addr);
-			s.setDa_phonenumber(Da_phonenumber);
+			s.setDa_phonenumber(req.getParameter("Da_phonenumber"));
 			s.setDa_agree(0);
 
 			if (ss.getMapper(ApplyMapper.class).schoolapply(s) == 1) {
@@ -64,26 +61,19 @@ public class ApplyDAO {
 			
 			if(token.equals(successToken)){ return; }
 			
-			int Ta_da_no = Integer.parseInt(req.getParameter("Ta_da_no"));
-			String Ta_id = req.getParameter("Ta_id");
-			String Ta_name = req.getParameter("Ta_name");
-			String Ta_phonenumber = req.getParameter("Ta_phonenumber");
-			String Ta_gender = req.getParameter("Ta_gender");
-			String Ta_text = req.getParameter("Ta_text");
-			
-			t.setTa_da_no(Ta_da_no);
-			t.setTa_id(Ta_id);
-			t.setTa_name(Ta_name);
-			t.setTa_phonenumber(Ta_phonenumber);
-			t.setTa_gender(Ta_gender);
-			t.setTa_text(Ta_text);
+			t.setTa_da_no(Integer.parseInt(req.getParameter("Ta_da_no")));
+			t.setTa_id(req.getParameter("Ta_id"));
+			t.setTa_name(req.getParameter("Ta_name"));
+			t.setTa_phonenumber(req.getParameter("Ta_phonenumber"));
+			t.setTa_gender(req.getParameter("Ta_gender"));
+			t.setTa_text(req.getParameter("Ta_text"));
 			t.setTa_agree(0);
-
+			
 			if (ss.getMapper(ApplyMapper.class).teacherapply(t) == 1) {
 				req.setAttribute("result", "가입성공");
 				req.getSession().setAttribute("successToken", token);
 			} else {
-				req.setAttribute("result", "가입실패");
+				req.setAttribute("result", "가입실패");					
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -362,5 +352,10 @@ public class ApplyDAO {
 		} else {
 			System.out.println("선생님 재신청 실패");
 		}
+	}
+	
+	//선생님 중복 체크
+	public int checkTeacher(Member m, HttpServletRequest req) {
+		return ss.getMapper(ApplyMapper.class).checkTeacher(m);
 	}
 }

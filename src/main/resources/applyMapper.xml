@@ -20,7 +20,11 @@ insert into Uapply_table values(Uapply_table_seq.nextval, #{Ua_da_no},
 	#{Ua_id}, #{Ua_name}, #{Ua_gender}, #{Ua_daterange}, #{Ua_age},
 	#{Ua_img}, #{Ua_tname}, #{Ua_agree})
 </insert>
-
+<!-- 선생님 신청 중복 체크 -->
+<select id="checkTeacher" parameterType="com.dog.HC.member.Member" resultType="int">
+select count(*) from signup_table st, tapply_table tt 
+where st.id = tt.ta_id and st.id = #{id}
+</select>
 
 
 <!--[수락 대기 목록 조회 select]-->

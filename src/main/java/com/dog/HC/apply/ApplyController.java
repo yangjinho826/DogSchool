@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dog.HC.TokenMaker;
 import com.dog.HC.manage.ManageDAO;
 import com.dog.HC.member.Member;
 import com.dog.HC.member.MemberDAO;
+import com.dog.HC.schoolmain.notice;
 
 @Controller
 public class ApplyController {
@@ -111,7 +113,7 @@ public class ApplyController {
 		mDAO.getAllTeacher(req);
 		mDAO.getAllSchool(req);
 		
-		aDAO.getMySchoolApply(m, req); //신청내역  유치원전체목록조회
+		aDAO.getMySchoolApply(m, req); //신청내역   유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회
 		aDAO.getMyPetApply(m, req); //			강아지전체목록조회
 	
@@ -138,6 +140,11 @@ public class ApplyController {
 		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
+	}
+	//선생님 신청 중복 체크
+	@RequestMapping(value = "apply.getTeacher", method = RequestMethod.GET)
+	public @ResponseBody int checkTeacher(Member m, HttpServletRequest req) {
+		return aDAO.checkTeacher(m, req);
 	}
 	//견주->원장 강아지 신청
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
