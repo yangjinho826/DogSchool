@@ -144,6 +144,18 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
+-- 유치원 후기 테이블 --
+create table review_table(
+	r_no number(3) primary key,
+	r_da_no number(5),
+	r_id varchar2(20 char) not null,
+	r_title varchar2(30 char) not null,	
+	r_txt varchar2(4000 char) not null,
+	r_date date not null
+	
+);
+create sequence review_table_seq;
+
 	select rn, n_no,n_id,n_title,n_txt,n_date
 		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
 		from (select n_no,n_id,n_title,n_txt,n_date

@@ -50,5 +50,6 @@
 		select count(*) from signup_table where id = #{id}
 	</select>
 	
+	
 
 </mapper>
