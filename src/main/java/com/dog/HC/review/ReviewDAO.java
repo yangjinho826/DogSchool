@@ -28,7 +28,7 @@ public class ReviewDAO {
 	public void pageView(review r, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 		
-		int rowSize = 10; //한페이지에 보여줄 글의 수
+		int rowSize = 5; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	    
 	    if(strPg != null){ //list.jsp?pg=2
@@ -51,7 +51,7 @@ public class ReviewDAO {
 	public void page(review r, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 	   	 
-	    int rowSize = 10; //한페이지에 보여줄 글의 수
+	    int rowSize = 5; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	   
 	    if(strPg != null){ //list.jsp?pg=2
@@ -60,7 +60,7 @@ public class ReviewDAO {
 	   
 	    int total = TotalCount; //총 게시물 수
 	    int allPage = (int) Math.ceil(total/(double)rowSize); //페이지수
-	    int block = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
+	    int block = 5; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
 
 	    int fromPage = ((pg-1)/block*block)+1;  //보여줄 페이지의 시작
 	    int toPage = ((pg-1)/block*block)+block; //보여줄 페이지의 끝

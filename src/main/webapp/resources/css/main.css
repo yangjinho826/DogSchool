@@ -37,6 +37,8 @@ a {
 	text-align: right;
 	background: #eeeeee;
 	height: 35px;
+	display: flex;
+	justify-content:space-between ;
 }
 
 .member_info_btn{
@@ -49,13 +51,6 @@ a {
 }
 
 /*menu */
-
-
-#member{
-	display: flex;
-	justify-content:space-between ;
-}
-
 
 .menu{
 	display: flex;
@@ -101,18 +96,7 @@ a {
 }
 
 /*home */
-#home{
-	margin:10px 0 0 10px;
-	height: 600px;
-}
 
-.home_list{
-	height: 50%;
-}
-
-.home_review{
-	height: 50%;
-}
 
 /*footer */
 #footer{
@@ -144,5 +128,13 @@ a {
 	
 }
 
+img{
+	max-width: 100%;
+ 	max-height: 100%;
+}
 
+#seemore{
+	float: right;
+	font-weight:bold;
+	font-size:25px;
 }
