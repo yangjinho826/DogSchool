@@ -17,11 +17,15 @@
 		<h1 class="schedule_title"> ${r }유치원 캘린더 </h1>
 		<c:choose>
 			<c:when test="${memberTypee eq '2'}">
+			<c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
 				<button class="schedule_writebtn" onclick="schedulewriteWindow();">작성하기</button>
+			</c:if>
 			</c:when>
 			<c:when test="${memberTypee eq '3'}">
+			<c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
 				<button class="schedule_writebtn" onclick="schedulewriteWindow();">작성하기</button>
-				</c:when>
+			</c:if>
+			</c:when>
 			</c:choose>
 	</section>
 	<section id="schedule_Body">

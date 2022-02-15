@@ -24,7 +24,11 @@ public class ManageController {
 	@RequestMapping(value = "manage.go", method = RequestMethod.GET)
 	public String manageSchool(ApplySchool s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		mDAO.getAllSchool(req);
+		
+		mDAO.getTotal();
+		mDAO.pageView(s, req);
+		mDAO.page(s, req);
+		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "manage/manageSchool.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -34,11 +38,34 @@ public class ManageController {
 	//(관리자) 시스템 이용 중인 유치원 삭제
 	@RequestMapping(value = "manage.delete", method = RequestMethod.GET)
 	public String deleteSchool(ApplySchool s, HttpServletRequest req) {
+		if(mDAOO.loginCheck(req)) {
+			mDAO.deleteSchool(s, req); //삭제 후
+			mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Teacher
+			mDAO.deleteSchoolU(s, req); //						User(Pet)
+		}
+
+		//다시 조회
+		mDAO.getTotal();
+		mDAO.pageView(s, req);
+		mDAO.page(s, req);
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "manage/manageSchool.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////
+	//검색
+	@RequestMapping(value = "search.go", method = RequestMethod.GET)
+	public String manageSearch(ApplySchool s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		mDAO.deleteSchool(s, req); //삭제 후
-		mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Teacher
-		mDAO.deleteSchoolU(s, req); //						User(Pet)
-		mDAO.getAllSchool(req); //다시 조회
+		
+		mDAO.getSearchTotal(s, req);
+		mDAO.searchSchool(s, req);
+		mDAO.page(s, req);
+		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "manage/manageSchool.jsp");
 		req.setAttribute("footer", "main/footer.jsp");

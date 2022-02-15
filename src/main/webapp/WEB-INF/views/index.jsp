@@ -9,7 +9,7 @@
 	<title>Dog School</title>
 	
 	<!-- jQuery -->
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.js" defer></script>
 	
 	
 	<!-- validCheck  -->
@@ -31,6 +31,8 @@
 	<script type="text/javascript" src="resources/js/member.js"></script>
 	<script type="text/javascript" src="resources/js/jsApply.js"></script>
 	<script type="text/javascript" src="resources/js/diary.js"></script>
+	<script type="text/javascript" src="resources/js/review.js"></script>
+	<script type="text/javascript" src="resources/js/gallery.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
@@ -40,11 +42,14 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="resources/css/main.css"/>
+		<link rel="stylesheet" href="resources/css/Schoolhome.css"/>
 	<link rel="stylesheet" href="resources/css/notice.css"/>
 	<link rel="stylesheet" href="resources/css/postscript.css"/>
 	<link rel="stylesheet" href="resources/css/applyHome.css"/>
 	<link rel="stylesheet" href="resources/css/manageHome.css"/>
+	<link rel="stylesheet" href="resources/css/gallery.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<link rel="stylesheet" href="resources/css/member.css"/>
 	
 </head>
 <body>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,14 +33,26 @@
 						<span class="priceTag_write_input_w">날 짜 </span>
 						<input type="number" name="p_date" class="p_price2" placeholder="1일 이상 입력" value="${pTag.p_date }">일
 				</div>
-				<div>	<button class="priceTag_write_btn">수정 </button></div>
+				<div>
+					 <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">	
+						<button class="priceTag_write_btn">수정 </button>
+					 </c:if>	
+					 <c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+					 	<button class="priceTag_write_btn">수정 </button>
+					 </c:if>
+				</div>
 			</form>
 			<section id="priceTag_write_btn" >
 			<form action="priceTag.Delete" name="popupForm1" >
 					<input name="p_no" value="${pTag.p_no }" type="hidden">
 			</form>
 					<div>
+					  <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">	
 						<button class="priceTag_write_btn" onclick="closeWithDSubmit();">삭제 </button>
+					 </c:if>
+					  <c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+						<button class="priceTag_write_btn" onclick="closeWithDSubmit();">삭제 </button>
+					 </c:if> 
 					</div>
 			</section>
 		</section>

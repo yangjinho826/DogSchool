@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/* body영역 */
+#Schoolhome{
+	padding: 30px;
+ 	min-height: 58%;
+ 	display: flex;
+ 	margin: 20px;
+}
+
+.Schoolhome_body{
+	flex-basis: 75%;
+}
+
+.SchoolHome_aside{
+	position: fixed;
+	right: 70px;
+	width: 300px;
+	border: 1px solid #d9d9d9;
+}
+
+.Schoolhome_title{
+	margin-top: 0px;
+    margin-bottom: 10px;
+    padding:5px;
+    font-size: 32px;
+    font-weight: bold;
+    bakground-color: #98c5e4;
+    border-bottom: 2px solid;
+    background-color: #e5edf1
+}
+
+/* 공지사항 */
+
+#Schoolhome_notice{
+	margin-bottom: 10px;
+}
+
+.Schoolhome_notice{
+	width: 100%;
+}
+
+.Schoolhome_notice_td{
+	font-size: 24px;
+    text-align: center;
+    padding: 5px;
+}
+
+.Schoolhome_notice_td:nth-child(1){
+	font-weight: bold;
+}
+
+/* 가격표 */
+
+#Schoolhome_priceTag{
+	margin-bottom: 10px;
+}
+
+.Schoolhome_priceTag_title{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.Schoolhome_priceTag{
+	width: 100%;
+}
+
+.Schoolhome_priceTag_td{
+	font-size: 24px;
+	text-align: center;
+	width: 25%;
+}
+
+/* 선생님 후기 */
+
+#Schoolhome_postscript{
+	margin-bottom: 10px;
+}
+
+.Schoolhome_postscript{
+	width: 100%;
+}
+
+.Schoolhome_priceTag_title{
+	border-bottom: 4px dotted #D3D3D3;
+	padding: 5px;
+}
+
+.Schoolhome_postscript_td{
+	font-size: 24px;
+    text-align: center;
+    padding: 5px;
+}
+
+.Schoolhome_postscript_td:nth-child(1){
+	font-weight: bold;
+}
+
+
+/* 스케줄 */
+
+.Schoolhome_aisdetitle{
+	margin-top: 0px;
+	margin-bottom: 5px;
+    font-size: 32px;
+    background-color: #d9d9d9;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.schedule_month_title{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.schedule_month_body{
+	display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+    border-bottom: 2px dotted #D3D3D3;
+    padding: 5px;
+}
+
+.schedule_month_day {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.schedule_month_text {
+    font-size: 14px;
+    padding-left: 3px;
+}

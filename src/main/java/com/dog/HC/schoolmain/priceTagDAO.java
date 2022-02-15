@@ -9,15 +9,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.apply.ApplySchool;
+
 @Service
 public class priceTagDAO {
 	@Autowired
 	SqlSession ss;
 
 	public void getAllpriceTag(priceTag pT, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		pT.setP_da_no(as.getDa_no());
 		
 		priceTagmapper mm = ss.getMapper(priceTagmapper.class);
-		List<priceTag> priceTags = mm.getAllpriceTag();
+		List<priceTag> priceTags = mm.getAllpriceTag(pT);
 		req.setAttribute("priceTags", priceTags);
 	
 		for (priceTag p : priceTags) {
@@ -45,12 +49,14 @@ public class priceTagDAO {
 	}
 
 	public void getWrite(priceTag pT, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		 
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		
 		if(token.equals(successToken)){ return; }
 		
-		int p_da_no = 1;
+		int p_da_no = as.getDa_no();;
 		pT.setP_da_no(p_da_no);
 		
 		priceTagmapper mm = ss.getMapper(priceTagmapper.class);

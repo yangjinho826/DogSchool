@@ -7,8 +7,9 @@
 			from (select Rownum as rn,p_no, p_da_no, p_id,p_title,p_txt, p_date
 				from (select p_no, p_da_no, p_id,p_title,p_txt, p_date
 					  from postscript_table
+					  where p_da_no = #{p_da_no}
 				      order by p_date desc))
-		where RN between #{p_da_no} and #{p_no}
+		where RN between #{from} and #{to}
 	</select>
 	
 	<select id="getpostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">
@@ -33,7 +34,7 @@
 	</update>
 	
 	<select id="getpostscripTotalCount" resultType="int">
-		select count(*) from postscript_table
+		select count(*) from postscript_table where p_da_no = #{p_da_no}
 	</select>
 	
 	<select id="getfivepostscript" resultType="com.dog.HC.schoolmain.postscript" parameterType="com.dog.HC.schoolmain.postscript">
@@ -41,6 +42,7 @@
 			from (select Rownum as rn,p_no, p_da_no, p_id,p_title,p_txt, p_date
 				from (select p_no, p_da_no, p_id,p_title,p_txt, p_date
 					  from postscript_table
+					  where p_da_no = #{p_da_no}
 				      order by p_date desc))
 		where rn &lt; 6
 	</select>

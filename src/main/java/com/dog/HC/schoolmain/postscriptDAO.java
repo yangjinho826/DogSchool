@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.apply.ApplyPet;
+import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.member.Member;
 
 @Service
@@ -18,12 +20,17 @@ public class postscriptDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	 public void getpTotal() {	 
+	 public void getpTotal(postscript p, HttpServletRequest req) {
+		 ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		 
+		 p.setP_da_no(as.getDa_no());
+		 
 		 postscriptmapper mm = ss.getMapper(postscriptmapper.class);
-		 TotalCount = mm.getpostscripTotalCount();              
+		 TotalCount = mm.getpostscripTotalCount(p);              
 	}
 	 
 	public void ppageView(postscript p, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		String strPg = req.getParameter("pg");
 		
 		int rowSize = 3; //한페이지에 보여줄 글의 수
@@ -36,8 +43,9 @@ public class postscriptDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    p.setP_da_no(from);
-	    p.setP_no(to);
+	    p.setP_da_no(as.getDa_no());
+	    p.setFrom(from);
+	    p.setTo(to);
 	    
 	    
 	    postscriptmapper mm = ss.getMapper(postscriptmapper.class);
@@ -74,18 +82,10 @@ public class postscriptDAO {
 	    req.setAttribute("rowSize", rowSize);
 	    req.setAttribute("TotalCount", total);
 	}
-/*
-	public void getAllpostscript(postscript p, HttpServletRequest req) {
-		
-		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
-		List<postscript> postscripts = mm.getAllpostscript();
-		req.setAttribute("postscripts", postscripts);
-		
-	
-	}
-	*/
 
 	public void getWrite(postscript p, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		 
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		
@@ -93,7 +93,7 @@ public class postscriptDAO {
 		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		int p_da_no = 1;
+		int p_da_no = as.getDa_no();
 		String p_id = m.getName();
 		
 		p.setP_da_no(p_da_no);
@@ -121,7 +121,7 @@ public class postscriptDAO {
 		
 		String p_name = m.getName();
 		p.setP_id(p_name);
-
+		
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		if(mm.postscriptDelete(p) == 1){
 			System.out.println("삭제성공");
@@ -147,12 +147,16 @@ public class postscriptDAO {
 	}
 
 	public void getfivepostscript(postscript p, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		p.setP_da_no(as.getDa_no());
+		
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		List<postscript> fivepostscript = mm.getfivepostscript(p);
 		req.setAttribute("fivepostscript", fivepostscript);
 		
 	}
-	
+
+
 	
 	
 }

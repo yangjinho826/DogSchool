@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DiaryMapper {
 
-	public List<diary> getAllDiary();
+	public List<diary> getAllDiary(diary d);
 
 	public int writeDiary(diary d);
 
@@ -17,5 +17,9 @@ public interface DiaryMapper {
 	public int deleteReply(diaryReply dr);
 
 	public int updateDiary(diary d);
-	
+
+	public int deleteDiary(diary d);
+
+	public List<diary> getFiveDiary(diary d);
+
 }

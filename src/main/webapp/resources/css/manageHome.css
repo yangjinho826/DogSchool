@@ -3,12 +3,12 @@
 /* manageHome */
 #manageHomeArea{
 	margin:40px 0 40px 0;
-	height: fill;
+	min-height: 58%
 }
 
 #manageTbl{
 	width: 80%;
-	margin:40px auto 60px auto;
+	margin:40px auto 40px auto;
 	align-self:center;
 	font-size: 15pt;
 	border-spacing: 0px;
@@ -17,16 +17,22 @@
 }
 
 #manageTbl th{
-	height: 80px;
+	height: 90px;
 	padding:15px;
 	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 #manageTbl td{
-	height: 110px;
+	height: 90px;
 	padding:15px;
 	font-size: 14pt;
 	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
 }
 
 .manageDelete{
@@ -54,13 +60,24 @@
 }
 
 #managePaging{
+	margin:0 0 0 5px;
 	color:white;
-	font-size:14pt;
+	font-size:15pt;
 	font-weight:600;
 	align-self:center;
 }
 
+#allListBtn{
+	font-size:14pt;
+	font-weight:600;
+	line-height:30px;
+	color:white;
+	padding:0 5px 0 5px;
+	margin:auto;
+}
+
 #searchMenu{
+	margin:0 5px 0 0;
 	align-self:center;
 	display:flex;
 	justify-content: space-between;
@@ -68,6 +85,10 @@
 
 #searchMenu .searchSelect{
 	margin:5px;
+}
+
+#searchIcon {
+	line-height:20px;
 }
 
 #searchMenu .searchBar{
@@ -80,6 +101,10 @@
 #searchMenu .searchBtn{
 	font-size:14pt;
 	font-weight:600;
-	color:white;
-	margin:5px;
+	line-height:30px;
+	background-color:white;
+	border-radius:2px;
+	color:#98c5e4;
+	padding:0 5px 0 5px;
+	margin:auto;
 }

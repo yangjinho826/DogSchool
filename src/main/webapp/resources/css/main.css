@@ -4,6 +4,11 @@
 * {
   box-sizing: border-box;
 }
+html, body {
+  margin: 0;
+  height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -33,29 +38,66 @@ a {
 
 /*member */
 #member{
-	padding: 5px 2px;
+	padding: 8px 2px;
 	text-align: right;
 	background: #eeeeee;
-	height: 35px;
+	display: flex;
+	justify-content:space-between ;
+	height: 4%;
 }
+
+.member_singup {
+  position: relative;
+  display: inline-block;;
+}
+
+.member_singup_kind {
+  display: none;
+  position: absolute;
+  width : 200px;
+  z-index: 1; /*다른 요소들보다 앞에 배치*/
+}
+
+.member_singup_kind button {
+  display: block;
+  text-decoration: none;
+  font-size: 12px;
+  padding : 12px 0px 5px 10px;
+  transition: all ease 0.5s;
+}
+
+.member_singup_kind button:hover {
+  font-weight: bold;
+  color: white;
+  transform: scale(1.2);
+  height: 35px;
+  display: flex;
+  justify-content:space-between ;
+
+}
+
+
 
 .member_info_btn{
 	transition: all ease 0.5s;
 	font-weight: bold;
 }
 
+#loginInfo{
+	padding:3px;
+	font-weight:600;
+	font-size:12pt;
+}
+
 .member_info_btn:hover{
 	transform: scale(1.1);
 }
 
+
 /*menu */
-
-
-#member{
-	display: flex;
-	justify-content:space-between ;
+#menu{
+	height: 10%;
 }
-
 
 .menu{
 	display: flex;
@@ -103,21 +145,15 @@ a {
 /*home */
 #home{
 	margin:10px 0 0 10px;
-	height: 600px;
+	min-height: 58%
 }
 
-.home_list{
-	height: 50%;
-}
-
-.home_review{
-	height: 50%;
-}
 
 /*footer */
 #footer{
 	background: #dbd8d8;
 	margin: 0px;
+	height: 28%
 }
 
 .footer{
@@ -144,5 +180,13 @@ a {
 	
 }
 
+img{
+	max-width: 100%;
+ 	max-height: 100%;
+}
 
+#seemore{
+	float: right;
+	font-weight:bold;
+	font-size:25px;
 }

@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dog.HC.TokenMaker;
+import com.dog.HC.apply.ApplyDAO;
+import com.dog.HC.apply.ApplyPet;
+import com.dog.HC.apply.ApplySchool;
+import com.dog.HC.apply.ApplyTeacher;
+import com.dog.HC.manage.ManageDAO;
 import com.dog.HC.member.MemberDAO;
 
 @Controller
@@ -31,13 +36,22 @@ public class schoolmainController {
 	@Autowired
 	private MemberDAO mDAOO;
 	
+	@Autowired
+	private ApplyDAO aDAO;
+	
+	@Autowired
+	private ManageDAO MMDAO;
+	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
-	public String schoolmain(notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
+	public String schoolmain(ApplySchool d, notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
+		
 		mDAOO.loginCheck(req);
+		aDAO.getSchoolSession(d, req);
 		nDAO.getfivenotice(n, req);
 		pDAO.getfivepostscript(p, req);
 		pTDAO.getAllpriceTag(pT, req);
 		sDAO.getmonschedule(s, req);
+		
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/Schoolhome.jsp");
@@ -47,11 +61,14 @@ public class schoolmainController {
 	
 	// 공지사항 
 	@RequestMapping(value = "notice.go", method = RequestMethod.GET)
-	public String notice(notice n, HttpServletRequest req) {
+	public String notice(ApplyTeacher a, ApplySchool aps, notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		nDAO.getTotal();
+		nDAO.getTotal(n, req);
 		nDAO.pageView(n, req);
 		nDAO.page(n, req);
+		MMDAO.getAllSchool(req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
@@ -74,7 +91,7 @@ public class schoolmainController {
 	public String noticewirte(notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		nDAO.getWrite(n, req);
-		nDAO.getTotal();
+		nDAO.getTotal(n, req);
 		nDAO.pageView(n, req);
 		nDAO.page(n, req);
 		
@@ -85,9 +102,11 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "notice.Detail", method = RequestMethod.GET)
-	public String noticeDetail(notice n, HttpServletRequest req) {
+	public String noticeDetail(ApplyTeacher a, ApplySchool aps, notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		nDAO.getnotice(n, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Detail.jsp");
@@ -97,7 +116,6 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "notice.DDelete", method = RequestMethod.GET)
 	public @ResponseBody int noticeDDelete(notice n, HttpServletRequest req) {
-
 		return nDAO.noticeDDelete(n, req);
 	}
 	
@@ -133,13 +151,13 @@ public class schoolmainController {
 	// 선생님 후기
 	
 	@RequestMapping(value = "postscript.go", method = RequestMethod.GET)
-	public String postscript(postscript p, HttpServletRequest req) {
+	public String postscript(ApplyPet ap, ApplySchool aps, postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		pDAO.getpTotal();
+		pDAO.getpTotal(p, req);
 		pDAO.ppageView(p, req);
 		pDAO.ppage(p, req);
-		
-		
+		aDAO.UserCheck(ap,req);
+
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -161,7 +179,7 @@ public class schoolmainController {
 	public String postscriptwirte(postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pDAO.getWrite(p, req);
-		pDAO.getpTotal();
+		pDAO.getpTotal(p, req);
 		pDAO.ppageView(p, req);
 		pDAO.ppage(p, req);
 		
@@ -173,7 +191,7 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "postscript.Detail", method = RequestMethod.GET)
-	public String postscriptDetail(postscript p, HttpServletRequest req) {
+	public String postscriptDetail(ApplyPet ap, postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pDAO.getpostscript(p, req);
 		
@@ -217,9 +235,11 @@ public class schoolmainController {
 	
 	// 가격표
 	@RequestMapping(value = "priceTag.go", method = RequestMethod.GET)
-	public String priceTaggo(priceTag pT, HttpServletRequest req) {
+	public String priceTaggo(ApplyTeacher a, ApplySchool aps, priceTag pT, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pTDAO.getAllpriceTag(pT, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
@@ -248,9 +268,11 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "priceTag_Detail", method = RequestMethod.GET)
-	public String priceTaDetail(priceTag pT, HttpServletRequest req) {
+	public String priceTaDetail(ApplyTeacher a, ApplySchool aps, priceTag pT, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pTDAO.getpriceTag(pT, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		return "schoolmain/priceTag_Detail";
 	}
@@ -285,9 +307,11 @@ public class schoolmainController {
 	
 	// 스케줄
 	@RequestMapping(value = "schedule.go", method = RequestMethod.GET)
-	public String schedulemain(schedule s, HttpServletRequest req) {
+	public String schedulemain(ApplyTeacher a, ApplySchool aps, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		sDAO.getAllschedule(s, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 	
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
@@ -316,9 +340,11 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "schedule_Detail", method = RequestMethod.GET)
-	public String scheduleDetail(schedule s, HttpServletRequest req) {
+	public String scheduleDetail(ApplyTeacher a, ApplySchool aps, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		sDAO.getschedule(s, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		return "schoolmain/schedule_Detail";
 	}

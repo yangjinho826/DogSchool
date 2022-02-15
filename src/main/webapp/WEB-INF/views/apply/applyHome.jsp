@@ -13,6 +13,7 @@
 		<c:if test="${g.typee eq 3}">
 		<!-- if 원장 권한 로그인 시 -->
 		<form action="apply.school" name="myForm" onsubmit="return applyCheck1()">
+			<input name="token" value="${token }" hidden="hidden">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
 					<td class="tdTitle" colspan="2" align="center">유치원 등록 양식</td>
@@ -51,7 +52,8 @@
 
 		<c:if test="${g.typee eq 2}">
 		<!-- if 선생님 권한 로그인 시 -->
-		<form action="apply.teacher">
+		<form action="apply.teacher" name="myForm2" onsubmit="return applyCheck2()">
+			<input name="token" value="${token }" hidden="hidden">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
 					<td class="tdTitle" colspan="2" align="center">선생님 등록 양식</td>
@@ -68,7 +70,7 @@
 				</tr>
 				<tr>
 					<td class="td1">선생님 아이디</td>
-					<td class="td2"><input name="Ta_id" autocomplete="off" placeholder="아이디" value="${sessionScope.loginMember.id}"></td>
+					<td class="td2"><input name="Ta_id" id="Ta_id" autocomplete="off" placeholder="아이디" value="${sessionScope.loginMember.id}"><input id="id2" name="id2" value="0" type="hidden"><span id="idcheck" class="idcheck"></span></td>
 				</tr>
 				<tr>
 					<td class="td1">선생님 이름</td>
@@ -97,10 +99,10 @@
 				</tr>
 				<tr>
 					<td class="td1">자기소개</td>
-					<td class="td2"><textarea autocomplete="off" name="Ta_text"></textarea></td>
+					<td class="td2"><textarea autocomplete="off" name="Ta_text" id="Ta_text"></textarea></td>
 				</tr>
 				<tr>
-					<td align="center" colspan="2"><button>신청하기</button></td>
+					<td align="center" colspan="2"><button id="applyTeacher" value="${sessionScope.loginMember.id}">신청하기</button></td>
 				</tr>
 			</table>
 		</form>

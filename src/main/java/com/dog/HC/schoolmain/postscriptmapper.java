@@ -14,7 +14,7 @@ public interface postscriptmapper {
 
 	int postscriptUpdate(postscript p);
 
-	int getpostscripTotalCount();
+	int getpostscripTotalCount(postscript p);
 
 	List<postscript> getfivepostscript(postscript p);
 
