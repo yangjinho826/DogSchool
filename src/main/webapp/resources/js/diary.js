@@ -18,3 +18,10 @@ function deleteDiary(n){
 		location.href = "diary.delete?mp_no=" + n;
 	}
 }
+
+function writeDiaryGo() {
+	
+	location.href="diary.write.go";
+	
+}
+

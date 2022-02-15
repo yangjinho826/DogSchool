@@ -33,6 +33,7 @@
 			<tr>
 				<td>알림 내용</td>
 				<td><textarea name="mp_txt"></textarea></td>
+				<td><input name="token" value="${token }" hidden="hidden"></td>
 			</tr>
 		</table>
 		<button>작성하기</button>

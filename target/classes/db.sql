@@ -118,7 +118,7 @@ create sequence mypet_table_seq;
 create table gallery_table(
 	g_no number(3) primary key,
 	g_title varchar2(30 char) not null,
-	g_img varchar2(100 char)not null,
+	g_img varchar2(2000 char)not null,
 	g_da_no number(5),
 	g_tid varchar2(30 char) not null,
 	g_uid varchar2(30 char) not null,
@@ -126,7 +126,6 @@ create table gallery_table(
 	g_date date not null
 );
 create sequence gallery_table_seq;
-
 
 -- 유치원 후기 테이블 --
 create table review_table(
@@ -139,4 +138,5 @@ create table review_table(
 	
 );
 create sequence review_table_seq;
+
 
