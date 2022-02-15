@@ -11,7 +11,6 @@ create table signup_table(
 
 select * from Tapply_table
 
-and t.Ta_da_no = 1 and s.id = 123
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -22,10 +21,6 @@ create table notice_table(
 	n_date date not null
 );
 create sequence notice_seq;
-
-	select *
-		from notice_table
-		order by n_date desc
 
 -- 선생님 후기 테이블 --
 create table postscript_table(
@@ -73,13 +68,7 @@ create table Dapply_table(
     Da_agree number(3) not null --<- 0 수락시 1
 );
 create sequence Dapply_table_seq;
-
-select Da_no from 
-
-select *
-from signup_table s, Dapply_table d
-where s.id = d.Da_id and d.DA_NO = 41 
-
+	
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -93,8 +82,6 @@ create table Tapply_table(
 );
 create sequence Tapply_table_seq;
 
-select * from Dapply_table
-
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
     Ua_no number(5) primary key,
@@ -104,13 +91,11 @@ create table Uapply_table(
     Ua_gender varchar2(30 char) not null, --(강아지성별)
     Ua_daterange varchar2(30 char) not null, --(기간)
     Ua_age number(3) not null, --(강아지 나이)
-    Ua_img varchar2(100 char)not null, --(강아지이미지)
+    Ua_img varchar2(100 char) not null, --(강아지이미지)
     Ua_tname varchar2(20 char)not null, --(선생님 목록)
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-select * from Tapply_table
-
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -128,8 +113,6 @@ create table mypet_table(
 	mp_date date not null						-- 알림장 작성 날짜
 );
 create sequence mypet_table_seq;
-
-select * from MYPET_TABLE
 
 -- 갤러리 테이블 --
 create table gallery_table(
