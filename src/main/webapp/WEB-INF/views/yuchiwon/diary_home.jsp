@@ -11,7 +11,7 @@
 <body>
 	<h1>알림장</h1>
 	<c:if test="${sessionScope.loginMember.typee ==  2}">
-	<button onclick="location.href='diary.write.go'">작성하기</button>
+	<button onclick="writeDiaryGo()">작성하기</button>
 	</c:if>
 	<c:forEach var="d" items="${diaries }">
 		<table>
@@ -34,7 +34,11 @@
 				<td>내용 : ${d.mp_txt }</td>
 			</tr>
 			<tr>
-				<td>날짜 : ${d.mp_date }</td>
+				<td>날짜 : ${d.mp_date }
+				<input type="hidden" value="${d.mp_tid }" class="tid">
+				<input type="hidden" value="${d.mp_uid }" class="uid">
+				<input type="hidden" value="${d.mp_uname }" class="uname">
+				</td>
 			</tr>
 			
 			<c:forEach var="dr" items="${d.mp_replys }">
@@ -47,24 +51,27 @@
 				<button onclick="deleteReply(${dr.r_no});">삭제</button>
 				</c:if>
 				<br>
-			</td>
+				</td>
 			</tr>
 			</c:forEach>
 			<tr>
 				<td>
 					<form action="diary.reply.write">
 						<input type="hidden" name="r_mp_no" value="${d.mp_no }">
+						<input type="hidden" name="r_owner" value="${dr.r_owner }">
 						<input name="r_txt" maxlength="80" autocomplete="off">
 						<button>쓰기</button>
 					</form>
 				</td>
 			</tr>
+			<c:if test="${sessionScope.loginMember.id == d.mp_tid}">
 				<tr>
 					<td>
 						<button onclick="updateDiary(${d.mp_no})">수정</button>
 						<button onclick="deleteDiary(${d.mp_no})">삭제</button>
 					</td>
 				</tr>
+			</c:if>
 		</table>
 	</c:forEach>
 </body>

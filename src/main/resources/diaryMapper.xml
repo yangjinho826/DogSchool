@@ -6,8 +6,21 @@
 
 <select id="getAllDiary" resultType="com.dog.HC.Yuchiwon.diary">
 	select * from mypet_table
-	<!-- where mp_da_no = #{mp_da_no} and mp_tid = #{mp_tid} and mp_uid = #{mp_uid} and mp_uname = #{mp_uname} -->
+	 where mp_tid = #{mp_tid}
+		and mp_uid = #{mp_uid}
+		and mp_uname = #{mp_uname}
+		order by mp_no desc
 </select>
+
+<select id="getDiary" resultType="com.dog.HC.Yuchiwon.diary">
+	select * from mypet_table where mp_no = #{mp_no}
+</select>
+
+<!-- 
+<select id="getFiveDiary" resultType="com.dog.HC.Yuchiwon.diary">
+	select * from mypet_table where mp_no <= 5;
+</select>
+ -->
 
 <insert id="writeDiary" parameterType="com.dog.HC.Yuchiwon.diary">
 	insert into MYPET_TABLE
@@ -19,16 +32,20 @@
 
 <update id="updateDiary" parameterType="com.dog.HC.Yuchiwon.diary">
 	update mypet_table
-	set mp_title = #{mp_title} and mp_condition = #{mp_condition}
-	and mp_meal = #{mp_meal} and mp_defecate = #{mp_defecate}
-	and mp_supplies = #{mp_supplies} and mp_txt = #{mp_txt}
+	set mp_title = #{mp_title}, mp_condition = #{mp_condition}
+	, mp_meal = #{mp_meal}, mp_defecate = #{mp_defecate}
+	, mp_supplies = #{mp_supplies}, mp_txt = #{mp_txt}
 	where mp_no = #{mp_no}
 </update>
+
+<delete id="deleteDiary" parameterType="com.dog.HC.Yuchiwon.diary">
+	delete from mypet_table where mp_no = #{mp_no}
+</delete>
 
 <!-- reply -->
 
 <select id="getReply" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diaryReply">
-	select * from mypet_table_reply where r_mp_no = #{mp_no}
+	select * from mypet_table_reply where r_mp_no = #{mp_no} order by r_no desc
 </select>
 
 <insert id="writeReply" parameterType="com.dog.HC.Yuchiwon.diaryReply">
