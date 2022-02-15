@@ -17,16 +17,20 @@
 			<h1 class="priceTag_title"> 가격표 </h1>
 			<c:choose> 
 				<c:when test="${memberTypee eq '2'}">
-					<button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					<c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
+					 <button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					</c:if>
 				</c:when>
 				<c:when test="${memberTypee eq '3'}">
-					<button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					<c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+					 <button class="priceTag_writebtn" onclick="pricewriteWindow();">작성하기</button>
+					</c:if>
 				</c:when>
 			</c:choose>
 		</section>
 		<section id="priceTag_Body">
 		
-			<div class="priceTag_table_title"> ${BigDog } </div>
+			<div class="priceTag_table_title">대형견</div>
 			<table class="priceTag">
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
@@ -54,7 +58,7 @@
 				</tr>
 			</table>
 			
-			<div class="priceTag_table_title"> ${MiddleDog } </div>
+			<div class="priceTag_table_title">중형견</div>
 			<table class="priceTag">
 				<tr class="priceTag_tr">
 					<c:forEach var="pT" items="${priceTags }">
@@ -82,7 +86,7 @@
 				</tr>
 			</table>
 			
-			<div class="priceTag_table_title"> ${SmallDog } </div>
+			<div class="priceTag_table_title">소형견 </div>
 			<table class="priceTag">
 				<tr class="priceTag_tr">
 				</tr>

@@ -9,7 +9,7 @@
 	<title>Dog School</title>
 	
 	<!-- jQuery -->
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.js" defer></script>
 	
 	
 	<!-- validCheck  -->
@@ -40,6 +40,7 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="resources/css/main.css"/>
+		<link rel="stylesheet" href="resources/css/Schoolhome.css"/>
 	<link rel="stylesheet" href="resources/css/notice.css"/>
 	<link rel="stylesheet" href="resources/css/postscript.css"/>
 	<link rel="stylesheet" href="resources/css/applyHome.css"/>

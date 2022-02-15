@@ -25,6 +25,13 @@ function connectJoinIdInputEvent() {
 	});
 }
 
+function mousehorver() {
+	$(".member_info_btn").click(function(){
+		$(".member_singup_kind").slideToggle(500)
+	})
+}
+
 $(function() {
 	connectJoinIdInputEvent();
+	mousehorver();
 });

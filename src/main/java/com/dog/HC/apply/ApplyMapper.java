@@ -22,4 +22,11 @@ public interface ApplyMapper {
 	public List<ApplySchool> getMySchoolApply(Member m);
 	public List<ApplyTeacher> getMyTeacherApply(Member m);
 	public List<ApplyPet> getMyPetApply(Member m);
+	
+	public ApplySchool getSchoolSession(ApplySchool d);
+	
+	public ApplyTeacher TeachCheck(ApplyTeacher a);
+	public ApplySchool DirectorCheck(ApplySchool aps);
+	public ApplyPet UserCheck(ApplyPet ap);
+	
 }

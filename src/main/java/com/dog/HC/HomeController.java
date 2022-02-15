@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dog.HC.manage.ManageDAO;
+import com.dog.HC.member.Member;
 import com.dog.HC.member.MemberDAO;
 
 @Controller
@@ -14,6 +16,9 @@ public class HomeController {
 	
 	@Autowired
 	private MemberDAO mDAOO;
+	
+	@Autowired
+	private ManageDAO mDAO;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -37,4 +42,14 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "list.go", method = RequestMethod.GET)
+    public String apply(Member m, HttpServletRequest req) {
+        mDAOO.loginCheck(req);
+        mDAO.getAllSchool(req);
+
+        req.setAttribute("MenuBar", "main/menu.jsp");
+        req.setAttribute("contentPage", "main/schoolList.jsp");
+        req.setAttribute("footer", "main/footer.jsp");
+        return "index";
+    }
 }

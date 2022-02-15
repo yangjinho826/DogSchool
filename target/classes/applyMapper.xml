@@ -94,7 +94,32 @@ select * from Dapply_table where Da_id = #{id}
 select * from Tapply_table where Ta_id = #{id}
 </select>
 <select id="getMyPetApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyPet">
-select * from Uapply_table where Ua_id = #{id}
+	select * from Uapply_table where Ua_id = #{id}
+</select>
+
+<!-- 세션 받아오기 -->
+<select id="getSchoolSession" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
+	select * from Dapply_table
+	where Da_no = #{Da_no} and Da_agree = 1
+</select>
+
+<select id="TeachCheck" parameterType="com.dog.HC.apply.ApplyTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
+	select t.Ta_da_no
+	from signup_table s, Tapply_table t
+	where s.id = t.Ta_id and t.Ta_da_no = #{Ta_da_no} and t.Ta_id = #{Ta_id} and t.Ta_agree = 1
+</select>
+
+
+<select id="DirectorCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
+	select *
+	from signup_table s, Dapply_table d
+	where s.id = d.Da_id and d.Da_no = #{Da_no} and d.Da_id = #{Da_id} and d.Da_agree = 1
+</select>
+
+<select id="UserCheck" parameterType="com.dog.HC.apply.ApplyPet" resultType="com.dog.HC.apply.ApplyPet">
+	select *
+	from signup_table s, Uapply_table u
+	where s.id = u.Ua_id and u.Ua_da_no = #{Ua_da_no} and u.Ua_id = #{Ua_id} and u.Ua_agree = 1
 </select>
 
 </mapper>

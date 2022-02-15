@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
+import com.dog.HC.schoolmain.priceTag;
+import com.dog.HC.schoolmain.priceTagmapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -258,6 +260,87 @@ public class ApplyDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// 학원 세션 받아오기
+	public void getSchoolSession(ApplySchool d, HttpServletRequest req) {
+		
+		int Da_no = Integer.parseInt(req.getParameter("ps.da_no"));
+		d.setDa_no(Da_no);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool getSchoolSession = mm.getSchoolSession(d);
+	
+		req.getSession().setAttribute("school", getSchoolSession.getDa_no());
+		req.getSession().setAttribute("schoolname", getSchoolSession.getDa_name());
+		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+	}
+
+	public void TeachCheck(ApplyTeacher a, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		if(m == null) {
+			return;
+		}
+		
+		int Ta_da_no = as.getDa_no();
+		String Ta_id = m.getId();
+		
+		a.setTa_da_no(Ta_da_no);
+		a.setTa_id(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplyTeacher TCheck = mm.TeachCheck(a);
+		
+		req.setAttribute("TCheck",TCheck);
+
+	}
+
+	public void DirectorCheck(ApplySchool aps, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		if(m == null) {
+			return;
+		}
+		
+		int Ta_da_no = as.getDa_no();
+		String Ta_id = m.getId();
+		
+		aps.setDa_no(Ta_da_no);
+		aps.setDa_id(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool DCheck = mm.DirectorCheck(aps);
+		
+		req.setAttribute("DCheck",DCheck);
+	}
+
+	public void UserCheck(ApplyPet ap, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		if(m == null) {
+			return;
+		}
+		
+		int Ta_da_no = as.getDa_no();
+		String Ta_id = m.getId();
+		
+		ap.setUa_da_no(Ta_da_no);
+		ap.setUa_id(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplyPet UCheck = mm.UserCheck(ap);
+		
+		req.setAttribute("UCheck",UCheck);
+
 	}
 
 }

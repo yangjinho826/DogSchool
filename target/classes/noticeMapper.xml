@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dog.HC.schoolmain.noticemapper">
 
-	<select id="getAllnotice" parameterType="com.dog.HC.schoolmain.notice" resultType="com.dog.HC.schoolmain.notice">
+<select id="getAllnotice" parameterType="com.dog.HC.schoolmain.notice" resultType="com.dog.HC.schoolmain.notice">
 		select rn, n_no,n_id,n_title,n_txt,n_date
 		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
 		from (select n_no,n_id,n_title,n_txt,n_date
 		from notice_table
+		where n_da_no = #{n_da_no}
 		order by n_date desc))
-		where RN between #{n_da_no} and #{n_no}
+		where RN between #{from} and #{to}
 	</select>
 
 	<select id="getnotice" parameterType="com.dog.HC.schoolmain.notice" resultType="com.dog.HC.schoolmain.notice">
@@ -38,7 +39,7 @@
 	</update>
 	
 	<select id="getNoticeTotalCount" resultType="int">
-		select count(*) from notice_table
+		select count(*) from notice_table where n_da_no = #{n_da_no}
 	</select>
 	
 	<select id="getfivenotice"  parameterType="com.dog.HC.schoolmain.notice" resultType="com.dog.HC.schoolmain.notice">
@@ -46,9 +47,10 @@
 		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
 		from (select n_no,n_id,n_title,n_txt,n_date
 		from notice_table
+		where n_da_no = #{n_da_no}
 		order by n_date desc))
 		where rn &lt; 6
 	</select>
-	
+
 	
 </mapper>

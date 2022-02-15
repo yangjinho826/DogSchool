@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.apply.ApplySchool;
+
 @Service
 public class scheduleDAO {
 	
@@ -18,20 +20,24 @@ public class scheduleDAO {
 	private SqlSession ss;
 
 	public void getAllschedule(schedule s, HttpServletRequest req) {
-	
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		s.setS_da_no(as.getDa_no());
+		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);
-		List<schedule> schedules = mm.getAllschedule();
+		List<schedule> schedules = mm.getAllschedule(s);
 		req.setAttribute("sh", schedules);
 
 	}
 	
 	public void getschedulewirte(schedule s, HttpServletRequest req){
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
 		
 		if(token.equals(successToken)){ return; }
 		
-		int s_da_no = 1;
+		int s_da_no = as.getDa_no();
 		s.setS_da_no(s_da_no);
 		
 		String s_day = req.getParameter("s_day");
@@ -89,12 +95,15 @@ public class scheduleDAO {
 	}
 
 	public void getmonschedule(schedule s, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String month = sdf.format(d);
 		String month2 =  month.substring(5,7);
 		month2 +="월";
-		
+	
+		s.setS_da_no(as.getDa_no());
 		s.setS_month(month2);
 		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);

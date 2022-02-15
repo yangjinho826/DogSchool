@@ -9,12 +9,14 @@ public class postscript {
 	private String p_title;
 	private String p_txt;
 	private Date p_date;
+	private int from;
+	private int to;
 	
 	public postscript() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public postscript(int p_no, int p_da_no, String p_id, String p_title, String p_txt, Date p_date) {
+	public postscript(int p_no, int p_da_no, String p_id, String p_title, String p_txt, Date p_date, int from, int to) {
 		super();
 		this.p_no = p_no;
 		this.p_da_no = p_da_no;
@@ -22,6 +24,8 @@ public class postscript {
 		this.p_title = p_title;
 		this.p_txt = p_txt;
 		this.p_date = p_date;
+		this.from = from;
+		this.to = to;
 	}
 
 	public int getP_no() {
@@ -71,6 +75,21 @@ public class postscript {
 	public void setP_date(Date p_date) {
 		this.p_date = p_date;
 	}
-	
+
+	public int getFrom() {
+		return from;
+	}
+
+	public void setFrom(int from) {
+		this.from = from;
+	}
+
+	public int getTo() {
+		return to;
+	}
+
+	public void setTo(int to) {
+		this.to = to;
+	}
 	
 }

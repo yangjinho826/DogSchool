@@ -14,11 +14,15 @@
 		<section class="notice_Home">
 			<h1 class="notice_title"> 공지사항 </h1>
 			<c:choose> 
-			 	<c:when test="${memberTypee eq '2'}">
-					<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+				 <c:when test="${memberTypee eq '2'}">
+				  	    <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
+							 <button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+					    </c:if>
 				</c:when>
 			 	<c:when test="${memberTypee eq '3'}">
-					<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+			 	   <c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+						<button class="notice_writebtn" onclick="location.href='notice_write.go'">작성하기</button>
+				 	</c:if>
 				</c:when>
 			</c:choose>
 		</section>

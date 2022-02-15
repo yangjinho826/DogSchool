@@ -3,7 +3,7 @@
  #notice_Home{
 	margin: 20px;
 	padding: 30px;
- 	height:700px;
+ 	min-height: 58%
  }
  
  .notice_Home{

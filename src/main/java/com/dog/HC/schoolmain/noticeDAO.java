@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.dog.HC.apply.*;
 import com.dog.HC.member.Member;
 
 @Service
@@ -20,33 +21,38 @@ public class noticeDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	 public void getTotal() {	 
+	 public void getTotal(notice n, HttpServletRequest req) {	 
+		 ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		 
+		 n.setN_da_no(as.getDa_no());
 		 noticemapper mm = ss.getMapper(noticemapper.class);
-		 TotalCount = mm.getNoticeTotalCount();              
+		 TotalCount = mm.getNoticeTotalCount(n);              
 	}
 	 
-	public void pageView(notice n, HttpServletRequest req) {
-		String strPg = req.getParameter("pg");
-		
-		int rowSize = 3; //한페이지에 보여줄 글의 수
-	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
-	    
-	    if(strPg != null){ //list.jsp?pg=2
-	        pg = Integer.parseInt(strPg); //.저장
-	    }
-	    
-	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
-	    int to=(pg * rowSize); //(1*10) = 10 //to
-	    
-	    n.setN_da_no(from);
-	    n.setN_no(to);
-	    
-	    
-	    noticemapper mm = ss.getMapper(noticemapper.class);
-		List<notice> notices = mm.getAllnotice(n);
-		req.setAttribute("notices", notices);
-  
-	}
+	 public void pageView(notice n, HttpServletRequest req) {
+		    ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+			String strPg = req.getParameter("pg");
+			
+			int rowSize = 3; //한페이지에 보여줄 글의 수
+		    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+		    
+		    if(strPg != null){ //list.jsp?pg=2
+		        pg = Integer.parseInt(strPg); //.저장
+		    }
+		    
+		    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
+		    int to=(pg * rowSize); //(1*10) = 10 //to
+		    
+		    n.setN_da_no(as.getDa_no());
+		    n.setFrom(from);
+		    n.setTo(to);
+		    
+		    
+		    noticemapper mm = ss.getMapper(noticemapper.class);
+			List<notice> notices = mm.getAllnotice(n);
+			req.setAttribute("notices", notices);
+	  
+		}
 	
 	public void page(notice n, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
@@ -86,6 +92,7 @@ public class noticeDAO {
 	}
 */
 	public void getWrite(notice n, HttpServletRequest req) {
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
@@ -94,7 +101,7 @@ public class noticeDAO {
 				
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		int n_da_no = 1;
+		int n_da_no = as.getDa_no();
 		String n_id = m.getName();
 		
 		n.setN_da_no(n_da_no);
@@ -163,12 +170,15 @@ public class noticeDAO {
 	}
 
 	public void getfivenotice(notice n, HttpServletRequest req) {
+		
+		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
+		n.setN_da_no(as.getDa_no());
+		
+		
 		noticemapper mm = ss.getMapper(noticemapper.class);
 		List<notice> fivenote = mm.getfivenotice(n);
 		req.setAttribute("fivenote", fivenote);
 		
 	}
 
-
-	
 }
