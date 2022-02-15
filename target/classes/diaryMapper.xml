@@ -9,11 +9,18 @@
 	 where mp_tid = #{mp_tid}
 		and mp_uid = #{mp_uid}
 		and mp_uname = #{mp_uname}
+		order by mp_no desc
 </select>
 
 <select id="getDiary" resultType="com.dog.HC.Yuchiwon.diary">
 	select * from mypet_table where mp_no = #{mp_no}
 </select>
+
+<!-- 
+<select id="getFiveDiary" resultType="com.dog.HC.Yuchiwon.diary">
+	select * from mypet_table where mp_no <= 5;
+</select>
+ -->
 
 <insert id="writeDiary" parameterType="com.dog.HC.Yuchiwon.diary">
 	insert into MYPET_TABLE
@@ -38,7 +45,7 @@
 <!-- reply -->
 
 <select id="getReply" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diaryReply">
-	select * from mypet_table_reply where r_mp_no = #{mp_no}
+	select * from mypet_table_reply where r_mp_no = #{mp_no} order by r_no desc
 </select>
 
 <insert id="writeReply" parameterType="com.dog.HC.Yuchiwon.diaryReply">

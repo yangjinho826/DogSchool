@@ -14,7 +14,6 @@
 	<button onclick="writeDiaryGo()">작성하기</button>
 	</c:if>
 	<c:forEach var="d" items="${diaries }">
-	<c:if test=""></c:if>
 		<table>
 			<tr>
 				<td>제목 : ${d.mp_title }</td>

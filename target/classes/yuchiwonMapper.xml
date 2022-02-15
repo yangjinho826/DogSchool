@@ -9,10 +9,11 @@
 				select *
 				from UAPPLY_TABLE
 				where ua_id = #{iddd} and ua_agree = 1
+				order by ua_no asc
 			</when>
 			<when test="typeee == 2">
-				select distinct *
-				from uapply_table, mypet_table 
+				select *
+				from uapply_table 
 				where ua_tname in (
 					select ta_name
 					from tapply_table
@@ -23,7 +24,7 @@
 						where ta_id = id and
 						id = #{iddd}
 						) 
-					)  and ua_id = mp_uid
+					) order by ua_no asc
 			</when>
 		</choose>
 		<!-- select * from UAPPLY_TABLE where ua_agree = 1 id = ua_id and id = 
@@ -37,7 +38,7 @@
 			and ua_name = #{uA_name} and ua_tname = #{uA_tname} -->
 	</select>
 
-	<select id="getPuppy" resultType="com.dog.HC.Yuchiwon.puppy">
+	<select id="getPuppy" resultType="com.dog.HC.Yuchiwon.puppy" parameterType="com.dog.HC.Yuchiwon.puppy">
 		select * from Uapply_table
 		where ua_no = #{uA_no}
 	</select>

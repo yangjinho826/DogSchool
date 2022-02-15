@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dog.HC.Yuchiwon.GalleryMapper">
+
+<select id="getAllGallery" resultType="com.dog.HC.Yuchiwon.gallery">
+	select * from gallery_table
+	where g_tid = #{g_tid}
+	and g_uid = #{g_uid}
+	and g_uname = #{g_uname}
+	order by g_no desc
+</select>
+
+<select id="getGallery" resultType="com.dog.HC.Yuchiwon.gallery">
+	select * from gallery_table where g_no = #{g_no}
+</select>
+
+<insert id="writeGallery" parameterType="com.dog.HC.Yuchiwon.gallery">
+	insert into gallery_table
+	values(gallery_table_seq.nextval, #{g_title}, #{g_img}, #{g_da_no},
+	#{g_tid}, #{g_uid}, #{g_uname}, to_date(sysdate, 'yy.mm.dd'))
+</insert>
+
+<update id="updateGallery" parameterType="com.dog.HC.Yuchiwon.gallery">
+	update gallery_table
+	set g_title = #{g_title}, g_img = #{g_img} where g_no = #{g_no}
+</update>
+
+<delete id="deleteGallery">
+	delete from gallery_table where g_no= #{g_no}
+</delete>
+
+</mapper>

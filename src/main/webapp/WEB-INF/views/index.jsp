@@ -31,6 +31,7 @@
 	<script type="text/javascript" src="resources/js/member.js"></script>
 	<script type="text/javascript" src="resources/js/jsApply.js"></script>
 	<script type="text/javascript" src="resources/js/diary.js"></script>
+	<script type="text/javascript" src="resources/js/gallery.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
@@ -44,6 +45,7 @@
 	<link rel="stylesheet" href="resources/css/postscript.css"/>
 	<link rel="stylesheet" href="resources/css/applyHome.css"/>
 	<link rel="stylesheet" href="resources/css/manageHome.css"/>
+	<link rel="stylesheet" href="resources/css/gallery.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	
 </head>

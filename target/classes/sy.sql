@@ -21,22 +21,22 @@ select * from MYPET_TABLE
 -- 유저가입할때 입력한 선생님이름과 선생님 테이블의 ta_name은 같고
 -- 그 네임인데 agree = 1인 사람에 접근하여 그사람의 pk ta_no을 결국 알아야함
 -- 근데 신청서상에 기입된 선생님 이름이 결과적으로 uapply를 조회하는데 필요한 상황.
-select ua_name
-from uapply_table
-where ua_tname = (
-	select ta_name
-    from tapply_table
-    where ta_agree = 1
-    and ta_no = (
-    	select ta_no
-    	from TAPPLY_TABLE, SIGNUP_TABLE
-    	where ta_id = id and
-    			id = 'mzz'
-    	)
-    )
+				select *
+				from uapply_table 
+				where ua_tname in (
+					select ta_name
+					from tapply_table
+					where ta_agree = 1
+					and ta_no in (
+						select  ta_no
+						from TAPPLY_TABLE, SIGNUP_TABLE
+						where ta_id = id and
+						id = 't1'
+						) 
+					)
 
 insert into UAPPLY_TABLE values(
-Uapply_table_seq.nextval, 1, 'qwe', '헤헤', '남', '20220201', 2, 'ㅁ.jpg','선생엠지', 1);
+Uapply_table_seq.nextval, 21, 'mz10', '나의유일강아지', '암컷', '20220201', 2, 'ㅁ.jpg','t1', 1);
     
 insert into UAPPLY_TABLE values(
 Uapply_table_seq.nextval, 1, 'asd', '요미', '여', '20220201', 2, 'ㅇ.jpg','선생엠지', 1);
@@ -68,3 +68,15 @@ and mp_uid = 'u1' and mp_uname = 'p1'
 						id = 't1'
 						) 
 					)  and ua_id = mp_uid
+
+					
+select * from gallery_table order by g_no desc
+					
+select * from gallery_table
+	where g_no = 21
+	and g_tid = 't1'
+	and g_uid = 'mz10'
+	and g_uname = '나의유일강아지'
+
+	
+	select * from mypet_table where mp_no <= 5;

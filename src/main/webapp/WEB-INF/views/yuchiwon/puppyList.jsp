@@ -11,12 +11,18 @@
 강아지들 여기에 출력
 <table border="1">
 	<tr>
-		<th colspan="2">마이펫 목록</th>
+		<th colspan="3">마이펫 목록</th>
+	</tr>
+	<tr>
+		<td>사진</td>
+		<td>강아지 이름</td>
+		<td>견주 아이디</td>
 	</tr>
 	<c:forEach var="p" items="${puppies }">
 	<tr>
 		<td><img src="resources/img/${p.uA_img }"></td>
 		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
+		<td>${p.uA_id }</td>
 	</tr>
 	</c:forEach>
 </table>

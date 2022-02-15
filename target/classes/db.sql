@@ -135,7 +135,7 @@ select * from MYPET_TABLE
 create table gallery_table(
 	g_no number(3) primary key,
 	g_title varchar2(30 char) not null,
-	g_img varchar2(100 char)not null,
+	g_img varchar2(2000 char)not null,
 	g_da_no number(5),
 	g_tid varchar2(30 char) not null,
 	g_uid varchar2(30 char) not null,
@@ -143,6 +143,8 @@ create table gallery_table(
 	g_date date not null
 );
 create sequence gallery_table_seq;
+
+select * from GALLERY_TABLE
 
 	select rn, n_no,n_id,n_title,n_txt,n_date
 		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date

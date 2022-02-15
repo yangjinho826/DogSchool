@@ -20,14 +20,8 @@ function deleteDiary(n){
 }
 
 function writeDiaryGo() {
-	let uid = $(".uid").val();
-	let tid = $(".tid").val();
-	let uname = $(".uname").val();
 	
-	location.href="diary.write.go?mp_uid=" + uid + "mp_tid=" + tid + "mp_uname="+ uname;
+	location.href="diary.write.go";
 	
 }
 
-function getAllPuppy() {
-
-}

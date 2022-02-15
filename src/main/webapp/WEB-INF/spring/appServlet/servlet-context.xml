@@ -55,6 +55,7 @@
 				<beans:value>classpath:manageMapper.xml</beans:value>
 				<beans:value>classpath:yuchiwonMapper.xml</beans:value>
 				<beans:value>classpath:diaryMapper.xml</beans:value>
+				<beans:value>classpath:galleryMapper.xml</beans:value>
 
 			</beans:list>
 		</beans:property>
@@ -64,5 +65,13 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
+	
+	<!-- file Upload -->
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- max upload size in bytes -->
+        <beans:property name="maxUploadSize" value="5242880" /> <!-- 5MB -->
+        <!-- max size of file in memory (in bytes) -->
+        <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+    </beans:bean>
 
 </beans:beans>
