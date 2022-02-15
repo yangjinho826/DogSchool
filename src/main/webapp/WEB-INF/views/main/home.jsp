@@ -13,9 +13,6 @@
 		<section class="post">
 			<div><img src="resources/img/2.png"></div>
 		</section>
-		<section class="home_list">
-			<div>1</div>
-		</section>
 		<section class="home_review">
 			<section id="postscript_Home">
 			<h1 class="postscript_title"> 유치원 후기 </h1>
