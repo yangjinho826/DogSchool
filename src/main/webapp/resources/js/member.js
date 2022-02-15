@@ -45,6 +45,7 @@ function membercall(){
 	let name = document.myForm.name;
 	let phonesecond = document.myForm.phonesecond;
 	let phonethird = document.myForm.phonethird;
+	let kor =  /^[가-힣]+$/;
 	
 	if (isEmpty(id)) {
         alert('아이디를 입력해주세요.');
@@ -53,6 +54,7 @@ function membercall(){
 
         return false;
 	}
+	
 
 	if (isEmpty(pw) || lessThan(pw1, 3)) {
 		alert('비밀번호를 입력해주세요.');
@@ -78,6 +80,14 @@ function membercall(){
         return false;
 	}
 	
+	if(!kor.test(name.value)){
+		alert('이름을 정확하게 입력해 주세요.');
+		name.value = "";
+        name.focus();
+
+        return false;
+	}
+
 	if (isEmpty(phonesecond)) {
         alert('전화번호를 입력해주세요.');
         phonesecond.value = "";
@@ -143,6 +153,7 @@ function logincall(){
 	let id = document.loginForm.id;
 	let pw= document.loginForm.pw;
 	
+	
 	if (isEmpty(id)) {
         alert('아이디를 입력해주세요.');
         id.value = "";
@@ -165,11 +176,19 @@ function findidcall(){
 	
 	let name = document.myForm.name;
 	let phonenumber= document.myForm.phonenumber;
-	
+	let kor =  /^[가-힣]+$/;
 	
 	if (isEmpty(name)) {
         alert('이름을 입력해주세요.');
         name.value = "";
+        name.focus();
+
+        return false;
+	}
+	
+	if(!kor.test(name.value)){
+		alert('이름을 정확하게 입력해 주세요.');
+		name.value = "";
         name.focus();
 
         return false;
@@ -183,16 +202,42 @@ function findidcall(){
         return false;
 	}	 
 	
+	if(isNotNumber(phonenumber)){
+		alert('전화번호에 숫자만 입력해주세요.');
+		phonenumber.value = "";
+		phonenumber.focus();
+
+        return false;
+	}
+        if(lessThan(phonenumber,11)){
+    		alert('전화번호에 11자리를 입력해주세요.');
+    		phonenumber.value = "";
+    		phonenumber.focus();
+
+            return false;
+      
+    }
 }
+
 
 function findpwcall(){
 	let id = document.myForm.id;
 	let name = document.myForm.name;
 	let phonenumber= document.myForm.phonenumber;
+	let kor =  /^[가-힣]+$/;
+	let engnum = /^[a-zA-Z0-9]*$/;
 	
 	if (isEmpty(id)) {
         alert('아이디를 입력해주세요.');
         id.value = "";
+        id.focus();
+
+        return false;
+	}
+	
+	if(!engnum.test(id.value)){
+		alert('아이디를 정확하게 입력해 주세요.');
+		id.value = "";
         id.focus();
 
         return false;
@@ -206,6 +251,14 @@ function findpwcall(){
         return false;
 	}
 	
+	if(!kor.test(name.value)){
+		alert('이름을 정확하게 입력해 주세요.');
+		name.value = "";
+        name.focus();
+
+        return false;
+	}
+	
 	if (isEmpty(phonenumber)) {
         alert('전화번호를 입력해주세요.');
         phonenumber.value = "";
@@ -214,5 +267,20 @@ function findpwcall(){
         return false;
 	}	 
 	
+	if(isNotNumber(phonenumber)){
+		alert('전화번호에 숫자만 입력해주세요.');
+		phonenumber.value = "";
+		phonenumber.focus();
+
+        return false;
+	}
+	
+	if(lessThan(phonenumber,11)){
+		alert('전화번호에 11자리를 입력해주세요.');
+		phonenumber.value = "";
+		phonenumber.focus();
+
+        return false;
+		}
 }
 

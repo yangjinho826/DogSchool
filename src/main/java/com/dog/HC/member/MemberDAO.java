@@ -20,12 +20,14 @@ public class MemberDAO {
 		//int nn = dbMember.getType(); // ==1 or ==2 or ==3
 		
 		//int n = Integer.parseInt(req.getParameter("type"));
+		
 
 		if(dbMember != null) {
 			if(m.getPw().equals(dbMember.getPw())) {
 				req.getSession().setAttribute("loginMember", dbMember);
 				req.getSession().setMaxInactiveInterval(60 * 5);
 			} else {
+
 				req.setAttribute("result", "로그인 실패(비밀번호 오류)");
 				System.out.println("로그인 실패(비밀번호 오류)");
 			}
@@ -214,15 +216,15 @@ public class MemberDAO {
 		// 이 값으로 select
 			if (dbMember != null) {
 				if (m.getName().equals(dbMember.getName())) {
-					req.setAttribute("result", "아이디는 " + dbMember.getId() + " 입니다.");
+					req.setAttribute("result1", "아이디는 " + dbMember.getId() + " 입니다.");
 				} 
 			} else {
 				System.out.println("아이디 찾기 실패(가입안된 ID)");
-				req.setAttribute("result", "아이디 찾기 실패(가입안된 ID)");
+				req.setAttribute("result1", "아이디 찾기 실패(가입안된 ID)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "찾을 수 없습니다.");
+			req.setAttribute("result1", "찾을 수 없습니다.");
 		}
 }
 
@@ -244,11 +246,11 @@ public class MemberDAO {
 		// 이 값으로 select
 		if (dbMember != null) {
 			if (m.getName().equals(dbMember.getName())) {
-				req.setAttribute("result", "비밀번호는 " + dbMember.getPw() + " 입니다.");
+				req.setAttribute("result1", "비밀번호는 " + dbMember.getPw() + " 입니다.");
 			} 
 		}else {
 			System.out.println("비밀번호 찾기 실패");
-			req.setAttribute("result", "비밀번호 찾기에 실패하였습니다.");
+			req.setAttribute("result1", "비밀번호 찾기에 실패하였습니다.");
 		}
 		
 		}catch (Exception e) {
@@ -264,5 +266,8 @@ public class MemberDAO {
 		System.out.println(ss.getMapper(MemberMapper.class).getMemberNum(m));
 		return ss.getMapper(MemberMapper.class).getMemberNum(m);
 	}
+
+
+
 
 }

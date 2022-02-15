@@ -15,7 +15,8 @@
 		</div>
 		<div class="menu_menubar">
 				<a href="list.go" class="menu_menubar_item">목록</a>
-				<a href="#" class="menu_menubar_item">후기</a>
+				<a href="review.go" class="menu_menubar_item">후기</a>
+
 		</div>
 	</div>
 	</section>

@@ -70,6 +70,10 @@ a {
   font-weight: bold;
   color: white;
   transform: scale(1.2);
+  height: 35px;
+  display: flex;
+  justify-content:space-between ;
+
 }
 
 
@@ -84,12 +88,10 @@ a {
 }
 
 
-
 /*menu */
 #menu{
 	height: 10%;
 }
-
 
 .menu{
 	display: flex;
@@ -140,13 +142,6 @@ a {
 	min-height: 58%
 }
 
-.home_list{
-	height: 50%;
-}
-
-.home_review{
-	height: 50%;
-}
 
 /*footer */
 #footer{
@@ -179,5 +174,13 @@ a {
 	
 }
 
+img{
+	max-width: 100%;
+ 	max-height: 100%;
+}
 
+#seemore{
+	float: right;
+	font-weight:bold;
+	font-size:25px;
 }

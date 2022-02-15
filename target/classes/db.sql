@@ -144,7 +144,16 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
-select *
-	from signup_table s, Dapply_table d
-	where s.id = d.Da_id and d.Da_no = 1 and d.Da_id = 'dfg'
+
+-- 유치원 후기 테이블 --
+create table review_table(
+	r_no number(3) primary key,
+	r_da_no number(5),
+	r_id varchar2(20 char) not null,
+	r_title varchar2(30 char) not null,	
+	r_txt varchar2(4000 char) not null,
+	r_date date not null
+	
+);
+create sequence review_table_seq;
 

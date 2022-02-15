@@ -52,6 +52,7 @@ public class schoolmainController {
 		pTDAO.getAllpriceTag(pT, req);
 		sDAO.getmonschedule(s, req);
 		
+		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/Schoolhome.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
