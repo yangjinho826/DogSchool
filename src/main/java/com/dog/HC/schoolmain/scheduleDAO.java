@@ -103,9 +103,6 @@ public class scheduleDAO {
 		String month2 =  month.substring(5,7);
 		month2 +="월";
 	
-		/*3월
-		String month2 = "03월";*/
-		
 		s.setS_da_no(as.getDa_no());
 		s.setS_month(month2);
 		
