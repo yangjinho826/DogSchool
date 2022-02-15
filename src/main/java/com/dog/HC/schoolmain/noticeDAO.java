@@ -53,27 +53,6 @@ public class noticeDAO {
 		    req.setAttribute("notices", notices);
 	  
 		}
-
-	public void pageView(notice n, HttpServletRequest req) {
-		String strPg = req.getParameter("pg");
-		
-		int rowSize = 3; //한페이지에 보여줄 글의 수
-	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
-	    
-	    if(strPg != null){ //list.jsp?pg=2
-	        pg = Integer.parseInt(strPg); //.저장
-	    }
-	    
-	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
-	    int to=(pg * rowSize); //(1*10) = 10 //to
-	    
-	    n.setN_da_no(from);
-	    n.setN_no(to); 
-	    
-	    noticemapper mm = ss.getMapper(noticemapper.class);
-		List<notice> notices = mm.getAllnotice(n);
-		req.setAttribute("notices", notices);
-	}
 	
 	public void page(notice n, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
