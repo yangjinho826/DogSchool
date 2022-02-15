@@ -20,7 +20,11 @@ insert into Uapply_table values(Uapply_table_seq.nextval, #{Ua_da_no},
 	#{Ua_id}, #{Ua_name}, #{Ua_gender}, #{Ua_daterange}, #{Ua_age},
 	#{Ua_img}, #{Ua_tname}, #{Ua_agree})
 </insert>
-
+<!-- 선생님 신청 중복 체크 -->
+<select id="checkTeacher" parameterType="com.dog.HC.member.Member" resultType="int">
+select count(*) from signup_table st, tapply_table tt 
+where st.id = tt.ta_id and st.id = #{id}
+</select>
 
 
 <!--[수락 대기 목록 조회 select]-->
@@ -88,10 +92,10 @@ select * from Dapply_table where Da_no = #{Da_no}
 
 <!-- 나의 신청 내역 조회 -->
 <select id="getMySchoolApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplySchool">
-select * from Dapply_table where Da_id = #{id}
+select * from Dapply_table where Da_id = #{id} order by Da_no desc
 </select>
 <select id="getMyTeacherApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyTeacher">
-select * from Tapply_table where Ta_id = #{id}
+select * from Tapply_table where Ta_id = #{id} order by Ta_no desc
 </select>
 <select id="getMyPetApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyPet">
 	select * from Uapply_table where Ua_id = #{id}
@@ -121,5 +125,29 @@ select * from Tapply_table where Ta_id = #{id}
 	from signup_table s, Uapply_table u
 	where s.id = u.Ua_id and u.Ua_da_no = #{Ua_da_no} and u.Ua_id = #{Ua_id} and u.Ua_agree = 1
 </select>
+
+
+<!-- 원장: 선생님, 견주 삭제 -->
+<delete id="deleteTeacher" parameterType="com.dog.HC.apply.ApplyTeacher">
+delete Tapply_table where Ta_no = #{Ta_no} 
+</delete>
+<delete id="deleteTeacherInPet" parameterType="com.dog.HC.apply.ApplyTeacher">
+update Uapply_table set Ua_tname = '선생님 재신청 필요' 
+where Ua_tname = (select Ta_name from Tapply_table where Ta_no = #{Ta_no})
+</delete>
+<delete id="deletePet" parameterType="com.dog.HC.apply.ApplyPet">
+delete Uapply_table where Ua_no = #{Ua_no}
+</delete>
+
+
+<!-- 재신청 시 갖고 갈 견주&강아지 정보 조회 -->
+<select id="getPetOne" resultType="com.dog.HC.apply.ApplyPet">
+select * from Uapply_table where Ua_no = #{Ua_no}
+</select>
+<!-- 재신청 진행 -->
+<update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
+update Uapply_table set Ua_agree = 0, Ua_tname = #{Ua_tname} where Ua_no = #{Ua_no}
+</update>
+
 
 </mapper>

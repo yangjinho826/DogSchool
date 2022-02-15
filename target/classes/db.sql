@@ -74,12 +74,16 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;
 
-select Da_no from 
-
 select *
 from signup_table s, Dapply_table d
 where s.id = d.Da_id and d.DA_NO = 41 
 
+select count(*) from signup_table st 
+inner join tapply_table tt 
+on st.id = tt.ta_id 
+where st.id = 't4';
+	
+	
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -104,12 +108,13 @@ create table Uapply_table(
     Ua_gender varchar2(30 char) not null, --(강아지성별)
     Ua_daterange varchar2(30 char) not null, --(기간)
     Ua_age number(3) not null, --(강아지 나이)
-    Ua_img varchar2(100 char)not null, --(강아지이미지)
+    Ua_img varchar2(100 char) not null, --(강아지이미지)
     Ua_tname varchar2(20 char)not null, --(선생님 목록)
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
 select * from Tapply_table
+
 
 
 -- 알림장 테이블 --
@@ -130,6 +135,7 @@ create table mypet_table(
 create sequence mypet_table_seq;
 
 select * from MYPET_TABLE
+
 
 -- 갤러리 테이블 --
 create table gallery_table(

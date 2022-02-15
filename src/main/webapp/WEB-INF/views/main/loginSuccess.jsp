@@ -13,8 +13,14 @@
 		<div>
 			<button onclick="location.href='HC.go'" class="member_info_btn">홈페이지</button>
 		</div>
-		<div  class="member_info">
-			${sessionScope.loginMember.id} 
+		<div class="member_info">
+			<span id="loginInfo">
+				${sessionScope.loginMember.id} 
+				<c:if test="${sessionScope.loginMember.typee eq 3}">(원장님)</c:if>
+				<c:if test="${sessionScope.loginMember.typee eq 2}">(선생님)</c:if>
+				<c:if test="${sessionScope.loginMember.typee eq 1}">(견주님)</c:if>
+				<c:if test="${sessionScope.loginMember.typee eq 0}">(관리자)</c:if>
+			</span>
 			<button class="member_info_btn" onclick="Memberinfo()"> 내 정보 </button>	
 			<button class="member_info_btn" onclick="logout()"> 로그아웃 </button>	
 			
@@ -35,8 +41,8 @@
 			<!-- 3: 원장 -->
 			<c:if test="${gg.typee eq 3}">
 			<button onClick="location.href='apply.go'" class="member_info_btn">신청하기</button>
-			<button onClick="location.href='apply.waiting'" class="member_info_btn">신청・수락 내역</button>			
 			<button onClick="location.href='accept.go'" class="member_info_btn">수락하기</button>
+			<button onClick="location.href='apply.waiting'" class="member_info_btn">신청・수락 내역</button>			
 			</c:if>
 			
 			<!-- 0: 관리자 -->

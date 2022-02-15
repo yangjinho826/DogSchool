@@ -71,7 +71,7 @@ function isNotNumber(input){
 // xxx(photoInput, "jpg")
 // 설정한 확장자이면 true, 설정한 확장자가 아니면 false
 function isNotType(input, type){
-	if(type != "."+jpg || type != "."+png){
-		return false;
-	}
+    if(type != "."+jpg || type != "."+png){
+        return false;
+    }
 }

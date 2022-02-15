@@ -17,4 +17,8 @@ public interface ManageMapper {
 	public List<ApplyPet> getAllPet();
 	public List<ApplyTeacher> getMyTeacher(Member m);
 	public List<ApplyPet> getMyPet(Member m);
+	public int getManageTotalCount();
+	public List<ApplySchool> getAllSchoolPage(ApplySchool s);
+	public List<ApplySchool> search(ApplySchool s);
+	public int getManageSearchTotalCount(ApplySchool s);
 }
