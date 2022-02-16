@@ -31,6 +31,7 @@ public class HomeController {
 		
 		mDAOO.loginCheck(req);
 		rDAO.pageView(r, req);
+		mDAO.getAllSchool(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
@@ -43,6 +44,7 @@ public class HomeController {
 		
 		mDAOO.loginCheck(req);
 		rDAO.pageView(r, req);
+		mDAO.getAllSchool(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
