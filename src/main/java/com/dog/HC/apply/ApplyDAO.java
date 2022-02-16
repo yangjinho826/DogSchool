@@ -2,13 +2,17 @@ package com.dog.HC.apply;
 
 import java.io.File;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
@@ -86,56 +90,55 @@ public class ApplyDAO {
 		}
 	}
 	//견주-원장 강아지 신청
-	public void applyPet(ApplyPet p, HttpServletRequest req) {		
-		String path = req.getSession().getServletContext().getRealPath("resources/img");
-		MultipartRequest mr = null;
-		try {
-			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
-		} catch (Exception e) {
-			e.printStackTrace();
-			req.setAttribute("result", "가입실패");
-			return;
-		}
+	public void applyPet(MultipartFile mf, ApplyPet p, HttpServletRequest req) {
 
-		try {
-			String token = mr.getParameter("token");
-			String successToken = (String) req.getSession().getAttribute("successToken");
-			
-			if(token.equals(successToken)){ return; }
-			
-			int Ua_da_no = Integer.parseInt(mr.getParameter("Ua_da_no"));
-			String Ua_id = mr.getParameter("Ua_id");
-			String Ua_name = mr.getParameter("Ua_name");
-			String Ua_gender = mr.getParameter("Ua_gender");
-			String Ua_daterange = mr.getParameter("Ua_daterange");
-			int Ua_age = Integer.parseInt(mr.getParameter("Ua_age"));
-			String Ua_img = mr.getFilesystemName("Ua_img");
-			Ua_img = URLEncoder.encode(Ua_img, "utf-8");
-			Ua_img = Ua_img.replace("+", " ");
-			String Ua_tname = mr.getParameter("Ua_tname");
-			
-			p.setUa_da_no(Ua_da_no);
-			p.setUa_id(Ua_id);
-			p.setUa_name(Ua_name);
-			p.setUa_gender(Ua_gender);
-			p.setUa_daterange(Ua_daterange);
-			p.setUa_age(Ua_age);
-			p.setUa_img(Ua_img);
-			p.setUa_tname(Ua_tname);
+        String root = "";
+        String changeFile = "";
+        try {
+            String token = req.getParameter("token");
+            String successToken = (String) req.getSession().getAttribute("successToken");
 
-			if (ss.getMapper(ApplyMapper.class).petapply(p) == 1) {
-				req.setAttribute("result", "가입성공");
-				req.getSession().setAttribute("successToken", token);
-			} else {
-				req.setAttribute("result", "가입실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			String fileName = mr.getFilesystemName("Ua_img");
-			new File(path + "/" + fileName).delete();
-			req.setAttribute("result", "가입실패");
-		}
-	}
+            if (token.equals(successToken)) {
+                return;
+            }
+
+            // path 가져오기
+            String path = req.getSession().getServletContext().getRealPath("resources");
+            root = path + "/" +"img";
+            System.out.println(root);
+            File fileCheck = new File(root);
+            if (!fileCheck.exists()) {
+                fileCheck.mkdirs();
+            }
+            String originFile = mf.getOriginalFilename();
+            String ext = originFile.substring(originFile.lastIndexOf("."));
+            changeFile = UUID.randomUUID().toString() + ext;
+
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("originFile", originFile);
+            map.put("changeFile", changeFile);
+
+            System.out.println(changeFile);
+            p.setUa_img(changeFile);
+
+            // 파일업로드
+
+            File uploadFile = new File(root + "/" + changeFile);
+            mf.transferTo(uploadFile);
+
+            if (ss.getMapper(ApplyMapper.class).petapply(p) == 1) {
+                req.setAttribute("result", "가입성공");
+                req.getSession().setAttribute("successToken", token);
+            } else {
+                req.setAttribute("result", "가입실패");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            new File(root + "/" + changeFile).delete();
+            req.setAttribute("result", "가입실패");
+        }
+    }
 	
 	
 	//////////////////////////////////////////////////////////////
@@ -276,7 +279,7 @@ public class ApplyDAO {
 		}
 	}
 	
-	// 학원 세션 받아오기
+	// 학원 리스트에서 세션 받아오기
 	public void getSchoolSession(ApplySchool d, HttpServletRequest req) {
 		
 		int Da_no = Integer.parseInt(req.getParameter("ps.da_no"));

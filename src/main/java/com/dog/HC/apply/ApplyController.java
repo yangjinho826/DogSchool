@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -150,9 +151,9 @@ public class ApplyController {
 	}
 	//견주->원장 강아지 신청
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
-	public String applyPet(Member m, ApplyPet p, HttpServletRequest req) {
+	public String applyPet(@RequestParam MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
 		if(mDAOO.loginCheck(req)) {
-			aDAO.applyPet(p, req);
+			aDAO.applyPet(mf, p, req);
 		}
 		
 		mDAO.getAllSchool(req);

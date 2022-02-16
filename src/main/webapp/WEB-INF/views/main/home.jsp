@@ -10,9 +10,10 @@
 </head>
 <body>
 	<section id="home">
-		<section class="post">
-			<div><img src="resources/img/2.png"></div>
+		<section class="home_Banner">
+			<img class="home_Banner" src="resources/img/2.png">
 		</section>
+		
 		<section class="home_review">
 			<section id="postscript_Home">
 			<h1 class="postscript_title"> 유치원 후기 </h1>

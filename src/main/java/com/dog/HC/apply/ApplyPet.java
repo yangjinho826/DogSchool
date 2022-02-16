@@ -8,6 +8,7 @@ public class ApplyPet {
 	private int Ua_age;
 	private String Ua_img, Ua_tname;
 	private int Ua_agree;
+	
 	public ApplyPet() { }
 	public ApplyPet(int ua_no, int ua_da_no, String ua_id, String ua_name, String ua_gender, String ua_daterange,
 			int ua_age, String ua_img, String ua_tname, int ua_agree) {
