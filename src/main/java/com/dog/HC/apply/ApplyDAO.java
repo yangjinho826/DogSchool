@@ -2,13 +2,21 @@ package com.dog.HC.apply;
 
 import java.io.File;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
@@ -87,7 +95,9 @@ public class ApplyDAO {
 	}
 	//견주-원장 강아지 신청
 	public void applyPet(ApplyPet p, HttpServletRequest req) {		
+		
 		String path = req.getSession().getServletContext().getRealPath("resources/img");
+		
 		MultipartRequest mr = null;
 		try {
 			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
@@ -96,13 +106,13 @@ public class ApplyDAO {
 			req.setAttribute("result", "가입실패");
 			return;
 		}
-
+				
 		try {
 			String token = mr.getParameter("token");
 			String successToken = (String) req.getSession().getAttribute("successToken");
 			
 			if(token.equals(successToken)){ return; }
-			
+
 			int Ua_da_no = Integer.parseInt(mr.getParameter("Ua_da_no"));
 			String Ua_id = mr.getParameter("Ua_id");
 			String Ua_name = mr.getParameter("Ua_name");
@@ -122,18 +132,17 @@ public class ApplyDAO {
 			p.setUa_age(Ua_age);
 			p.setUa_img(Ua_img);
 			p.setUa_tname(Ua_tname);
-
+			
 			if (ss.getMapper(ApplyMapper.class).petapply(p) == 1) {
-				req.setAttribute("result", "가입성공");
+				System.out.println("강아지 신청 성공");
 				req.getSession().setAttribute("successToken", token);
 			} else {
-				req.setAttribute("result", "가입실패");
+				System.out.println("강아지 신청 실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			String fileName = mr.getFilesystemName("Ua_img");
 			new File(path + "/" + fileName).delete();
-			req.setAttribute("result", "가입실패");
 		}
 	}
 	
