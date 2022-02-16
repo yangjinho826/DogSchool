@@ -30,8 +30,9 @@
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
-		<beans:property name="username" value="c##ny" />
-		<beans:property name="password" value="ny" />
+
+		<beans:property name="username" value="c##jh" />
+		<beans:property name="password" value="jh" />
 
 	</beans:bean>
 
@@ -69,9 +70,9 @@
 	<!-- file Upload -->
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- max upload size in bytes -->
-        <beans:property name="maxUploadSize" value="5242880" /> <!-- 5MB -->
+    <!--    <beans:property name="maxUploadSize" value="5242880" />  5MB -->
         <!-- max size of file in memory (in bytes) -->
-        <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+    <!--    <beans:property name="maxInMemorySize" value="1048576" />  1MB -->
     </beans:bean>
 
 </beans:beans>

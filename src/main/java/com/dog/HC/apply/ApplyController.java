@@ -11,13 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 import com.dog.HC.TokenMaker;
 import com.dog.HC.manage.ManageDAO;
@@ -146,14 +145,16 @@ public class ApplyController {
 		return "index";
 	}
 	//선생님 신청 중복 체크
-	@RequestMapping(value = "apply.getTeacher", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "apply.getTeacher", method = RequestMethod.GET)
 	public @ResponseBody int checkTeacher(Member m, HttpServletRequest req) {
 		return aDAO.checkTeacher(m, req);
 	}
 	//견주->원장 강아지 신청
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
-	public String applyPet(@RequestParam MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
+	public String applyPet(@RequestParam("imggg") MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
+		System.out.println(1);
 		if(mDAOO.loginCheck(req)) {
+			System.out.println(2);
 			aDAO.applyPet(mf, p, req);
 		}
 		

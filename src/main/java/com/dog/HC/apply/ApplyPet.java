@@ -1,85 +1,109 @@
 package com.dog.HC.apply;
 
 public class ApplyPet {
-	private int Ua_no, Ua_da_no;
-	private String Ua_id, Ua_name, Ua_gender, Ua_daterange;
-	private int Ua_age;
-	private String Ua_img, Ua_tname;
-	private int Ua_agree;
+	private int uA_no, uA_da_no;
+	private String uA_id, uA_name, uA_gender, uA_daterange;
+	private int uA_age;
+	private String uA_img, uA_tname;
+	private int uA_agree;
 	
-	public ApplyPet() { }
-	public ApplyPet(int ua_no, int ua_da_no, String ua_id, String ua_name, String ua_gender, String ua_daterange,
-			int ua_age, String ua_img, String ua_tname, int ua_agree) {
+	public ApplyPet() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public ApplyPet(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, String uA_daterange,
+			int uA_age, String uA_img, String uA_tname, int uA_agree) {
 		super();
-		Ua_no = ua_no;
-		Ua_da_no = ua_da_no;
-		Ua_id = ua_id;
-		Ua_name = ua_name;
-		Ua_gender = ua_gender;
-		Ua_daterange = ua_daterange;
-		Ua_age = ua_age;
-		Ua_img = ua_img;
-		Ua_tname = ua_tname;
-		Ua_agree = ua_agree;
+		this.uA_no = uA_no;
+		this.uA_da_no = uA_da_no;
+		this.uA_id = uA_id;
+		this.uA_name = uA_name;
+		this.uA_gender = uA_gender;
+		this.uA_daterange = uA_daterange;
+		this.uA_age = uA_age;
+		this.uA_img = uA_img;
+		this.uA_tname = uA_tname;
+		this.uA_agree = uA_agree;
 	}
-	public int getUa_no() {
-		return Ua_no;
+
+	public int getuA_no() {
+		return uA_no;
 	}
-	public void setUa_no(int ua_no) {
-		Ua_no = ua_no;
+
+	public void setuA_no(int uA_no) {
+		this.uA_no = uA_no;
 	}
-	public int getUa_da_no() {
-		return Ua_da_no;
+
+	public int getuA_da_no() {
+		return uA_da_no;
 	}
-	public void setUa_da_no(int ua_da_no) {
-		Ua_da_no = ua_da_no;
+
+	public void setuA_da_no(int uA_da_no) {
+		this.uA_da_no = uA_da_no;
 	}
-	public String getUa_id() {
-		return Ua_id;
+
+	public String getuA_id() {
+		return uA_id;
 	}
-	public void setUa_id(String ua_id) {
-		Ua_id = ua_id;
+
+	public void setuA_id(String uA_id) {
+		this.uA_id = uA_id;
 	}
-	public String getUa_name() {
-		return Ua_name;
+
+	public String getuA_name() {
+		return uA_name;
 	}
-	public void setUa_name(String ua_name) {
-		Ua_name = ua_name;
+
+	public void setuA_name(String uA_name) {
+		this.uA_name = uA_name;
 	}
-	public String getUa_gender() {
-		return Ua_gender;
+
+	public String getuA_gender() {
+		return uA_gender;
 	}
-	public void setUa_gender(String ua_gender) {
-		Ua_gender = ua_gender;
+
+	public void setuA_gender(String uA_gender) {
+		this.uA_gender = uA_gender;
 	}
-	public String getUa_daterange() {
-		return Ua_daterange;
+
+	public String getuA_daterange() {
+		return uA_daterange;
 	}
-	public void setUa_daterange(String ua_daterange) {
-		Ua_daterange = ua_daterange;
+
+	public void setuA_daterange(String uA_daterange) {
+		this.uA_daterange = uA_daterange;
 	}
-	public int getUa_age() {
-		return Ua_age;
+
+	public int getuA_age() {
+		return uA_age;
 	}
-	public void setUa_age(int ua_age) {
-		Ua_age = ua_age;
+
+	public void setuA_age(int uA_age) {
+		this.uA_age = uA_age;
 	}
-	public String getUa_img() {
-		return Ua_img;
+
+	public String getuA_img() {
+		return uA_img;
 	}
-	public void setUa_img(String ua_img) {
-		Ua_img = ua_img;
+
+	public void setuA_img(String uA_img) {
+		this.uA_img = uA_img;
 	}
-	public String getUa_tname() {
-		return Ua_tname;
+
+	public String getuA_tname() {
+		return uA_tname;
 	}
-	public void setUa_tname(String ua_tname) {
-		Ua_tname = ua_tname;
+
+	public void setuA_tname(String uA_tname) {
+		this.uA_tname = uA_tname;
 	}
-	public int getUa_agree() {
-		return Ua_agree;
+
+	public int getuA_agree() {
+		return uA_agree;
 	}
-	public void setUa_agree(int ua_agree) {
-		Ua_agree = ua_agree;
+
+	public void setuA_agree(int uA_agree) {
+		this.uA_agree = uA_agree;
 	}
+	
 }
