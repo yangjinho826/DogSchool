@@ -10,7 +10,7 @@ function connectAddrSearchEvent() {
 }
 
 function daterangeSelectEvent(){
-	$('input[name="Ua_daterange"]').daterangepicker();
+	$('input[name="uA_daterange"]').daterangepicker();
 }
 
 

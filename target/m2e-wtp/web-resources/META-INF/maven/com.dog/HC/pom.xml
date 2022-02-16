@@ -162,13 +162,6 @@
     <artifactId>ojdbc8</artifactId>
     <version>19.3.0.0</version>
 </dependency>
-<dependency>
-	<groupId>com.jfinal</groupId>
-	<artifactId>cos</artifactId>
-	<version>26Dec2008</version>
-</dependency>
-
-
 
 
 
