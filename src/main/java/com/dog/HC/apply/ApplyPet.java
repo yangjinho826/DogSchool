@@ -1,7 +1,5 @@
 package com.dog.HC.apply;
 
-import java.util.Date;
-
 public class ApplyPet {
 	private int Ua_no, Ua_da_no;
 	private String Ua_id, Ua_name, Ua_gender, Ua_daterange;

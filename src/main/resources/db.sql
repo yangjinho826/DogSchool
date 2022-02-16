@@ -9,8 +9,7 @@ create table signup_table(
     typee int not null
 );
 
-select * from Tapply_table
-
+select * from signup_table
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -21,6 +20,10 @@ create table notice_table(
 	n_date date not null
 );
 create sequence notice_seq;
+
+	select *
+		from notice_table
+		order by n_date desc
 
 -- 선생님 후기 테이블 --
 create table postscript_table(
@@ -67,7 +70,7 @@ create table Dapply_table(
     Da_phonenumber varchar2(20 char) not null,
     Da_agree number(3) not null --<- 0 수락시 1
 );
-create sequence Dapply_table_seq;
+create sequence Dapply_table_seq;	
 	
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -96,6 +99,8 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
+select * from Uapply_table
+
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -114,11 +119,14 @@ create table mypet_table(
 );
 create sequence mypet_table_seq;
 
+select * from MYPET_TABLE
+
+
 -- 갤러리 테이블 --
 create table gallery_table(
 	g_no number(3) primary key,
 	g_title varchar2(30 char) not null,
-	g_img varchar2(2000 char)not null,
+	g_img varchar2(100 char)not null,
 	g_da_no number(5),
 	g_tid varchar2(30 char) not null,
 	g_uid varchar2(30 char) not null,
@@ -127,16 +135,10 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
--- 유치원 후기 테이블 --
-create table review_table(
-	r_no number(3) primary key,
-	r_da_no number(5),
-	r_id varchar2(20 char) not null,
-	r_title varchar2(30 char) not null,	
-	r_txt varchar2(4000 char) not null,
-	r_date date not null
-	
-);
-create sequence review_table_seq;
-
+	select rn, n_no,n_id,n_title,n_txt,n_date
+		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
+		from (select n_no,n_id,n_title,n_txt,n_date
+		from notice_table
+		order by n_date desc))
+	where rn < 5
 

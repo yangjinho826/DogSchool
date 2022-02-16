@@ -11,12 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.dog.HC.TokenMaker;
 import com.dog.HC.manage.ManageDAO;
@@ -145,7 +146,7 @@ public class ApplyController {
 		return "index";
 	}
 	//선생님 신청 중복 체크
-	@RequestMapping(value = "apply.getTeacher", method = RequestMethod.GET)
+	@RequestMapping(value = "apply.getTeacher", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody int checkTeacher(Member m, HttpServletRequest req) {
 		return aDAO.checkTeacher(m, req);
 	}

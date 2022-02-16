@@ -52,7 +52,7 @@
 
 		<c:if test="${g.typee eq 2}">
 		<!-- if 선생님 권한 로그인 시 -->
-		<form action="apply.teacher" name="myForm2" onsubmit="return applyCheck2()">
+		<form action="apply.teacher" id="myForm2" name="myForm2" onsubmit="return applyCheck2()">
 			<input name="token" value="${token }" hidden="hidden">
 			<table border="1" style="border-collapse: collapse;" id="applyTbl">
 				<tr>
@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<td class="td1">선생님 아이디</td>
-					<td class="td2"><input name="Ta_id" id="Ta_id" autocomplete="off" placeholder="아이디" value="${sessionScope.loginMember.id}"><input id="id2" name="id2" value="0" type="hidden"><span id="idcheck" class="idcheck"></span></td>
+					<td class="td2"><input name="Ta_id" id="Ta_id" autocomplete="off" placeholder="아이디" value="${sessionScope.loginMember.id}">&nbsp;<button id="checkBtn" type="button">ID 확인</button><input id="id2" name="id2" value="0" type="hidden"><span id="idcheck" class="idcheck"></span></td>
 				</tr>
 				<tr>
 					<td class="td1">선생님 이름</td>

@@ -160,7 +160,7 @@ function applyCheck2(){
 	}
 }
 function checkTeacher(){
-	$(document).ready(function(){
+	$("#checkBtn").click(function(){
 		var idd = $("#Ta_id").val();
 		$.ajax({
 			url : "/HC/apply.getTeacher",
@@ -219,7 +219,7 @@ function applyCheck3(){
 	var img2 = img.value;
 	var file = img2.substring(img2.lastIndexOf('.') + 1);
 	
-	if(file != "jpg" && file != "png"){
+	if(file != "jpg" && file != "png" && file != "JPG" && file != "PNG"){
 		alert("jpg 또는 png 형식만 첨부해 주세요.");
 		img.value = "";
 		img.focus();

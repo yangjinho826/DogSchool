@@ -13,6 +13,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
@@ -90,6 +96,7 @@ public class ApplyDAO {
 		}
 	}
 	//견주-원장 강아지 신청
+
 	public void applyPet(MultipartFile mf, ApplyPet p, HttpServletRequest req) {
 
         String root = "";
@@ -139,9 +146,8 @@ public class ApplyDAO {
             req.setAttribute("result", "가입실패");
         }
     }
-	
-	
-	//////////////////////////////////////////////////////////////
+
+
 	//신청 중인 원장-관리자 유치원 전체 조회
 	public void getAllSchoolApply(HttpServletRequest req) {
 		try {
