@@ -76,7 +76,6 @@ public class ManageDAO {
 	}
 	
 	
-	//////////////////////////////////////////////////////
 	//승인된 유치원 조회
 	public void getAllSchool(HttpServletRequest req) {
 		try {
@@ -155,6 +154,8 @@ public class ManageDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	public void getMyPet(Member m, HttpServletRequest req) {
 		Member mm = (Member) req.getSession().getAttribute("loginMember");
 		m.setId(mm.getId());

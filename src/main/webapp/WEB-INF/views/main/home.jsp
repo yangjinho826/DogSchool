@@ -10,8 +10,8 @@
 </head>
 <body>
 	<section id="home">
-		<section>
-			<div><img class="mainImg" src="resources/img/2.png"></div>
+		<section class="home_Banner" >
+			<div ><img class="home_Banner_img" src="resources/img/2.png"></div>
 		</section>
 		
 		<section id="postscript_Home">
