@@ -8,16 +8,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dog.HC.manage.ManageDAO;
+import com.dog.HC.review.ReviewDAO;
+import com.dog.HC.review.review;
+
 @Controller
 public class MemberController {
 	
 	@Autowired
-	private MemberDAO mDAO;
+	private MemberDAO mDAOO;
+	
+	@Autowired
+	private ReviewDAO rDAO;
+	
+	@Autowired
+	private ManageDAO mDAO;
 	
 	@RequestMapping(value = "member.login", method = RequestMethod.POST)
-	public String home(HttpServletRequest req , Member m) {
-		mDAO.login(req, m);
-		mDAO.loginCheck(req);
+	public String home(review r, HttpServletRequest req , Member m) {
+		mDAOO.login(req, m);
+		mDAOO.loginCheck(req);
+		rDAO.pageView(r, req);
+		mDAO.getAllSchool(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
@@ -26,10 +38,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "member.logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest req, Member m) {
+	public String logout(review r, HttpServletRequest req, Member m) {
 		
-		mDAO.logout(req);
-		mDAO.loginCheck(req);
+		mDAOO.logout(req);
+		mDAOO.loginCheck(req);
+		rDAO.pageView(r, req);
+		mDAO.getAllSchool(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
@@ -40,7 +54,7 @@ public class MemberController {
 	@RequestMapping(value = "member.signup", method = RequestMethod.GET)
 	public String signup(HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/signup.jsp");
@@ -51,7 +65,7 @@ public class MemberController {
 	@RequestMapping(value = "member.signupgo", method = RequestMethod.GET)
 	public String signupgo(HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/signupgo.jsp");
@@ -62,8 +76,8 @@ public class MemberController {
 	@RequestMapping(value = "member.usignup", method = RequestMethod.POST)
 	public String usignup(HttpServletRequest req, Member m) {
 		
-		mDAO.usingup(req, m);
-		mDAO.loginCheck(req);
+		mDAOO.usingup(req, m);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
@@ -73,7 +87,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "member.info", method = RequestMethod.GET)
 	public String memberInfo(HttpServletRequest req) {
-		if (mDAO.loginCheck(req)) {
+		if (mDAOO.loginCheck(req)) {
 			req.setAttribute("MenuBar", "main/menu.jsp");
 			req.setAttribute("contentPage", "member/info.jsp");
 			req.setAttribute("footer", "main/footer.jsp");
@@ -88,8 +102,8 @@ public class MemberController {
 	
 	@RequestMapping(value = "member.update", method = RequestMethod.POST)
 	public String memberUpdate(HttpServletRequest req, Member m) {
-		if (mDAO.loginCheck(req)) {
-			mDAO.update(req, m);
+		if (mDAOO.loginCheck(req)) {
+			mDAOO.update(req, m);
 			req.setAttribute("MenuBar", "main/menu.jsp");
 			req.setAttribute("contentPage", "member/update.jsp");
 			req.setAttribute("footer", "main/footer.jsp");
@@ -103,8 +117,8 @@ public class MemberController {
 	
 	@RequestMapping(value = "member.bye", method = RequestMethod.GET)
 	public String memberBye(HttpServletRequest req) {
-		if (mDAO.loginCheck(req)) {
-			mDAO.bye(req);
+		if (mDAOO.loginCheck(req)) {
+			mDAOO.bye(req);
 		}
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/bye.jsp");
@@ -115,7 +129,7 @@ public class MemberController {
 	@RequestMapping(value = "member.findidgo", method = RequestMethod.GET)
 	public String findidgo(HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/findidgo.jsp");
@@ -126,8 +140,8 @@ public class MemberController {
 	@RequestMapping(value = "member.findid", method = RequestMethod.POST)
 	public String findid(HttpServletRequest req, Member m) {
 		
-		mDAO.findid(req, m);
-		mDAO.loginCheck(req);
+		mDAOO.findid(req, m);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/findid.jsp");
@@ -138,7 +152,7 @@ public class MemberController {
 	@RequestMapping(value = "member.findpwgo", method = RequestMethod.GET)
 	public String findpwgo(HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/findpwgo.jsp");
@@ -149,8 +163,8 @@ public class MemberController {
 	@RequestMapping(value = "member.findpw", method = RequestMethod.POST)
 	public String findpw(HttpServletRequest req, Member m) {
 		
-		mDAO.findpw(req, m);
-		mDAO.loginCheck(req);
+		mDAOO.findpw(req, m);
+		mDAOO.loginCheck(req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "member/findpw.jsp");
@@ -162,7 +176,7 @@ public class MemberController {
 			method = RequestMethod.GET, 
 			produces = "application/json; charset=utf-8")
 	public @ResponseBody int memberGet(HttpServletRequest req, Member m) {
-		return mDAO.getMemberNum(req, m);
+		return mDAOO.getMemberNum(req, m);
 	}
 	
 
