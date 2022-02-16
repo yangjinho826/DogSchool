@@ -4,15 +4,12 @@ public class ApplyPet {
 	private int uA_no, uA_da_no;
 	private String uA_id, uA_name, uA_gender, uA_daterange;
 	private int uA_age;
-	private String uA_img, uA_tname;
-	private int uA_agree;
+	private String uA_img;
+	private int uA_ta_no, uA_agree;
 	
-	public ApplyPet() {
-		// TODO Auto-generated constructor stub
-	}
-
+	public ApplyPet() {}
 	public ApplyPet(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, String uA_daterange,
-			int uA_age, String uA_img, String uA_tname, int uA_agree) {
+			int uA_age, String uA_img, int uA_ta_no, int uA_agree) {
 		super();
 		this.uA_no = uA_no;
 		this.uA_da_no = uA_da_no;
@@ -22,7 +19,7 @@ public class ApplyPet {
 		this.uA_daterange = uA_daterange;
 		this.uA_age = uA_age;
 		this.uA_img = uA_img;
-		this.uA_tname = uA_tname;
+		this.uA_ta_no = uA_ta_no;
 		this.uA_agree = uA_agree;
 	}
 
@@ -90,12 +87,12 @@ public class ApplyPet {
 		this.uA_img = uA_img;
 	}
 
-	public String getuA_tname() {
-		return uA_tname;
+	public int getuA_ta_no() {
+		return uA_ta_no;
 	}
 
-	public void setuA_tname(String uA_tname) {
-		this.uA_tname = uA_tname;
+	public void setuA_ta_no(int uA_ta_no) {
+		this.uA_ta_no = uA_ta_no;
 	}
 
 	public int getuA_agree() {

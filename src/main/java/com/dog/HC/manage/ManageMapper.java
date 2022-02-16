@@ -21,4 +21,5 @@ public interface ManageMapper {
 	public List<ApplySchool> getAllSchoolPage(ApplySchool s);
 	public List<ApplySchool> search(ApplySchool s);
 	public int getManageSearchTotalCount(ApplySchool s);
+	public String getTeacherId(int getuA_da_no);
 }

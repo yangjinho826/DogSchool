@@ -12,16 +12,15 @@ public class puppy {
 	private Date uA_end;
 	private int uA_age;
 	private String uA_img;
-	private String uA_tname;
+	private int uA_ta_no;
 	private int uA_agree;
-	private int tA_no;
 	
 	public puppy() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public puppy(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, Date uA_start, Date uA_end,
-			int uA_age, String uA_img, String uA_tname, int uA_agree, int tA_no) {
+			int uA_age, String uA_img, int uA_ta_no, int uA_agree) {
 		super();
 		this.uA_no = uA_no;
 		this.uA_da_no = uA_da_no;
@@ -32,9 +31,8 @@ public class puppy {
 		this.uA_end = uA_end;
 		this.uA_age = uA_age;
 		this.uA_img = uA_img;
-		this.uA_tname = uA_tname;
+		this.uA_ta_no = uA_ta_no;
 		this.uA_agree = uA_agree;
-		this.tA_no = tA_no;
 	}
 
 	public int getuA_no() {
@@ -109,12 +107,12 @@ public class puppy {
 		this.uA_img = uA_img;
 	}
 
-	public String getuA_tname() {
-		return uA_tname;
+	public int getuA_ta_no() {
+		return uA_ta_no;
 	}
 
-	public void setuA_tname(String uA_tname) {
-		this.uA_tname = uA_tname;
+	public void setuA_ta_no(int uA_ta_no) {
+		this.uA_ta_no = uA_ta_no;
 	}
 
 	public int getuA_agree() {
@@ -125,12 +123,4 @@ public class puppy {
 		this.uA_agree = uA_agree;
 	}
 
-	public int gettA_no() {
-		return tA_no;
-	}
-
-	public void settA_no(int tA_no) {
-		this.tA_no = tA_no;
-	}
-	
 }

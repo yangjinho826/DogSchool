@@ -21,7 +21,7 @@ public class scheduleDAO {
 
 	public void getAllschedule(schedule s, HttpServletRequest req) {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
-		s.setS_da_no(as.getDa_no());
+		s.setS_da_no(as.getdA_no());
 		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);
 		List<schedule> schedules = mm.getAllschedule(s);
@@ -37,7 +37,7 @@ public class scheduleDAO {
 		
 		if(token.equals(successToken)){ return; }
 		
-		int s_da_no = as.getDa_no();
+		int s_da_no = as.getdA_no();
 		s.setS_da_no(s_da_no);
 		
 		String s_day = req.getParameter("s_day");
@@ -103,7 +103,7 @@ public class scheduleDAO {
 		String month2 =  month.substring(5,7);
 		month2 +="월";
 	
-		s.setS_da_no(as.getDa_no());
+		s.setS_da_no(as.getdA_no());
 		s.setS_month(month2);
 		
 		schedulemapper mm = ss.getMapper(schedulemapper.class);

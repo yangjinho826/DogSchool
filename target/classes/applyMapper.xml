@@ -6,19 +6,19 @@
 
 <!-- 원장->관리자 유치원 신청 -->
 <insert id="schoolapply" parameterType="com.dog.HC.apply.ApplySchool">
-insert into Dapply_table values(Dapply_table_seq.nextval, #{Da_id}, 
-	#{Da_name}, #{Da_schoolname}, #{Da_addr}, #{Da_phonenumber}, #{Da_agree})
+insert into Dapply_table values(Dapply_table_seq.nextval, #{dA_id}, 
+	#{dA_name}, #{dA_schoolname}, #{dA_addr}, #{dA_phonenumber}, #{dA_agree})
 </insert>
 <!-- 선생님->원장 등록 신청 -->
 <insert id="teacherapply" parameterType="com.dog.HC.apply.ApplyTeacher">
-insert into Tapply_table values(Tapply_table_seq.nextval, #{Ta_da_no},
-	#{Ta_id}, #{Ta_name}, #{Ta_phonenumber}, #{Ta_gender}, #{Ta_text}, #{Ta_agree})
+insert into Tapply_table values(Tapply_table_seq.nextval, #{tA_da_no},
+	#{tA_id}, #{tA_name}, #{tA_phonenumber}, #{tA_gender}, #{tA_text}, #{tA_agree})
 </insert>
 <!-- 견주->원장 강아지 신청 -->
 <insert id="petapply" parameterType="com.dog.HC.apply.ApplyPet">
 insert into uApply_table values(uApply_table_seq.nextval, #{uA_da_no},
 	#{uA_id}, #{uA_name}, #{uA_gender}, #{uA_daterange}, #{uA_age},
-	#{uA_img}, #{uA_tname}, #{uA_agree})
+	#{uA_img}, #{uA_ta_no}, #{uA_agree})
 </insert>
 <!-- 선생님 신청 중복 체크 -->
 <select id="checkTeacher" parameterType="com.dog.HC.member.Member" resultType="int">
@@ -56,19 +56,19 @@ where dt.Da_id = #{id} and ut.uA_agree = 0
 
 <!-- 유치원 승인: 0=>1 -->
 <update id="schoolPass" parameterType="com.dog.HC.apply.ApplySchool">
-update Dapply_table set Da_agree = 1 where Da_no = #{Da_no}
+update Dapply_table set Da_agree = 1 where Da_no = #{dA_no}
 </update>
 <!-- 유치원 거절, 재신청 하게 테이블에서 삭제 -->
 <delete id="schoolFail" parameterType="com.dog.HC.apply.ApplySchool">
-delete Dapply_table where Da_no = #{Da_no}
+delete Dapply_table where Da_no = #{dA_no}
 </delete>
 <!-- 선생님 승인: 0=>1 -->
 <update id="teacherPass" parameterType="com.dog.HC.apply.ApplyTeacher">
-update Tapply_table set Ta_agree = 1 where Ta_no = #{Ta_no}
+update Tapply_table set Ta_agree = 1 where Ta_no = #{tA_no}
 </update>
 <!-- 선생님 거절, 재신청 하게 테이블에서 삭제 -->
 <delete id="teacherFail" parameterType="com.dog.HC.apply.ApplyTeacher">
-delete Tapply_table where Ta_no = #{Ta_no}
+delete Tapply_table where Ta_no = #{tA_no}
 </delete>
 <!-- 강아지(견주) 승인: 0=>1 -->
 <update id="petPass" parameterType="com.dog.HC.apply.ApplyPet">
@@ -82,11 +82,11 @@ delete uApply_table where uA_no = #{uA_no}
 
 <!-- 한 유치원에 대한 선생님 조회 -->
 <select id="getOneSchoolTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
-select * from Tapply_table where Ta_da_no = #{Ta_da_no} and Ta_agree = 1
+select * from Tapply_table where Ta_da_no = #{tA_da_no} and Ta_agree = 1
 </select>
 <!-- 한 유치원 정보 조회 -->
 <select id="getOneSchool" resultType="com.dog.HC.apply.ApplySchool">
-select * from Dapply_table where Da_no = #{Da_no}
+select * from Dapply_table where Da_no = #{dA_no}
 </select>
 
 
@@ -98,26 +98,26 @@ select * from Dapply_table where Da_id = #{id} order by Da_no desc
 select * from Tapply_table where Ta_id = #{id} order by Ta_no desc
 </select>
 <select id="getMyPetApply" parameterType="com.dog.HC.member.Member" resultType="com.dog.HC.apply.ApplyPet">
-	select * from uApply_table where uA_id = #{id}
+select * from uApply_table where uA_id = #{id}
 </select>
 
 <!-- 세션 받아오기 -->
 <select id="getSchoolSession" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
 	select * from Dapply_table
-	where Da_no = #{Da_no} and Da_agree = 1
+	where Da_no = #{dA_no} and Da_agree = 1
 </select>
 
 <select id="TeachCheck" parameterType="com.dog.HC.apply.ApplyTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
 	select t.Ta_da_no
 	from signup_table s, Tapply_table t
-	where s.id = t.Ta_id and t.Ta_da_no = #{Ta_da_no} and t.Ta_id = #{Ta_id} and t.Ta_agree = 1
+	where s.id = t.Ta_id and t.Ta_da_no = #{tA_da_no} and t.Ta_id = #{tA_id} and t.Ta_agree = 1
 </select>
 
 
 <select id="DirectorCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
 	select *
 	from signup_table s, Dapply_table d
-	where s.id = d.Da_id and d.Da_no = #{Da_no} and d.Da_id = #{Da_id} and d.Da_agree = 1
+	where s.id = d.Da_id and d.Da_no = #{dA_no} and d.Da_id = #{dA_id} and d.Da_agree = 1
 </select>
 
 <select id="UserCheck" parameterType="com.dog.HC.apply.ApplyPet" resultType="com.dog.HC.apply.ApplyPet">
@@ -129,11 +129,11 @@ select * from Tapply_table where Ta_id = #{id} order by Ta_no desc
 
 <!-- 원장: 선생님, 견주 삭제 -->
 <delete id="deleteTeacher" parameterType="com.dog.HC.apply.ApplyTeacher">
-delete Tapply_table where Ta_no = #{Ta_no} 
+delete Tapply_table where Ta_no = #{tA_no} 
 </delete>
 <delete id="deleteTeacherInPet" parameterType="com.dog.HC.apply.ApplyTeacher">
-update uApply_table set uA_tname = '선생님 재신청 필요' 
-where uA_tname = (select Ta_name from Tapply_table where Ta_no = #{Ta_no})
+update uApply_table set uA_ta_no = 0 
+where uA_ta_no = #{tA_no}
 </delete>
 <delete id="deletePet" parameterType="com.dog.HC.apply.ApplyPet">
 delete uApply_table where uA_no = #{uA_no}
@@ -146,7 +146,7 @@ select * from uApply_table where uA_no = #{uA_no}
 </select>
 <!-- 재신청 진행 -->
 <update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
-update uApply_table set uA_agree = 0, uA_tname = #{uA_tname} where uA_no = #{uA_no}
+update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_no}
 </update>
 
 

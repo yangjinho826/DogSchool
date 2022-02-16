@@ -34,14 +34,14 @@
 					<c:otherwise>
 						<c:forEach var="s" items="${myWaitingSchools }">
 						<tr>
-							<td><b>${s.da_schoolname }</b></td>
-							<td>${s.da_name }<br>(${s.da_id })</td>
-							<td>${s.da_phonenumber }</td>
-							<td>${s.da_addr }</td>
+							<td><b>${s.dA_schoolname }</b></td>
+							<td>${s.dA_name }<br>(${s.dA_id })</td>
+							<td>${s.dA_phonenumber }</td>
+							<td>${s.dA_addr }</td>
 							<td>
-								<c:if test="${s.da_agree eq 1}">승인 완료</c:if>
-								<c:if test="${s.da_agree eq 0}">승인 대기 중<br>
-									<button id="btnCancel" onClick="applyCancelDa(${s.da_no})">신청 취소</button>
+								<c:if test="${s.dA_agree eq 1}">승인 완료</c:if>
+								<c:if test="${s.dA_agree eq 0}">승인 대기 중<br>
+									<button id="btnCancel" onClick="applyCancelDa(${s.dA_no})">신청 취소</button>
 								</c:if>
 							</td>
 						</tr>
@@ -73,14 +73,14 @@
 						<tr>
 							<td>
 								<c:forEach var="s" items="${passSchools }">
-								<c:if test="${t.ta_da_no eq s.da_no }"><b>${s.da_schoolname }</b></c:if>
+								<c:if test="${t.tA_da_no eq s.dA_no }"><b>${s.dA_schoolname }</b></c:if>
 								</c:forEach>
 							</td>
-							<td>${t.ta_name }<br>(${t.ta_id }, <c:if test="${t.ta_gender eq 'man'}">남</c:if><c:if test="${t.ta_gender eq 'woman'}">여</c:if>)</td>
-							<td>${t.ta_phonenumber }</td>
-							<td style="max-width:350px;">${t.ta_text }</td>
+							<td>${t.tA_name }<br>(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</td>
+							<td>${t.tA_phonenumber }</td>
+							<td style="max-width:350px;">${t.tA_text }</td>
 							<td>
-								<button id="btnCancel" onClick="deleteTeacher(${t.ta_no})">삭제</button>
+								<button id="btnCancel" onClick="deleteTeacher(${t.tA_no})">삭제</button>
 							</td>						
 						</tr>
 						</c:forEach>
@@ -111,15 +111,15 @@
 						<tr>
 							<td>
 								<c:forEach var="s" items="${passSchools }">
-								<c:if test="${p.uA_da_no eq s.da_no }"><b>${s.da_schoolname }</b></c:if>
+								<c:if test="${p.uA_da_no eq s.dA_no }"><b>${s.dA_schoolname }</b></c:if>
 								</c:forEach>
 							</td>
 							<td>${p.uA_id }</td>
 							<td><img src="resources/img/${p.uA_img }"><br>${p.uA_name }(${p.uA_gender }, ${p.uA_age }세)</td>
 							<td>${p.uA_daterange }</td>
-							<td>${p.uA_tname }<br>
+							<td>
 								<c:forEach var="t" items="${passTeachers }">
-									<c:if test="${p.uA_tname eq t.ta_name }">(${t.ta_id }, <c:if test="${t.ta_gender eq 'man'}">남</c:if><c:if test="${t.ta_gender eq 'woman'}">여</c:if>)</c:if>
+									<c:if test="${p.uA_ta_no eq t.tA_no }">${t.tA_name}(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</c:if>
 								</c:forEach>
 							</td>
 							<td>
@@ -157,16 +157,16 @@
 						<tr>
 							<td>
 								<c:forEach var="s" items="${passSchools }">
-								<c:if test="${t.ta_da_no eq s.da_no }"><b>${s.da_schoolname }</b></c:if>
+								<c:if test="${t.tA_da_no eq s.dA_no }"><b>${s.dA_schoolname }</b></c:if>
 								</c:forEach>
 							</td>
-							<td>${t.ta_name }<br>(${t.ta_id }, <c:if test="${t.ta_gender eq 'man'}">남</c:if><c:if test="${t.ta_gender eq 'woman'}">여</c:if>)</td>
-							<td>${t.ta_phonenumber }</td>
-							<td style="max-width:350px;">${t.ta_text }</td>
+							<td>${t.tA_name }<br>(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</td>
+							<td>${t.tA_phonenumber }</td>
+							<td style="max-width:350px;">${t.tA_text }</td>
 							<td>
-								<c:if test="${t.ta_agree eq 1}">승인 완료</c:if>
-								<c:if test="${t.ta_agree eq 0}">승인 대기 중<br>
-									<button id="btnCancel" onClick="applyCancelTa(${t.ta_no})">신청 취소</button>
+								<c:if test="${t.tA_agree eq 1}">승인 완료</c:if>
+								<c:if test="${t.tA_agree eq 0}">승인 대기 중<br>
+									<button id="btnCancel" onClick="applyCancelTa(${t.tA_no})">신청 취소</button>
 								</c:if>
 							</td>						
 						</tr>
@@ -200,25 +200,25 @@
 						<tr>
 							<td>
 								<c:forEach var="s" items="${passSchools }">
-								<c:if test="${p.uA_da_no eq s.da_no }"><b>${s.da_schoolname }</b></c:if>
+								<c:if test="${p.uA_da_no eq s.dA_no }"><b>${s.dA_schoolname }</b></c:if>
 								</c:forEach>
 							</td>
 							<td>${p.uA_id }</td>
 							<td><img src="resources/img/${p.uA_img }"><br>${p.uA_name }(${p.uA_gender }, ${p.uA_age }세)</td>
 							<td>${p.uA_daterange }</td>
-							<td>${p.uA_tname }<br>
+							<td>
 								<c:forEach var="t" items="${passTeachers }">
-									<c:if test="${p.uA_tname eq t.ta_name}">(${t.ta_id }, <c:if test="${t.ta_gender eq 'man'}">남</c:if><c:if test="${t.ta_gender eq 'woman'}">여</c:if>)</c:if>
+									<c:if test="${p.uA_ta_no eq t.tA_no}">${t.tA_name }(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</c:if>
 								</c:forEach>
 								<br>
-								<c:if test="${p.uA_tname eq '선생님 재신청 필요'}">
-									<button id="btnCancel" onClick="location.href='reapply.myteacher.go?Da_no=${p.uA_da_no }&uA_no=${p.uA_no }'">선생님 신청하기</button>
+								<c:if test="${p.uA_ta_no eq 0}">
+									<button id="btnCancel" onClick="location.href='reapply.myteacher.go?dA_no=${p.uA_da_no }&uA_no=${p.uA_no }'">선생님 재신청</button>
 								</c:if>
 							</td>
 							<td>
 								<c:if test="${p.uA_agree eq 1}">승인 완료</c:if>
 								<c:if test="${p.uA_agree eq 0}">승인 대기 중<br>
-									<button id="btnCancel" onClick="applyCancelua(${p.uA_no})">신청 취소</button>
+									<button id="btnCancel" onClick="applyCancelUa(${p.uA_no})">신청 취소</button>
 								</c:if>
 							</td>
 						</tr>

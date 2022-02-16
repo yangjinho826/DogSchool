@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
 
 @Service
@@ -19,7 +21,8 @@ public class DiaryDAO {
 	public void getAllDiary(HttpServletRequest req, diary d) {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
 	
-		String mp_tid = p.getuA_tname();
+		System.out.println(p.getuA_ta_no());
+		String mp_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String mp_uid = p.getuA_id();
 		String mp_uname = p.getuA_name();
 
@@ -46,7 +49,7 @@ public class DiaryDAO {
 		
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
 
-		String mp_tid = p.getuA_tname();
+		String mp_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String mp_uid = p.getuA_id();
 		String mp_uname = p.getuA_name();
 

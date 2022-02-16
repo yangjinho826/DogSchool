@@ -24,7 +24,7 @@ public class noticeDAO {
 	 public void getTotal(notice n, HttpServletRequest req) {	 
 		 ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		 
-		 n.setN_da_no(as.getDa_no());
+		 n.setN_da_no(as.getdA_no());
 		 noticemapper mm = ss.getMapper(noticemapper.class);
 		 TotalCount = mm.getNoticeTotalCount(n);              
 	}
@@ -43,7 +43,7 @@ public class noticeDAO {
 		    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 		    int to=(pg * rowSize); //(1*10) = 10 //to
 		    
-		    n.setN_da_no(as.getDa_no());
+		    n.setN_da_no(as.getdA_no());
 		    n.setFrom(from);
 		    n.setTo(to);
 		    
@@ -101,7 +101,7 @@ public class noticeDAO {
 				
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		int n_da_no = as.getDa_no();
+		int n_da_no = as.getdA_no();
 		String n_id = m.getName();
 		
 		n.setN_da_no(n_da_no);
@@ -172,7 +172,7 @@ public class noticeDAO {
 	public void getfivenotice(notice n, HttpServletRequest req) {
 		
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
-		n.setN_da_no(as.getDa_no());
+		n.setN_da_no(as.getdA_no());
 		
 		
 		noticemapper mm = ss.getMapper(noticemapper.class);

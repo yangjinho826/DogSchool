@@ -14,8 +14,8 @@
 			<when test="typeee == 2">
 				select *
 				from uapply_table 
-				where ua_tname in (
-					select ta_name
+				where ua_ta_no in (
+					select ta_no
 					from tapply_table
 					where ta_agree = 1
 					and ta_no in (

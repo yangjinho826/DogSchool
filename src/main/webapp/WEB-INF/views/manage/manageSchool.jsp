@@ -71,16 +71,16 @@
 							<th>관리</th>
 						</tr>
 						<tr>
-							<td>${s.da_schoolname }(${s.da_no })</td>
-							<td>${s.da_name }(${s.da_id })</td>
-							<td>${s.da_phonenumber }</td>
-							<td rowspan="3"><button class="manageDelete" onClick="deleteSchool(${s.da_no})">삭제</button></td>
+							<td>${s.dA_schoolname }(${s.dA_no })</td>
+							<td>${s.dA_name }(${s.dA_id })</td>
+							<td>${s.dA_phonenumber }</td>
+							<td rowspan="3"><button class="manageDelete" onClick="deleteSchool(${s.dA_no})">삭제</button></td>
 						</tr>
 						<tr>				
 							<th rowspan="3">주소</th>
 						</tr>
 						<tr>				
-							<td rowspan="3" colspan="2">${s.da_addr }</td>
+							<td rowspan="3" colspan="2">${s.dA_addr }</td>
 						</tr>
 					</table>
 					<c:set var="num" value="${num-1 }"></c:set>

@@ -20,7 +20,7 @@
 	</tr>
 	<c:forEach var="p" items="${puppies }">
 	<tr>
-		<td><img src="resources/img/${p.uA_img }"></td>
+		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }"><img id="puppyListImg" src="resources/img/${p.uA_img }"></a></td>
 		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
 		<td>${p.uA_id }</td>
 	</tr>

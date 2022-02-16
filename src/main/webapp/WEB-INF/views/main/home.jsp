@@ -20,11 +20,11 @@
 			<section id="showSchoolArea">
 				<c:forEach var="ps" items="${passSchools }">
 					<div id="showOneSchool">
-					<div>${ps.da_schoolname }</div>
-					<div>${ps.da_addr }</div>
-					<div>원장: ${ps.da_name }(${ps.da_id })</div>
-					<div>${ps.da_phonenumber }</div>
-					<input name="ps.da_no" value="${ps.da_no }" hidden="hidden" >
+					<div>${ps.dA_schoolname }</div>
+					<div>${ps.dA_addr }</div>
+					<div>원장: ${ps.dA_name }(${ps.dA_id })</div>
+					<div>${ps.dA_phonenumber }</div>
+					<input name="ps.dA_no" value="${ps.dA_no }" hidden="hidden" >
 					<div><button>유치원 홈</button></div>
 					</div>
 				</c:forEach>

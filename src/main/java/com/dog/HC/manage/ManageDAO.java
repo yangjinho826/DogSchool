@@ -40,8 +40,8 @@ public class ManageDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    s.setDa_no(from);
-	    s.setDa_agree(to); 
+	    s.setdA_no(from);
+	    s.setdA_agree(to); 
 
 		List<ApplySchool> lists = ss.getMapper(ManageMapper.class).getAllSchoolPage(s);
 		req.setAttribute("lists", lists);
@@ -105,7 +105,7 @@ public class ManageDAO {
 	/////////////////////////////////////////////////////////////////
 	//관리자가 등록된 유치원 삭제(사이트 이용 불가)
 	public void deleteSchool(ApplySchool s, HttpServletRequest req) {
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		if (ss.getMapper(ManageMapper.class).deleteSchool(s) == 1) {
 			System.out.println("유치원 삭제 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -113,7 +113,7 @@ public class ManageDAO {
 		}
 	}
 	public void deleteSchoolT(ApplySchool s, HttpServletRequest req) {
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		if (ss.getMapper(ManageMapper.class).deleteSchoolT(s) == 1) {
 			System.out.println("해당 유치원에 등록된 선생님 삭제 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -121,7 +121,7 @@ public class ManageDAO {
 		}
 	}
 	public void deleteSchoolU(ApplySchool s, HttpServletRequest req) {
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		if (ss.getMapper(ManageMapper.class).deleteSchoolU(s) == 1) {
 			System.out.println("해당 유치원에 등록된 강아지(견주) 삭제 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -171,12 +171,12 @@ public class ManageDAO {
 	//검색+페이징
 	public void getSearchTotal(ApplySchool s, HttpServletRequest req) {	 
 		String w = req.getParameter("searchWord");
-		s.setDa_schoolname(w);
+		s.setdA_schoolname(w);
 		TotalCount = ss.getMapper(ManageMapper.class).getManageSearchTotalCount(s);              
 	}
 	public void searchSchool(ApplySchool s, HttpServletRequest req) {
 		String w = req.getParameter("searchWord");
-		s.setDa_schoolname(w);
+		s.setdA_schoolname(w);
 		
 		String strPg = req.getParameter("pg");
 		
@@ -190,8 +190,8 @@ public class ManageDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    s.setDa_no(from);
-	    s.setDa_agree(to); 
+	    s.setdA_no(from);
+	    s.setdA_agree(to); 
 
 	    req.setAttribute("lists", ss.getMapper(ManageMapper.class).search(s));
 	}

@@ -23,7 +23,7 @@ public class postscriptDAO {
 	 public void getpTotal(postscript p, HttpServletRequest req) {
 		 ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		 
-		 p.setP_da_no(as.getDa_no());
+		 p.setP_da_no(as.getdA_no());
 		 
 		 postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		 TotalCount = mm.getpostscripTotalCount(p);              
@@ -43,7 +43,7 @@ public class postscriptDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    p.setP_da_no(as.getDa_no());
+	    p.setP_da_no(as.getdA_no());
 	    p.setFrom(from);
 	    p.setTo(to);
 	    
@@ -93,7 +93,7 @@ public class postscriptDAO {
 		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		int p_da_no = as.getDa_no();
+		int p_da_no = as.getdA_no();
 		String p_id = m.getName();
 		
 		p.setP_da_no(p_da_no);
@@ -148,7 +148,7 @@ public class postscriptDAO {
 
 	public void getfivepostscript(postscript p, HttpServletRequest req) {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
-		p.setP_da_no(as.getDa_no());
+		p.setP_da_no(as.getdA_no());
 		
 		postscriptmapper mm = ss.getMapper(postscriptmapper.class);
 		List<postscript> fivepostscript = mm.getfivepostscript(p);
