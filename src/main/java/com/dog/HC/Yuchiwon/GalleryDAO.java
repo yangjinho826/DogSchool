@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dog.HC.manage.ManageMapper;
+
 @Service
 public class GalleryDAO {
 
@@ -23,8 +25,8 @@ public class GalleryDAO {
 
 	public void getAllGallery(HttpServletRequest req, gallery g) {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
-		System.out.println(p);
-		String g_tid = p.getuA_tname();
+//		System.out.println(p);
+		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String g_uid = p.getuA_id();
 		String g_uname = p.getuA_name();
 
@@ -46,8 +48,8 @@ public class GalleryDAO {
 	public void getGallery(HttpServletRequest req, gallery g) {
 
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
-		System.out.println(p);
-		String g_tid = p.getuA_tname();
+//		System.out.println(p);
+		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String g_uid = p.getuA_id();
 		String g_uname = p.getuA_name();
 
@@ -76,7 +78,7 @@ public class GalleryDAO {
 		gallery g = new gallery();
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
 
-		String g_tid = p.getuA_tname();
+		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String g_uid = p.getuA_id();
 		String g_uname = p.getuA_name();
 		
@@ -154,7 +156,7 @@ public class GalleryDAO {
 		gallery g = new gallery();
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
 
-		String g_tid = p.getuA_tname();
+		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_da_no());
 		String g_uid = p.getuA_id();
 		String g_uname = p.getuA_name();
 		

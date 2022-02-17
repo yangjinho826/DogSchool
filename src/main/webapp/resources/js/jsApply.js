@@ -17,37 +17,37 @@ function daterangeSelectEvent(){
 function passSchool(no){
 	var ok = confirm("수락하시겠습니까?");
 	if(ok) {
-		location.href = "apply.pass.s?Da_no=" + no;
+		location.href = "apply.pass.s?dA_no=" + no;
 	}
 }
 function failSchool(no){
 	var ok = confirm("거절하시겠습니까?");
 	if(ok) {
-		location.href = "apply.fail.s?Da_no=" + no;
+		location.href = "apply.fail.s?dA_no=" + no;
 	}
 }
 function passTeacher(no){
 	var ok = confirm("수락하시겠습니까?");
 	if(ok) {
-		location.href = "apply.pass.t?Ta_no=" + no;
+		location.href = "apply.pass.t?tA_no=" + no;
 	}
 }
 function failTeacher(no){
 	var ok = confirm("거절하시겠습니까?");
 	if(ok) {
-		location.href = "apply.fail.t?Ta_no=" + no;
+		location.href = "apply.fail.t?tA_no=" + no;
 	}
 }
 function passPet(no){
 	var ok = confirm("수락하시겠습니까?");
 	if(ok) {
-		location.href = "apply.pass.p?Ua_no=" + no;
+		location.href = "apply.pass.p?uA_no=" + no;
 	}
 }
 function failPet(no){
 	var ok = confirm("거절하시겠습니까?");
 	if(ok) {
-		location.href = "apply.fail.p?Ua_no=" + no;
+		location.href = "apply.fail.p?uA_no=" + no;
 	}
 }
 
@@ -55,7 +55,7 @@ function failPet(no){
 function deleteSchool(no){
 	var ok = confirm("해당 유치원을 삭제하시겠습니까?");
 	if(ok) {
-		location.href = "manage.delete?Da_no=" + no;
+		location.href = "manage.delete?dA_no=" + no;
 		alert("삭제가 완료되었습니다!");
 	}
 }
@@ -63,13 +63,13 @@ function deleteSchool(no){
 
 //원장->유치원신청
 function applyCheck1(){
-	let id = document.myForm.Da_id;
-	let name = document.myForm.Da_name;
-	let pn = document.myForm.Da_phonenumber;
-	let sn = document.myForm.Da_schoolname;
-	let a1 = document.myForm.Da_addr1;
-	let a2 = document.myForm.Da_addr2;
-	let a3 = document.myForm.Da_addr3;
+	let id = document.myForm.dA_id;
+	let name = document.myForm.dA_name;
+	let pn = document.myForm.dA_phonenumber;
+	let sn = document.myForm.dA_schoolname;
+	let a1 = document.myForm.dA_addr1;
+	let a2 = document.myForm.dA_addr2;
+	let a3 = document.myForm.dA_addr3;
 	if (isEmpty(id)) {
         alert('아이디를 입력해 주세요.');
         id.value = "";
@@ -119,11 +119,11 @@ function applyCheck1(){
 }
 //선생님->원장등록신청
 function applyCheck2(){
-	let id = document.myForm2.Ta_id;
+	let id = document.myForm2.tA_id;
 	let id2 = document.myForm2.id2;
-	let name = document.myForm2.Ta_name;
-	let pn = document.myForm2.Ta_phonenumber;
-	let txt = document.myForm2.Ta_text;
+	let name = document.myForm2.tA_name;
+	let pn = document.myForm2.tA_phonenumber;
+	let txt = document.myForm2.tA_text;
 	
 	if (isEmpty(id)) {
         alert('아이디를 입력해 주세요.');
@@ -161,7 +161,7 @@ function applyCheck2(){
 }
 function checkTeacher(){
 	$("#checkBtn").click(function(){
-		var idd = $("#Ta_id").val();
+		var idd = $("#tA_id").val();
 		$.ajax({
 			url : "/HC/apply.getTeacher",
 			data : {"id" : idd },
@@ -181,10 +181,10 @@ function checkTeacher(){
 }
 //견주->원장강아지등록신청
 function applyCheck3(){
-	let id = document.myForm3.Ua_id;
-	let name = document.myForm3.Ua_name;
-	let age = document.myForm3.Ua_age;
-	let img = document.myForm3.Ua_img;
+	let id = document.myForm3.uA_id;
+	let name = document.myForm3.uA_name;
+	let age = document.myForm3.uA_age;
+	let img = document.myForm3.imggg;
 	
 	if (isEmpty(id)) {
         alert('아이디를 입력해 주세요.');
@@ -226,6 +226,10 @@ function applyCheck3(){
 		return false;
 	}
 
+	if(!isEmpty(name) && !isEmpty(age) && !isEmpty(img)){
+		alert('신청이 성공적으로 완료되었습니다!');
+		return true;
+	}
 }
 
 
@@ -233,21 +237,21 @@ function applyCheck3(){
 function applyCancelDa(num){
 	var ok = confirm("신청을 취소하시겠습니까?");
 	if(ok) {
-		location.href = "apply.cancel.da?Da_no=" + num;
+		location.href = "apply.cancel.da?dA_no=" + num;
 		alert("성공적으로 취소되었습니다.");
 	}
 }
 function applyCancelTa(num){
 	var ok = confirm("신청을 취소하시겠습니까?");
 	if(ok) {
-		location.href = "apply.cancel.ta?Ta_no=" + num;
+		location.href = "apply.cancel.ta?tA_no=" + num;
 		alert("성공적으로 취소되었습니다.");
 	}
 }
 function applyCancelUa(num){
 	var ok = confirm("신청을 취소하시겠습니까?");
 	if(ok) {
-		location.href = "apply.cancel.ua?Ua_no=" + num;
+		location.href = "apply.cancel.ua?uA_no=" + num;
 		alert("성공적으로 취소되었습니다.");
 	}
 }
@@ -257,7 +261,7 @@ function applyCancelUa(num){
 function deleteTeacher(num){
 	var ok = confirm("해당 선생님을 삭제하시겠습니까?");
 	if(ok){
-		location.href = "apply.delete.t?Ta_no=" + num;
+		location.href = "apply.delete.t?tA_no=" + num;
 		alert("삭제되었습니다.");
 	}
 }
@@ -265,7 +269,7 @@ function deleteTeacher(num){
 function deletePet(num){
 	var ok = confirm("해당 강아지를 삭제하시겠습니까?");
 	if(ok){
-		location.href = "apply.delete.p?Ua_no=" + num;
+		location.href = "apply.delete.p?uA_no=" + num;
 		alert("삭제되었습니다.");
 	}
 }

@@ -17,14 +17,14 @@
 						<tr>
 							<td class="tdTitle" colspan="2" align="center">
 							<b><c:forEach var="ps" items="${getOneSchool }">
-								<input name="uA_da_no" value="${ps.da_no }" hidden="true">${ps.da_no }
-								"${ps.da_schoolname }"
-							</c:forEach></b> 강아지 등록 양식777777777777</td>
+								<input name="uA_da_no" value="${ps.dA_no }" hidden="true">
+								"${ps.dA_schoolname }"
+							</c:forEach></b> 강아지 등록 양식</td>
 						</tr>
 						<tr>
 							<td class="td1">견주 아이디</td>
-							<td class="td2"><input disabled="disabled" value="${sessionScope.loginMember.id}">${sessionScope.loginMember.id}
-								<input name="uA_id" hidden="hidden" value="${sessionScope.loginMember.id}">${sessionScope.loginMember.id}
+							<td class="td2"><input disabled="disabled" value="${sessionScope.loginMember.id}">
+								<input name="uA_id" hidden="hidden" value="${sessionScope.loginMember.id}">
 							</td>
 						</tr>
 						<tr>
@@ -50,14 +50,14 @@
 						</tr>
 						<tr>
 							<td class="td1">강아지 이미지</td>
-							<td class="td2"><input type="file" id="img" name="imggg" accept="image/*"></td>
+							<td class="td2"><input type="file" name="imggg" accept="image/*"></td>
 						</tr>
 						<tr>
 							<td class="td1">희망 선생님 선택</td>
 							<td class="td2">
-								<select id="selectOption" name="uA_tname">
+								<select id="selectOption" name="uA_ta_no">
 									<c:forEach var="pt" items="${getOneSchoolTeacher }">
-										<option id="selectOption" value="${pt.ta_name }">${pt.ta_name }(${pt.ta_gender })	
+										<option id="selectOption" value="${pt.tA_no }">${pt.tA_name }(${pt.tA_id}, ${pt.tA_gender })	
 									</c:forEach>
 								</select>
 							</td>
@@ -76,8 +76,8 @@
 						<tr>
 							<td class="tdTitle" colspan="2" align="center">
 							<b><c:forEach var="ps" items="${getOneSchool }">
-								<input name="uA_da_no" value="${ps.da_no }" hidden="true">
-								"${ps.da_schoolname }"
+								<input name="uA_da_no" value="${ps.dA_no }" hidden="true">
+								"${ps.dA_schoolname }"
 							</c:forEach></b> 강아지 등록 양식</td>
 						</tr>
 						<tr>
@@ -143,9 +143,9 @@
 						<tr>
 							<td class="td1">희망 선생님 선택</td>
 							<td class="td2">
-								<select id="selectOption" name="uA_tname">
+								<select id="selectOption" name="uA_ta_no">
 									<c:forEach var="pt" items="${getOneSchoolTeacher }">
-										<option id="selectOption" value="${pt.ta_name }">${pt.ta_name }(${pt.ta_gender })	
+										<option id="selectOption" value="${pt.tA_no }">${pt.tA_name }(${pt.tA_id }, ${pt.tA_gender })	
 									</c:forEach>
 								</select>
 							</td>

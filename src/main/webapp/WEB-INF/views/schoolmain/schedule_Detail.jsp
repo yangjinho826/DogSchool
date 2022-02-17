@@ -34,10 +34,10 @@
 						<input type="text"class="schedule" name="s_text" value="${sc.s_text }" placeholder="20자 이하로 입력하세요.">
 				</div>
 				<div>	
-				 <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
+				 <c:if test="${TCheck.tA_da_no eq getSchoolSession.dA_no}">
 				    <button class="schedule_write_btn">수 정 </button>
 				 </c:if> 
-				 <c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+				 <c:if test="${DCheck.dA_no eq getSchoolSession.dA_no}">
 				    <button class="schedule_write_btn">수 정 </button>
 				 </c:if>
 				</div>
@@ -47,10 +47,10 @@
 					<input name="s_no" value="${sc.s_no }"  type="hidden">
 			</form>
 					<div>
-					 <c:if test="${TCheck.ta_da_no eq getSchoolSession.da_no}">
+					 <c:if test="${TCheck.ta_dA_no eq getSchoolSession.dA_no}">
 						<button class="schedule_write_btn" onclick="closeWithDSubmit();">삭 제 </button>
 					</c:if> 
-					<c:if test="${DCheck.da_no eq getSchoolSession.da_no}">
+					<c:if test="${DCheck.dA_no eq getSchoolSession.dA_no}">
 						<button class="schedule_write_btn" onclick="closeWithDSubmit();">삭 제 </button>
 					</c:if>
 					</div>

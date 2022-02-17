@@ -18,7 +18,7 @@ public class priceTagDAO {
 
 	public void getAllpriceTag(priceTag pT, HttpServletRequest req) {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
-		pT.setP_da_no(as.getDa_no());
+		pT.setP_da_no(as.getdA_no());
 		
 		priceTagmapper mm = ss.getMapper(priceTagmapper.class);
 		List<priceTag> priceTags = mm.getAllpriceTag(pT);
@@ -56,7 +56,7 @@ public class priceTagDAO {
 		
 		if(token.equals(successToken)){ return; }
 		
-		int p_da_no = as.getDa_no();;
+		int p_da_no = as.getdA_no();;
 		pT.setP_da_no(p_da_no);
 		
 		priceTagmapper mm = ss.getMapper(priceTagmapper.class);

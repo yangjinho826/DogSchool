@@ -152,9 +152,7 @@ public class ApplyController {
 	//견주->원장 강아지 신청
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
 	public String applyPet(@RequestParam("imggg") MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
-		System.out.println(1);
 		if(mDAOO.loginCheck(req)) {
-			System.out.println(2);
 			aDAO.applyPet(mf, p, req);
 		}
 		
@@ -204,6 +202,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); 	  //	강아지전체목록조회
 		
 		mDAO.getAllSchool(req);			 	//	승인된유치원전체
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -226,6 +225,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); //			강아지전체목록조회
 		
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 	
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -245,6 +245,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); //			강아지전체목록조회
 		
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -264,6 +265,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); //			강아지전체목록조회
 		
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -283,6 +285,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); //			강아지전체목록조회
 		
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -302,6 +305,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); //			강아지전체목록조회
 		
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -321,6 +325,7 @@ public class ApplyController {
 		aDAO.getAllPetApply(m, req); //			강아지전체목록조회
 		
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "apply/acceptHome.jsp");
@@ -342,6 +347,7 @@ public class ApplyController {
 		mDAO.getMyPet(m, req);
 
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		aDAO.getMySchoolApply(m, req); // 신청내역 유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); // 		선생님전체목록조회
@@ -364,6 +370,7 @@ public class ApplyController {
 		mDAO.getMyPet(m, req);
 
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
@@ -387,6 +394,7 @@ public class ApplyController {
 		mDAO.getMyPet(m, req);
 
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
@@ -414,6 +422,7 @@ public class ApplyController {
 		mDAO.getMyPet(m, req);
 
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회
@@ -436,6 +445,7 @@ public class ApplyController {
 		mDAO.getMyPet(m, req);
 
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 
 		aDAO.getMySchoolApply(m, req); // 	유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); // 	선생님전체목록조회

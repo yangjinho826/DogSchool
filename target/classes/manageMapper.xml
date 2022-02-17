@@ -11,13 +11,13 @@ select * from Dapply_table where Da_agree = 1 order by Da_no desc
 
 <!-- 관리자: 유치원 삭제 -->
 <delete id="deleteSchool" parameterType="com.dog.HC.apply.ApplySchool">
-delete Dapply_table where Da_no = #{Da_no}
+delete Dapply_table where Da_no = #{dA_no}
 </delete>
 <delete id="deleteSchoolT" parameterType="com.dog.HC.apply.ApplySchool">
-delete Tapply_table where Ta_da_no = #{Da_no}
+delete Tapply_table where Ta_da_no = #{dA_no}
 </delete>
 <delete id="deleteSchoolU" parameterType="com.dog.HC.apply.ApplySchool">
-delete Uapply_table where Ua_da_no = #{Da_no}
+delete Uapply_table where Ua_da_no = #{dA_no}
 </delete>
 
 <!-- 원장: 선생님 조회(승인된) -->
@@ -64,13 +64,13 @@ from (
 		select * from Dapply_table where Da_agree = 1 order by Da_no desc
 	)
 )
-where RN between #{da_no} and #{da_agree} 
+where RN between #{dA_no} and #{dA_agree} 
 </select>
 
 
 <!-- 검색+페이징 -->
 <select id="getManageSearchTotalCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
-select count(*) from Dapply_table where Da_agree = 1 and upper(Da_schoolname) like '%'||upper(#{Da_schoolname})||'%'
+select count(*) from Dapply_table where Da_agree = 1 and upper(Da_schoolname) like '%'||upper(#{dA_schoolname})||'%'
 </select>
 <select id="search" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
 select rn, Da_no, Da_id, Da_name, Da_schoolname, Da_addr, Da_phonenumber, Da_agree
@@ -78,11 +78,17 @@ from (
 	select Rownum as rn, Da_no, Da_id, Da_name, Da_schoolname, Da_addr, Da_phonenumber, Da_agree
 	from (
 		select * from Dapply_table 
-		where upper(Da_schoolname) like '%'||upper(#{Da_schoolname})||'%' and Da_agree = 1
+		where upper(Da_schoolname) like '%'||upper(#{dA_schoolname})||'%' and Da_agree = 1
 		order by Da_no desc
 	)
 )
-where RN between #{da_no} and #{da_agree} 
+where RN between #{dA_no} and #{dA_agree} 
+</select>
+
+
+<!-- 다이어리, 갤러리에 필요한 선생님 기본키로 아이디 조회 -->
+<select id="getTeacherId" parameterType="com.dog.HC.apply.ApplyPet" resultType="String">
+select Ta_id from Tapply_table where Ta_no = #{uA_ta_no}
 </select>
 
 

@@ -1,61 +1,61 @@
 package com.dog.HC.apply;
 
 public class ApplySchool {
-	private int Da_no;
-	private String Da_id, Da_name, Da_schoolname, Da_addr, Da_phonenumber;
-	private int Da_agree;
+	private int dA_no;
+	private String dA_id, dA_name, dA_schoolname, dA_addr, dA_phonenumber;
+	private int dA_agree;
 	public ApplySchool() { }
-	public ApplySchool(int da_no, String da_id, String da_name, String da_schoolname, String da_addr,
-			String da_phonenumber, int da_agree) {
+	public ApplySchool(int dA_no, String dA_id, String dA_name, String dA_schoolname, String dA_addr,
+			String dA_phonenumber, int dA_agree) {
 		super();
-		Da_no = da_no;
-		Da_id = da_id;
-		Da_name = da_name;
-		Da_schoolname = da_schoolname;
-		Da_addr = da_addr;
-		Da_phonenumber = da_phonenumber;
-		Da_agree = da_agree;
+		this.dA_no = dA_no;
+		this.dA_id = dA_id;
+		this.dA_name = dA_name;
+		this.dA_schoolname = dA_schoolname;
+		this.dA_addr = dA_addr;
+		this.dA_phonenumber = dA_phonenumber;
+		this.dA_agree = dA_agree;
 	}
-	public int getDa_no() {
-		return Da_no;
+	public int getdA_no() {
+		return dA_no;
 	}
-	public void setDa_no(int da_no) {
-		Da_no = da_no;
+	public void setdA_no(int dA_no) {
+		this.dA_no = dA_no;
 	}
-	public String getDa_id() {
-		return Da_id;
+	public String getdA_id() {
+		return dA_id;
 	}
-	public void setDa_id(String da_id) {
-		Da_id = da_id;
+	public void setdA_id(String dA_id) {
+		this.dA_id = dA_id;
 	}
-	public String getDa_name() {
-		return Da_name;
+	public String getdA_name() {
+		return dA_name;
 	}
-	public void setDa_name(String da_name) {
-		Da_name = da_name;
+	public void setdA_name(String dA_name) {
+		this.dA_name = dA_name;
 	}
-	public String getDa_schoolname() {
-		return Da_schoolname;
+	public String getdA_schoolname() {
+		return dA_schoolname;
 	}
-	public void setDa_schoolname(String da_schoolname) {
-		Da_schoolname = da_schoolname;
+	public void setdA_schoolname(String dA_schoolname) {
+		this.dA_schoolname = dA_schoolname;
 	}
-	public String getDa_addr() {
-		return Da_addr;
+	public String getdA_addr() {
+		return dA_addr;
 	}
-	public void setDa_addr(String da_addr) {
-		Da_addr = da_addr;
+	public void setdA_addr(String dA_addr) {
+		this.dA_addr = dA_addr;
 	}
-	public String getDa_phonenumber() {
-		return Da_phonenumber;
+	public String getdA_phonenumber() {
+		return dA_phonenumber;
 	}
-	public void setDa_phonenumber(String da_phonenumber) {
-		Da_phonenumber = da_phonenumber;
+	public void setdA_phonenumber(String dA_phonenumber) {
+		this.dA_phonenumber = dA_phonenumber;
 	}
-	public int getDa_agree() {
-		return Da_agree;
+	public int getdA_agree() {
+		return dA_agree;
 	}
-	public void setDa_agree(int da_agree) {
-		Da_agree = da_agree;
+	public void setdA_agree(int dA_agree) {
+		this.dA_agree = dA_agree;
 	}
 }

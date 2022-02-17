@@ -35,12 +35,12 @@
 						</tr>
 						<c:forEach var="s" items="${schools }">
 						<tr>
-							<td>${s.da_schoolname }</td>
-							<td>${s.da_name }<br>(${s.da_id })</td>
-							<td>${s.da_phonenumber }</td>
-							<td>${s.da_addr }</td>
-							<td style="width:80px;"><button onclick="passSchool(${s.da_no})">수락</button></td>
-							<td style="width:80px;"><button onclick="failSchool(${s.da_no})">거절</button></td>
+							<td>${s.dA_schoolname }</td>
+							<td>${s.dA_name }<br>(${s.dA_id })</td>
+							<td>${s.dA_phonenumber }</td>
+							<td>${s.dA_addr }</td>
+							<td style="width:80px;"><button onclick="passSchool(${s.dA_no})">수락</button></td>
+							<td style="width:80px;"><button onclick="failSchool(${s.dA_no})">거절</button></td>
 						</tr>
 						</c:forEach>
 					</table>
@@ -75,14 +75,14 @@
 						<tr>
 							<td>
 								<c:forEach var="s" items="${passSchools }">
-								<c:if test="${t.ta_da_no eq s.da_no }">${s.da_schoolname }</c:if>
+								<c:if test="${t.tA_da_no eq s.dA_no }">${s.dA_schoolname }</c:if>
 								</c:forEach>
 							</td>
-							<td>${t.ta_name }(${t.ta_id })<br>(${t.ta_gender })</td>
-							<td>${t.ta_phonenumber }</td>
-							<td style="max-width:350px;">${t.ta_text }</td>
-							<td style="width:80px;"><button onclick="passTeacher(${t.ta_no})">수락</button></td>
-							<td style="width:80px;"><button onclick="failTeacher(${t.ta_no})">거절</button></td>
+							<td>${t.tA_name }(${t.tA_id })<br>(${t.tA_gender })</td>
+							<td>${t.tA_phonenumber }</td>
+							<td style="max-width:350px;">${t.tA_text }</td>
+							<td style="width:80px;"><button onclick="passTeacher(${t.tA_no})">수락</button></td>
+							<td style="width:80px;"><button onclick="failTeacher(${t.tA_no})">거절</button></td>
 						</tr>
 					</c:forEach>
 					</table>
@@ -116,15 +116,19 @@
 						<tr>
 							<td>
 								<c:forEach var="s" items="${passSchools }">
-								<c:if test="${p.ua_da_no eq s.da_no }">${s.da_schoolname }</c:if>
+								<c:if test="${p.uA_da_no eq s.dA_no }">${s.dA_schoolname }</c:if>
 								</c:forEach>
 							</td>
-							<td>${p.ua_id }</td>
-							<td><img src="resources/img/${p.ua_img }"><br>${p.ua_name }(${p.ua_gender }, ${p.ua_age }세)</td>
-							<td>${p.ua_daterange }</td>
-							<td>${p.ua_tname }</td>
-							<td style="width:80px;"><button onclick="passPet(${p.ua_no})">수락</button></td>
-							<td style="width:80px;"><button onclick="failPet(${p.ua_no})">거절</button></td>
+							<td>${p.uA_id }</td>
+							<td><img src="resources/img/${p.uA_img }"><br>${p.uA_name }(${p.uA_gender }, ${p.uA_age }세)</td>
+							<td>${p.uA_daterange }</td>
+							<td>
+								<c:forEach var="t" items="${passTeachers }">
+								<c:if test="${p.uA_ta_no eq t.tA_no }">${t.tA_name }(${t.tA_id }, ${t.tA_gender })</c:if>
+								</c:forEach>
+							</td>
+							<td style="width:80px;"><button onclick="passPet(${p.uA_no})">수락</button></td>
+							<td style="width:80px;"><button onclick="failPet(${p.uA_no})">거절</button></td>
 						</tr>
 					</c:forEach>
 					</table>

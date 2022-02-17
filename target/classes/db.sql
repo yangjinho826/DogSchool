@@ -9,7 +9,6 @@ create table signup_table(
     typee int not null
 );
 
-select * from signup_table
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -72,6 +71,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
+
 select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
 from(
  select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
@@ -82,7 +82,6 @@ from(
 where rn = 1;
 
 
-	
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -95,6 +94,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
+select * from UAPPLY_TABLE
 
 
 -- 견주-원장 신청 테이블 --
@@ -107,11 +107,10 @@ create table Uapply_table(
     Ua_daterange varchar2(30 char) not null, --(기간)
     Ua_age number(3) not null, --(강아지 나이)
     Ua_img varchar2(100 char) not null, --(강아지이미지)
-    Ua_tname varchar2(20 char)not null, --(선생님 목록)
+    Ua_ta_no number(5) not null, --(선생님 구분 코드: 한유치원동명이인구분목적)
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-
 
 
 -- 알림장 테이블 --
@@ -146,11 +145,3 @@ create table gallery_table(
 	g_date date not null
 );
 create sequence gallery_table_seq;
-
-	select rn, n_no,n_id,n_title,n_txt,n_date
-		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
-		from (select n_no,n_id,n_title,n_txt,n_date
-		from notice_table
-		order by n_date desc))
-	where rn < 5
-

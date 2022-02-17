@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dog.HC.member.Member;
@@ -29,17 +30,17 @@ public class ApplyDAO {
 			
 			if(token.equals(successToken)){ return; }
 			
-			String Da_addr1 = req.getParameter("Da_addr1");
-			String Da_addr2 = req.getParameter("Da_addr2");
-			String Da_addr3 = req.getParameter("Da_addr3");
+			String Da_addr1 = req.getParameter("dA_addr1");
+			String Da_addr2 = req.getParameter("dA_addr2");
+			String Da_addr3 = req.getParameter("dA_addr3");
 			String Da_addr = Da_addr1 + " " + Da_addr2 + " " + Da_addr3 + "(우편번호)";
 			
-			s.setDa_id(req.getParameter("Da_id")); 
-			s.setDa_name(req.getParameter("Da_name"));
-			s.setDa_schoolname(req.getParameter("Da_schoolname"));
-			s.setDa_addr(Da_addr);
-			s.setDa_phonenumber(req.getParameter("Da_phonenumber"));
-			s.setDa_agree(0);
+			s.setdA_id(req.getParameter("dA_id")); 
+			s.setdA_name(req.getParameter("dA_name"));
+			s.setdA_schoolname(req.getParameter("dA_schoolname"));
+			s.setdA_addr(Da_addr);
+			s.setdA_phonenumber(req.getParameter("dA_phonenumber"));
+			s.setdA_agree(0);
 
 			if (ss.getMapper(ApplyMapper.class).schoolapply(s) == 1) {
 				req.setAttribute("result", "가입성공");
@@ -60,13 +61,13 @@ public class ApplyDAO {
 			
 			if(token.equals(successToken)){ return; }
 			
-			t.setTa_da_no(Integer.parseInt(req.getParameter("Ta_da_no")));
-			t.setTa_id(req.getParameter("Ta_id"));
-			t.setTa_name(req.getParameter("Ta_name"));
-			t.setTa_phonenumber(req.getParameter("Ta_phonenumber"));
-			t.setTa_gender(req.getParameter("Ta_gender"));
-			t.setTa_text(req.getParameter("Ta_text"));
-			t.setTa_agree(0);
+			t.settA_da_no(Integer.parseInt(req.getParameter("tA_da_no")));
+			t.settA_id(req.getParameter("tA_id"));
+			t.settA_name(req.getParameter("tA_name"));
+			t.settA_phonenumber(req.getParameter("tA_phonenumber"));
+			t.settA_gender(req.getParameter("tA_gender"));
+			t.settA_text(req.getParameter("tA_text"));
+			t.settA_agree(0);
 			
 			if (ss.getMapper(ApplyMapper.class).teacherapply(t) == 1) {
 				req.setAttribute("result", "가입성공");
@@ -80,7 +81,7 @@ public class ApplyDAO {
 		}
 	}
 	//견주-원장 강아지 신청
-	public void applyPet(MultipartFile mf, ApplyPet p, HttpServletRequest req) {
+	public void applyPet(@RequestParam("uA_img") MultipartFile mf, ApplyPet p, HttpServletRequest req) {
 
 		String root = "";
 		String changeFile = "";
@@ -108,24 +109,25 @@ public class ApplyDAO {
 			map.put("originFile", originFile);
 			map.put("changeFile", changeFile);
 
+			p.setuA_da_no(Integer.parseInt(req.getParameter("uA_da_no")));
+			p.setuA_id(req.getParameter("uA_id"));
+			p.setuA_name(req.getParameter("uA_name"));
+			p.setuA_gender(req.getParameter("uA_gender"));
+			p.setuA_age(Integer.parseInt(req.getParameter("uA_age")));
 			p.setuA_img(changeFile);
-
+			p.setuA_ta_no(Integer.parseInt(req.getParameter("uA_ta_no")));
+			p.setuA_agree(0);
+			
 			// 파일업로드
-
 			File uploadFile = new File(root + "\\" + changeFile);
 			mf.transferTo(uploadFile);
 
 			if (ss.getMapper(ApplyMapper.class).petapply(p) == 1) {
-				req.setAttribute("result", "가입성공");
 				req.getSession().setAttribute("successToken", token);
-			} else {
-				req.setAttribute("result", "가입실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-
 			new File(root + "\\" + changeFile).delete();
-			req.setAttribute("result", "가입실패");
 		}
 	}
 
@@ -165,7 +167,7 @@ public class ApplyDAO {
 		//Da_no 유치원 구분 코드 받아서
 		//Da_agree 1로 update
 
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		
 		if (ss.getMapper(ApplyMapper.class).schoolPass(s) == 1) {
 			System.out.println("유치원 수락 성공");
@@ -175,7 +177,7 @@ public class ApplyDAO {
 	}
 	//유치원 거절(관리자)
 	public void schoolFail(ApplySchool s, HttpServletRequest req) {
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		if (ss.getMapper(ApplyMapper.class).schoolFail(s) == 1) {
 			System.out.println("유치원 거절 성공");
 		} else {
@@ -184,7 +186,7 @@ public class ApplyDAO {
 	}
 	//선생님 승인(원장)
 	public void teacherPass(ApplyTeacher t, HttpServletRequest req) {
-		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		t.settA_no(Integer.parseInt(req.getParameter("tA_no")));
 		if (ss.getMapper(ApplyMapper.class).teacherPass(t) == 1) {
 			System.out.println("선생님 수락 성공"); //Ta_agree: 0->1
 		} else {
@@ -193,7 +195,7 @@ public class ApplyDAO {
 	}
 	//선생님 거절(원장)
 	public void teacherFail(ApplyTeacher t, HttpServletRequest req) {
-		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		t.settA_no(Integer.parseInt(req.getParameter("tA_no")));
 		if (ss.getMapper(ApplyMapper.class).teacherFail(t) == 1) {
 			System.out.println("선생님 거절 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -202,7 +204,7 @@ public class ApplyDAO {
 	}
 	//강아지 승인(원장)
 	public void petPass(ApplyPet p, HttpServletRequest req) {
-		p.setuA_no(Integer.parseInt(req.getParameter("Ua_no")));
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
 		if (ss.getMapper(ApplyMapper.class).petPass(p) == 1) {
 			System.out.println("강아지 수락 성공"); //Ta_agree: 0->1
 		} else {
@@ -211,7 +213,7 @@ public class ApplyDAO {
 	}
 	//강아지 거절(원장)
 	public void petFail(ApplyPet p, HttpServletRequest req) {
-		p.setuA_no(Integer.parseInt(req.getParameter("Ua_no")));
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
 		if (ss.getMapper(ApplyMapper.class).petFail(p) == 1) {
 			System.out.println("강아지 거절 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -223,12 +225,12 @@ public class ApplyDAO {
 	//////////////////////////////////////////////////////////
 	//한 유치원에 존재하는 모든 선생님 조회
 	public void getOneSchoolTeacher(ApplyTeacher t, HttpServletRequest req) {
-		t.setTa_da_no(Integer.parseInt(req.getParameter("Da_no")));
+		t.settA_da_no(Integer.parseInt(req.getParameter("dA_no")));
 		req.setAttribute("getOneSchoolTeacher", ss.getMapper(ApplyMapper.class).getOneSchoolTeacher(t));
 	}
 	//한 유치원 정보 조회
 	public void getOneSchool(ApplySchool s, HttpServletRequest req) {
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		try {
 			req.setAttribute("getOneSchool", ss.getMapper(ApplyMapper.class).getOneSchool(s));
 		} catch (Exception e) {
@@ -271,14 +273,15 @@ public class ApplyDAO {
 	// 학원 세션 받아오기
 	public void getSchoolSession(ApplySchool d, HttpServletRequest req) {
 		
-		int Da_no = Integer.parseInt(req.getParameter("ps.da_no"));
-		d.setDa_no(Da_no);
+		int Da_no = Integer.parseInt(req.getParameter("ps.dA_no"));
+		d.setdA_no(Da_no);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool getSchoolSession = mm.getSchoolSession(d);
 	
-		req.getSession().setAttribute("school", getSchoolSession.getDa_no());
-		req.getSession().setAttribute("schoolname", getSchoolSession.getDa_id());
+
+		req.getSession().setAttribute("school", getSchoolSession.getdA_no());
+		req.getSession().setAttribute("schoolname", getSchoolSession.getdA_name());
 		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 			
@@ -293,8 +296,8 @@ public class ApplyDAO {
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.getulistSession(as);
 	
-		req.getSession().setAttribute("school", ap.getDa_no());
-		req.getSession().setAttribute("schoolname", ap.getDa_id());
+		req.getSession().setAttribute("school", ap.getdA_no());
+		req.getSession().setAttribute("schoolname", ap.getdA_id());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		
@@ -309,11 +312,12 @@ public class ApplyDAO {
 			return;
 		}
 		
-		int Ta_da_no = as.getDa_no();
+		int Ta_da_no = as.getdA_no();
 		String Ta_id = m.getId();
-			
-		a.setTa_da_no(Ta_da_no);
-		a.setTa_id(Ta_id);
+
+		a.settA_da_no(Ta_da_no);
+		a.settA_id(Ta_id);
+
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplyTeacher TCheck = mm.TeachCheck(a);
@@ -331,11 +335,11 @@ public class ApplyDAO {
 			return;
 		}
 		
-		int Ta_da_no = as.getDa_no();
+		int Ta_da_no = as.getdA_no();
 		String Ta_id = m.getId();
 		
-		aps.setDa_no(Ta_da_no);
-		aps.setDa_id(Ta_id);
+		aps.setdA_no(Ta_da_no);
+		aps.setdA_id(Ta_id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool DCheck = mm.DirectorCheck(aps);
@@ -352,7 +356,7 @@ public class ApplyDAO {
 			return;
 		}
 		
-		int Ta_da_no = as.getDa_no();
+		int Ta_da_no = as.getdA_no();
 		String Ta_id = m.getId();
 		
 		System.out.println(Ta_da_no);
@@ -372,7 +376,7 @@ public class ApplyDAO {
 	/////////////////////////////////////////////////////////////
 	//신청 취소
 	public void applyCancelSchool(ApplySchool s, HttpServletRequest req) {
-		s.setDa_no(Integer.parseInt(req.getParameter("Da_no")));
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
 		if (ss.getMapper(ApplyMapper.class).schoolFail(s) == 1) {
 			System.out.println("유치원 신청 취소 성공");
 		} else {
@@ -380,7 +384,7 @@ public class ApplyDAO {
 		}
 	}
 	public void applyCancelTeacher(ApplyTeacher t, HttpServletRequest req) {
-		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		t.settA_no(Integer.parseInt(req.getParameter("tA_no")));
 		if (ss.getMapper(ApplyMapper.class).teacherFail(t) == 1) {
 			System.out.println("선생님 신청 취소 성공");
 		} else {
@@ -388,7 +392,7 @@ public class ApplyDAO {
 		}
 	}
 	public void applyCancelPet(ApplyPet p, HttpServletRequest req) {
-		p.setuA_no(Integer.parseInt(req.getParameter("Ua_no")));
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
 		if (ss.getMapper(ApplyMapper.class).petFail(p) == 1) {
 			System.out.println("강아지 신청 취소 성공");
 		} else {
@@ -400,7 +404,7 @@ public class ApplyDAO {
 	///////////////////////////////////////////////////////
 	//원장: 선생님, 견주 삭제
 	public void applyDeleteTeacher(ApplyTeacher t, HttpServletRequest req) {
-		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		t.settA_no(Integer.parseInt(req.getParameter("tA_no")));
 		if (ss.getMapper(ApplyMapper.class).deleteTeacher(t) == 1) {
 			System.out.println("선생님 삭제 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -408,7 +412,7 @@ public class ApplyDAO {
 		}
 	}
 	public void applyDeleteTeacherP(ApplyTeacher t, HttpServletRequest req) {
-		t.setTa_no(Integer.parseInt(req.getParameter("Ta_no")));
+		t.settA_no(Integer.parseInt(req.getParameter("tA_no")));
 		if(ss.getMapper(ApplyMapper.class).deleteTeacherInPet(t) >= 1) {
 			System.out.println("해당 강아지 선생님 빈칸 처리 완료");
 		} else {
@@ -416,7 +420,7 @@ public class ApplyDAO {
 		}
 	}
 	public void applyDeletePet(ApplyPet p, HttpServletRequest req) {
-		p.setuA_no(Integer.parseInt(req.getParameter("Ua_no")));
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
 		if (ss.getMapper(ApplyMapper.class).deletePet(p) == 1) {
 			System.out.println("강아지 삭제 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -426,7 +430,7 @@ public class ApplyDAO {
 	
 	//견주가 선생님 재신청 시에 넘겨질 나머지 견주&강아지 정보
 	public void myPetInfo(ApplyPet p, HttpServletRequest req) {
-		p.setuA_no(Integer.parseInt(req.getParameter("Ua_no")));
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
 		try {
 			req.setAttribute("myPetOne", ss.getMapper(ApplyMapper.class).getPetOne(p));
 		} catch(Exception e) {
@@ -440,8 +444,8 @@ public class ApplyDAO {
 		
 		if(token.equals(successToken)){ return; }
 		
-		p.setuA_no(Integer.parseInt(req.getParameter("Ua_no")));
-		p.setuA_tname(req.getParameter("Ua_tname"));
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		p.setuA_ta_no(Integer.parseInt(req.getParameter("uA_ta_no")));
 
 		if (ss.getMapper(ApplyMapper.class).reapplyPetOnlyTeacher(p) == 1) {
 			System.out.println("선생님 재신청 성공");
