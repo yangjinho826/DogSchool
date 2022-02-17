@@ -71,7 +71,6 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-
 select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
 from(
  select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
@@ -80,7 +79,6 @@ from(
 	from Uapply_table u, Dapply_table d
 	where u.Ua_da_no = d.Da_no and u.ua_id = 'qwe' and d.Da_agree = 1))
 where rn = 1;
-
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -111,7 +109,6 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -145,3 +142,11 @@ create table gallery_table(
 	g_date date not null
 );
 create sequence gallery_table_seq;
+
+	select rn, n_no,n_id,n_title,n_txt,n_date
+		from (select Rownum as rn,n_no,n_id,n_title,n_txt,n_date
+		from (select n_no,n_id,n_title,n_txt,n_date
+		from notice_table
+		order by n_date desc))
+	where rn < 5
+

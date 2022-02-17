@@ -12,7 +12,7 @@
 		<div class="menu">
 			<div class="menu_title">
 				<img onClick="location.href='HC.go'" class="menu_title_img" src="resources/img/dog-solid-1.png">
-				<a href="schoolmain.go?ps.da_no=${school}"><h1 class="menu_title_t"> ${schoolname}유치원</h1></a>
+				<a href="schoolmain.go?ps.dA_no=${school}"><h1 class="menu_title_t"> ${schoolname}유치원</h1></a>
 			</div>
 			<div class="menu_menubar">
 					<a href="notice.go" class="menu_menubar_item">공지사항</a>

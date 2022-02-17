@@ -291,7 +291,7 @@ public class ApplyDAO {
 	public void getulistSession(HttpServletRequest req, ApplySchool as) {
 		String id = req.getParameter("id");
 		
-		as.setDa_id(id);
+		as.setdA_id(id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.getulistSession(as);

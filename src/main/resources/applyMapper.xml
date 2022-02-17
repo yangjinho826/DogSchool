@@ -114,7 +114,7 @@ select * from uApply_table where uA_id = #{id}
  		from(
 			select d.Da_no, d.Da_id, d.Da_name, d.Da_schoolname, d.Da_addr, d.Da_phonenumber, d.Da_agree
 			from Uapply_table u, Dapply_table d
-			where u.Ua_da_no = d.Da_no and u.uA_id = #{Da_id} and d.Da_agree = 1))
+			where u.Ua_da_no = d.Da_no and u.uA_id = #{dA_id} and d.Da_agree = 1))
 	where rn = 1
 </select>
 

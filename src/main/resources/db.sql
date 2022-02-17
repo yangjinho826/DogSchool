@@ -71,7 +71,6 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-<<<<<<< HEAD
 select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
 from(
  select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
@@ -81,10 +80,6 @@ from(
 	where u.Ua_da_no = d.Da_no and u.ua_id = 'qwe' and d.Da_agree = 1))
 where rn = 1;
 
-
-	
-=======
->>>>>>> 59bd1b9db2608f5334479f007b1e942541058333
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -114,7 +109,6 @@ create table Uapply_table(
     Ua_agree number(3) not null --(수락or거절)
 );
 create sequence Uapply_table_seq;
-
 
 -- 알림장 테이블 --
 create table mypet_table(
