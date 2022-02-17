@@ -143,6 +143,7 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
+
 -- 유치원 후기 테이블 --
 create table review_table(
 	r_no number(3) primary key,
@@ -154,3 +155,4 @@ create table review_table(
 	
 );
 create sequence review_table_seq;
+

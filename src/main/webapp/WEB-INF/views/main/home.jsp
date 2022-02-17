@@ -26,7 +26,6 @@
 					<div>원장: ${ps.dA_name }(${ps.dA_id })</div>
 					<div>${ps.dA_phonenumber }</div>
 					<input name="ps.dA_no" value="${ps.dA_no }" hidden="hidden" >
-					<div><button>유치원 홈</button></div>
 					</div>
 				</c:forEach>
 			</section>
