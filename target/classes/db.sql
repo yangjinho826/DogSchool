@@ -139,4 +139,4 @@ create table review_table(
 );
 create sequence review_table_seq;
 
-
+drop table Uapply_table

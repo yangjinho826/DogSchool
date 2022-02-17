@@ -18,7 +18,7 @@
 				<div>원장: ${ps.da_name }(${ps.da_id })</div>
 				<div>${ps.da_phonenumber }</div>
 				<input name="ps.da_no" value="${ps.da_no }" hidden="hidden" >
-				<div><button>유치원 홈</button></div>
+				<div><button id="yhome">유치원 홈</button></div>
 				</div>
 			</form>
 			</c:forEach>

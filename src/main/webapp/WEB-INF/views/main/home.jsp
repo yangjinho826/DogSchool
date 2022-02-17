@@ -10,22 +10,22 @@
 </head>
 <body>
 	<section id="home">
-		<section>
-			<div><img class="mainImg" src="resources/img/2.png"></div>
+		<section class="home_Banner" >
+			<div ><img class="home_Banner_img" src="resources/img/2.png"></div>
 		</section>
 		
-		<section id="postscript_Home">
-		<h1 class="postscript_title"> 유치원 목록 </h1> 
-		<button id="seemore" onClick="location.href='list.go'">+</button>
-			<section id="showSchoolArea">
+		<section class="home_review">
+			<section id="review_Home">
+			<h1 class="review_title"> 유치원 목록</h1>
+		<button id="seemore2" onClick="location.href='list.go'">+</button>
+			<section id="listArea">
 				<c:forEach var="ps" items="${passSchools }">
-					<div id="showOneSchool">
-					<div>${ps.da_schoolname }</div>
+					<div id="showOnelist">
+					<div  id="listtitle">${ps.da_schoolname }</div>
 					<div>${ps.da_addr }</div>
 					<div>원장: ${ps.da_name }(${ps.da_id })</div>
 					<div>${ps.da_phonenumber }</div>
 					<input name="ps.da_no" value="${ps.da_no }" hidden="hidden" >
-					<div><button>유치원 홈</button></div>
 					</div>
 				</c:forEach>
 			</section>
@@ -43,6 +43,7 @@
 					<td class="review_table_title" style="width:20%;"> 작성자</td>
 					<td class="review_table_title" style="width:20%;"> 날짜 </td>
 				</tr>
+				<tr height="1" bgcolor="black"><td colspan="4"></td></tr>
 				
 				<c:forEach var="r" items="${reviews }">
 				<tr>
@@ -51,8 +52,10 @@
 					<td>${r.r_id }</td>
 					<td><fmt:formatDate value="${r.r_date }" type="both" dateStyle="short" timeStyle="short"/></td>
 				</tr>
+				   <tr height="1" bgcolor="black"><td colspan="4"></td></tr>
 				</c:forEach>
 		</table>
+		</section>
 		</section>
 		</section>
 	</section>

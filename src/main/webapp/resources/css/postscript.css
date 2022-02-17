@@ -51,6 +51,7 @@
   .postscript_table_title{
   	font-size: 25px;
   	font-weight: bold;
+  	
   }
   
 /* 선생님후기 작성 */
@@ -78,6 +79,7 @@
   	margin-left: 35px;
   	height:30px;
   	width: 300px;
+  	
   }
   
  .postscript_write_btn{

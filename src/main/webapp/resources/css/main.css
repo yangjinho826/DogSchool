@@ -38,7 +38,7 @@ a {
 
 /*member */
 #member{
-	padding: 8px 2px;
+	padding: 0.4%;
 	text-align: right;
 	background: #eeeeee;
 	display: flex;
@@ -96,11 +96,12 @@ a {
 
 /*menu */
 #menu{
-	height: 10%;
+	height: 12%;
 }
 
 .menu{
 	display: flex;
+	height: 100%;
 	background: #98c5e4;
 	
 }
@@ -113,7 +114,7 @@ a {
 
 .menu_title_img{
 	width: 100px;
-	height: 100px;
+	height: 100%;
 	color: white;
 }
 
@@ -144,8 +145,18 @@ a {
 
 /*home */
 #home{
-	margin:10px 0 0 10px;
-	min-height: 58%
+	min-height: 57%;
+}
+
+.home_Banner{
+   height: 20%;
+   position: relative;
+}
+
+.home_Banner_img{
+	margin-top: 5px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -180,13 +191,3 @@ a {
 	
 }
 
-.mainImg{
-	max-width: 100%;
- 	max-height: 100%;
-}
-
-#seemore{
-	float: right;
-	font-weight:bold;
-	font-size:25px;
-}
