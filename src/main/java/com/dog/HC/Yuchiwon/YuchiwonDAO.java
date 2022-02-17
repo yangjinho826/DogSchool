@@ -19,9 +19,7 @@ public class YuchiwonDAO {
 	public void getAllPuppy(HttpServletRequest req, signup s) {
 		
 		Map<String, String> aa = new HashMap<String, String>();
-		System.out.println(req.getParameter("id"));
-		System.out.println(req.getParameter("typee"));
-		
+
 		aa.put("iddd", req.getParameter("id"));
 		aa.put("typeee", req.getParameter("typee"));
 		

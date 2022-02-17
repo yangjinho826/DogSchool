@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dog.HC.TokenMaker;
+import com.dog.HC.apply.ApplyDAO;
+import com.dog.HC.apply.ApplyPet;
+import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.member.MemberDAO;
 
 @Controller
@@ -29,10 +32,18 @@ public class YuchiwonC {
 	@Autowired
 	private MemberDAO mDAOO;
 	
+	@Autowired
+	private ApplyDAO aDAO;
+	
 	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
-	public String pList(HttpServletRequest req, signup s) {
+	public String pList(HttpServletRequest req, signup s,ApplySchool as) {
+		String type = req.getParameter("typee");
+		
 		if(mDAOO.loginCheck(req)) {
 			ydao.getAllPuppy(req, s);
+			if(type.equals("1")){
+				aDAO.getulistSession(req, as);
+			}
 		}
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");

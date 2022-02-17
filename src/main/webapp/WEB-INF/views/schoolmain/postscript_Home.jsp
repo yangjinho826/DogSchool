@@ -14,7 +14,7 @@
 		<section class="postscript_Home">
 			<h1 class="postscript_title"> 선생님 후기 </h1>
 			<c:if test="${memberTypee eq '1'}">
-			 <c:if test="${UCheck.ua_da_no eq getSchoolSession.da_no}">
+			 <c:if test="${UCheck.uA_da_no eq getSchoolSession.da_no}">
 				   <button class="postscript_writebtn" onclick="location.href='postscript_write.go'">작성하기</button>
 			 </c:if>
 			</c:if>

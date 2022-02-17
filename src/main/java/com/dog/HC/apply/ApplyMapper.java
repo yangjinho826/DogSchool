@@ -35,5 +35,7 @@ public interface ApplyMapper {
 	int reapplyPetOnlyTeacher(ApplyPet p);
 	int checkTeacherExit(ApplyTeacher t);
 	int checkTeacher(Member m);
+	
+	public ApplySchool getulistSession(ApplySchool as);
 
 }

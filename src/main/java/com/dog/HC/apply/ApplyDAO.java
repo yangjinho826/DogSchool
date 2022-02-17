@@ -1,5 +1,6 @@
 package com.dog.HC.apply;
 
+import java.applet.Applet;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -277,8 +278,24 @@ public class ApplyDAO {
 		ApplySchool getSchoolSession = mm.getSchoolSession(d);
 	
 		req.getSession().setAttribute("school", getSchoolSession.getDa_no());
-		req.getSession().setAttribute("schoolname", getSchoolSession.getDa_name());
+		req.getSession().setAttribute("schoolname", getSchoolSession.getDa_id());
 		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+			
+	}
+	
+	// 유저로그인 -> 리스트에서 세션 받아오기
+	public void getulistSession(HttpServletRequest req, ApplySchool as) {
+		String id = req.getParameter("id");
+		
+		as.setDa_id(id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool ap = mm.getulistSession(as);
+	
+		req.getSession().setAttribute("school", ap.getDa_no());
+		req.getSession().setAttribute("schoolname", ap.getDa_id());
+		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		
 	}
@@ -294,7 +311,7 @@ public class ApplyDAO {
 		
 		int Ta_da_no = as.getDa_no();
 		String Ta_id = m.getId();
-		
+			
 		a.setTa_da_no(Ta_da_no);
 		a.setTa_id(Ta_id);
 		
@@ -337,6 +354,9 @@ public class ApplyDAO {
 		
 		int Ta_da_no = as.getDa_no();
 		String Ta_id = m.getId();
+		
+		System.out.println(Ta_da_no);
+		System.out.println(Ta_id);
 		
 		ap.setuA_da_no(Ta_da_no);
 		ap.setuA_id(Ta_id);
@@ -435,4 +455,7 @@ public class ApplyDAO {
 	public int checkTeacher(Member m, HttpServletRequest req) {
 		return ss.getMapper(ApplyMapper.class).checkTeacher(m);
 	}
+	
+	
+	
 }

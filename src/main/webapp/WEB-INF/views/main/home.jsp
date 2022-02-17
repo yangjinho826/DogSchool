@@ -11,7 +11,7 @@
 <body>
 	<section id="home">
 		<section class="home_Banner" >
-			<div ><img class="home_Banner_img" src="resources/img/2.png"></div>
+			<img class="home_Banner_img" src="resources/img/2.png">
 		</section>
 		
 		<section id="postscript_Home">

@@ -107,6 +107,17 @@ select * from Tapply_table where Ta_id = #{id} order by Ta_no desc
 	where Da_no = #{Da_no} and Da_agree = 1
 </select>
 
+<select id="getulistSession" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
+	select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
+	from(
+ 		select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
+ 		from(
+			select d.Da_no, d.Da_id, d.Da_name, d.Da_schoolname, d.Da_addr, d.Da_phonenumber, d.Da_agree
+			from Uapply_table u, Dapply_table d
+			where u.Ua_da_no = d.Da_no and u.uA_id = #{Da_id} and d.Da_agree = 1))
+	where rn = 1
+</select>
+
 <select id="TeachCheck" parameterType="com.dog.HC.apply.ApplyTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
 	select t.Ta_da_no
 	from signup_table s, Tapply_table t
