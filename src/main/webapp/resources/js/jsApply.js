@@ -10,7 +10,21 @@ function connectAddrSearchEvent() {
 }
 
 function daterangeSelectEvent(){
-	$('input[name="uA_daterange"]').daterangepicker();
+	var today = new Date();
+
+	var year = today.getFullYear();
+	var month = ('0' + (today.getMonth() + 1)).slice(-2);
+	var day = ('0' + today.getDate()).slice(-2);
+
+	var dateString = month + '/' + day + '/' + year;
+	console.log(dateString);
+	$('input[name="uA_daterange"]').daterangepicker({
+		minDate:"'"+String(dateString)+"'",
+		locale: {
+			"applyLabel": "확인",  
+		    "cancelLabel": "취소", 
+		}
+	});
 }
 
 
