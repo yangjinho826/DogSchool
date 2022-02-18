@@ -152,9 +152,7 @@ public class ApplyController {
 	//견주->원장 강아지 신청
 	@RequestMapping(value = "apply.pet", method = RequestMethod.POST)
 	public String applyPet(@RequestParam("imggg") MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
-		System.out.println(1);
 		if(mDAOO.loginCheck(req)) {
-			System.out.println(2);
 			aDAO.applyPet(mf, p, req);
 		}
 		

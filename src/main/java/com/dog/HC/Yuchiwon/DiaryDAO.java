@@ -128,20 +128,10 @@ public class DiaryDAO {
 
 	}
 
-//	public void getFiveDiary(HttpServletRequest req, diary d) {
-//		puppy p = (puppy) req.getSession().getAttribute("puppies");
-//		
-//		String mp_tid = p.getuA_tname();
-//		String mp_uid = p.getuA_id();
-//		String mp_uname = p.getuA_name();
-//
-//		d.setMp_tid(mp_tid);
-//		d.setMp_uid(mp_uid);
-//		d.setMp_uname(mp_uname);
-//
-//		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
-//		List<diary> diaries = dm.getFiveDiary(d);
-//
-//		req.setAttribute("diaries", diaries);
-//	}
-}
+	public void getFiveDiary(HttpServletRequest req) {
+	    DiaryMapper mm = ss.getMapper(DiaryMapper.class);
+	    List<diary> diaries = mm.getFiveDiary();
+		req.setAttribute("diaries", diaries);
+		}
+		
+	}

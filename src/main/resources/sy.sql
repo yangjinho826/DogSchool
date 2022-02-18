@@ -78,5 +78,28 @@ select * from gallery_table
 	and g_uid = 'mz10'
 	and g_uname = '나의유일강아지'
 
-	
-	select * from mypet_table where mp_no <= 5;
+
+select *
+from
+(select *  from mypet_table order by mp_no desc)
+where rownum <= 5;
+
+
+select *
+	from (select * from gallery_table order by g_no desc)
+	where rownum <= 5
+
+select rn, r_no, r_da_no, r_id,r_title,r_txt, r_date
+			from (select Rownum as rn,r_no, r_da_no, r_id,r_title,r_txt, r_date
+				from (select r_no, r_da_no, r_id,r_title,r_txt, r_date
+					  from review_table
+				      order by r_date desc))
+		where RN between #{r_da_no} and #{r_no}
+
+
+
+
+
+
+
+
