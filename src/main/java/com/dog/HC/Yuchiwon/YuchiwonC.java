@@ -36,13 +36,16 @@ public class YuchiwonC {
 	private ApplyDAO aDAO;
 	
 	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
-	public String pList(HttpServletRequest req, signup s,ApplySchool as) {
+	public String pList(HttpServletRequest req, signup s,ApplySchool as, ApplyPet ap) {
 		String type = req.getParameter("typee");
 		
 		if(mDAOO.loginCheck(req)) {
+			aDAO.DeleteDaterange(req, ap);
 			ydao.getAllPuppy(req, s);
 			if(type.equals("1")){
 				aDAO.getulistSession(req, as);
+			}else if(type.equals("2")) {
+				aDAO.gettlistSession(req, as);
 			}
 		}
 		

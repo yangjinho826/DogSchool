@@ -2,7 +2,7 @@
 
 /* applyHome */
 #applyHomeArea{
-	margin:60px 0 60px 0;
+	margin:60px 10px 60px 10px;
 	min-height: 57%;
 }
 
@@ -72,7 +72,6 @@
 
 #showSchoolArea{
 	display:flex;
-	justify-content : flex-center;
 	flex-wrap : wrap;
 	text-align:center;
 	
@@ -80,7 +79,7 @@
 
 #showOneSchool{
 	border:#98c5e4 4px solid;
-	width:310px;
+	width:315px;
 	height:150px;
 	margin:30px;
 }

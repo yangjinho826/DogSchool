@@ -2,7 +2,11 @@ package com.dog.HC.apply;
 
 import java.applet.Applet;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -302,6 +306,22 @@ public class ApplyDAO {
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		
 	}
+	
+	// 선생님로그인 -> 리스트에서 세션 받아오기
+	public void gettlistSession(HttpServletRequest req, ApplySchool as) {
+		String id = req.getParameter("id");
+		
+		as.setdA_id(id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool ap = mm.gettlistSession(as);
+	
+		req.getSession().setAttribute("school", ap.getdA_no());
+		req.getSession().setAttribute("schoolname", ap.getdA_id());
+		req.getSession().setAttribute("getSchoolSession", ap);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+	}
 
 	public void TeachCheck(ApplyTeacher a, HttpServletRequest req) {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
@@ -459,6 +479,45 @@ public class ApplyDAO {
 	public int checkTeacher(Member m, HttpServletRequest req) {
 		return ss.getMapper(ApplyMapper.class).checkTeacher(m);
 	}
+	
+	// 날짜 지난 거 지우기
+	public void DeleteDaterange(HttpServletRequest req, ApplyPet ap) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+				
+		ap.setuA_id(m.getId());
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		List<ApplyPet> AR = mm.getMyPetApply(m);
+		
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+		String now = sdf.format(d);
+		now = now.replace("-", "");
+		int now2 = Integer.parseInt(now);
+		
+		
+		for (ApplyPet a : AR) {
+			
+			String Udaterange = a.getuA_daterange();
+			String Udaterange2 =  Udaterange.substring(13,18);
+			Udaterange2 = Udaterange2.replace("/", "");
+			int Udaterange3 = Integer.parseInt(Udaterange2);			
+			int result = Udaterange3 - now2;
+			
+			if(result < 0) {
+				int no = a.getuA_no();
+				ap.setuA_no(no);
+				if(mm.DeleteDaterange(ap) == 1){
+					System.out.println("삭제성공");
+				}else {
+					System.out.println("삭제실패");
+				}
+			}
+			
+			
+		}
+	}
+
 	
 	
 	
