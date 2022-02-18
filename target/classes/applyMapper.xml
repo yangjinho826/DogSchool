@@ -118,6 +118,13 @@ select * from uApply_table where uA_id = #{id}
 	where rn = 1
 </select>
 
+<select id="gettlistSession" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
+	select d.Da_no, d.Da_id, d.Da_name, d.Da_schoolname, d.Da_addr, d.Da_phonenumber, d.Da_agree
+	from Tapply_table t, Dapply_table d
+	where t.Ta_da_no = d.Da_no and t.Ta_id = #{dA_id} and d.Da_agree = 1
+</select>
+
+
 <select id="TeachCheck" parameterType="com.dog.HC.apply.ApplyTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
 	select t.Ta_da_no
 	from signup_table s, Tapply_table t
@@ -132,9 +139,14 @@ select * from uApply_table where uA_id = #{id}
 </select>
 
 <select id="UserCheck" parameterType="com.dog.HC.apply.ApplyPet" resultType="com.dog.HC.apply.ApplyPet">
-	select *
+
+select uA_no, uA_da_no, uA_id, uA_name, uA_gender,uA_daterange,uA_age,uA_img,uA_ta_no,uA_agree
+from(	
+	select rownum, uA_no, uA_da_no, uA_id, uA_name, uA_gender,uA_daterange,uA_age,uA_img,uA_ta_no,uA_agree
 	from signup_table s, uApply_table u
-	where s.id = u.uA_id and u.uA_da_no = #{uA_da_no} and u.uA_id = #{uA_id} and u.uA_agree = 1
+	where s.id = u.uA_id and u.uA_da_no = #{uA_da_no} and u.uA_id = #{uA_id} and u.uA_agree = 1)
+where rownum = 1
+	
 </select>
 
 
@@ -160,5 +172,7 @@ select * from uApply_table where uA_no = #{uA_no}
 update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_no}
 </update>
 
-
+<delete id="DeleteDaterange" parameterType="com.dog.HC.apply.ApplyPet">
+delete uApply_table where uA_no = #{uA_no} and uA_agree = 1
+</delete>
 </mapper>

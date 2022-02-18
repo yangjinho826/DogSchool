@@ -37,5 +37,8 @@ public interface ApplyMapper {
 	int checkTeacher(Member m);
 	
 	public ApplySchool getulistSession(ApplySchool as);
+	public ApplySchool gettlistSession(ApplySchool as);
+	public int DeleteDaterange(int result);
+	int DeleteDaterange(ApplyPet ap);
 
 }
