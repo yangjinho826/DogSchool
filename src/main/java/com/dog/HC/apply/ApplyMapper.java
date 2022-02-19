@@ -40,5 +40,6 @@ public interface ApplyMapper {
 	public ApplySchool gettlistSession(ApplySchool as);
 	public int DeleteDaterange(int result);
 	int DeleteDaterange(ApplyPet ap);
+	public List<ApplyPet> getAllPetApply();
 
 }

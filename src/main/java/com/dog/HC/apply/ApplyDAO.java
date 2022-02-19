@@ -292,23 +292,30 @@ public class ApplyDAO {
 	}
 	
 	// 유저로그인 -> 리스트에서 세션 받아오기
-	public void getulistSession(HttpServletRequest req, ApplySchool as) {
+	public int getulistSession(HttpServletRequest req, ApplySchool as) {
 		String id = req.getParameter("id");
 		
 		as.setdA_id(id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.getulistSession(as);
+		
+		
+		if(ap == null) {
+			return 0;
+		}
 	
 		req.getSession().setAttribute("school", ap.getdA_no());
 		req.getSession().setAttribute("schoolname", ap.getdA_id());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
+		return 1;
+		
 		
 	}
 	
 	// 선생님로그인 -> 리스트에서 세션 받아오기
-	public void gettlistSession(HttpServletRequest req, ApplySchool as) {
+	public int gettlistSession(HttpServletRequest req, ApplySchool as) {
 		String id = req.getParameter("id");
 		
 		as.setdA_id(id);
@@ -320,6 +327,7 @@ public class ApplyDAO {
 		req.getSession().setAttribute("schoolname", ap.getdA_id());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
+		return 1;
 		
 	}
 
@@ -484,10 +492,9 @@ public class ApplyDAO {
 	public void DeleteDaterange(HttpServletRequest req, ApplyPet ap) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 				
-		ap.setuA_id(m.getId());
-		
+	
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
-		List<ApplyPet> AR = mm.getMyPetApply(m);
+		List<ApplyPet> AR = mm.getAllPetApply();
 		
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");

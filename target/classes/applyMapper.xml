@@ -171,7 +171,12 @@ select * from uApply_table where uA_no = #{uA_no}
 <update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
 update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_no}
 </update>
+<!-- 전체 조회 -->
+<select id="getAllPetApply" resultType="com.dog.HC.apply.ApplyPet">
+select * from uApply_table where uA_agree = 1
+</select>
 
+<!--  날짜지난거 삭제 -->
 <delete id="DeleteDaterange" parameterType="com.dog.HC.apply.ApplyPet">
 delete uApply_table where uA_no = #{uA_no} and uA_agree = 1
 </delete>

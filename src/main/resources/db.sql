@@ -150,3 +150,11 @@ create table review_table(
 create sequence review_table_seq;
 
 
+	select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
+	from(
+ 		select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
+ 		from(
+			select d.Da_no, d.Da_id, d.Da_name, d.Da_schoolname, d.Da_addr, d.Da_phonenumber, d.Da_agree
+			from Uapply_table u, Dapply_table d
+			where u.Ua_da_no = d.Da_no and u.uA_id = 'wer' and d.Da_agree = 1))
+	where rn = 1

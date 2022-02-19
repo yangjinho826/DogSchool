@@ -1,5 +1,6 @@
 package com.dog.HC.Yuchiwon;
 
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dog.HC.TokenMaker;
@@ -16,6 +18,7 @@ import com.dog.HC.apply.ApplyDAO;
 import com.dog.HC.apply.ApplyPet;
 import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.member.MemberDAO;
+import com.dog.HC.schoolmain.postscript;
 
 @Controller
 public class YuchiwonC {
@@ -35,18 +38,22 @@ public class YuchiwonC {
 	@Autowired
 	private ApplyDAO aDAO;
 	
+	@RequestMapping(value = "my_registrationCheck", method = RequestMethod.GET)
+	public @ResponseBody int postscriptDelete(ApplySchool as, HttpServletRequest req, ApplyPet ap) {
+		String typee = req.getParameter("typee");
+		if(typee.equals("1")){
+			return aDAO.getulistSession(req, as);
+		}else if(typee.equals("2")) {
+			return aDAO.gettlistSession(req, as);
+		}
+		return 0;
+	}
+	
 	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
 	public String pList(HttpServletRequest req, signup s,ApplySchool as, ApplyPet ap) {
-		String type = req.getParameter("typee");
-		
+
 		if(mDAOO.loginCheck(req)) {
-			aDAO.DeleteDaterange(req, ap);
 			ydao.getAllPuppy(req, s);
-			if(type.equals("1")){
-				aDAO.getulistSession(req, as);
-			}else if(type.equals("2")) {
-				aDAO.gettlistSession(req, as);
-			}
 		}
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");

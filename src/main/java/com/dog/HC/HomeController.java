@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dog.HC.apply.ApplyDAO;
+import com.dog.HC.apply.ApplyPet;
 import com.dog.HC.manage.ManageDAO;
 import com.dog.HC.member.Member;
 import com.dog.HC.member.MemberDAO;
@@ -24,12 +26,15 @@ public class HomeController {
 
 	@Autowired
 	private ReviewDAO rDAO;
-
 	
+	@Autowired
+	private ApplyDAO aDAO;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(review r,HttpServletRequest req) {
+	public String home(review r,HttpServletRequest req, ApplyPet ap) {
 		
 		mDAOO.loginCheck(req);
+		aDAO.DeleteDaterange(req, ap);
 		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		
@@ -40,9 +45,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "HC.go", method = RequestMethod.GET)
-	public String HC(review r, HttpServletRequest req) {
+	public String HC(review r, HttpServletRequest req, ApplyPet ap) {
 		
 		mDAOO.loginCheck(req);
+		aDAO.DeleteDaterange(req, ap);
 		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		
