@@ -14,7 +14,7 @@
 	select * from gallery_table where g_no = #{g_no}
 </select>
 
-<select id="getFiveGallery">
+<select id="getFiveGallery" resultType="com.dog.HC.Yuchiwon.gallery">
 	select *
 	from (select * from gallery_table order by g_no desc)
 	where rownum &lt;= 5

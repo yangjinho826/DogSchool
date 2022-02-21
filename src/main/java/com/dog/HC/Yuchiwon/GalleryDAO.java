@@ -258,8 +258,15 @@ public class GalleryDAO {
 	}
 
 	public void getFiveGallery(HttpServletRequest req) {
-		GalleryMapper mm = ss.getMapper(GalleryMapper.class);
-	    List<gallery> galleries = mm.getFiveGallery();
+		
+		GalleryMapper gm = ss.getMapper(GalleryMapper.class);
+		List<gallery> galleries = gm.getFiveGallery();
+		String[] imges = null;
+		for (gallery gg : galleries) {
+			imges = gg.getG_img().split("!");
+					gg.setFiless(imges);
+		}
+		
 		req.setAttribute("galleries", galleries);
 		
 	}

@@ -49,7 +49,7 @@
 		</section>
 		<section>
 			<c:forEach var="g" items="${galleries }">
-			<table border="1" style="float: left;">
+			<table style="float: left;">
 				<tr>
 					<td>제목 : ${g.g_title }</td>
 				</tr>

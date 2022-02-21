@@ -47,7 +47,7 @@ public class YuchiwonC {
 		mDAOO.loginCheck(req);
 		ydao.getPuppy(req, puppy);
 		ddao.getFiveDiary(req);
-//		gdao.getFiveGallery(req);
+		gdao.getFiveGallery(req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
