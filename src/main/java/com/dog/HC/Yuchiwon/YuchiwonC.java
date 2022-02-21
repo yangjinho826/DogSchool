@@ -64,10 +64,11 @@ public class YuchiwonC {
 	}
 
 	@RequestMapping(value = "yuchiwon.get.puppy", method = RequestMethod.GET)
-	public String getPuppy(HttpServletRequest req, puppy puppy, diary d) {
+	public String getPuppy(HttpServletRequest req, puppy puppy) {
 		mDAOO.loginCheck(req);
 		ydao.getPuppy(req, puppy);
-//		ddao.getFiveDiary(req, d);
+		ddao.getFiveDiary(req);
+		gdao.getFiveGallery(req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
