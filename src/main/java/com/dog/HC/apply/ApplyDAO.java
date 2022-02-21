@@ -1,6 +1,5 @@
 package com.dog.HC.apply;
 
-import java.applet.Applet;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -19,12 +18,75 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dog.HC.member.Member;
+import com.dog.HC.review.ReviewMapper;
+import com.dog.HC.review.review;
+
 
 @Service
 public class ApplyDAO {
 	
 	@Autowired
 	private SqlSession ss;
+	
+	int TotalCount = 0;
+	
+	public void getTotal() {	 
+		 ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		 TotalCount = mm.getlistTotalCount();              
+	}
+	 
+	public void pageView(ApplySchool s, HttpServletRequest req) {
+		String strPg = req.getParameter("pg");
+		
+		int rowSize = 12; //한페이지에 보여줄 글의 수
+	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+	    
+	    if(strPg != null){ //list.jsp?pg=2
+	        pg = Integer.parseInt(strPg); //.저장
+	    }
+	    
+	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
+	    int to=(pg * rowSize); //(1*10) = 10 //to
+	    
+	    s.setdA_no(from);
+	    s.setdA_agree(to);
+	    
+	    
+	    ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+	    List<ApplySchool> passSchools = mm.getAlllist(s);
+		req.setAttribute("passSchools", passSchools);
+ 
+	}
+	
+	public void page(ApplySchool s, HttpServletRequest req) {
+		String strPg = req.getParameter("pg");
+	   	 
+	    int rowSize = 12; //한페이지에 보여줄 글의 수
+	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+	   
+	    if(strPg != null){ //list.jsp?pg=2
+	        pg = Integer.parseInt(strPg); //.저장
+	    }
+	   
+	    int total = TotalCount; //총 게시물 수
+	    int allPage = (int) Math.ceil(total/(double)rowSize); //페이지수
+	    int block = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
+
+	    int fromPage = ((pg-1)/block*block)+1;  //보여줄 페이지의 시작
+	    int toPage = ((pg-1)/block*block)+block; //보여줄 페이지의 끝
+	    if(toPage> allPage){ // 예) 20>17
+	        toPage = allPage;
+	    }
+
+	    req.setAttribute("pg", pg);
+	    req.setAttribute("block", block);
+	    req.setAttribute("fromPage", fromPage);
+	    req.setAttribute("toPage", toPage);
+	    req.setAttribute("allPage", allPage);
+	    req.setAttribute("rowSize", rowSize);
+	    req.setAttribute("TotalCount", total);
+	}
+	
 
 	//원장-관리자 유치원 신청
 	public void applySchool(ApplySchool s, HttpServletRequest req) {
@@ -524,8 +586,6 @@ public class ApplyDAO {
 			
 		}
 	}
-
-	
 	
 	
 }

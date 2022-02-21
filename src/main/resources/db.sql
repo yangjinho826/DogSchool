@@ -84,7 +84,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from UAPPLY_TABLE
+select * from Dapply_table
 
 
 -- 견주-원장 신청 테이블 --
@@ -103,6 +103,7 @@ create table Uapply_table(
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
+drop table uapply_table
 -- 알림장 테이블 --
 create table mypet_table(
 	mp_no number(3) primary key,				-- 알림장 번호

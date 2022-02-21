@@ -7,7 +7,10 @@ public class ApplyPet {
 	private String uA_img;
 	private int uA_ta_no, uA_agree;
 	
-	public ApplyPet() {}
+	public ApplyPet() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public ApplyPet(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, String uA_daterange,
 			int uA_age, String uA_img, int uA_ta_no, int uA_agree) {
 		super();
@@ -102,5 +105,9 @@ public class ApplyPet {
 	public void setuA_agree(int uA_agree) {
 		this.uA_agree = uA_agree;
 	}
+	
+	
+	
+	
 	
 }

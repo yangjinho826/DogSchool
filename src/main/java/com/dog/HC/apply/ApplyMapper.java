@@ -41,5 +41,8 @@ public interface ApplyMapper {
 	public int DeleteDaterange(int result);
 	int DeleteDaterange(ApplyPet ap);
 	public List<ApplyPet> getAllPetApply();
+	
+	int getlistTotalCount();
+	List<ApplySchool> getAlllist(ApplySchool s);
 
 }

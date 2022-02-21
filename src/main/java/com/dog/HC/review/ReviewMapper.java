@@ -18,6 +18,5 @@ public interface ReviewMapper {
 
 	public List<review> getAllreview(review r);
 
-	public List<review> getfivereview(review r);
 
 }

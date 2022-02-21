@@ -36,12 +36,5 @@
 		select count(*) from review_table
 	</select>
 	
-	<select id="getfivereview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
-		select rn, r_no, r_da_no, r_id,r_title,r_txt, r_date
-			from (select Rownum as rn,r_no, r_da_no, r_id,r_title,r_txt, r_date
-				from (select r_no, r_da_no, r_id,r_title,r_txt, r_date
-					  from review_table
-				      order by r_date desc))
-		where rn &lt; 6
-	</select>
+	
 </mapper>

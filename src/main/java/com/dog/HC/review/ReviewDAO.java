@@ -60,7 +60,7 @@ public class ReviewDAO {
 	   
 	    int total = TotalCount; //총 게시물 수
 	    int allPage = (int) Math.ceil(total/(double)rowSize); //페이지수
-	    int block = 5; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
+	    int block = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
 
 	    int fromPage = ((pg-1)/block*block)+1;  //보여줄 페이지의 시작
 	    int toPage = ((pg-1)/block*block)+block; //보여줄 페이지의 끝
@@ -144,12 +144,7 @@ public class ReviewDAO {
 		
 	}
 	
-	public void getfivereview(review r, HttpServletRequest req) {
-		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
-		List<review> fivepostscript = mm.getfivereview(r);
-		req.setAttribute("fivepostscript", fivepostscript);
-		
-	}
+	
 		
 
 }
