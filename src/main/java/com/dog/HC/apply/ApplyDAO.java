@@ -514,7 +514,7 @@ public class ApplyDAO {
 			if(result < 0) {
 				int no = a.getuA_no();
 				ap.setuA_no(no);
-				if(mm.DeleteDaterange(ap) == 1){
+				if(mm.DeleteDaterange(ap) >= 1){
 					System.out.println("삭제성공");
 				}else {
 					System.out.println("삭제실패");
