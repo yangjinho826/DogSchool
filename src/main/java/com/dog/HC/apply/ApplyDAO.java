@@ -285,7 +285,7 @@ public class ApplyDAO {
 		if(TeacherDa_no > 0 ) {
 			d.setdA_no(TeacherDa_no);	
 			TeacherDa_no = 0;
-		}else if(TeacherDa_no == 0){
+		}else{
 			int Da_no = Integer.parseInt(req.getParameter("ps.dA_no"));
 			d.setdA_no(Da_no);
 		}
@@ -301,7 +301,6 @@ public class ApplyDAO {
 	}
 	
 	// 관리하는 강아지가 없을경우 바로 유치원을 가기위해 TeacherDa_no을 구한다.
-	
 	public void getCheckregTeacher(ApplySchool d, HttpServletRequest req) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		String Ta_id = m.getId();

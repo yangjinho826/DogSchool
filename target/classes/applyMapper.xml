@@ -187,4 +187,5 @@ delete uApply_table where uA_no = #{uA_no} and uA_agree = 1
 	from Dapply_table d, Tapply_table t
 	where d.Da_no = t.Ta_da_no and t.Ta_id = #{dA_id}
 </select>
+
 </mapper>

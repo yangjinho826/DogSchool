@@ -47,7 +47,8 @@ public class schoolmainController {
 	public String schoolmain(ApplySchool d, notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		
-		int result = Integer.parseInt(req.getParameter("result"));
+		int result = req.getParameter("result") == null ? 1 : 0;
+		
 		
 		if(result == 0) {
 			aDAO.getCheckregTeacher(d, req);
@@ -95,12 +96,14 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "notice.write", method = RequestMethod.GET)
-	public String noticewirte(notice n, HttpServletRequest req) {
+	public String noticewirte(ApplyTeacher a, ApplySchool aps, notice n, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		nDAO.getWrite(n, req);
 		nDAO.getTotal(n, req);
 		nDAO.pageView(n, req);
 		nDAO.page(n, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Home.jsp");
@@ -183,13 +186,13 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "postscript.write", method = RequestMethod.POST)
-	public String postscriptwirte(postscript p, HttpServletRequest req) {
+	public String postscriptwirte(ApplyPet ap, postscript p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pDAO.getWrite(p, req);
 		pDAO.getpTotal(p, req);
 		pDAO.ppageView(p, req);
 		pDAO.ppage(p, req);
-		
+		aDAO.UserCheck(ap,req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/postscript_Home.jsp");
@@ -263,10 +266,12 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "priceTag.write", method = RequestMethod.GET)
-	public String priceTagwirte(priceTag pT, HttpServletRequest req) {
+	public String priceTagwirte(ApplyTeacher a, ApplySchool aps, priceTag pT, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pTDAO.getWrite(pT, req);
 		pTDAO.getAllpriceTag(pT, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
@@ -285,10 +290,12 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "priceTag.Delete", method = RequestMethod.GET)
-	public String priceTagDelete(priceTag pT, HttpServletRequest req) {
+	public String priceTagDelete(ApplyTeacher a, ApplySchool aps, priceTag pT, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pTDAO.priceTagDelete(pT, req);
 		pTDAO.getAllpriceTag(pT, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
@@ -299,10 +306,12 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "priceTag.Update", method = RequestMethod.GET)
-	public String priceTagUpdate(priceTag pT, HttpServletRequest req) {
+	public String priceTagUpdate(ApplyTeacher a, ApplySchool aps, priceTag pT, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		pTDAO.priceTagUpdate(pT, req);
 		pTDAO.getAllpriceTag(pT, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/priceTag_Home.jsp");
@@ -335,10 +344,12 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "schedule.write", method = RequestMethod.GET)
-	public String schedulewirte(schedule s, HttpServletRequest req) throws ParseException {
+	public String schedulewirte(ApplyTeacher a, ApplySchool aps, schedule s, HttpServletRequest req) throws ParseException {
 		mDAOO.loginCheck(req);
 		sDAO.getschedulewirte(s, req);
 		sDAO.getAllschedule(s, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
@@ -357,10 +368,12 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "schedule.update", method = RequestMethod.GET)
-	public String scheduleUpdate(schedule s, HttpServletRequest req) {
+	public String scheduleUpdate(ApplyTeacher a, ApplySchool aps, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		sDAO.scheduleUpdate(s, req);
 		sDAO.getAllschedule(s, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");
@@ -370,10 +383,12 @@ public class schoolmainController {
 		
 	}
 	@RequestMapping(value = "schedule.Delete", method = RequestMethod.GET)
-	public String scheduleDelete(schedule s, HttpServletRequest req) {
+	public String scheduleDelete(ApplyTeacher a, ApplySchool aps, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		sDAO.scheduleDelete(s, req);
 		sDAO.getAllschedule(s, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/schedule_Home.jsp");

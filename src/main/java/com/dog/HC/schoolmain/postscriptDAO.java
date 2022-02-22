@@ -33,7 +33,7 @@ public class postscriptDAO {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		String strPg = req.getParameter("pg");
 		
-		int rowSize = 3; //한페이지에 보여줄 글의 수
+		int rowSize = 10; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	    
 	    if(strPg != null){ //list.jsp?pg=2
@@ -57,7 +57,7 @@ public class postscriptDAO {
 	public void ppage(postscript p, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 	   	 
-	    int rowSize = 3; //한페이지에 보여줄 글의 수
+	    int rowSize = 10; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	   
 	    if(strPg != null){ //list.jsp?pg=2
