@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.apply.ApplyMapper;
+import com.dog.HC.apply.ApplyPet;
 import com.dog.HC.member.Member;
 import com.dog.HC.schoolmain.postscript;
 import com.dog.HC.schoolmain.postscriptmapper;
@@ -93,6 +95,13 @@ public class ReviewDAO {
 		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
+		//신청내역에서 넘어온 값 받기
+		int a = Integer.parseInt(req.getParameter("uA_no"));
+		int b = Integer.parseInt(req.getParameter("uA_da_no"));
+		
+		System.out.println(a+ " "+ b);
+		
+		
 		int r_da_no = 1;
 		String r_id = m.getName();
 		
@@ -150,6 +159,4 @@ public class ReviewDAO {
 		req.setAttribute("fivepostscript", fivepostscript);
 		
 	}
-		
-
 }
