@@ -15,12 +15,14 @@ public class puppy {
 	private int uA_ta_no;
 	private int uA_agree;
 	
+	private String uA_daterange;
+	
 	public puppy() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public puppy(int uA_no, int uA_da_no, String uA_id, String uA_name, String uA_gender, Date uA_start, Date uA_end,
-			int uA_age, String uA_img, int uA_ta_no, int uA_agree) {
+			int uA_age, String uA_img, int uA_ta_no, int uA_agree, String uA_daterange) {
 		super();
 		this.uA_no = uA_no;
 		this.uA_da_no = uA_da_no;
@@ -33,6 +35,7 @@ public class puppy {
 		this.uA_img = uA_img;
 		this.uA_ta_no = uA_ta_no;
 		this.uA_agree = uA_agree;
+		this.uA_daterange = uA_daterange;
 	}
 
 	public int getuA_no() {
@@ -121,6 +124,14 @@ public class puppy {
 
 	public void setuA_agree(int uA_agree) {
 		this.uA_agree = uA_agree;
+	}
+	
+	public String getuA_daterange() {
+		return uA_daterange;
+	}
+	
+	public void setuA_daterange(String uA_daterange) {
+		this.uA_daterange = uA_daterange;
 	}
 
 }

@@ -44,6 +44,7 @@
 		</table>
 		</c:forEach>
 		</section>
+		
 		<section class="home_review">
 			<a href="yuchiwon.get.allgallery">갤러리</a>
 		</section>

@@ -108,6 +108,8 @@ create table Uapply_table(
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
+insert into UAPPLY_TABLE values(55, 381, 'u1', '별달', '암컷', '기간 만료', 4, 'a.jpg', 345, 1);
+
 -- 알림장 테이블 --
 create table mypet_table(
 	mp_no number(3) primary key,				-- 알림장 번호

@@ -28,6 +28,45 @@ border: 1px solid black;
 
 /* puppyList */
 
+#viewPuppyList{
+	margin:40px 0 40px 0;
+	height: fill;
+}
+
+#puppyListTitle{
+	padding:10px;
+	text-align:center;
+}
+
+#puppyListTbl{
+	border-collapse: collapse;
+	font-size:13pt;
+	width: 70%;
+	margin-left:auto; margin-right:auto;
+	align-self:center;
+	text-align:center;
+	/*color: #FFFFFF;*/
+	border-spacing: 0px;
+}
+
+#puppyListTbl th{
+	font-size: 14pt;
+	height: 60px;
+	padding:30px;
+	text-align: center;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
+}
+
+#puppyListTbl td{
+	padding:5px;
+	border:#eeeeee 6px solid;
+	border-bottom:#98c5e4 7px solid;
+	border-top:#98c5e4 7px solid;
+}
+
 #puppyListImg{
-	width:250px;
+	margin:10px;
+	width:200px;
 }
