@@ -71,6 +71,12 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
+select * from Dapply_table
+select * from Tapply_table
+
+	select *
+	from Dapply_table d, Tapply_table t
+	where d.Da_no = t.Ta_da_no and t.Ta_id = 'dfg'
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -84,8 +90,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from UAPPLY_TABLE
-
+select * from Tapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -148,13 +153,3 @@ create table review_table(
 	
 );
 create sequence review_table_seq;
-
-
-	select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
-	from(
- 		select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
- 		from(
-			select d.Da_no, d.Da_id, d.Da_name, d.Da_schoolname, d.Da_addr, d.Da_phonenumber, d.Da_agree
-			from Uapply_table u, Dapply_table d
-			where u.Ua_da_no = d.Da_no and u.uA_id = 'wer' and d.Da_agree = 1))
-	where rn = 1

@@ -1,5 +1,6 @@
 package com.dog.HC.schoolmain;
 
+import java.io.Console;
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +45,14 @@ public class schoolmainController {
 	
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
 	public String schoolmain(ApplySchool d, notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
-		
 		mDAOO.loginCheck(req);
+		
+		int result = Integer.parseInt(req.getParameter("result"));
+		
+		if(result == 0) {
+			aDAO.getCheckregTeacher(d, req);
+		}
+	
 		aDAO.getSchoolSession(d, req);
 		nDAO.getfivenotice(n, req);
 		pDAO.getfivepostscript(p, req);

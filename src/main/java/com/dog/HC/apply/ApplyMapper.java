@@ -1,7 +1,9 @@
 package com.dog.HC.apply;
 
 import java.util.List;
+import java.util.Map;
 
+import com.dog.HC.Yuchiwon.puppy;
 import com.dog.HC.member.Member;
 
 public interface ApplyMapper {
@@ -41,5 +43,8 @@ public interface ApplyMapper {
 	public int DeleteDaterange(int result);
 	int DeleteDaterange(ApplyPet ap);
 	public List<ApplyPet> getAllPetApply();
+	public ApplySchool getTeacherDano(ApplySchool d);
+
+	
 
 }

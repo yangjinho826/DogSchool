@@ -180,4 +180,11 @@ select * from uApply_table where uA_agree = 1
 <delete id="DeleteDaterange" parameterType="com.dog.HC.apply.ApplyPet">
 delete uApply_table where uA_no = #{uA_no} and uA_agree = 1
 </delete>
+
+<!-- 아이디로 선생님 소속 찾기 -->
+<select id="getTeacherDano" resultType="com.dog.HC.apply.ApplySchool">
+	select d.Da_no
+	from Dapply_table d, Tapply_table t
+	where d.Da_no = t.Ta_da_no and t.Ta_id = #{dA_id}
+</select>
 </mapper>
