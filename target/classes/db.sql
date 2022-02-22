@@ -71,7 +71,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-select * from Dapply_table where Da_no = 61
+select * from Dapply_table
 
 
 	select *

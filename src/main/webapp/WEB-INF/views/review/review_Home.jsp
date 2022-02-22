@@ -18,15 +18,17 @@
 			<table class="postscript">
 				<tr class="postscript_tr">
 					<td class="postscript_table_title" style="width:10%;"> 글 번호 </td>
-					<td class="postscript_table_title" style="width:50%;"> 제목 </td>
+					<td class="postscript_table_title" style="width:20%;"> 유치원 이름 </td>
+					<td class="postscript_table_title" style="width:30%;"> 제목 </td>
 					<td class="postscript_table_title" style="width:20%;"> 작성자</td>
 					<td class="postscript_table_title" style="width:20%;"> 날짜 </td>
 				</tr>
 
-			<c:set var="num" value="${TotalCount - ((pg-1) * rowSize) }"/>
+				<c:set var="num" value="${TotalCount - ((pg-1) * rowSize) }"/>
 				<c:forEach var="r" items="${reviews }">
 				<tr>
-					<td>${r.r_no }</td>
+					<td>${num }</td>
+					<td>${r.r_schoolName }유치원</td>
 					<td><a href="review.Detail?r_no=${r.r_no}">${r.r_title }</a></td>
 					<td>${r.r_id }</td>
 					<td><fmt:formatDate value="${r.r_date }" type="both" dateStyle="short" timeStyle="short"/></td>

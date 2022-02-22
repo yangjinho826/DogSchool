@@ -24,7 +24,7 @@ public class ReviewDAO {
 	
 	public void getTotal() {	 
 		 ReviewMapper mm = ss.getMapper(ReviewMapper.class);
-		 TotalCount = mm.getreviewTotalCount();              
+		 TotalCount = mm.getreviewTotalCount();       
 	}
 	 
 	public void pageView(review r, HttpServletRequest req) {
