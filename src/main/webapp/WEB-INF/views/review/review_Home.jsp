@@ -13,9 +13,6 @@
 	<section id="postscript_Home">
 		<section class="postscript_Home">
 			<h1 class="postscript_title"> 유치원 후기 </h1>
-			<c:if test="${memberTypee eq '1'}">
-				<button class="postscript_writebtn" onclick="location.href='review_write.go'">작성하기</button>
-			</c:if>
 		</section>
 		<section id="postscript_Body">
 			<table class="postscript">

@@ -48,9 +48,10 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "review_write.go", method = RequestMethod.GET)
-	public String reviewwirtego(ApplyPet p, review r, HttpServletRequest req) {
+	public String reviewwirtego(ApplyPet p, ApplySchool as, review r, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		TokenMaker.make(req);
+		aDAO.getSchoolname(req, as);
 
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "review/review_write.jsp");
@@ -59,12 +60,13 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "review.write", method = RequestMethod.POST)
-	public String reviewwirte(review r, HttpServletRequest req) {
+	public String reviewwirte(ApplyPet p, review r, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		rDAO.getWrite(r, req);
 		rDAO.getTotal();
 		rDAO.pageView(r, req);
 		rDAO.page(r, req);
+		aDAO.petFail(p, req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "review/review_Home.jsp");

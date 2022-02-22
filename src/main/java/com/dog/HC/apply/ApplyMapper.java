@@ -40,10 +40,11 @@ public interface ApplyMapper {
 	
 	public ApplySchool getulistSession(ApplySchool as);
 	public ApplySchool gettlistSession(ApplySchool as);
-	public int DeleteDaterange(int result);
-	int DeleteDaterange(ApplyPet ap);
+	public int UpdateDaterange(ApplyPet ap);
 	public List<ApplyPet> getAllPetApply();
 	public ApplySchool getTeacherDano(ApplySchool d);
+	public ApplySchool getSchoolname(ApplySchool as);
+	
 
 	
 

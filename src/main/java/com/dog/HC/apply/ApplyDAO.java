@@ -221,7 +221,10 @@ public class ApplyDAO {
 	}
 	//강아지 거절(원장)
 	public void petFail(ApplyPet p, HttpServletRequest req) {
+		
+		
 		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		
 		if (ss.getMapper(ApplyMapper.class).petFail(p) == 1) {
 			System.out.println("강아지 거절 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -527,12 +530,13 @@ public class ApplyDAO {
 	}
 	
 	// 날짜 지난 거 지우기
-	public void DeleteDaterange(HttpServletRequest req, ApplyPet ap) {
+	public void UpdateDaterange(HttpServletRequest req, ApplyPet ap) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 				
 	
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		List<ApplyPet> AR = mm.getAllPetApply();
+	
 		
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
@@ -544,27 +548,40 @@ public class ApplyDAO {
 		for (ApplyPet a : AR) {
 			
 			String Udaterange = a.getuA_daterange();
-			String Udaterange2 =  Udaterange.substring(13,18);
-			Udaterange2 = Udaterange2.replace("/", "");
-			int Udaterange3 = Integer.parseInt(Udaterange2);			
-			int result = Udaterange3 - now2;
 			
-			if(result < 0) {
-				int no = a.getuA_no();
-				ap.setuA_no(no);
-				if(mm.DeleteDaterange(ap) >= 1){
-					System.out.println("삭제성공");
-				}else {
-					System.out.println("삭제실패");
-				}
+			if(!Udaterange.equals("기간 만료")) {
+			
+				String Udaterange2 =  Udaterange.substring(13,18);
+				Udaterange2 = Udaterange2.replace("/", "");
+				int Udaterange3 = Integer.parseInt(Udaterange2);			
+				int result = Udaterange3 - now2;
+
+				if(result < 0) {
+					int no = a.getuA_no();
+					ap.setuA_no(no);
+					if(mm.UpdateDaterange(ap) >= 1){
+						System.out.println("업데이트성공");
+					}else {
+						System.out.println("업데이트실패");
+					}
 			}
 			
-			
+				
 		}
 	}
 
 	
-
+	}
+	public void getSchoolname(HttpServletRequest req, ApplySchool as) {
+		
+		int uA_da_no = Integer.parseInt(req.getParameter("uA_da_no"));
+		
+		as.setdA_no(uA_da_no);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool School = mm.getSchoolname(as);
+		req.setAttribute("Schoolname", School.getdA_name());
+	}
 	
 	
 	

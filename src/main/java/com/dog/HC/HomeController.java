@@ -34,7 +34,7 @@ public class HomeController {
 	public String home(review r,HttpServletRequest req, ApplyPet ap) {
 		
 		mDAOO.loginCheck(req);
-		aDAO.DeleteDaterange(req, ap);
+		aDAO.UpdateDaterange(req, ap);
 		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		
@@ -48,7 +48,7 @@ public class HomeController {
 	public String HC(review r, HttpServletRequest req, ApplyPet ap) {
 		
 		mDAOO.loginCheck(req);
-		aDAO.DeleteDaterange(req, ap);
+		aDAO.UpdateDaterange(req, ap);
 		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		

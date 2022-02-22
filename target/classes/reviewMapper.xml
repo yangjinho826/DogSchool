@@ -3,12 +3,12 @@
 <mapper namespace="com.dog.HC.review.ReviewMapper">
 
 	<select id="getAllreview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
-		select rn, r_no, r_da_no, r_id,r_title,r_txt, r_date
-			from (select Rownum as rn,r_no, r_da_no, r_id,r_title,r_txt, r_date
-				from (select r_no, r_da_no, r_id,r_title,r_txt, r_date
+		select rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
+			from (select Rownum as rn,r_no, r_schoolName, r_id,r_title,r_txt, r_date
+				from (select r_no, r_schoolName, r_id,r_title,r_txt, r_date
 					  from review_table
 				      order by r_date desc))
-		where RN between #{r_da_no} and #{r_no}
+		where RN between #{from} and #{to}
 	</select>
 	
 	<select id="getreview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
@@ -18,7 +18,7 @@
 	</select>
 	
 	<insert id="reviewWrite" parameterType="com.dog.HC.review.review">
-		insert into review_table values(review_table_seq.nextval,#{r_da_no},#{r_id},#{r_title},#{r_txt},sysdate)
+		insert into review_table values(review_table_seq.nextval,#{r_schoolName},#{r_id},#{r_title},#{r_txt},sysdate)
 	</insert>
 	
 	<delete id="reviewDelete" parameterType="com.dog.HC.review.review">
@@ -37,9 +37,9 @@
 	</select>
 	
 	<select id="getfivereview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
-		select rn, r_no, r_da_no, r_id,r_title,r_txt, r_date
-			from (select Rownum as rn,r_no, r_da_no, r_id,r_title,r_txt, r_date
-				from (select r_no, r_da_no, r_id,r_title,r_txt, r_date
+		select rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
+			from (select Rownum as rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
+				from (select r_no, r_schoolName, r_id,r_title,r_txt, r_date
 					  from review_table
 				      order by r_date desc))
 		where rn &lt; 6

@@ -30,7 +30,7 @@ public class ReviewDAO {
 	public void pageView(review r, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 		
-		int rowSize = 5; //한페이지에 보여줄 글의 수
+		int rowSize = 10; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	    
 	    if(strPg != null){ //list.jsp?pg=2
@@ -40,8 +40,8 @@ public class ReviewDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    r.setR_da_no(from);
-	    r.setR_no(to);
+	    r.setFrom(from);
+	    r.setTo(to);
 	    
 	    
 	    ReviewMapper mm = ss.getMapper(ReviewMapper.class);
@@ -53,7 +53,7 @@ public class ReviewDAO {
 	public void page(review r, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 	   	 
-	    int rowSize = 5; //한페이지에 보여줄 글의 수
+	    int rowSize = 10; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	   
 	    if(strPg != null){ //list.jsp?pg=2
@@ -79,14 +79,7 @@ public class ReviewDAO {
 	    req.setAttribute("TotalCount", total);
 	}
 	
-/*
-	public void getAllreview(review r, HttpServletRequest req) {
-		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
-		List<review> reviews = mm.getAllreview();
-		req.setAttribute("reviews", reviews);
-		
-	}
-*/
+	
 	public void getWrite(review r, HttpServletRequest req) {
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
@@ -95,20 +88,14 @@ public class ReviewDAO {
 		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		//신청내역에서 넘어온 값 받기
-		int a = Integer.parseInt(req.getParameter("uA_no"));
-		int b = Integer.parseInt(req.getParameter("uA_da_no"));
+		String r_schoolName = req.getParameter("r_schoolName");
+		String r_id = m.getId();
 		
-		System.out.println(a+ " "+ b);
-		
-		
-		int r_da_no = 1;
-		String r_id = m.getName();
-		
-		r.setR_da_no(r_da_no);
+		r.setR_schoolName(r_schoolName);
 		r.setR_id(r_id);
-	    
+	
 		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
+		
 		if(mm.reviewWrite(r) == 1){
 			System.out.println("등록성공");
 			req.getSession().setAttribute("successToken", token);
@@ -154,6 +141,7 @@ public class ReviewDAO {
 	}
 	
 	public void getfivereview(review r, HttpServletRequest req) {
+		
 		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
 		List<review> fivepostscript = mm.getfivereview(r);
 		req.setAttribute("fivepostscript", fivepostscript);
