@@ -45,6 +45,9 @@ public interface ApplyMapper {
 	public ApplySchool getTeacherDano(ApplySchool d);
 	public ApplySchool getSchoolname(ApplySchool as);
 	
+	int getlistTotalCount();
+	List<ApplySchool> getAlllist(ApplySchool s);
+	
 
 	
 

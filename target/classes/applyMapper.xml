@@ -196,4 +196,19 @@ where uA_no = #{uA_no} and uA_agree = 1
 	from Dapply_table
 	where dA_no = #{dA_no}
 </select>
+
+<select id="getAlllist" resultType="com.dog.HC.apply.ApplySchool" parameterType="com.dog.HC.apply.ApplySchool">
+        select rn, da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+            from (select Rownum as rn,da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+                from (select da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+                      from dapply_table
+                      order by da_no desc))
+        where RN between #{dA_no} and #{dA_agree} and dA_agree = 1
+    </select>
+    
+    
+<select id="getlistTotalCount" resultType="int">
+        select count(*) from Dapply_table
+</select>
+
 </mapper>

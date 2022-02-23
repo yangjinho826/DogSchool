@@ -4,13 +4,15 @@
 
 	<!-- diary -->
 
-	<select id="getAllDiary" resultType="com.dog.HC.Yuchiwon.diary">
-		select * from mypet_table
-		where mp_tid = #{mp_tid}
-		and mp_uid = #{mp_uid}
-		and mp_uname = #{mp_uname}
-		order by mp_no desc
-	</select>
+	<select id="getAllDiary" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diary">
+        select * from(
+        select * from mypet_table
+        where mp_tnum = #{mp_tnum}
+        and mp_uid = #{mp_uid}
+        and mp_uname = #{mp_uname}
+        order by mp_no desc)
+        where rownum between #{from} and #{to}
+    </select>
 
 	<select id="getDiary" resultType="com.dog.HC.Yuchiwon.diary">
 		select * from mypet_table where mp_no = #{mp_no}
@@ -27,7 +29,7 @@
 		insert into MYPET_TABLE
 		values(mypet_table_seq.nextval, #{mp_title}, #{mp_condition},
 		#{mp_meal}, #{mp_defecate}, #{mp_supplies}, #{mp_txt},
-		#{mp_da_no}, #{mp_tid}, #{mp_uid}, #{mp_uname},
+		#{mp_da_no}, #{mp_tid}, #{mp_tnum}, #{mp_uid}, #{mp_uname},
 		to_date(sysdate, 'yy.mm.dd'))
 	</insert>
 

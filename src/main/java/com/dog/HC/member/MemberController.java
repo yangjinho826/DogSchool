@@ -37,7 +37,6 @@ public class MemberController {
 		aDAO.pageView(s, req);
 		rDAO.pageView(r, req);
 		
-		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
 		req.setAttribute("footer", "main/footer.jsp");

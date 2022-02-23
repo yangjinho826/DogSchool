@@ -9,6 +9,7 @@ public class gallery {
 	private String g_img;
 	private int g_da_no;
 	private String g_tid;
+	private int g_tnum;
 	private String g_uid;
 	private String g_uname;
 	private Date g_date;
@@ -19,14 +20,15 @@ public class gallery {
 		// TODO Auto-generated constructor stub
 	}
 
-	public gallery(int g_no, String g_title, String g_img, int g_da_no, String g_tid, String g_uid, String g_uname,
-			Date g_date, String[] filess) {
+	public gallery(int g_no, String g_title, String g_img, int g_da_no, String g_tid, int g_tnum, String g_uid,
+			String g_uname, Date g_date, String[] filess) {
 		super();
 		this.g_no = g_no;
 		this.g_title = g_title;
 		this.g_img = g_img;
 		this.g_da_no = g_da_no;
 		this.g_tid = g_tid;
+		this.g_tnum = g_tnum;
 		this.g_uid = g_uid;
 		this.g_uname = g_uname;
 		this.g_date = g_date;
@@ -73,6 +75,14 @@ public class gallery {
 		this.g_tid = g_tid;
 	}
 
+	public int getG_tnum() {
+		return g_tnum;
+	}
+
+	public void setG_tnum(int g_tnum) {
+		this.g_tnum = g_tnum;
+	}
+
 	public String getG_uid() {
 		return g_uid;
 	}
@@ -104,6 +114,8 @@ public class gallery {
 	public void setFiless(String[] filess) {
 		this.filess = filess;
 	}
+
+	
 
 
 	
