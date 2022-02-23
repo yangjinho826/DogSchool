@@ -19,11 +19,12 @@ function daterangeSelectEvent(){
 	var dateString = month + '/' + day + '/' + year;
 	console.log(dateString);
 	$('input[name="uA_daterange"]').daterangepicker({
+		/*
 		minDate:"'"+String(dateString)+"'",
 		locale: {
 			"applyLabel": "확인",  
 		    "cancelLabel": "취소", 
-		}
+		}*/
 	});
 }
 

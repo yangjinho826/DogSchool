@@ -1,5 +1,7 @@
 package com.dog.HC;
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +33,11 @@ public class HomeController {
 	private ApplyDAO aDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(review r,HttpServletRequest req, ApplyPet ap) {
+	public String home(review r,HttpServletRequest req, ApplyPet ap) throws ParseException {
 		
 		mDAOO.loginCheck(req);
 		aDAO.UpdateDaterange(req, ap);
+		aDAO.endDayCheck(req,ap);
 		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		
@@ -45,10 +48,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "HC.go", method = RequestMethod.GET)
-	public String HC(review r, HttpServletRequest req, ApplyPet ap) {
+	public String HC(review r, HttpServletRequest req, ApplyPet ap) throws ParseException {
 		
 		mDAOO.loginCheck(req);
 		aDAO.UpdateDaterange(req, ap);
+		aDAO.endDayCheck(req,ap);
 		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		

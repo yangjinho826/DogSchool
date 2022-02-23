@@ -45,6 +45,9 @@ public interface ApplyMapper {
 	public ApplySchool getTeacherDano(ApplySchool d);
 	public ApplySchool getSchoolname(ApplySchool as);
 	
+	public int UpdateendDay(ApplyPet ap);
+	public int deleteendDay(ApplyPet ap);
+	
 
 	
 

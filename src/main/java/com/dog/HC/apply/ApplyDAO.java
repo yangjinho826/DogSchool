@@ -2,8 +2,10 @@ package com.dog.HC.apply;
 
 import java.applet.Applet;
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -325,10 +327,11 @@ public class ApplyDAO {
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.getulistSession(as);
 		
-		
 		if(ap == null) {
 			return 0;
 		}
+		
+		
 	
 		req.getSession().setAttribute("school", ap.getdA_no());
 		req.getSession().setAttribute("schoolname", ap.getdA_id());
@@ -530,31 +533,45 @@ public class ApplyDAO {
 	}
 	
 	// 날짜 지난 거 지우기
-	public void UpdateDaterange(HttpServletRequest req, ApplyPet ap) {
-		Member m = (Member) req.getSession().getAttribute("loginMember");
+	public void UpdateDaterange(HttpServletRequest req, ApplyPet ap) throws ParseException {
 				
-	
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		List<ApplyPet> AR = mm.getAllPetApply();
 	
-		
+	
 		Date d = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
 		String now = sdf.format(d);
-		now = now.replace("-", "");
-		int now2 = Integer.parseInt(now);
+		Date now1 = sdf.parse(now);
 		
 		
 		for (ApplyPet a : AR) {
-			
 			String Udaterange = a.getuA_daterange();
-			
 			if(!Udaterange.equals("기간 만료")) {
-			
-				String Udaterange2 =  Udaterange.substring(13,18);
-				Udaterange2 = Udaterange2.replace("/", "");
-				int Udaterange3 = Integer.parseInt(Udaterange2);			
-				int result = Udaterange3 - now2;
+				String Udaterange2 =  Udaterange.substring(13,23);
+				Udaterange2 = Udaterange2.replace("/", "-");
+				Date Udaterange3 = sdf.parse(Udaterange2); //마지막날짜 - 현재날짜
+				
+				
+				long result = Udaterange3.getTime() - now1.getTime();
+				
+				if(result < 0) {
+					int no = a.getuA_no();
+					Date endDay = sdf.parse(Udaterange2);
+					Calendar cal = Calendar.getInstance();	
+					cal.setTime(endDay);
+					cal.add(Calendar.DATE, 7); // 종료일 기준 +3
+					String endDay2 = sdf.format(cal.getTime());
+					
+					ap.setuA_no(no);
+					ap.setuA_daterange(endDay2);
+					
+					if(mm.UpdateendDay(ap) >= 1){
+						System.out.println("업데이트성공");
+					}else {
+						System.out.println("업데이트실패");
+					}
+				}
 
 				if(result < 0) {
 					int no = a.getuA_no();
@@ -564,14 +581,53 @@ public class ApplyDAO {
 					}else {
 						System.out.println("업데이트실패");
 					}
+				}
+		
+			}
+		}
+}
+	public void endDayCheck(HttpServletRequest req, ApplyPet ap) throws ParseException {
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		List<ApplyPet> AR = mm.getAllPetApply();
+	
+	
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		String now = sdf.format(d);
+		Date now1 = sdf.parse(now);
+			
+		for (ApplyPet a : AR) {
+			String endDay = a.getuA_endDay() == null ? "0" : a.getuA_endDay();
+
+			if(endDay.equals("0")){
+				return;
 			}
 			
-				
+			Date endDay1 = sdf.parse(endDay);
+			long result = endDay1.getTime() - now1.getTime();
+			
+			if(result > 0) {
+				return;
+			}
+			
+			
+			if(result < 0){
+				int no = a.getuA_no();
+				ap.setuA_no(no);
+					
+				if(mm.deleteendDay(ap) == 1){
+					System.out.println("삭제성공");
+				}else {
+					System.out.println("삭제실패");
+				}
+			}
+			
 		}
-	}
-
 	
 	}
+	
+	
 	public void getSchoolname(HttpServletRequest req, ApplySchool as) {
 		
 		int uA_da_no = Integer.parseInt(req.getParameter("uA_da_no"));
@@ -582,7 +638,6 @@ public class ApplyDAO {
 		ApplySchool School = mm.getSchoolname(as);
 		req.setAttribute("Schoolname", School.getdA_name());
 	}
-	
-	
+
 	
 }
