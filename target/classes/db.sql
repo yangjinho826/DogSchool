@@ -108,7 +108,7 @@ create table Uapply_table(
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
-insert into UAPPLY_TABLE values(57, 61, 'wer', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
+insert into UAPPLY_TABLE values(60, 383, 'u1', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
 
 update uApply_table 
 set uA_daterange = '기간 만료'
