@@ -24,6 +24,8 @@ function my_registrationCheck(){
 			  	  success : function(result){	
 			  		  if(result === 1){
 			  			location.href="yuchiwon.get.allpuppy?id="+id+"&typee="+typee;
+			  		  }else if(result === 2){
+			  		   alert("소속되어있는 유치원이 없습니다."); 
 			  		  }else{
 			  			alert("관리하는 강아지가 없어 소속된 유치원 홈페이지로 이동합니다.");
 			  			location.href="schoolmain.go?result="+result;

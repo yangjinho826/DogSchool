@@ -299,7 +299,7 @@ public class ApplyDAO {
 		ApplySchool getSchoolSession = mm.getSchoolSession(d);
 		
 		req.getSession().setAttribute("school", getSchoolSession.getdA_no());
-		req.getSession().setAttribute("schoolname", getSchoolSession.getdA_name());
+		req.getSession().setAttribute("schoolname", getSchoolSession.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 			
@@ -334,7 +334,7 @@ public class ApplyDAO {
 		
 	
 		req.getSession().setAttribute("school", ap.getdA_no());
-		req.getSession().setAttribute("schoolname", ap.getdA_id());
+		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		return 1;
@@ -345,14 +345,18 @@ public class ApplyDAO {
 	// 선생님로그인 -> 리스트에서 세션 받아오기
 	public int gettlistSession(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
 		String id = req.getParameter("id");
-		
+
 		as.setdA_id(id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.gettlistSession(as);
+
+		if(ap == null) {
+			return 2;
+		}
 		
 		req.getSession().setAttribute("school", ap.getdA_no());
-		req.getSession().setAttribute("schoolname", ap.getdA_id());
+		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		
