@@ -58,12 +58,13 @@
 	color: #000000;;
 	background: #ffffff;
 	font-size: 18px;
-	border: 2px solid #b5e1ff;
+	border: 1px solid #83C9E7;
+	border-radius: 12px;
 }
 
  #yhome:hover {
 	color: #ffffff;
-	background: #63c5ff;
+	background: #44ACD9;
 	text-decoration: none;
 }
 

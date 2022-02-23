@@ -17,6 +17,8 @@ public interface ReviewMapper {
 	public int getreviewTotalCount();
 
 	public List<review> getAllreview(review r);
+	
+	public void viewCount(int r_no);
 
 
 }

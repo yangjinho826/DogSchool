@@ -38,7 +38,7 @@ public class ApplyDAO {
 	public void pageView(ApplySchool s, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 		
-		int rowSize = 12; //한페이지에 보여줄 글의 수
+		int rowSize = 15; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	    
 	    if(strPg != null){ //list.jsp?pg=2
@@ -61,7 +61,7 @@ public class ApplyDAO {
 	public void page(ApplySchool s, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 	   	 
-	    int rowSize = 12; //한페이지에 보여줄 글의 수
+	    int rowSize = 15; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	   
 	    if(strPg != null){ //list.jsp?pg=2

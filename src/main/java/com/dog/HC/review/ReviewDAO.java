@@ -38,7 +38,6 @@ public class ReviewDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    r.setR_da_no(from);
 	    r.setR_no(to);
 	    
 	    
@@ -93,10 +92,8 @@ public class ReviewDAO {
 		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		int r_da_no = 1;
 		String r_id = m.getName();
 		
-		r.setR_da_no(r_da_no);
 		r.setR_id(r_id);
 	    
 		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
@@ -144,7 +141,10 @@ public class ReviewDAO {
 		
 	}
 	
-	
+	public void viewCount(int r_no) {
+		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
+		
+    }
 		
 
 }

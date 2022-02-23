@@ -21,7 +21,7 @@
 				<div>원장: ${ps.dA_name }(${ps.dA_id })</div>
 				<div>${ps.dA_phonenumber }</div>
 				<input name="ps.dA_no" value="${ps.dA_no }" hidden="hidden" >
-				<div><button>유치원 홈</button></div>
+				<div><button id="yhome">유치원 홈</button></div>
 				</div>
 			</form>
 			<c:set var="num" value="${num-1 }"></c:set>

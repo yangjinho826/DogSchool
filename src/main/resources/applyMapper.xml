@@ -187,7 +187,7 @@ delete uApply_table where uA_no = #{uA_no} and uA_agree = 1
 				from (select da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
 					  from dapply_table
 				      order by da_no desc))
-		where RN between #{dA_no} and #{dA_agree}
+		where RN between #{dA_no} and #{dA_agree} and dA_agree = 1
 	</select>
 	
 	

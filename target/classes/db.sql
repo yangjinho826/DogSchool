@@ -140,14 +140,18 @@ create sequence gallery_table_seq;
 
 -- 유치원 후기 테이블 --
 create table review_table(
-	r_no number(3) primary key,
-	r_da_no number(5),
-	r_id varchar2(20 char) not null,
-	r_title varchar2(30 char) not null,	
-	r_txt varchar2(4000 char) not null,
-	r_date date not null
-	
+    r_no number(3) primary key,
+    r_schoolName varchar2(20 char) not null,
+    r_id varchar2(20 char) not null,
+    r_title varchar2(30 char) not null,
+    r_txt varchar2(4000 char) not null,
+    r_date date not null,
+	recnt INT DEFAULT 0
 );
+
+insert into review_table values (1,'1','1','1','1','2022-02-22',0);
+
+drop table review_table
 create sequence review_table_seq;
 
 
@@ -159,3 +163,12 @@ create sequence review_table_seq;
 			from Uapply_table u, Dapply_table d
 			where u.Ua_da_no = d.Da_no and u.uA_id = 'wer' and d.Da_agree = 1))
 	where rn = 1
+	
+select * from signup_table
+
+select rn, da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+			from (select Rownum as rn,da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+				from (select da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+					  from dapply_table
+				      order by da_schoolname))
+		where RN between 1 and 50

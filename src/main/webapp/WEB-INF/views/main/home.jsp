@@ -13,23 +13,6 @@
 		<section class="home_Banner">
 			<img class="home_Banner_img" src="resources/img/2.png">
 		</section>
-
-		<section class="home_review">
-			<section id="review_Home">
-				<h1 class="review_title">유치원 목록</h1>
-				<button id="seemore2" onClick="location.href='list.go'">+</button>
-				<section id="listArea">
-					<c:forEach var="ps" items="${passSchools }">
-						<div id="showOnelist">
-							<div id="listtitle">${ps.dA_schoolname }</div>
-							<div>${ps.dA_addr }</div>
-							<div>원장: ${ps.dA_name }(${ps.dA_id })</div>
-							<div>${ps.dA_phonenumber }</div>
-							<input name="ps.dA_no" value="${ps.dA_no }" hidden="hidden">
-						</div>
-					</c:forEach>
-				</section>
-			</section>
 			
 			<section class="home_review">
 				<section id="review_Home">
@@ -47,17 +30,17 @@
 								<td colspan="4"></td>
 							</tr>
 
-							<c:forEach var="ps" items="${passSchools }">
-								<tr>
-									<td style="height: 45px">${ps.dA_schoolname }</td>
-									<td>${ps.dA_addr }</td>
-									<td>${ps.dA_name }(${ps.dA_id })</td>
-									<td>${ps.dA_phonenumber }</td>
-								</tr>
-								<tr height="2" bgcolor="black">
-									<td colspan="4"></td>
-								</tr>
-							</c:forEach>
+							<c:forEach var="ps" items="${passSchools }">							
+							<tr>
+								<td style="height: 50px">${ps.dA_schoolname }</td>
+								<td>${ps.dA_addr }</td>
+								<td>${ps.dA_name }(${ps.dA_id })</td>
+								<td>${ps.dA_phonenumber }</td>
+							</tr>
+							<tr height="2" bgcolor="black">
+								<td colspan="4"></td>
+							</tr>
+						</c:forEach>
 						</table>
 					</section>
 				</section>
