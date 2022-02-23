@@ -30,6 +30,6 @@ public class YuchiwonDAO {
 		
 		req.getSession().setAttribute("puppies", ss.getMapper(YuchiwonMapper.class).getPuppy(puppy));
 		req.getSession().setMaxInactiveInterval(60 * 5);
-		
+		System.out.println(req.getSession().getAttribute("puppies"));
 	}
 }

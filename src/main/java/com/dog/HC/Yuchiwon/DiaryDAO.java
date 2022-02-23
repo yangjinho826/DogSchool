@@ -15,18 +15,20 @@ import com.dog.HC.member.Member;
 @Service
 public class DiaryDAO {
 
+	int TotalCount = 0;
+	
 	@Autowired
 	private SqlSession ss;
 
 	public void getAllDiary(HttpServletRequest req, diary d) {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
 	
-		System.out.println(p.getuA_ta_no());
-		String mp_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
+		System.out.println(p.getuA_no());
+		String mp_tnum = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String mp_uid = p.getuA_id();
 		String mp_uname = p.getuA_name();
 
-		d.setMp_tid(mp_tid);
+		d.setMp_tid(mp_tnum);
 		d.setMp_uid(mp_uid);
 		d.setMp_uname(mp_uname);
 
@@ -133,8 +135,86 @@ public class DiaryDAO {
 
 	public void getFiveDiary(HttpServletRequest req) {
 	    DiaryMapper mm = ss.getMapper(DiaryMapper.class);
-	    List<diary> diaries = mm.getFiveDiary();
+	    puppy p = (puppy) req.getSession().getAttribute("puppies");
+	    diary d = new diary();
+	    d.setMp_uname(p.getuA_name());
+	    d.setMp_tnum(p.getuA_ta_no());
+	    d.setMp_uid(p.getuA_id());
+	    
+	    List<diary> diaries = mm.getFiveDiary(d);
 		req.setAttribute("diaries", diaries);
 		}
+
+	public void getTotal(HttpServletRequest req, diary d) {
+		puppy p = (puppy) req.getSession().getAttribute("puppies");
+	    d.setMp_uname(p.getuA_name());
+	    d.setMp_tnum(p.getuA_ta_no());
+	    d.setMp_uid(p.getuA_id());
+	    
+		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
+		TotalCount = dm.getDiaryTotalCount(d);
+	}
+
+	public void pageView(HttpServletRequest req, diary d) {
+		puppy p = (puppy) req.getSession().getAttribute("puppies");
+		d.setMp_tnum(p.getuA_ta_no());
+	    d.setMp_uname(p.getuA_name());
+	    d.setMp_uid(p.getuA_id());
+		
+		String strPg = req.getParameter("pg");
+		
+		int rowSize = 3;
+		int pg = 1;
+		
+		if(strPg != null) {
+			pg = Integer.parseInt(strPg);
+		}
+		
+		int from = (pg * rowSize) - (rowSize-1);
+	    int to=(pg * rowSize);
+	    
+	    d.setFrom(from);
+	    d.setTo(to);
+	    
+	    DiaryMapper dm = ss.getMapper(DiaryMapper.class);
+	    List<diary> diaries = dm.getAllDiary(d);
+	    req.setAttribute("diaries", diaries);
+		
+	}
+
+	public void page(HttpServletRequest req, diary d) {
+		String strPg = req.getParameter("pg");
+	   	 
+	    int rowSize = 3;
+	    int pg = 1;
+	   
+	    if(strPg != null){
+	        pg = Integer.parseInt(strPg);
+	    }
+	   
+	    int total = TotalCount;
+	    int allPage = (int) Math.ceil(total/(double)rowSize);
+	    int block = 5;
+
+	    int fromPage = ((pg-1)/block*block)+1;
+	    int toPage = ((pg-1)/block*block)+block;
+	    if(toPage> allPage){
+	        toPage = allPage;
+	    }
+
+	    req.setAttribute("pg", pg);
+	    req.setAttribute("block", block);
+	    req.setAttribute("fromPage", fromPage);
+	    req.setAttribute("toPage", toPage);
+	    req.setAttribute("allPage", allPage);
+	    req.setAttribute("rowSize", rowSize);
+	    req.setAttribute("TotalCount", total);
+	    System.out.println("---------------------------");
+		System.out.println(fromPage);
+		System.out.println(toPage);
+		System.out.println(allPage);
+		System.out.println(rowSize);
+		System.out.println(total);
+	}
 		
 	}

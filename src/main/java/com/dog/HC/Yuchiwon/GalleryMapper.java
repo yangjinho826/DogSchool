@@ -14,6 +14,6 @@ public interface GalleryMapper {
 
 	int deleteGallery(gallery g);
 
-	List<gallery> getFiveGallery();
+	List<gallery> getFiveGallery(gallery g);
 
 }

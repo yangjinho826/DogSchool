@@ -18,6 +18,9 @@
 	select *
 	from (select * from gallery_table order by g_no desc)
 	where rownum &lt;= 5
+	and g_uname = #{g_uname}
+	and g_tnum = #{g_tnum}
+	and g_uid = #{g_uid}
 </select>
 
 <insert id="writeGallery" parameterType="com.dog.HC.Yuchiwon.gallery">

@@ -20,9 +20,14 @@
 					<td>제목 : ${g.g_title }</td>
 				</tr>
 				<tr>
-					<td><a href="gallery.detail?g_no=${g.g_no }"> <img
-							style="max-width: 200px" src="resources/img/${g.filess[0] }">
-					</a></td>
+					<td>
+					<a href="gallery.detail?g_no=${g.g_no }">
+					<img style="max-width: 200px" src="resources/img/${g.filess[0] }">
+					</a>
+					</td>
+				</tr>
+				<tr>
+					<td>작성자 : ${g.g_tid }</td>
 				</tr>
 				<tr>
 					<td>날짜 : ${g.g_date }</td>

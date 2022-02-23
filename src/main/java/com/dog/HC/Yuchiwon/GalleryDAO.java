@@ -262,7 +262,13 @@ public class GalleryDAO {
 	public void getFiveGallery(HttpServletRequest req) {
 		
 		GalleryMapper gm = ss.getMapper(GalleryMapper.class);
-		List<gallery> galleries = gm.getFiveGallery();
+		puppy p = (puppy) req.getSession().getAttribute("puppies");
+		gallery g = new gallery();
+		g.setG_uname(p.getuA_name());
+		g.setG_tnum(p.getuA_ta_no());
+		g.setG_uid(p.getuA_id());
+		
+		List<gallery> galleries = gm.getFiveGallery(g);
 		String[] imges = null;
 		for (gallery gg : galleries) {
 			imges = gg.getG_img().split("!");

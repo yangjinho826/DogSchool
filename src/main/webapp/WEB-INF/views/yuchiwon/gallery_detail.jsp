@@ -22,6 +22,9 @@
 				</td>
 			</tr>
 			<tr>
+				<td>작성자 : ${g.g_tid }</td>
+			</tr>
+			<tr>
 				<td>날짜 : ${g.g_date }</td>
 			</tr>
 

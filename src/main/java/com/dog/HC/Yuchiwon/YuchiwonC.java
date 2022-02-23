@@ -81,7 +81,10 @@ public class YuchiwonC {
 	@RequestMapping(value = "yuchiwon.get.alldiary", method = RequestMethod.GET)
 	public String diaryGo(HttpServletRequest req, puppy puppy, diary d) {
 		mDAOO.loginCheck(req);
-		ddao.getAllDiary(req, d);
+		ddao.getTotal(req, d);
+		ddao.pageView(req, d);
+		ddao.page(req, d);
+//		ddao.getAllDiary(req, d);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/diary_home.jsp");

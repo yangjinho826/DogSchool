@@ -35,8 +35,10 @@
 				<td>내용 : ${d.mp_txt }</td>
 			</tr>
 			<tr>
+				<td>작성자 : ${d.mp_tid }</td>
+			</tr>
+			<tr>
 				<td>날짜 : ${d.mp_date }
-				<input type="hidden" value="${d.mp_tid }" class="tid">
 				<input type="hidden" value="${d.mp_uid }" class="uid">
 				<input type="hidden" value="${d.mp_uname }" class="uname">
 				</td>
@@ -54,9 +56,14 @@
 					<td>제목 : ${g.g_title }</td>
 				</tr>
 				<tr>
-					<td><a href="gallery.detail?g_no=${g.g_no }"> <img
-							style="max-width: 200px" src="resources/img/${g.filess[0] }">
-					</a></td>
+					<td>
+					<a href="yuchiwon.get.allgallery?g_no=${g.g_no }">
+					<img style="max-width: 200px" src="resources/img/${g.filess[0] }">
+					</a>
+					</td>
+				</tr>
+				<tr>
+					<td>작성자 : ${g.g_tid }</td>
 				</tr>
 				<tr>
 					<td>날짜 : ${g.g_date }</td>
