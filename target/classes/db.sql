@@ -161,3 +161,5 @@ create table review_table(
 create sequence review_table_seq;
 
 select * from review_table
+
+drop table review_table
