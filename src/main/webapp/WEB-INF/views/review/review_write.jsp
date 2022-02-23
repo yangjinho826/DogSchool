@@ -17,6 +17,8 @@
 			<form action="review.write" name ="myForm" onsubmit="return review_call()" method="post" >
 				<div class="postscript_write_input">
 					<input name="token" value="${token }" hidden="hidden">
+					<input name="r_schoolName" value="${Schoolname }" hidden="hidden">
+					<input name="uA_no" value="${param.uA_no }" hidden="hidden">	
 					<span class="postscript_write_input_w">제목</span>
 					<input name="r_title" class="r_title">
 				</div>

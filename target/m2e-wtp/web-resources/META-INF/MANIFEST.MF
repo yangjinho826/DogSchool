@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: ilove
 Build-Jdk: 11.0.12
+=======
+Built-By: ny
+Build-Jdk: 11.0.11
+>>>>>>> 93efd1ddae0e384fc2346a8d87cfc41de7de27dc
 Created-By: Maven Integration for Eclipse
 

@@ -27,15 +27,11 @@
 					) order by ua_no asc
 			</when>
 		</choose>
-		<!-- select * from UAPPLY_TABLE where ua_agree = 1 id = ua_id and id = 
-			'mz' and <if test='typee == "1"'> select * from SIGNUP_TABLE, UAPPLY_TABLE 
-			where id = ua_id and id = #{ua_id} and ua_agree = 1 </if> <if test='typee 
-			== "2"'> select ua_name from uapply_table where ua_tname = ( select ta_name 
-			from tapply_table where ta_no = #{ta_no} and ta_agree = 1 ) </if> -->
-
-		<!-- where ua_da_no = #{uA_da_no} and ua_id = #{uA_id} and ua_name = #{uA_name} 
-			and ua_tname = #{uA_tname} where ua_da_no = #{uA_da_no} and ua_id = #{uA_id} 
-			and ua_name = #{uA_name} and ua_tname = #{uA_tname} -->
+	</select>
+	<select id="getpuppcount"  resultType="int" parameterType="com.dog.HC.apply.ApplyTeacher">
+		select count(*)
+		from Tapply_table t, UAPPLY_TABLE u
+		where t.tA_no = u.uA_ta_no and uA_agree = 1 and t.tA_id = #{tA_id}
 	</select>
 
 	<select id="getPuppy" resultType="com.dog.HC.Yuchiwon.puppy" parameterType="com.dog.HC.Yuchiwon.puppy">

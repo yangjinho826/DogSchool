@@ -1,6 +1,7 @@
 package com.dog.HC.Yuchiwon;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,10 @@ public class YuchiwonDAO {
 		aa.put("iddd", req.getParameter("id"));
 		aa.put("typeee", req.getParameter("typee"));
 		
-		req.setAttribute("puppies", ss.getMapper(YuchiwonMapper.class).getAllPuppy(aa));
+		YuchiwonMapper mm = ss.getMapper(YuchiwonMapper.class);
+		List<puppy> puppies = mm.getAllPuppy(aa);
+				
+		req.setAttribute("puppies", puppies);
 	}
 
 	public void getPuppy(HttpServletRequest req, puppy puppy) {

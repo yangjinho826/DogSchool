@@ -34,6 +34,7 @@ create table postscript_table(
 	p_date date not null
 	
 );
+
 create sequence postscript_seq;
 
 
@@ -47,7 +48,6 @@ create table priceTag_table(
 	
 );
 create sequence priceTag_seq;
-
 
 -- 스케줄 테이블
 create table schedule_table(
@@ -71,6 +71,12 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
+select * from Dapply_table
+
+
+	select *
+	from Dapply_table d, Tapply_table t
+	where d.Da_no = t.Ta_da_no and t.Ta_id = 'dfg'
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -84,8 +90,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from TAPPLY_TABLE
-
+select * from Tapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -103,8 +108,12 @@ create table Uapply_table(
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
-drop table uapply_table
-insert into uapply_table values(uapply_table_seq.nextval, 1, 'u1', 'p1', '수컷', '02/21/2022 - 02/25/2022', 1, 'a.jpg', 41, 1)
+insert into UAPPLY_TABLE values(57, 61, 'wer', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
+
+update uApply_table 
+set uA_daterange = '기간 만료'
+where uA_name = '1'
+
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -117,16 +126,13 @@ create table mypet_table(
 	mp_txt varchar2 (200 char) not null,		-- 내용
 	mp_da_no number(5) not null,				-- 유치원 번호
 	mp_tid varchar2(30 char) not null,			-- 선생님 아이디
-	mp_tnum number(5) not null,
 	mp_uid varchar2(30 char) not null,			-- 유저 아이디
 	mp_uname varchar2(30 char) not null, 		-- 강아지 이름
 	mp_date date not null						-- 알림장 작성 날짜
 );
-drop table mypet_table cascade constraint purge;
-drop sequence mypet_table_seq;
 create sequence mypet_table_seq;
 
-select * from MYPET_TABLE
+
 
 
 -- 갤러리 테이블 --
@@ -136,35 +142,24 @@ create table gallery_table(
 	g_img varchar2(100 char)not null,
 	g_da_no number(5),
 	g_tid varchar2(30 char) not null,
-	g_tnum number(5) not null,
 	g_uid varchar2(30 char) not null,
 	g_uname varchar2(30 char) not null,
 	g_date date not null
 );
 create sequence gallery_table_seq;
-drop table gallery_table cascade constraint purge;
-drop sequence gallery_table_seq;
 
 
-select * from GALLERY_TABLE
 -- 유치원 후기 테이블 --
 create table review_table(
 	r_no number(3) primary key,
-	r_da_no number(5),
+	r_schoolName varchar2(20 char) not null,
 	r_id varchar2(20 char) not null,
 	r_title varchar2(30 char) not null,	
 	r_txt varchar2(4000 char) not null,
 	r_date date not null
-	
 );
 create sequence review_table_seq;
 
+select * from review_table
 
-	select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
-	from(
- 		select rownum rn, Da_no,Da_id,Da_name,Da_schoolname,Da_addr,Da_phonenumber,Da_agree
- 		from(
-			select d.Da_no, d.Da_id, d.Da_name, d.Da_schoolname, d.Da_addr, d.Da_phonenumber, d.Da_agree
-			from Uapply_table u, Dapply_table d
-			where u.Ua_da_no = d.Da_no and u.uA_id = 'wer' and d.Da_agree = 1))
-	where rn = 1
+drop table review_table
