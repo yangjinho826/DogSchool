@@ -18,7 +18,7 @@
 		select * from mypet_table where mp_no = #{mp_no}
 	</select>
 	
-	<select id="getDiaryTotalCount" resultType="int" parameterType="com.dog.HC.Yuchiwon.diary">
+	<select id="getDiaryTotalCount" resultType="int">
 		select count(*) from mypet_table where mp_da_no = #{mp_da_no}
 	</select>
 
@@ -36,7 +36,7 @@
 		insert into MYPET_TABLE
 		values(mypet_table_seq.nextval, #{mp_title}, #{mp_condition},
 		#{mp_meal}, #{mp_defecate}, #{mp_supplies}, #{mp_txt},
-		#{mp_da_no}, #{mp_tid}, #{mp_uid}, #{mp_uname},
+		#{mp_da_no}, #{mp_tid}, #{mp_tnum}, #{mp_uid}, #{mp_uname},
 		to_date(sysdate, 'yy.mm.dd'))
 	</insert>
 

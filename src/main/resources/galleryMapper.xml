@@ -4,7 +4,7 @@
 
 <select id="getAllGallery" resultType="com.dog.HC.Yuchiwon.gallery">
 	select * from gallery_table
-	where g_tid = #{g_tid}
+	where g_tnum = #{g_tnum}
 	and g_uid = #{g_uid}
 	and g_uname = #{g_uname}
 	order by g_no desc
@@ -26,7 +26,7 @@
 <insert id="writeGallery" parameterType="com.dog.HC.Yuchiwon.gallery">
 	insert into gallery_table
 	values(gallery_table_seq.nextval, #{g_title}, #{g_img}, #{g_da_no},
-	#{g_tid}, #{g_uid}, #{g_uname}, to_date(sysdate, 'yy.mm.dd'))
+	#{g_tid}, #{g_tnum}, #{g_uid}, #{g_uname}, to_date(sysdate, 'yy.mm.dd'))
 </insert>
 
 <update id="updateGallery" parameterType="com.dog.HC.Yuchiwon.gallery">

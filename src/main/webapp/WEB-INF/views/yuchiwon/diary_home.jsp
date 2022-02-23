@@ -100,8 +100,7 @@
 				</c:choose>
 				
 				<c:forEach var="i" begin="${fromPage }" end="${toPage }">
-					${i }
-					<%-- <c:choose>
+					<c:choose>
 					<c:when test="${i == pg }">
 	        			[${i }]
 	        		</c:when>
@@ -109,7 +108,7 @@
 					<c:otherwise>
 	        			[<a href="yuchiwon.get.alldiary?pg=${i }">${i }</a>]
 	        		</c:otherwise>
-					</c:choose> --%>
+					</c:choose>
 				</c:forEach>
 					
 				<c:choose>
