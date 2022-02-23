@@ -4,11 +4,11 @@
 
 	<select id="getAllreview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
 		select rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
-			from (select Rownum as rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
+			from (select Rownum as rn,r_no, r_schoolName, r_id,r_title,r_txt, r_date
 				from (select r_no, r_schoolName, r_id,r_title,r_txt, r_date
 					  from review_table
 				      order by r_date desc))
-		where RN between #{r_no} and #{r_no}
+		where RN between #{from} and #{to}
 	</select>
 	
 	<select id="getreview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
@@ -36,9 +36,12 @@
 		select count(*) from review_table
 	</select>
 	
-	<update id="viewCount">
-		update reviewTable set recnt = recnt + 1 where r_no = #{r_no}
-	</update>
-	
-	
+	<select id="getfivereview" resultType="com.dog.HC.review.review" parameterType="com.dog.HC.review.review">
+		select rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
+			from (select Rownum as rn, r_no, r_schoolName, r_id,r_title,r_txt, r_date
+				from (select r_no, r_schoolName, r_id,r_title,r_txt, r_date
+					  from review_table
+				      order by r_date desc))
+		where rn &lt; 6
+	</select>
 </mapper>

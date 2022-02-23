@@ -118,6 +118,7 @@
 							<td><img src="resources/img/${p.uA_img }"><br>${p.uA_name }(${p.uA_gender }, ${p.uA_age }세)</td>
 							<td>${p.uA_daterange }</td>
 							<td>
+								<c:if test="${p.uA_ta_no eq 0}">선생님 재신청 필요</c:if>
 								<c:forEach var="t" items="${passTeachers }">
 									<c:if test="${p.uA_ta_no eq t.tA_no }">${t.tA_name}(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</c:if>
 								</c:forEach>
@@ -205,15 +206,21 @@
 							</td>
 							<td>${p.uA_id }</td>
 							<td><img src="resources/img/${p.uA_img }"><br>${p.uA_name }(${p.uA_gender }, ${p.uA_age }세)</td>
-							<td>${p.uA_daterange }</td>
 							<td>
-								<c:forEach var="t" items="${passTeachers }">
-									<c:if test="${p.uA_ta_no eq t.tA_no}">${t.tA_name }(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</c:if>
-								</c:forEach>
-								<br>
-								<c:if test="${p.uA_ta_no eq 0}">
-									<button id="btnCancel" onClick="location.href='reapply.myteacher.go?dA_no=${p.uA_da_no }&uA_no=${p.uA_no }'">선생님 재신청</button>
-								</c:if>
+								${p.uA_daterange }<br>
+								<c:if test="${p.uA_daterange eq '기간 만료' }"><button id="btnCancel" onClick="location.href='review_write.go?uA_da_no=${p.uA_da_no }&uA_no=${p.uA_no }'">후기 작성하기</button></c:if>
+							</td>
+							<td>
+								<c:choose>
+									<c:when test="${p.uA_ta_no eq 0}">
+										<button id="btnCancel" onClick="location.href='reapply.myteacher.go?dA_no=${p.uA_da_no }&uA_no=${p.uA_no }'">선생님 재신청</button>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="t" items="${passTeachers }">
+										<c:if test="${p.uA_ta_no eq t.tA_no}">${t.tA_name }(${t.tA_id }, <c:if test="${t.tA_gender eq 'man'}">남</c:if><c:if test="${t.tA_gender eq 'woman'}">여</c:if>)</c:if>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 							</td>
 							<td>
 								<c:if test="${p.uA_agree eq 1}">승인 완료</c:if>

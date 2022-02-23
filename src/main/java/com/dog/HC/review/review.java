@@ -9,12 +9,15 @@ public class review {
 	private String r_title;
 	private String r_txt;
 	private Date r_date;
-	
+	private int from;
+	private int to;
+
 	public review() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public review(int r_no, String r_schoolName, String r_id, String r_title, String r_txt, Date r_date) {
+	public review(int r_no, String r_schoolName, String r_id, String r_title, String r_txt, Date r_date, int from,
+			int to) {
 		super();
 		this.r_no = r_no;
 		this.r_schoolName = r_schoolName;
@@ -22,6 +25,8 @@ public class review {
 		this.r_title = r_title;
 		this.r_txt = r_txt;
 		this.r_date = r_date;
+		this.from = from;
+		this.to = to;
 	}
 
 	public int getR_no() {
@@ -72,6 +77,25 @@ public class review {
 		this.r_date = r_date;
 	}
 
+	public int getFrom() {
+		return from;
+	}
+
+	public void setFrom(int from) {
+		this.from = from;
+	}
+
+	public int getTo() {
+		return to;
+	}
+
+	public void setTo(int to) {
+		this.to = to;
+	}
+	
+	
+	
+	
 	
 	
 }

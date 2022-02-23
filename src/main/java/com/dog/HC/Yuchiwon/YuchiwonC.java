@@ -17,6 +17,7 @@ import com.dog.HC.TokenMaker;
 import com.dog.HC.apply.ApplyDAO;
 import com.dog.HC.apply.ApplyPet;
 import com.dog.HC.apply.ApplySchool;
+import com.dog.HC.apply.ApplyTeacher;
 import com.dog.HC.member.MemberDAO;
 import com.dog.HC.schoolmain.postscript;
 
@@ -39,12 +40,12 @@ public class YuchiwonC {
 	private ApplyDAO aDAO;
 	
 	@RequestMapping(value = "my_registrationCheck", method = RequestMethod.GET)
-	public @ResponseBody int postscriptDelete(ApplySchool as, HttpServletRequest req, ApplyPet ap) {
+	public @ResponseBody int postscriptDelete(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
 		String typee = req.getParameter("typee");
 		if(typee.equals("1")){
 			return aDAO.getulistSession(req, as);
 		}else if(typee.equals("2")) {
-			return aDAO.gettlistSession(req, as);
+			return aDAO.gettlistSession(req, as, at);
 		}
 		return 0;
 	}

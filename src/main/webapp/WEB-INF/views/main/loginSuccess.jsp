@@ -37,7 +37,7 @@
 			<c:if test="${gg.typee eq 2}">
 			<button onClick="location.href='apply.go'" class="member_info_btn">신청하기</button>
 			<button onClick="location.href='apply.waiting'" class="member_info_btn">신청 내역</button>	
-			<button onClick="location.href='yuchiwon.get'" class="member_info_btn">강아지 목록</button>		
+			<button class="member_info_btn member_info_btn_list" data-id="${sessionScope.loginMember.id}" data-typee="${sessionScope.loginMember.typee}">강아지 목록</button>		
 			</c:if>
 			
 			<!-- 3: 원장 -->
