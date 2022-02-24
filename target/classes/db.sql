@@ -162,6 +162,6 @@ create table review_table(
 );
 create sequence review_table_seq;
 
-select * from signup_table
+select * from mypet_table
 
-drop table review_table
+drop table uapply_table

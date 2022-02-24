@@ -34,13 +34,12 @@ public class HomeController {
 	private ApplyDAO aDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-<<<<<<< HEAD
+
 	public String home(ApplySchool s, review r,HttpServletRequest req, ApplyPet ap) throws ParseException{
 		
 		mDAOO.loginCheck(req);
 		aDAO.UpdateDaterange(req, ap);
 		aDAO.endDayCheck(req,ap);
-		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		rDAO.pageView(r, req);
 		aDAO.pageView(s, req);
@@ -52,11 +51,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "HC.go", method = RequestMethod.GET)
-<<<<<<< HEAD
 	public String HC(ApplySchool s, review r, HttpServletRequest req, ApplyPet ap) throws ParseException {
 
+		mDAOO.loginCheck(req);
+		aDAO.UpdateDaterange(req, ap);
 		aDAO.endDayCheck(req,ap);
-		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
 		rDAO.pageView(r, req);
 		aDAO.pageView(s, req);
