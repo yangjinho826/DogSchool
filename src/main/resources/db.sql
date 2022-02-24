@@ -164,4 +164,4 @@ create sequence review_table_seq;
 
 select * from signup_table
 
-drop table gallery_table
+drop table review_table
