@@ -39,12 +39,14 @@ public class ApplyController {
 	@RequestMapping(value = "endDaterangeCheck", method = RequestMethod.GET)
 	public @ResponseBody int endDaterangeCheck(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
 		String typee = req.getParameter("typee");
+		System.out.print(typee);
 		if(typee.equals("1")){
 			return aDAO.getUDaterangeCheck(req, as);
 		}else if(typee.equals("2")) {
 			return aDAO.getTDaterangeCheck(req, as, at);
+		} else {
+			return 0;
 		}
-		return 0;
 	}
 	
 	//신청하는 폼으로 이동

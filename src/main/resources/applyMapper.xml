@@ -152,10 +152,14 @@ where rownum = 1
 
 <!-- 기간 만료 체크 -->
 <select id="getAllPetCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
-select count(*) from UAPPLY_TABLE where ua_agree = 1
+select count(*) from UAPPLY_TABLE where ua_agree = 1 and ua_id = #{dA_id}
 </select>
 <select id="getUDaterangeCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
 select count(*) from UAPPLY_TABLE where ua_id = #{dA_id} and ua_daterange = '기간 만료'
+</select>
+<select id="getAllTeacherPetCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE 
+	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = #{dA_id})
 </select>
 <select id="getTDaterangeCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
 select count(*) from UAPPLY_TABLE 

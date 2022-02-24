@@ -316,12 +316,14 @@ function endDaterangeCheck(){
 				  type : 'GET',
 				  data : {id: id, typee:typee},
 			  	  success : function(result){	
-			  		  if(result === 0){
+			  		  if(result === 1){
 			  			  location.href="HC.go"; 
 			  			  alert("등록하신 강아지의 기간이 만료되어 이용할 수 없습니다.\n메인 홈으로 이동합니다.");
-			  		  }else{
+			  		  }else if(result === 2){
 			  			  location.href="yuchiwon.get.allpuppy?id="+id+"&typee="+typee;
-			  		  }	  
+			  		  }else{
+			  			  location.href="HC.go";
+			  		  }
 				  }
 			  })
 		}else if(typee === 2){
@@ -330,12 +332,15 @@ function endDaterangeCheck(){
 				  type : 'GET',
 				  data : {id: id, typee:typee},
 			  	  success : function(result){	
-			  		  if(result === 0){
+			  		  if(result === 3){
 			  			  location.href="HC.go";
 			  			  alert("관리 중인 강아지의 기간이 만료되어 이용할 수 없습니다.\n메인 홈으로 이동합니다.");
-			  		  }else{
+			  			  false;
+			  		  }else if(result === 4){
 			  			  location.href="yuchiwon.get.allpuppy?id="+id+"&typee="+typee;			  			 
-			  		  }	  
+			  		  }else{
+			  			  location.href="HC.go";
+			  		  }
 				  }
 			  })
 		}

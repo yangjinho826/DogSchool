@@ -52,6 +52,7 @@ public interface ApplyMapper {
 	
 	public int getUDaterangeCheck(ApplySchool as);
 	public int getTDaterangeCheck(ApplySchool as);
+	public int getAllTeacherPetCount(ApplySchool as);
 	public int getAllPetCount(ApplySchool as);
 	public int petapplyupdate(ApplyPet p);
 	

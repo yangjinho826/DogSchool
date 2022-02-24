@@ -435,11 +435,14 @@ public class ApplyDAO {
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		int totalPet = mm.getAllPetCount(as);
 		int ap = mm.getUDaterangeCheck(as);
-			
+		System.out.print(" 견주 로그인 ");
+		System.out.print(totalPet+" ");
+		System.out.println(ap);
 		if(totalPet == ap) {
-			return 0;
+			return 1;
+		} else {
+			return 2;			
 		}
-		return 1;
 	}
 	// 선생님로그인
 	public int getTDaterangeCheck(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
@@ -448,13 +451,16 @@ public class ApplyDAO {
 		as.setdA_id(id);
 			
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
-		int totalPet = mm.getAllPetCount(as);
+		int totalPet = mm.getAllTeacherPetCount(as);
 		int ap = mm.getTDaterangeCheck(as);
-		
+		System.out.print(" 선생님 로그인 ");
+		System.out.print(totalPet+" ");
+		System.out.println(ap);
 		if(totalPet == ap) {
-			return 0;
+			return 3;
+		} else {
+			return 4;
 		}
-		return 1;
 	}
 
 	
