@@ -35,6 +35,18 @@ public class ApplyController {
 	@Autowired
 	private MemberDAO mDAOO;
 	
+	//기간 만료만 있을 때 강아지 목록 막기
+	@RequestMapping(value = "endDaterangeCheck", method = RequestMethod.GET)
+	public @ResponseBody int endDaterangeCheck(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
+		String typee = req.getParameter("typee");
+		if(typee.equals("1")){
+			return aDAO.getUDaterangeCheck(req, as);
+		}else if(typee.equals("2")) {
+			return aDAO.getTDaterangeCheck(req, as, at);
+		}
+		return 0;
+	}
+	
 	//신청하는 폼으로 이동
 	@RequestMapping(value = "apply.go", method = RequestMethod.GET)
 	public String apply(Member m, HttpServletRequest req) {
@@ -119,10 +131,45 @@ public class ApplyController {
 		req.setAttribute("footer", "main/footer.jsp");
 		return "index";
 	}
+	//신청 내용 수정 폼으로 이동(승인 전) apply.pet.update
+	@RequestMapping(value = "apply.go.pet.update", method = RequestMethod.GET)
+	public String applyGoPetUpdate(ApplySchool s, ApplyTeacher t, ApplyPet p, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
+			
+		aDAO.myApplyPetInfo(p, req);
+			
+		aDAO.getOneSchool(s, req);
+		aDAO.getOneSchoolTeacher(t, req);
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyHomePetUpdate.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//신청 내용 수정하러 가기
+	@RequestMapping(value = "apply.pet.update", method = RequestMethod.POST)
+	public String applyPetUpdate(@RequestParam("imggg") MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
+		if(mDAOO.loginCheck(req)) {
+			aDAO.applyPetUpdate(mf, p, req);
+		}
+		
+		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);
+			
+		aDAO.getMySchoolApply(m, req); //       유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회
+		aDAO.getMyPetApply(m, req); //			강아지전체목록조회
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
 	
 	//유치원 선택 후 견주 등록하는 폼으로 이동
 	@RequestMapping(value = "apply.go.pet", method = RequestMethod.GET)
-	public String applyGoPet(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
+	public String applyGoPet(ApplySchool s, ApplyTeacher t, ApplyPet p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		TokenMaker.make(req);
 		

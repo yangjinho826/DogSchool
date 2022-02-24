@@ -109,6 +109,16 @@ create table Uapply_table(
 );
 create sequence Uapply_table_seq;
 select * from Uapply_table
+update uapply_table 
+set ua_name = '하트', 
+	ua_gender = '암컷' 
+where ua_no = 82
+select count(*) from UAPPLY_TABLE where ua_agree = 1
+
+select count(*) from UAPPLY_TABLE where ua_id = 'u1' and ua_agree = 1 and ua_daterange = '기간 만료';
+select count(*) from UAPPLY_TABLE 
+	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = 't1')
+	and ua_daterange = '기간 만료'
 
 update uApply_table 
 set Ua_endDay = '02-23-2022'

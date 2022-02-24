@@ -70,6 +70,7 @@
 			</c:when>
 			 
 			<c:otherwise>
+				<!-- 기간 만료 => 기간 연장 재신청 폼 -->
 				<c:forEach var="pp" items="${myPetOne }">
 					<c:if test="${pp.uA_daterange eq '기간 만료' }">
 						<form action="reapply.daterange">
@@ -157,6 +158,8 @@
 						</form>
 					</c:if>
 				</c:forEach>
+				
+				<!-- 기간 만료 아닌 것 = 선생님 재신청 폼 -->
 				<c:forEach var="pp" items="${myPetOne }">
 					<c:if test="${pp.uA_daterange ne '기간 만료' }">
 						<form action="reapply.myteacher">
@@ -246,6 +249,7 @@
 						</form>
 					</c:if>
 				</c:forEach>
+				
 			</c:otherwise>
 		</c:choose>
 	</section>

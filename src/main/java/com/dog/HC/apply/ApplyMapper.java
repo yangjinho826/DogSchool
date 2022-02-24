@@ -50,5 +50,10 @@ public interface ApplyMapper {
 	public int UpdateendDay(ApplyPet ap);
 	public int deleteendDay(ApplyPet ap);
 	
+	public int getUDaterangeCheck(ApplySchool as);
+	public int getTDaterangeCheck(ApplySchool as);
+	public int getAllPetCount(ApplySchool as);
+	public int petapplyupdate(ApplyPet p);
+	
 
 }
