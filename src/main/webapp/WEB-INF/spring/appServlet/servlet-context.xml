@@ -31,8 +31,8 @@
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
 
-		<beans:property name="username" value="c##ny" />
-		<beans:property name="password" value="ny" />
+		<beans:property name="username" value="c##jh" />
+		<beans:property name="password" value="jh" />
 
 	</beans:bean>
 
