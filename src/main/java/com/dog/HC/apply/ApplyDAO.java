@@ -530,6 +530,22 @@ public class ApplyDAO {
 			System.out.println("선생님 재신청 실패");
 		}
 	}
+	public void applyPetOnlyDaterange(ApplyPet p, HttpServletRequest req) {
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+		
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		p.setuA_daterange(req.getParameter("uA_daterange"));
+
+		if (ss.getMapper(ApplyMapper.class).reapplyPetOnlyDaterange(p) == 1) {
+			System.out.println("기간 연장 재신청 성공");
+			req.getSession().setAttribute("successToken", token);
+		} else {
+			System.out.println("기간 연장 재신청 실패");
+		}
+	}
 	
 	//선생님 중복 체크
 	public int checkTeacher(Member m, HttpServletRequest req) {
@@ -643,5 +659,6 @@ public class ApplyDAO {
 		req.setAttribute("Schoolname", School.getdA_name());
 	}
 
+	
 	
 }

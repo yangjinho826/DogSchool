@@ -167,7 +167,7 @@ delete uApply_table where uA_no = #{uA_no}
 <select id="getPetOne" resultType="com.dog.HC.apply.ApplyPet">
 select * from uApply_table where uA_no = #{uA_no}
 </select>
-<!-- 재신청 진행 -->
+<!-- 선생님 재신청 진행 -->
 <update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
 update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_no}
 </update>
@@ -175,6 +175,10 @@ update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_
 <select id="getAllPetApply" resultType="com.dog.HC.apply.ApplyPet">
 select * from uApply_table where uA_agree = 1
 </select>
+<!-- 기간 연장 재신청 -->
+<update id="reapplyPetOnlyDaterange" parameterType="com.dog.HC.apply.ApplyPet">
+update uApply_table set uA_agree = 0, uA_daterange = #{uA_daterange} where uA_no = #{uA_no}
+</update>
 
 <!--  날짜지난거 기간만료로 -->
 <delete id="UpdateDaterange" parameterType="com.dog.HC.apply.ApplyPet">

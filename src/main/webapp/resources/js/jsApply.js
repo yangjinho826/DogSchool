@@ -289,6 +289,20 @@ function deletePet(num){
 	}
 }
 
+function goWriteReview(n1, n2){
+	var ok = confirm("후기 작성을 완료하면 신청 내역이 자동으로 삭제됩니다.\n이동하시겠습니까?");
+	if(ok){
+		location.href="review_write.go?uA_da_no=" + n1 + "&uA_no=" + n2;		
+	}
+}
+function deleteMyPetRecode(num){
+	var ok = confirm("신청 내역 기록을 삭제하시겠습니까?");
+	if(ok){
+		location.href = "apply.delete.p?uA_no=" + num;
+		alert("삭제되었습니다.");
+	}
+}
+
 
 $(function() {
 	connectAddrSearchEvent();

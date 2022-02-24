@@ -110,10 +110,6 @@ create table Uapply_table(
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
-alter table Uapply_table add(Ua_endDay varchar2(30 char))
-
-insert into UAPPLY_TABLE values(57, 61, 'wer', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
-
 update uApply_table 
 set Ua_endDay = '02-23-2022'
 where uA_name = '1'
@@ -165,3 +161,5 @@ create table review_table(
 create sequence review_table_seq;
 
 select * from review_table
+
+drop table review_table
