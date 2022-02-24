@@ -8,24 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-강아지들 여기에 출력
-<table border="1">
-	<tr>
-		<th colspan="3">마이펫 목록</th>
-	</tr>
-	<tr>
-		<td>사진</td>
-		<td>강아지 이름</td>
-		<td>견주 아이디</td>
-	</tr>
-	<c:forEach var="p" items="${puppies }">
-	<tr>
-		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }"><img id="puppyListImg" src="resources/img/${p.uA_img }"></a></td>
-		<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
-		<td>${p.uA_id }</td>
-	</tr>
-	</c:forEach>
-</table>
+
+<div id="viewPuppyList">
+	<h2 id="puppyListTitle">마이펫 목록</h2>
+	<table id="puppyListTbl" border="1">
+		<tr>
+			<th>사진</th>
+			<th>강아지 이름</th>
+			<th>견주 아이디</th>
+			<th>관리 기간</th>
+		</tr>
+		<c:forEach var="p" items="${puppies }">
+		<c:if test="${p.uA_daterange ne '기간 만료' }">
+		<tr>
+			<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }"><img id="puppyListImg" src="resources/img/${p.uA_img }"></a></td>
+			<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
+			<td>${p.uA_id }</td>
+			<td>${p.uA_daterange}</td>
+		</tr>
+		</c:if>
+		</c:forEach>
+	</table>
+</div>
 
 </body>
 </html>

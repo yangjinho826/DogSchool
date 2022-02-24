@@ -14,6 +14,12 @@
 	select * from gallery_table where g_no = #{g_no}
 </select>
 
+<select id="getFiveGallery" resultType="com.dog.HC.Yuchiwon.gallery">
+	select *
+	from (select * from gallery_table order by g_no desc)
+	where rownum &lt;= 5
+</select>
+
 <insert id="writeGallery" parameterType="com.dog.HC.Yuchiwon.gallery">
 	insert into gallery_table
 	values(gallery_table_seq.nextval, #{g_title}, #{g_img}, #{g_da_no},

@@ -81,7 +81,7 @@
 	border:#98c5e4 4px solid;
 	width:315px;
 	height:150px;
-	margin:30px;
+	margin:27px;
 }
 
 
@@ -89,7 +89,7 @@
 /* acceptHome */
 #acceptHomeArea{
 	margin:40px 0 40px 0;
-	height: fill;
+	min-height: 57%;
 }
 
 #acceptHomeTitle{

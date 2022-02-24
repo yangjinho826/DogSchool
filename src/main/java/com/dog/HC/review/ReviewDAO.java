@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dog.HC.apply.ApplyMapper;
+import com.dog.HC.apply.ApplyPet;
 import com.dog.HC.member.Member;
 import com.dog.HC.schoolmain.postscript;
 import com.dog.HC.schoolmain.postscriptmapper;
@@ -22,13 +24,13 @@ public class ReviewDAO {
 	
 	public void getTotal() {	 
 		 ReviewMapper mm = ss.getMapper(ReviewMapper.class);
-		 TotalCount = mm.getreviewTotalCount();              
+		 TotalCount = mm.getreviewTotalCount();       
 	}
 	 
 	public void pageView(review r, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 		
-		int rowSize = 5; //한페이지에 보여줄 글의 수
+		int rowSize = 10; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	    
 	    if(strPg != null){ //list.jsp?pg=2
@@ -38,8 +40,8 @@ public class ReviewDAO {
 	    int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 	    int to=(pg * rowSize); //(1*10) = 10 //to
 	    
-	    r.setR_da_no(from);
-	    r.setR_no(to);
+	    r.setFrom(from);
+	    r.setTo(to);
 	    
 	    
 	    ReviewMapper mm = ss.getMapper(ReviewMapper.class);
@@ -51,7 +53,7 @@ public class ReviewDAO {
 	public void page(review r, HttpServletRequest req) {
 		String strPg = req.getParameter("pg");
 	   	 
-	    int rowSize = 5; //한페이지에 보여줄 글의 수
+	    int rowSize = 10; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 	   
 	    if(strPg != null){ //list.jsp?pg=2
@@ -77,14 +79,7 @@ public class ReviewDAO {
 	    req.setAttribute("TotalCount", total);
 	}
 	
-/*
-	public void getAllreview(review r, HttpServletRequest req) {
-		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
-		List<review> reviews = mm.getAllreview();
-		req.setAttribute("reviews", reviews);
-		
-	}
-*/
+	
 	public void getWrite(review r, HttpServletRequest req) {
 		String token = req.getParameter("token");
 		String successToken = (String) req.getSession().getAttribute("successToken");
@@ -93,13 +88,14 @@ public class ReviewDAO {
 		
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-		int r_da_no = 1;
-		String r_id = m.getName();
+		String r_schoolName = req.getParameter("r_schoolName");
+		String r_id = m.getId();
 		
-		r.setR_da_no(r_da_no);
+		r.setR_schoolName(r_schoolName);
 		r.setR_id(r_id);
-	    
+	
 		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
+		
 		if(mm.reviewWrite(r) == 1){
 			System.out.println("등록성공");
 			req.getSession().setAttribute("successToken", token);
@@ -145,11 +141,10 @@ public class ReviewDAO {
 	}
 	
 	public void getfivereview(review r, HttpServletRequest req) {
+		
 		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
 		List<review> fivepostscript = mm.getfivereview(r);
 		req.setAttribute("fivepostscript", fivepostscript);
 		
 	}
-		
-
 }

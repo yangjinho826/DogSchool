@@ -15,7 +15,7 @@
 		</section>
 		<section>
 		<c:forEach var="d" items="${diaries }">
-		<table>
+		<table border="1" style="float: left;">
 			<tr>
 				<td>제목 : ${d.mp_title }</td>
 			</tr>
@@ -44,8 +44,26 @@
 		</table>
 		</c:forEach>
 		</section>
+		
 		<section class="home_review">
 			<a href="yuchiwon.get.allgallery">갤러리</a>
+		</section>
+		<section>
+			<c:forEach var="g" items="${galleries }">
+			<table style="float: left;">
+				<tr>
+					<td>제목 : ${g.g_title }</td>
+				</tr>
+				<tr>
+					<td><a href="gallery.detail?g_no=${g.g_no }"> <img
+							style="max-width: 200px" src="resources/img/${g.filess[0] }">
+					</a></td>
+				</tr>
+				<tr>
+					<td>날짜 : ${g.g_date }</td>
+				</tr>
+			</table>
+		</c:forEach>
 		</section>
 	
 	</section>

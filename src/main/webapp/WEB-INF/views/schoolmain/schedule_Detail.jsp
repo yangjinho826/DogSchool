@@ -47,7 +47,7 @@
 					<input name="s_no" value="${sc.s_no }"  type="hidden">
 			</form>
 					<div>
-					 <c:if test="${TCheck.ta_dA_no eq getSchoolSession.dA_no}">
+					 <c:if test="${TCheck.tA_da_no eq getSchoolSession.dA_no}">
 						<button class="schedule_write_btn" onclick="closeWithDSubmit();">삭 제 </button>
 					</c:if> 
 					<c:if test="${DCheck.dA_no eq getSchoolSession.dA_no}">

@@ -34,6 +34,7 @@ create table postscript_table(
 	p_date date not null
 	
 );
+
 create sequence postscript_seq;
 
 
@@ -47,7 +48,6 @@ create table priceTag_table(
 	
 );
 create sequence priceTag_seq;
-
 
 -- 스케줄 테이블
 create table schedule_table(
@@ -68,9 +68,16 @@ create table Dapply_table(
     Da_addr varchar2(50 char) not null, 
     Da_phonenumber varchar2(20 char) not null,
     Da_agree number(3) not null --<- 0 수락시 1
+    
 );
 create sequence Dapply_table_seq;	
 
+select * from Dapply_table
+
+
+	select *
+	from Dapply_table d, Tapply_table t
+	where d.Da_no = t.Ta_da_no and t.Ta_id = 'dfg'
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -84,8 +91,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from UAPPLY_TABLE
-
+select * from Tapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -98,10 +104,19 @@ create table Uapply_table(
     Ua_age number(3) not null, --(강아지 나이)
     Ua_img varchar2(100 char) not null, --(강아지이미지)
     Ua_ta_no number(5) not null, --(선생님 구분 코드: 한유치원동명이인구분목적)
-    Ua_agree number(3) not null --(수락or거절)
+    Ua_agree number(3) not null, --(수락or거절)
+    Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
 select * from Uapply_table
+
+alter table Uapply_table add(Ua_endDay varchar2(30 char))
+
+insert into UAPPLY_TABLE values(57, 61, 'wer', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
+
+update uApply_table 
+set Ua_endDay = '02-23-2022'
+where uA_name = '1'
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -123,6 +138,7 @@ create sequence mypet_table_seq;
 
 
 
+
 -- 갤러리 테이블 --
 create table gallery_table(
 	g_no number(3) primary key,
@@ -140,13 +156,12 @@ create sequence gallery_table_seq;
 -- 유치원 후기 테이블 --
 create table review_table(
 	r_no number(3) primary key,
-	r_da_no number(5),
+	r_schoolName varchar2(20 char) not null,
 	r_id varchar2(20 char) not null,
 	r_title varchar2(30 char) not null,	
 	r_txt varchar2(4000 char) not null,
 	r_date date not null
-	
 );
 create sequence review_table_seq;
 
-
+select * from review_table

@@ -2,8 +2,10 @@ package com.dog.HC.apply;
 
 import java.applet.Applet;
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dog.HC.Yuchiwon.YuchiwonMapper;
+import com.dog.HC.Yuchiwon.puppy;
 import com.dog.HC.member.Member;
 
 @Service
@@ -25,6 +29,8 @@ public class ApplyDAO {
 	
 	@Autowired
 	private SqlSession ss;
+	
+	int TeacherDa_no = 0;
 
 	//원장-관리자 유치원 신청
 	public void applySchool(ApplySchool s, HttpServletRequest req) {
@@ -217,7 +223,10 @@ public class ApplyDAO {
 	}
 	//강아지 거절(원장)
 	public void petFail(ApplyPet p, HttpServletRequest req) {
+		
+		
 		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		
 		if (ss.getMapper(ApplyMapper.class).petFail(p) == 1) {
 			System.out.println("강아지 거절 성공"); //테이블에서 해당 컬럼 삭제
 		} else {
@@ -277,50 +286,97 @@ public class ApplyDAO {
 	// 학원 세션 받아오기
 	public void getSchoolSession(ApplySchool d, HttpServletRequest req) {
 		
-		int Da_no = Integer.parseInt(req.getParameter("ps.dA_no"));
-		d.setdA_no(Da_no);
+		
+		if(TeacherDa_no > 0 ) {
+			d.setdA_no(TeacherDa_no);	
+			TeacherDa_no = 0;
+		}else{
+			int Da_no = Integer.parseInt(req.getParameter("ps.dA_no"));
+			d.setdA_no(Da_no);
+		}
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool getSchoolSession = mm.getSchoolSession(d);
-	
-
+		
 		req.getSession().setAttribute("school", getSchoolSession.getdA_no());
-		req.getSession().setAttribute("schoolname", getSchoolSession.getdA_name());
+		req.getSession().setAttribute("schoolname", getSchoolSession.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", getSchoolSession);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 			
 	}
 	
+	// 관리하는 강아지가 없을경우 바로 유치원을 가기위해 TeacherDa_no을 구한다.
+	public void getCheckregTeacher(ApplySchool d, HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		String Ta_id = m.getId();
+		
+		d.setdA_id(Ta_id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool ap = mm.getTeacherDano(d);
+		
+		TeacherDa_no = ap.getdA_no();
+	}
+	
 	// 유저로그인 -> 리스트에서 세션 받아오기
-	public void getulistSession(HttpServletRequest req, ApplySchool as) {
+	public int getulistSession(HttpServletRequest req, ApplySchool as) {
 		String id = req.getParameter("id");
 		
 		as.setdA_id(id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.getulistSession(as);
+		
+		if(ap == null) {
+			return 0;
+		}
+		
+		
 	
 		req.getSession().setAttribute("school", ap.getdA_no());
-		req.getSession().setAttribute("schoolname", ap.getdA_id());
+		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
+		return 1;
+		
 		
 	}
 	
 	// 선생님로그인 -> 리스트에서 세션 받아오기
-	public void gettlistSession(HttpServletRequest req, ApplySchool as) {
+	public int gettlistSession(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
 		String id = req.getParameter("id");
-		
+
 		as.setdA_id(id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool ap = mm.gettlistSession(as);
-	
+
+		if(ap == null) {
+			return 2;
+		}
+		
 		req.getSession().setAttribute("school", ap.getdA_no());
-		req.getSession().setAttribute("schoolname", ap.getdA_id());
+		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		
+		if(!ap.getdA_id().equals("")) {
+			Member member = (Member) req.getSession().getAttribute("loginMember");
+		    String tA_id = member.getId();
+		    
+		    at.settA_id(tA_id);
+		    		
+			YuchiwonMapper ym = ss.getMapper(YuchiwonMapper.class);
+			int puppcount = ym.getpuppcount(at);
+
+			if(puppcount >= 1) {
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+		return 0;
+			
 	}
 
 	public void TeachCheck(ApplyTeacher a, HttpServletRequest req) {
@@ -481,44 +537,111 @@ public class ApplyDAO {
 	}
 	
 	// 날짜 지난 거 지우기
-	public void DeleteDaterange(HttpServletRequest req, ApplyPet ap) {
-		Member m = (Member) req.getSession().getAttribute("loginMember");
+	public void UpdateDaterange(HttpServletRequest req, ApplyPet ap) throws ParseException {
 				
-		ap.setuA_id(m.getId());
-		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
-		List<ApplyPet> AR = mm.getMyPetApply(m);
-		
+		List<ApplyPet> AR = mm.getAllPetApply();
+	
+	
 		Date d = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
 		String now = sdf.format(d);
-		now = now.replace("-", "");
-		int now2 = Integer.parseInt(now);
+		Date now1 = sdf.parse(now);
 		
 		
 		for (ApplyPet a : AR) {
-			
 			String Udaterange = a.getuA_daterange();
-			String Udaterange2 =  Udaterange.substring(13,18);
-			Udaterange2 = Udaterange2.replace("/", "");
-			int Udaterange3 = Integer.parseInt(Udaterange2);			
-			int result = Udaterange3 - now2;
+			if(!Udaterange.equals("기간 만료")) {
+				String Udaterange2 =  Udaterange.substring(13,23);
+				Udaterange2 = Udaterange2.replace("/", "-");
+				Date Udaterange3 = sdf.parse(Udaterange2); //마지막날짜 - 현재날짜
+				
+				
+				long result = Udaterange3.getTime() - now1.getTime();
+				
+				if(result < 0) {
+					int no = a.getuA_no();
+					Date endDay = sdf.parse(Udaterange2);
+					Calendar cal = Calendar.getInstance();	
+					cal.setTime(endDay);
+					cal.add(Calendar.DATE, 7); // 종료일 기준 +3
+					String endDay2 = sdf.format(cal.getTime());
+					
+					ap.setuA_no(no);
+					ap.setuA_daterange(endDay2);
+					
+					if(mm.UpdateendDay(ap) >= 1){
+						System.out.println("업데이트성공");
+					}else {
+						System.out.println("업데이트실패");
+					}
+				}
+
+				if(result < 0) {
+					int no = a.getuA_no();
+					ap.setuA_no(no);
+					if(mm.UpdateDaterange(ap) >= 1){
+						System.out.println("업데이트성공");
+					}else {
+						System.out.println("업데이트실패");
+					}
+				}
+		
+			}
+		}
+}
+	public void endDayCheck(HttpServletRequest req, ApplyPet ap) throws ParseException {
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		List<ApplyPet> AR = mm.getAllPetApply();
+	
+	
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		String now = sdf.format(d);
+		Date now1 = sdf.parse(now);
 			
-			if(result < 0) {
+		for (ApplyPet a : AR) {
+			String endDay = a.getuA_endDay() == null ? "0" : a.getuA_endDay();
+
+			if(endDay.equals("0")){
+				return;
+			}
+			
+			Date endDay1 = sdf.parse(endDay);
+			long result = endDay1.getTime() - now1.getTime();
+			
+			if(result > 0) {
+				return;
+			}
+			
+			
+			if(result < 0){
 				int no = a.getuA_no();
 				ap.setuA_no(no);
-				if(mm.DeleteDaterange(ap) == 1){
+					
+				if(mm.deleteendDay(ap) == 1){
 					System.out.println("삭제성공");
 				}else {
 					System.out.println("삭제실패");
 				}
 			}
 			
-			
 		}
+	
+	}
+	
+	
+	public void getSchoolname(HttpServletRequest req, ApplySchool as) {
+		
+		int uA_da_no = Integer.parseInt(req.getParameter("uA_da_no"));
+		
+		as.setdA_no(uA_da_no);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool School = mm.getSchoolname(as);
+		req.setAttribute("Schoolname", School.getdA_name());
 	}
 
-	
-	
 	
 }

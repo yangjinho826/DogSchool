@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="resources/js/diary.js" defer></script>
 	<script type="text/javascript" src="resources/js/review.js" defer></script>
 	<script type="text/javascript" src="resources/js/gallery.js" defer></script>
+	<script type="text/javascript" src="resources/js/yuchiwon.js" defer></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
 
 

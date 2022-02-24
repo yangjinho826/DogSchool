@@ -20,6 +20,6 @@ public interface DiaryMapper {
 
 	public int deleteDiary(diary d);
 
-	public List<diary> getFiveDiary(diary d);
+	List<diary> getFiveDiary();
 
 }

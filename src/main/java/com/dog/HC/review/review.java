@@ -4,24 +4,29 @@ import java.sql.Date;
 
 public class review {
 	private int r_no;
-	private int r_da_no;
+	private String r_schoolName;
 	private String r_id;
 	private String r_title;
 	private String r_txt;
 	private Date r_date;
-	
+	private int from;
+	private int to;
+
 	public review() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public review(int r_no, int r_da_no, String r_id, String r_title, String r_txt, Date r_date) {
+	public review(int r_no, String r_schoolName, String r_id, String r_title, String r_txt, Date r_date, int from,
+			int to) {
 		super();
 		this.r_no = r_no;
-		this.r_da_no = r_da_no;
+		this.r_schoolName = r_schoolName;
 		this.r_id = r_id;
 		this.r_title = r_title;
 		this.r_txt = r_txt;
 		this.r_date = r_date;
+		this.from = from;
+		this.to = to;
 	}
 
 	public int getR_no() {
@@ -32,12 +37,12 @@ public class review {
 		this.r_no = r_no;
 	}
 
-	public int getR_da_no() {
-		return r_da_no;
+	public String getR_schoolName() {
+		return r_schoolName;
 	}
 
-	public void setR_da_no(int r_da_no) {
-		this.r_da_no = r_da_no;
+	public void setR_schoolName(String r_schoolName) {
+		this.r_schoolName = r_schoolName;
 	}
 
 	public String getR_id() {
@@ -71,6 +76,26 @@ public class review {
 	public void setR_date(Date r_date) {
 		this.r_date = r_date;
 	}
+
+	public int getFrom() {
+		return from;
+	}
+
+	public void setFrom(int from) {
+		this.from = from;
+	}
+
+	public int getTo() {
+		return to;
+	}
+
+	public void setTo(int to) {
+		this.to = to;
+	}
+	
+	
+	
+	
 	
 	
 }
