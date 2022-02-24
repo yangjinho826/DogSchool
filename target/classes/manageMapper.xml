@@ -88,7 +88,7 @@ where RN between #{dA_no} and #{dA_agree}
 
 <!-- 다이어리, 갤러리에 필요한 선생님 기본키로 아이디 조회 -->
 <select id="getTeacherId" parameterType="com.dog.HC.apply.ApplyPet" resultType="String">
-select Ta_id from Tapply_table where Ta_no = #{uA_ta_no}
+select * from Tapply_table where Ta_no = #{uA_ta_no}
 </select>
 
 
