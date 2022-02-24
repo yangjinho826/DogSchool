@@ -18,7 +18,7 @@ insert into Tapply_table values(Tapply_table_seq.nextval, #{tA_da_no},
 <insert id="petapply" parameterType="com.dog.HC.apply.ApplyPet">
 insert into uApply_table values(uApply_table_seq.nextval, #{uA_da_no},
 	#{uA_id}, #{uA_name}, #{uA_gender}, #{uA_daterange}, #{uA_age},
-	#{uA_img}, #{uA_ta_no}, #{uA_agree})
+	#{uA_img}, #{uA_ta_no}, #{uA_agree}, null)
 </insert>
 <!-- 선생님 신청 중복 체크 -->
 <select id="checkTeacher" parameterType="com.dog.HC.member.Member" resultType="int">
@@ -167,7 +167,7 @@ delete uApply_table where uA_no = #{uA_no}
 <select id="getPetOne" resultType="com.dog.HC.apply.ApplyPet">
 select * from uApply_table where uA_no = #{uA_no}
 </select>
-<!-- 재신청 진행 -->
+<!-- 선생님 재신청 진행 -->
 <update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
 update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_no}
 </update>
@@ -175,6 +175,10 @@ update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_
 <select id="getAllPetApply" resultType="com.dog.HC.apply.ApplyPet">
 select * from uApply_table where uA_agree = 1
 </select>
+<!-- 기간 연장 재신청 -->
+<update id="reapplyPetOnlyDaterange" parameterType="com.dog.HC.apply.ApplyPet">
+update uApply_table set uA_agree = 0, uA_daterange = #{uA_daterange} where uA_no = #{uA_no}
+</update>
 
 <!--  날짜지난거 기간만료로 -->
 <delete id="UpdateDaterange" parameterType="com.dog.HC.apply.ApplyPet">
@@ -196,4 +200,19 @@ where uA_no = #{uA_no} and uA_agree = 1
 	from Dapply_table
 	where dA_no = #{dA_no}
 </select>
+
+<!-- EndDay에 삽입 -->
+<update id="UpdateendDay" parameterType="com.dog.HC.apply.ApplyPet">
+	update uApply_table 
+	set uA_endDay = #{uA_daterange}
+	where uA_no = #{uA_no} and uA_agree = 1
+
+</update>
+
+<!-- 3일뒤에 삭제 -->
+<delete id="deleteendDay" parameterType="com.dog.HC.apply.ApplyPet">
+	delete from uApply_table
+	where uA_no = #{uA_no} and uA_agree = 1
+</delete>
+
 </mapper>

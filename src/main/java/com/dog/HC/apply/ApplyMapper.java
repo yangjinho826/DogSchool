@@ -30,13 +30,15 @@ public interface ApplyMapper {
 	public ApplySchool DirectorCheck(ApplySchool aps);
 	public ApplyPet UserCheck(ApplyPet ap);
 
-	int deleteTeacher(ApplyTeacher t);
-	int deleteTeacherInPet(ApplyTeacher t);
-	int deletePet(ApplyPet p);
+	public int deleteTeacher(ApplyTeacher t);
+	public int deleteTeacherInPet(ApplyTeacher t);
+	public int deletePet(ApplyPet p);
 	public List<ApplyPet> getPetOne(ApplyPet p);
-	int reapplyPetOnlyTeacher(ApplyPet p);
-	int checkTeacherExit(ApplyTeacher t);
-	int checkTeacher(Member m);
+	public int reapplyPetOnlyTeacher(ApplyPet p);
+	public int reapplyPetOnlyDaterange(ApplyPet p);
+	
+	public int checkTeacherExit(ApplyTeacher t);
+	public int checkTeacher(Member m);
 	
 	public ApplySchool getulistSession(ApplySchool as);
 	public ApplySchool gettlistSession(ApplySchool as);
@@ -45,7 +47,8 @@ public interface ApplyMapper {
 	public ApplySchool getTeacherDano(ApplySchool d);
 	public ApplySchool getSchoolname(ApplySchool as);
 	
-
+	public int UpdateendDay(ApplyPet ap);
+	public int deleteendDay(ApplyPet ap);
 	
 
 }

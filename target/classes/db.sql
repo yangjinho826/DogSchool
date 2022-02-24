@@ -68,6 +68,7 @@ create table Dapply_table(
     Da_addr varchar2(50 char) not null, 
     Da_phonenumber varchar2(20 char) not null,
     Da_agree number(3) not null --<- 0 수락시 1
+    
 );
 create sequence Dapply_table_seq;	
 
@@ -103,17 +104,15 @@ create table Uapply_table(
     Ua_age number(3) not null, --(강아지 나이)
     Ua_img varchar2(100 char) not null, --(강아지이미지)
     Ua_ta_no number(5) not null, --(선생님 구분 코드: 한유치원동명이인구분목적)
-    Ua_agree number(3) not null --(수락or거절)
+    Ua_agree number(3) not null, --(수락or거절)
+    Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
-insert into UAPPLY_TABLE values(57, 61, 'wer', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
-
 update uApply_table 
-set uA_daterange = '기간 만료'
+set Ua_endDay = '02-23-2022'
 where uA_name = '1'
-
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -131,6 +130,7 @@ create table mypet_table(
 	mp_date date not null						-- 알림장 작성 날짜
 );
 create sequence mypet_table_seq;
+
 
 
 
