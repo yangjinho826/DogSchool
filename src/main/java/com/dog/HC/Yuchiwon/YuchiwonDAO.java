@@ -31,8 +31,16 @@ public class YuchiwonDAO {
 	}
 
 	public void getPuppy(HttpServletRequest req, puppy puppy) {
+
+		 int no = Integer.parseInt(req.getParameter("uA_no"));
+		 System.out.println(no);
+		 puppy.setuA_no(no);
+	
 		
-		req.getSession().setAttribute("puppies", ss.getMapper(YuchiwonMapper.class).getPuppy(puppy));
+		YuchiwonMapper mm = ss.getMapper(YuchiwonMapper.class);
+		puppy puppies = mm.getPuppy(puppy);
+		
+		req.getSession().setAttribute("puppies", puppies);
 		req.getSession().setMaxInactiveInterval(60 * 5);
 		
 	}

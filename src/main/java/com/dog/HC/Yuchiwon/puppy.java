@@ -14,7 +14,6 @@ public class puppy {
 	private String uA_img;
 	private int uA_ta_no;
 	private int uA_agree;
-	
 	private String uA_daterange;
 	
 	public puppy() {
