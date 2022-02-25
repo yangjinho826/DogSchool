@@ -19,6 +19,8 @@ import com.dog.HC.schoolmain.noticemapper;
 public class DiaryDAO {
 	
 	int TotalCount = 0;
+	String strPg = null;
+	
 	
 	@Autowired
 	private SqlSession ss;
@@ -37,49 +39,65 @@ public class DiaryDAO {
 		
 		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
 		TotalCount = dm.diarytotalcount(d);
+
 			
 	}
 
 	public void pageView(diary d, HttpServletRequest req) {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
-		String strPg = req.getParameter("pg");
+
 		
 		int rowSize = 5; //한페이지에 보여줄 글의 수
 		int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
-		    
-		if(strPg != null){ //list.jsp?pg=2
-		   pg = Integer.parseInt(strPg); //.저장
+
+		if(req.getParameter("pg") != null) {
+			strPg = req.getParameter("pg");
 		}
 		
+	    if(strPg != null){ //list.jsp?pg=2
+	        pg = Integer.parseInt(strPg); //.저장
+	    }
+
+
 		int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
 		int to=(pg * rowSize); //(1*10) = 10 //to
-		    
+
 		int mp_tnum = p.getuA_ta_no();
 		String mp_uid = p.getuA_id();
 		String mp_uname = p.getuA_name();
-		
+
 		d.setMp_tnum(mp_tnum);
 		d.setMp_uid(mp_uid);
 		d.setMp_uname(mp_uname);
 		d.setTo(to);
 		d.setFrom(from);
-		    
+
 		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
 		List<diary> diaries = dm.getAllDiary(d);
 		req.setAttribute("diaries", diaries);
-		
+
 	}
 
 	public void page(diary d, HttpServletRequest req) {
-		String strPg = req.getParameter("pg");
-	   	 
+		 
+	
+		if(req.getParameter("pg") == null) {
+			System.out.println("----DPif1----------");
+			System.out.println(strPg);
+		}else {
+			strPg = req.getParameter("pg");
+			System.out.println("-----DPelse1----");
+			System.out.println(strPg);
+		}
+		
+		
 	    int rowSize = 5; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
-	   
+
 	    if(strPg != null){ //list.jsp?pg=2
 	        pg = Integer.parseInt(strPg); //.저장
 	    }
-	   
+
 	    int total = TotalCount; //총 게시물 수
 	    int allPage = (int) Math.ceil(total/(double)rowSize); //페이지수
 	    int block = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
@@ -97,7 +115,7 @@ public class DiaryDAO {
 	    req.setAttribute("allPage", allPage);
 	    req.setAttribute("rowSize", rowSize);
 	    req.setAttribute("TotalCount", total);
-		
+
 	}
 	
 	
@@ -130,6 +148,7 @@ public class DiaryDAO {
 		if (dm.writeDiary(d) == 1) {
 			System.out.println("등록성공");
 			req.getSession().setAttribute("successToken", token);
+			
 		} else {
 			System.out.println("등록실패");
 		}

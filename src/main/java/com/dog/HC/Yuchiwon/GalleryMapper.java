@@ -16,4 +16,8 @@ public interface GalleryMapper {
 
 	List<gallery> getFiveGallery();
 
+	int gallerytotalcount(gallery g);
+
+
+
 }

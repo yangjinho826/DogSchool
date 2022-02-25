@@ -125,21 +125,21 @@ create table mypet_table(
 
 select * from mypet_table
 create sequence mypet_table_seq;
-    select rn, mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+    select rn, g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
 	from(
-	    select rownum as rn ,mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+	    select rownum as rn ,g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
 		from(
-	        select mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+	        select g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
 	        from mypet_table
-	        where mp_tnum=43 and mp_uid='wer' and mp_uname='1'
-	        order by mp_no desc ))
+	        where g_tnum=43 and g_uid='wer' and g_uname='1'
+	        order by g_date desc ))
 	where RN between 1 and 2
 	        
 -- 갤러리 테이블 --
 create table gallery_table(
     g_no number(3) primary key,
     g_title varchar2(30 char) not null,
-    g_img varchar2(100 char)not null,
+    g_img varchar2(1000 char)not null,
     g_da_no number(5),
     g_tid varchar2(30 char) not null,
     g_tnum number(5) not null,
@@ -149,6 +149,7 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
+select * from gallery_table
 
 -- 유치원 후기 테이블 --
 create table review_table(
@@ -163,4 +164,3 @@ create sequence review_table_seq;
 
 select * from mypet_table
 
-drop table uapply_table

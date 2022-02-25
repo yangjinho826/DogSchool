@@ -131,3 +131,7 @@ border: 1px solid black;
 .tableSort{
 	display: flex;
 }
+
+#gallery_detail{
+	min-height: 57%;
+}

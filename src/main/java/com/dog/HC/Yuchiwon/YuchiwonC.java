@@ -65,15 +65,17 @@ public class YuchiwonC {
 	}
 
 	@RequestMapping(value = "yuchiwon.get.puppy", method = RequestMethod.GET)
-	public String getPuppy(HttpServletRequest req, puppy puppy, diary d) {
+	public String getPuppy(HttpServletRequest req, puppy puppy, diary d,  gallery g) {
 		mDAOO.loginCheck(req);
 		ydao.getPuppy(req, puppy);
 		ddao.getTotal(d, req);
 		ddao.pageView(d, req);
 		ddao.page(d, req);
+		gdao.getTotal(g, req);
+		gdao.pageView(g, req);
+		gdao.page(g, req);
 		
-
-		gdao.getFiveGallery(req);
+		
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
@@ -96,12 +98,15 @@ public class YuchiwonC {
 	}
 
 	@RequestMapping(value = "diary.write", method = RequestMethod.GET)
-	public String diaryWrite(HttpServletRequest req, diary d) {
+	public String diaryWrite(HttpServletRequest req, diary d, gallery g) {
 		mDAOO.loginCheck(req);
 		ddao.writeDiary(req, d);
 		ddao.getTotal(d, req);
 		ddao.pageView(d, req);
 		ddao.page(d, req);
+		gdao.getTotal(g, req);
+		gdao.pageView(g, req);
+		gdao.page(g, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
@@ -149,13 +154,16 @@ public class YuchiwonC {
 	}
 	
 	@RequestMapping(value = "diary.delete", method = RequestMethod.GET)
-	public String diaryDelete(HttpServletRequest req, diary d) {
+	public String diaryDelete(HttpServletRequest req, diary d,  gallery g) {
 		if (mDAOO.loginCheck(req)) {
 			ddao.deleteDiary(req, d);
 		}
 		ddao.getTotal(d, req);
 		ddao.pageView(d, req);
 		ddao.page(d, req);
+		gdao.getTotal(g, req);
+		gdao.pageView(g, req);
+		gdao.page(g, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
@@ -178,10 +186,16 @@ public class YuchiwonC {
 	}
 	
 	@RequestMapping(value = "diary.reply.delete", method = RequestMethod.GET)
-	public String replyDelete(HttpServletRequest req, diaryReply dr, diary d) {
+	public String replyDelete(HttpServletRequest req, diaryReply dr,gallery g, diary d) {
 		if (mDAOO.loginCheck(req)) {
 			ddao.deleteReply(req, dr);
 		}
+		ddao.getTotal(d, req);
+		ddao.pageView(d, req);
+		ddao.page(d, req);
+		gdao.getTotal(g, req);
+		gdao.pageView(g, req);
+		gdao.page(g, req);
 		
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
@@ -213,12 +227,17 @@ public class YuchiwonC {
 	}
 	
 	@RequestMapping(value = "gallery.write", method = RequestMethod.POST)
-	public String galleryWrite(@RequestParam String g_title, @RequestParam("g_img") List<MultipartFile> multiFileList, HttpServletRequest req) {
+	public String galleryWrite(@RequestParam String g_title, @RequestParam("g_img") List<MultipartFile> multiFileList, HttpServletRequest req, diary d) {
 		mDAOO.loginCheck(req);
 		TokenMaker.make(req);
 		gdao.writeGallery(g_title, multiFileList, req);
 		gallery g = new gallery();
-		gdao.getAllGallery(req, g);
+		ddao.getTotal(d, req);
+		ddao.pageView(d, req);
+		ddao.page(d, req);
+		gdao.getTotal(g, req);
+		gdao.pageView(g, req);
+		gdao.page(g, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
@@ -244,11 +263,7 @@ public class YuchiwonC {
 		mDAOO.loginCheck(req);
 		gdao.getGallery(req, g);
 		
-		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "yuchiwon/gallery_update.jsp");
-		req.setAttribute("footer", "main/footer.jsp");
-		
-		return "index";
+		return "yuchiwon/gallery_update";
 	}	
 
 	@RequestMapping(value = "gallery.update", method = RequestMethod.POST	)
@@ -258,25 +273,31 @@ public class YuchiwonC {
 		if (mDAOO.loginCheck(req)) {
 			gdao.updateGallery(g_title, multiFileList, req, of, g_no);
 			g = new gallery();
+			gdao.getGallery(req, g);
 		}
-		gdao.getAllGallery(req, g);
-		
+	
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "yuchiwon/gallery_home.jsp");
+		req.setAttribute("contentPage", "yuchiwon/gallery_detail.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		
 		return "index";
 	}
 	
 	@RequestMapping(value = "gallery.delete", method = RequestMethod.GET)
-	public String galleryDelete(HttpServletRequest req, gallery g) {
+	public String galleryDelete(HttpServletRequest req, gallery g, diary d) {
 		if (mDAOO.loginCheck(req)) {
 			gdao.deleteGallery(req, g);
 		}
-		gdao.getAllGallery(req, g);
+		ddao.getTotal(d, req);
+		ddao.pageView(d, req);
+		ddao.page(d, req);
+		gdao.getTotal(g, req);
+		gdao.pageView(g, req);
+		gdao.page(g, req);
+		
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
-		req.setAttribute("contentPage", "yuchiwon/gallery_home.jsp");
+		req.setAttribute("contentPage", "yuchiwon/puppyPage.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
 		
 		return "index";
