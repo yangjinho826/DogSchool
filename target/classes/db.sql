@@ -74,11 +74,6 @@ create sequence Dapply_table_seq;
 
 select * from Dapply_table
 
-
-	select *
-	from Dapply_table d, Tapply_table t
-	where d.Da_no = t.Ta_da_no and t.Ta_id = 'dfg'
-
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -110,9 +105,6 @@ create table Uapply_table(
 create sequence Uapply_table_seq;
 select * from Uapply_table
 
-update uApply_table 
-set Ua_endDay = '02-23-2022'
-where uA_name = '1'
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -130,12 +122,19 @@ create table mypet_table(
     mp_uname varchar2(30 char) not null,         -- 강아지 이름
     mp_date date not null                        -- 알림장 작성 날짜
 );
+
+select * from mypet_table
 create sequence mypet_table_seq;
-
-drop table mypet_table
-
-
-
+    select rn, mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+	from(
+	    select rownum as rn ,mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+		from(
+	        select mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+	        from mypet_table
+	        where mp_tnum=43 and mp_uid='wer' and mp_uname='1'
+	        order by mp_no desc ))
+	where RN between 1 and 2
+	        
 -- 갤러리 테이블 --
 create table gallery_table(
     g_no number(3) primary key,

@@ -10,9 +10,7 @@
 </head>
 <body>
 	<h1>갤러리</h1>
-	<c:if test="${sessionScope.loginMember.typee ==  2}">
-		<button onclick="location.href='gallery.write.go'">작성하기</button>
-	</c:if>
+
 	<div id="gDiv">
 		<c:forEach var="g" items="${galleries }">
 			<table class="gTbl">

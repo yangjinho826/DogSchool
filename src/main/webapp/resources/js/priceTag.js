@@ -1,13 +1,12 @@
 
 function pricewriteWindow(){
 	document.domain = "localhost";
-	window.open("priceTag_write.go", "Popup", "width=450,height=250")
+	window.open("priceTag_write.go", "Popup", "width=450,height=280")
 }
 
 
 function closeWithSubmit()
 {
-
     let f= document.forms.popupForm;
     document.domain = "localhost"; //document.domain 값이 팝업과 부모창 동일해야 합니다.
     opener.name = "openerNames"; //유니크한 이름이어야 합니다.

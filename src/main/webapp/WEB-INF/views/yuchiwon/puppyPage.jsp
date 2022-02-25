@@ -7,17 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Dog School</title>
+<script type="text/javascript" src="resources/js/gallery.js" defer></script>
 </head>
 <body>
 	<section id="puppyPageHome">	
 		<div class="puppyDiaryPreview">
-			<h1 id="puppyPageTitle"><a href="yuchiwon.get.alldiary">알림장</a></h1>
-			<hr>
-			<div class="tableSort">
+			<h1 id="puppyPageTitle">알림장</h1>
+			<c:if test="${sessionScope.loginMember.typee ==  2}">
+				<button onclick="writeDiaryGo()">작성하기</button>
+			</c:if>
+				<div class="tableSort">
 				<c:forEach var="d" items="${diaries }">
 				<table border="1" id="dairyTbl">
 					<tr>
-						<td>제목 : ${d.mp_title }</td>
+						<td><a href="diary.detail.go?mp_no=${d.mp_no}">제목 : ${d.mp_title }</a></td>
 					</tr>
 					<tr>
 						<td>건강상태 : ${d.mp_condition }</td>
@@ -35,22 +38,61 @@
 						<td>내용 : ${d.mp_txt }</td>
 					</tr>
 					<tr>
-						<td>날짜 : ${d.mp_date }
-						<input type="hidden" value="${d.mp_tid }" class="tid">
-						<input type="hidden" value="${d.mp_uid }" class="uid">
-						<input type="hidden" value="${d.mp_uname }" class="uname">
-						</td>
+						<td>날짜 : ${d.mp_date }</td>
 					</tr>
 				</table>
 				</c:forEach>
-			</div>
+				</div>
+			<table id ="notic_paging">
+			<tr>
+			<td>
+			<c:choose>
+	        <c:when test = "${pg > block}">
+	            [<a href="yuchiwon.get.puppy?pg=1&uA_no=${param.uA_no }">◀◀</a>]
+	            [<a href="yuchiwon.get.puppy?pg=${fromPage -1}&uA_no=${param.uA_no }">◀</a>] 
+	        </c:when>
+	
+	        <c:otherwise>
+	            [<span style="color:gray">◀◀</span>]   
+	            [<span style="color:gray">◀</span>]
+	        </c:otherwise>
+	     	</c:choose>
+	
+	        <c:forEach var="i" begin="${fromPage }" end="${toPage }">
+	        	<c:choose>
+	        	<c:when test = "${i == pg }">
+	        		[${i }]
+	        	</c:when>
+	        	
+	        	<c:otherwise>
+	        		[<a href="yuchiwon.get.puppy?pg=${i }&uA_no=${param.uA_no }">${i }</a>]
+	        	</c:otherwise>
+	        	</c:choose>
+	        	
+	        </c:forEach>
+	       
+	        <c:choose>
+	        	<c:when test = "${toPage < allPage }">
+	        		[<a href="yuchiwon.get.puppy?pg=${toPage + 1}&uA_no=${param.uA_no }">▶</a>]
+	                [<a href="yuchiwon.get.puppy?pg=${allPage}&uA_no=${param.uA_no }">▶▶</a>]
+	        	</c:when>
+	        	<c:otherwise>
+	        		[<span style="color:gray">▶</span>]
+	                [<span style="color:gray">▶▶</span>]
+	        	</c:otherwise>       
+	        </c:choose>
+	        </td>
+	        </tr>
+		</table>
 		</div>
 		<br>
 		
 		
 		<div class="puppyGalleryPreview">
 			<h1 id="puppyPageTitle"><a href="yuchiwon.get.allgallery">갤러리</a></h1>
-			<hr>
+			<c:if test="${sessionScope.loginMember.typee ==  2}">
+				<button onclick="GallerywriteWindow()">작성하기</button>
+			</c:if>
 			<div class="tableSort">
 				<c:forEach var="g" items="${galleries }">
 				<table border="1" id="dairyTbl">
@@ -58,9 +100,7 @@
 						<td>제목 : ${g.g_title }</td>
 					</tr>
 					<tr>
-						<td><a href="gallery.detail?g_no=${g.g_no }"> <img
-								style="max-width: 200px" src="resources/img/${g.filess[0] }">
-						</a></td>
+						<td><img style="max-width: 200px" src="resources/img/${g.filess[0] }"></td>
 					</tr>
 					<tr>
 						<td>날짜 : ${g.g_date }</td>
@@ -68,10 +108,6 @@
 				</table>
 				</c:forEach>	
 			</div>	
-		</div>
-		
-		<div class="puppyPageController">
-			<button id="puppyPageBtn">뒤로 가기</button>
 		</div>
 	</section>
 </body>
