@@ -108,14 +108,9 @@ create table Uapply_table(
     Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
+select * from tapply_table
 select * from Uapply_table
-
-select count(*) from UAPPLY_TABLE where ua_agree = 1 and ua_id = 'u2'
-
-select count(*) from UAPPLY_TABLE where ua_id = 'u2' and ua_agree = 1 and ua_daterange = '기간 만료';
-select count(*) from UAPPLY_TABLE 
-	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = 't1')
-	and ua_daterange = '기간 만료'
+select * from dapply_table
 
 update uApply_table 
 set Ua_endDay = '02-23-2022'

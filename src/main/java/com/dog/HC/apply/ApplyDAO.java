@@ -429,37 +429,47 @@ public class ApplyDAO {
 	// 유저로그인
 	public int getUDaterangeCheck(HttpServletRequest req, ApplySchool as) {
 		String id = req.getParameter("id");
-			
 		as.setdA_id(id);
 			
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
-		int totalPet = mm.getAllPetCount(as);
-		int ap = mm.getUDaterangeCheck(as);
-		System.out.print(" 견주 로그인 ");
-		System.out.print(totalPet+" ");
-		System.out.println(ap);
-		if(totalPet == ap) {
-			return 1;
-		} else {
-			return 2;			
+		
+		ApplySchool app = mm.getulistSession(as);
+
+		req.getSession().setAttribute("school", app.getdA_no());
+		req.getSession().setAttribute("schoolname", app.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", app);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+		int totalPet = mm.getAllPetCount(as); 	//해당 유저의 모든 강아지 카운트
+		int ap = mm.getUDaterangeCheck(as);		//해당 유저의 기간 만료 강아지 카운트
+
+		if(totalPet != 0 && totalPet != ap) {
+			return 4;
+		} else { //모든 강아지 == 기간 만료 강아지
+			return 5;
 		}
 	}
 	// 선생님로그인
 	public int getTDaterangeCheck(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
 		String id = req.getParameter("id");
-
 		as.setdA_id(id);
 			
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
-		int totalPet = mm.getAllTeacherPetCount(as);
-		int ap = mm.getTDaterangeCheck(as);
-		System.out.print(" 선생님 로그인 ");
-		System.out.print(totalPet+" ");
-		System.out.println(ap);
-		if(totalPet == ap) {
-			return 3;
-		} else {
+
+		ApplySchool app = mm.gettlistSession(as);
+
+		req.getSession().setAttribute("school", app.getdA_no());
+		req.getSession().setAttribute("schoolname", app.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", app);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+		int totalPet = mm.getAllTeacherPetCount(as);//해당 유저의 모든 강아지 카운트
+		int ap = mm.getTDaterangeCheck(as);			//해당 유저의 기간 만료 강아지 카운트
+
+		if(totalPet != 0 && totalPet != ap) {
 			return 4;
+		} else { //모든 강아지 == 기간 만료 강아지
+			return 5;
 		}
 	}
 

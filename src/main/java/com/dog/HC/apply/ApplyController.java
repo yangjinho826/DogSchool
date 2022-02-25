@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +36,26 @@ public class ApplyController {
 	@Autowired
 	private MemberDAO mDAOO;
 	
-	//기간 만료만 있을 때 강아지 목록 막기
+	@Autowired
+	private SqlSession ss;
+	
+	//기간 만료만 있을 때 강아지 목록 막기 => 기간 만료 강아지 존재 = uapplytable에 하나라도 강아지 존재
 	@RequestMapping(value = "endDaterangeCheck", method = RequestMethod.GET)
 	public @ResponseBody int endDaterangeCheck(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
 		String typee = req.getParameter("typee");
-		System.out.print(typee);
-		if(typee.equals("1")){
-			return aDAO.getUDaterangeCheck(req, as);
-		}else if(typee.equals("2")) {
-			return aDAO.getTDaterangeCheck(req, as, at);
-		} else {
-			return 0;
+		String id = req.getParameter("id");
+		as.setdA_id(id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		int totalPet1 = mm.getAllPetCount(as);
+		int totalPet2 = mm.getAllTeacherPetCount(as);
+		
+		if(typee.equals("1") && totalPet1 != 0){
+			return aDAO.getUDaterangeCheck(req, as); 
+		}else if(typee.equals("2") && totalPet2 != 0) {
+			return aDAO.getTDaterangeCheck(req, as, at); 
 		}
+		return 6;
 	}
 	
 	//신청하는 폼으로 이동
