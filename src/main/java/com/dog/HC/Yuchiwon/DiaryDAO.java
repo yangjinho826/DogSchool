@@ -81,15 +81,9 @@ public class DiaryDAO {
 	public void page(diary d, HttpServletRequest req) {
 		 
 	
-		if(req.getParameter("pg") == null) {
-			System.out.println("----DPif1----------");
-			System.out.println(strPg);
-		}else {
+		if(req.getParameter("pg") != null) {
 			strPg = req.getParameter("pg");
-			System.out.println("-----DPelse1----");
-			System.out.println(strPg);
 		}
-		
 		
 	    int rowSize = 5; //한페이지에 보여줄 글의 수
 	    int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
@@ -158,7 +152,7 @@ public class DiaryDAO {
 	public void getDiary(HttpServletRequest req, diary d) {
 		
 		int mp_no = Integer.parseInt(req.getParameter("mp_no"));
-		System.out.println(mp_no);
+
 		
 		d.setMp_no(mp_no);
 		

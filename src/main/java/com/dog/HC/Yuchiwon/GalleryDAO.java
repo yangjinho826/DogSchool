@@ -87,13 +87,8 @@ public class GalleryDAO {
 		int pgG = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
 		   
 	   	
-		if(req.getParameter("pgG") == null) {
-			System.out.println("--------Gif1-----");
-			System.out.println(strPgG);
-		}else {
+		if(req.getParameter("pgG") != null) {
 			strPgG = req.getParameter("pgG");
-			System.out.println("---------Gelse1---------");
-			System.out.println(strPgG);
 		}
 		
 	    if(strPgG != null){ //list.jsp?pg=2
@@ -101,9 +96,6 @@ public class GalleryDAO {
 	    }
 
 		
-	 
-	    
-	   
 	    int totalG = TotalCountG; //총 게시물 수
 	    int allPageG = (int) Math.ceil(totalG/(double)rowSizeG); //페이지수
 	    int blockG = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
@@ -251,7 +243,7 @@ public class GalleryDAO {
 	}
 
 	public void updateGallery(String g_title, List<MultipartFile> multiFileList, HttpServletRequest req, String off, int g_no) {
-
+		
 		String[] of = off.split("!");
 
 		gallery g = new gallery();
