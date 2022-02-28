@@ -55,6 +55,8 @@ public class YuchiwonC {
 
 		if(mDAOO.loginCheck(req)) {
 			ydao.getAllPuppy(req, s);
+			ddao.strPg_initialization();
+			gdao.strPg_initialization();
 		}
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");

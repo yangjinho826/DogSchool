@@ -33,7 +33,6 @@ public class YuchiwonDAO {
 	public void getPuppy(HttpServletRequest req, puppy puppy) {
 
 		 int no = Integer.parseInt(req.getParameter("uA_no"));
-		 System.out.println(no);
 		 puppy.setuA_no(no);
 	
 		

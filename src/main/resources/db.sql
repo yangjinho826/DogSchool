@@ -20,10 +20,6 @@ create table notice_table(
 );
 create sequence notice_seq;
 
-	select *
-		from notice_table
-		order by n_date desc
-
 -- 선생님 후기 테이블 --
 create table postscript_table(
 	p_no number(3) primary key,
@@ -122,18 +118,6 @@ create table mypet_table(
     mp_uname varchar2(30 char) not null,         -- 강아지 이름
     mp_date date not null                        -- 알림장 작성 날짜
 );
-
-select * from mypet_table
-create sequence mypet_table_seq;
-    select rn, g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
-	from(
-	    select rownum as rn ,g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
-		from(
-	        select g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
-	        from mypet_table
-	        where g_tnum=43 and g_uid='wer' and g_uname='1'
-	        order by g_date desc ))
-	where RN between 1 and 2
 	        
 -- 갤러리 테이블 --
 create table gallery_table(
