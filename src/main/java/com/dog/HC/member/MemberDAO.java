@@ -64,8 +64,6 @@ public class MemberDAO {
 
 		int n = Integer.parseInt(req.getParameter("type"));
 		
-		System.out.println(n);
-
 		if(n == 1) {
 			try {
 				String id = req.getParameter("id");

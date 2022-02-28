@@ -22,7 +22,7 @@
 			</tr>
 		</table>
 		<input type="hidden" name="originalFile" value="${g.g_img }">
-		<input  name="g_no" value="${g.g_no }">
+		<input type="hidden" name="g_no" value="${g.g_no }">
 		<button >수정하기</button>
 	</form>
 </body>

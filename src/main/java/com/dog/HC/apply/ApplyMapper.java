@@ -52,5 +52,13 @@ public interface ApplyMapper {
 	int getlistTotalCount();
 	List<ApplySchool> getAlllist(ApplySchool s);
 	
+	public int getUDaterangeCheck(ApplySchool as);
+	public int getTDaterangeCheck(ApplySchool as);
+	public int getAllTeacherPetCount(ApplySchool as);
+	public int getAllPetCount(ApplySchool as);
+	public int petapplyupdate(ApplyPet p);
+	public int getCheckPetEmpty(ApplySchool as);
+	public int getExistPetCount(ApplySchool as);
+	
 
 }

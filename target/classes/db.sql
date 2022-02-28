@@ -20,10 +20,6 @@ create table notice_table(
 );
 create sequence notice_seq;
 
-	select *
-		from notice_table
-		order by n_date desc
-
 -- 선생님 후기 테이블 --
 create table postscript_table(
 	p_no number(3) primary key,
@@ -72,7 +68,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-select * from Dapply_table
+select * from Uapply_table
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -86,7 +82,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from Tapply_table
+select * from Uapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -103,7 +99,9 @@ create table Uapply_table(
     Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
+select * from tapply_table
 select * from Uapply_table
+select * from dapply_table
 
 
 -- 알림장 테이블 --
@@ -122,18 +120,6 @@ create table mypet_table(
     mp_uname varchar2(30 char) not null,         -- 강아지 이름
     mp_date date not null                        -- 알림장 작성 날짜
 );
-
-select * from mypet_table
-create sequence mypet_table_seq;
-    select rn, g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
-	from(
-	    select rownum as rn ,g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
-		from(
-	        select g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
-	        from mypet_table
-	        where g_tnum=43 and g_uid='wer' and g_uname='1'
-	        order by g_date desc ))
-	where RN between 1 and 2
 	        
 -- 갤러리 테이블 --
 create table gallery_table(

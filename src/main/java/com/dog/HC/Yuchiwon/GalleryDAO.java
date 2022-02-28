@@ -147,15 +147,11 @@ public class GalleryDAO {
 		
 		int g_no = Integer.parseInt(req.getParameter("g_no"));
 		
-		System.out.println("------------getGallery------------");
-		System.out.println(g_no);
 		g.setG_no(g_no);
 
 		
 		GalleryMapper gm = ss.getMapper(GalleryMapper.class);
 		gallery gallery = gm.getGallery(g);
-		System.out.println("------");
-		System.out.println(gallery.getG_da_no());
 
 		String[] imges = gallery.getG_img().split("!");
 		gallery.setFiless(imges);
@@ -350,6 +346,11 @@ public class GalleryDAO {
 			req.setAttribute("result", "갤러리삭제실패");
 		}
 		
+	}
+
+	public void strPg_initialization() {
+		TotalCountG = 0;
+		strPgG = null;
 	}
 
 

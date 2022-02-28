@@ -62,7 +62,7 @@
 							<tr height="1" bgcolor="black">
 								<td colspan="4"></td>
 							</tr>
-
+							
 							<c:forEach var="r" items="${reviews }">
 								<tr>
 									<td style="height: 45px">${r.r_no }</td>

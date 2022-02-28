@@ -224,5 +224,11 @@ public class DiaryDAO {
 		req.setAttribute("diaries", diaries);
 		}
 
-		
+
+	public void strPg_initialization() {
+		TotalCount = 0;
+		strPg = null;
 	}
+
+		
+}

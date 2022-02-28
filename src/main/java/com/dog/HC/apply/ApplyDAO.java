@@ -200,6 +200,57 @@ public class ApplyDAO {
 			new File(root + "\\" + changeFile).delete();
 		}
 	}
+	//견주-원장 강아지 신청
+	public void applyPetUpdate(@RequestParam("imggg") MultipartFile mf, ApplyPet p, HttpServletRequest req) {
+
+		String root = "";
+		String changeFile = "";
+		try {
+			String token = req.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+
+			if (token.equals(successToken)) {
+				return;
+			}
+
+			// path 가져오기
+			String path = req.getSession().getServletContext().getRealPath("resources");
+			root = path + "\\" + "img";
+			System.out.println(root);
+			File fileCheck = new File(root);
+			if (!fileCheck.exists()) {
+				fileCheck.mkdirs();
+			}
+			String originFile = mf.getOriginalFilename();
+			String ext = originFile.substring(originFile.lastIndexOf("."));
+			changeFile = UUID.randomUUID().toString() + ext;
+
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("originFile", originFile);
+			map.put("changeFile", changeFile);
+
+			p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+			p.setuA_da_no(Integer.parseInt(req.getParameter("uA_da_no")));
+			p.setuA_id(req.getParameter("uA_id"));
+			p.setuA_name(req.getParameter("uA_name"));
+			p.setuA_gender(req.getParameter("uA_gender"));
+			p.setuA_age(Integer.parseInt(req.getParameter("uA_age")));
+			p.setuA_img(changeFile);
+			p.setuA_ta_no(Integer.parseInt(req.getParameter("uA_ta_no")));
+			p.setuA_agree(0);
+				
+			// 파일업로드
+			File uploadFile = new File(root + "\\" + changeFile);
+			mf.transferTo(uploadFile);
+
+			if (ss.getMapper(ApplyMapper.class).petapplyupdate(p) == 1) {
+				req.getSession().setAttribute("successToken", token);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			new File(root + "\\" + changeFile).delete();
+		}
+	}
 
 	
 	//////////////////////////////////////////////////////////////
@@ -390,18 +441,13 @@ public class ApplyDAO {
 		if(ap == null) {
 			return 0;
 		}
-		
-		
-	
+
 		req.getSession().setAttribute("school", ap.getdA_no());
 		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		return 1;
-		
-		
 	}
-	
 	// 선생님로그인 -> 리스트에서 세션 받아오기
 	public int gettlistSession(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
 		String id = req.getParameter("id");
@@ -436,9 +482,58 @@ public class ApplyDAO {
 			}
 		}
 		return 0;
+	}
+	
+	
+	//기간 만료 확인
+	// 유저로그인
+	public int getUDaterangeCheck(HttpServletRequest req, ApplySchool as) {
+		String id = req.getParameter("id");
+		as.setdA_id(id);
 			
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		
+		ApplySchool app = mm.getulistSession(as);
+
+		req.getSession().setAttribute("school", app.getdA_no());
+		req.getSession().setAttribute("schoolname", app.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", app);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+		int totalPet = mm.getAllPetCount(as); 	//해당 유저의 모든 강아지 카운트
+		int ap = mm.getUDaterangeCheck(as);		//해당 유저의 기간 만료 강아지 카운트
+
+		if(totalPet != 0 && totalPet != ap) {
+			return 4;
+		} else { //모든 강아지 == 기간 만료 강아지
+			return 5;
+		}
+	}
+	// 선생님로그인
+	public int getTDaterangeCheck(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
+		String id = req.getParameter("id");
+		as.setdA_id(id);
+			
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+
+		ApplySchool app = mm.gettlistSession(as);
+
+		req.getSession().setAttribute("school", app.getdA_no());
+		req.getSession().setAttribute("schoolname", app.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", app);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+		int totalPet = mm.getAllTeacherPetCount(as);//해당 유저의 모든 강아지 카운트
+		int ap = mm.getTDaterangeCheck(as);			//해당 유저의 기간 만료 강아지 카운트
+
+		if(totalPet != 0 && totalPet != ap) {
+			return 4;
+		} else { //모든 강아지 == 기간 만료 강아지
+			return 5;
+		}
 	}
 
+	
 	public void TeachCheck(ApplyTeacher a, HttpServletRequest req) {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		
@@ -569,6 +664,15 @@ public class ApplyDAO {
 		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
 		try {
 			req.setAttribute("myPetOne", ss.getMapper(ApplyMapper.class).getPetOne(p));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//견주가 신청 내역에서 정보 수정 시 갖고 올 정보 조회
+	public void myApplyPetInfo(ApplyPet p, HttpServletRequest req) {
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		try {
+			req.setAttribute("myApplyPet", ss.getMapper(ApplyMapper.class).getPetOne(p));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

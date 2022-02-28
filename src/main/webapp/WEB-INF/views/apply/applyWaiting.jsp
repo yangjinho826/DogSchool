@@ -229,7 +229,8 @@
 							<td>
 								<c:if test="${p.uA_agree eq 1}">승인 완료</c:if>
 								<c:if test="${p.uA_agree eq 0}">승인 대기 중<br>
-									<button id="btnCancel" onClick="applyCancelUa(${p.uA_no})">신청 취소</button>
+									<button id="btnCancel" onClick="applyCancelUa(${p.uA_no})">신청 취소</button> 
+									<button id="btnCancel" onClick="location.href='apply.go.pet.update?dA_no=${p.uA_da_no}&uA_no=${p.uA_no }'">정보 수정</button>
 								</c:if>
 							</td>
 						</tr>
