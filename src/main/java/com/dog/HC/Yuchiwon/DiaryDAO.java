@@ -218,9 +218,9 @@ public class DiaryDAO {
 
 	}
 
-	public void getFiveDiary(HttpServletRequest req) {
+	public void getFiveDiary(HttpServletRequest req, diary d) {
 	    DiaryMapper mm = ss.getMapper(DiaryMapper.class);
-	    List<diary> diaries = mm.getFiveDiary();
+	    List<diary> diaries = mm.getFiveDiary(d);
 		req.setAttribute("diaries", diaries);
 		}
 
