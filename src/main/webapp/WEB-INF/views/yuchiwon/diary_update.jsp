@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="diary.update">
+	<form action="diary.update" name="dwForm" onsubmit="return diarycall()">
 		<table border="1">
 			<tr>
 				<td>제목</td>
@@ -34,7 +34,7 @@
 				<td><textarea name="mp_txt">${d.mp_txt }</textarea></td>
 			</tr>
 		</table>
-		<button name="mp_no" value="${d.mp_no }">수정하기</button>
+		<button type="submit" name="mp_no" value="${d.mp_no }">수정하기</button>
 	</form>
 </body>
 </html>
