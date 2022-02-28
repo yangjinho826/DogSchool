@@ -68,7 +68,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-select * from Dapply_table
+select * from Uapply_table
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -82,7 +82,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from Tapply_table
+select * from Uapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(

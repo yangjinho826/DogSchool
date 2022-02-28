@@ -196,7 +196,7 @@ select * from uApply_table where uA_agree = 1
 </select>
 <!-- 기간 연장 재신청 -->
 <update id="reapplyPetOnlyDaterange" parameterType="com.dog.HC.apply.ApplyPet">
-update uApply_table set uA_agree = 0, uA_daterange = #{uA_daterange} where uA_no = #{uA_no}
+update uApply_table set uA_agree = 0, uA_daterange = #{uA_daterange}, Ua_endDay = null where uA_no = #{uA_no}
 </update>
 
 
