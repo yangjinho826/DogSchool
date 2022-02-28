@@ -9,6 +9,8 @@ create table signup_table(
     typee int not null
 );
 
+select * from signup_tablew
+
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -68,7 +70,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-select * from Uapply_table
+
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
