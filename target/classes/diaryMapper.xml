@@ -3,32 +3,35 @@
 <mapper namespace="com.dog.HC.Yuchiwon.DiaryMapper">
 
 	<!-- diary -->
-
-	<select id="getAllDiary" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diary">
-		select * from(
-		select * from mypet_table
-		where mp_tnum = #{mp_tnum}
-		and mp_uid = #{mp_uid}
-		and mp_uname = #{mp_uname}
-		order by mp_no desc)
-		where rownum between #{from} and #{to}
+	
+	<!-- 다이어리 총개수 구하기 -->
+	<select id="diarytotalcount" parameterType="com.dog.HC.Yuchiwon.diary" resultType="int">
+		select count(*)
+		from mypet_table
+		where mp_tnum=#{mp_tnum} and mp_uid=#{mp_uid} and mp_uname=#{mp_uname}
 	</select>
+	<!-- 메인페이지 다이어리 select -->
+	<select id="getAllDiary" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diary">
+    select rn, mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+	from(
+	    select rownum as rn ,mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+		from(
+	        select mp_no, mp_title, mp_condition, mp_meal, mp_defecate, mp_supplies, mp_txt, mp_da_no, mp_tid, mp_tnum, mp_uid,mp_uname,mp_date
+	        from mypet_table
+	        where mp_tnum=#{mp_tnum} and mp_uid=#{mp_uid} and mp_uname=#{mp_uname}
+	        order by mp_no desc ))
+	where RN between #{from} and #{to}
+    </select>
+
 
 	<select id="getDiary" resultType="com.dog.HC.Yuchiwon.diary">
 		select * from mypet_table where mp_no = #{mp_no}
 	</select>
-	
-	<select id="getDiaryTotalCount" resultType="int">
-		select count(*) from mypet_table where mp_da_no = #{mp_da_no}
-	</select>
 
-	<select id="getFiveDiary" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diary">
-	select *
-	from (select * from mypet_table order by mp_no desc)
-	where rownum &lt;= 5
-	and mp_uname = #{mp_uname}
-	and mp_tnum = #{mp_tnum}
-	and mp_uid = #{mp_uid}
+	<select id="getFiveDiary" resultType="com.dog.HC.Yuchiwon.diary">
+		select *
+		from (select * from mypet_table order by mp_no desc)
+		where rownum &lt;= 5
 	</select>
 
 	<insert id="writeDiary"
@@ -40,8 +43,7 @@
 		to_date(sysdate, 'yy.mm.dd'))
 	</insert>
 
-	<update id="updateDiary"
-		parameterType="com.dog.HC.Yuchiwon.diary">
+	<update id="updateDiary" parameterType="com.dog.HC.Yuchiwon.diary">
 		update mypet_table
 		set mp_title = #{mp_title}, mp_condition = #{mp_condition}
 		, mp_meal = #{mp_meal}, mp_defecate = #{mp_defecate}

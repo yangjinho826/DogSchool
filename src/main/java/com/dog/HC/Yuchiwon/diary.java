@@ -17,8 +17,8 @@ public class diary {
 	private String mp_uid;
 	private String mp_uname;
 	private Date mp_date;
-	private int from;
 	private int to;
+	private int from;
 	
 	private List<diaryReply> mp_replys;
 	
@@ -28,7 +28,7 @@ public class diary {
 
 	public diary(int mp_no, String mp_title, String mp_condition, int mp_meal, int mp_defecate, String mp_supplies,
 			String mp_txt, int mp_da_no, String mp_tid, int mp_tnum, String mp_uid, String mp_uname, Date mp_date,
-			int from, int to, List<diaryReply> mp_replys) {
+			int to, int from, List<diaryReply> mp_replys) {
 		super();
 		this.mp_no = mp_no;
 		this.mp_title = mp_title;
@@ -43,8 +43,8 @@ public class diary {
 		this.mp_uid = mp_uid;
 		this.mp_uname = mp_uname;
 		this.mp_date = mp_date;
-		this.from = from;
 		this.to = to;
+		this.from = from;
 		this.mp_replys = mp_replys;
 	}
 
@@ -152,20 +152,20 @@ public class diary {
 		this.mp_date = mp_date;
 	}
 
-	public int getFrom() {
-		return from;
-	}
-
-	public void setFrom(int from) {
-		this.from = from;
-	}
-
 	public int getTo() {
 		return to;
 	}
 
 	public void setTo(int to) {
 		this.to = to;
+	}
+
+	public int getFrom() {
+		return from;
+	}
+
+	public void setFrom(int from) {
+		this.from = from;
 	}
 
 	public List<diaryReply> getMp_replys() {
@@ -175,5 +175,8 @@ public class diary {
 	public void setMp_replys(List<diaryReply> mp_replys) {
 		this.mp_replys = mp_replys;
 	}
+
+	
+	
 
 }

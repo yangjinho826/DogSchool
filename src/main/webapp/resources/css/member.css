@@ -12,6 +12,16 @@ input {
 	text-align: center;
 }
 
+#memberid{
+	margin:auto;
+    display: block;
+    width: 32%;
+    height: 41px;
+    padding: 10px 14px 10px 0px;
+    text-align: left;
+    font-size: 20px;
+}
+
 #mtitle {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -27,11 +37,11 @@ input {
 .box {
 	margin:auto;
     display: block;
-    width: 50%;
-    height: 51px;
-    border: solid 1px #dadada;
+    width: 30%;
+    height: 30px;
+    border: solid 2px #dadada;
     padding: 10px 14px 10px 14px;
-    box-sizing: border-box;
+    box-sizing: content-box;
     background: #fff;
     position: relative;
 }
@@ -53,15 +63,12 @@ input {
 #btnJoin {
 	display: block; 
 	margin:auto;
-    width: 50%;
-    height: 51px;
-    padding: 21px 0 17px;
-    border: 0;
-    cursor: pointer;
+    width: 32%;
+    height: 50px;
     color: #fff;
     background-color: #98c5e4;
     font-size: 20px;
     font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    font-weight: bold;
 }
 

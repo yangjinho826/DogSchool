@@ -49,6 +49,8 @@ public interface ApplyMapper {
 	
 	public int UpdateendDay(ApplyPet ap);
 	public int deleteendDay(ApplyPet ap);
+	int getlistTotalCount();
+	List<ApplySchool> getAlllist(ApplySchool s);
 	
 
 }

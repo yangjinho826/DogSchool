@@ -11,18 +11,20 @@
 			<form action="member.findid" method="post" name="myForm" onsubmit="return findidcall()">
 				
 				<div id="memberh3">
-					<h2>이름</h2>
+					<h2 id="memberid">이름</h2>
 					<span class="box int_"> 
 					<input type="text"  name="name"class="int" maxlength="5" placeholder="이름">
 					</span>
 				</div>
+				<br>
 				
 				<div id="memberh3">
-					<h2>핸드폰번호</h2>
+					<h2 id="memberid">핸드폰번호</h2>
 					<span class="box int_"> 
 					<input name="phonenumber"  class="int" maxlength="11" placeholder="전화번호">
 					</span>
 				</div>
+				<br>
 
 				<div class="btn_area">
 					<button id="btnJoin">확인</button>

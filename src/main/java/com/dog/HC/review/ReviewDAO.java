@@ -140,11 +140,4 @@ public class ReviewDAO {
 		
 	}
 	
-	public void getfivereview(review r, HttpServletRequest req) {
-		
-		ReviewMapper mm = ss.getMapper(ReviewMapper.class);
-		List<review> fivepostscript = mm.getfivereview(r);
-		req.setAttribute("fivepostscript", fivepostscript);
-		
-	}
 }

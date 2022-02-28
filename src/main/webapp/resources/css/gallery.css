@@ -115,7 +115,7 @@ border: 1px solid black;
 
 #dairyTbl{
 	border-collapse: collapse;
-	width: 300px;
+	width: 280px;
 	margin:20px;
 	text-align:center;
 	border:#98c5e4 5px solid;
@@ -130,4 +130,8 @@ border: 1px solid black;
 
 .tableSort{
 	display: flex;
+}
+
+#gallery_detail{
+	min-height: 57%;
 }

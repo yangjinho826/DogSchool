@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dog.HC.apply.ApplyDAO;
+import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.manage.ManageDAO;
 import com.dog.HC.review.ReviewDAO;
 import com.dog.HC.review.review;
@@ -24,12 +26,16 @@ public class MemberController {
 	@Autowired
 	private ManageDAO mDAO;
 	
+	@Autowired
+	private ApplyDAO aDAO;
+	
 	@RequestMapping(value = "member.login", method = RequestMethod.POST)
-	public String home(review r, HttpServletRequest req , Member m) {
+	public String home(ApplySchool s, review r, HttpServletRequest req , Member m) {
 		mDAOO.login(req, m);
 		mDAOO.loginCheck(req);
-		rDAO.pageView(r, req);
 		mDAO.getAllSchool(req);
+		aDAO.pageView(s, req);
+		rDAO.pageView(r, req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");

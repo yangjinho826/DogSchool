@@ -13,6 +13,8 @@ public class gallery {
 	private String g_uid;
 	private String g_uname;
 	private Date g_date;
+	private int to;
+	private int from;
 	
 	private String[] filess;
 	
@@ -21,7 +23,7 @@ public class gallery {
 	}
 
 	public gallery(int g_no, String g_title, String g_img, int g_da_no, String g_tid, int g_tnum, String g_uid,
-			String g_uname, Date g_date, String[] filess) {
+			String g_uname, Date g_date,int to, int from, String[] filess) {
 		super();
 		this.g_no = g_no;
 		this.g_title = g_title;
@@ -33,6 +35,8 @@ public class gallery {
 		this.g_uname = g_uname;
 		this.g_date = g_date;
 		this.filess = filess;
+		this.to = to;
+		this.from = from;
 	}
 
 	public int getG_no() {
@@ -115,6 +119,23 @@ public class gallery {
 		this.filess = filess;
 	}
 
-	
+	public int getTo() {
+		return to;
+	}
+
+	public void setTo(int to) {
+		this.to = to;
+	}
+
+	public int getFrom() {
+		return from;
+	}
+
+	public void setFrom(int from) {
+		this.from = from;
+	}
+
+
+
 	
 }
