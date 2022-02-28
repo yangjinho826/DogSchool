@@ -150,6 +150,25 @@ where rownum = 1
 </select>
 
 
+<!-- 기간 만료 체크 -->
+<select id="getAllPetCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE where ua_agree = 1 and ua_id = #{dA_id}
+</select>
+<select id="getUDaterangeCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE where ua_id = #{dA_id} and ua_daterange = '기간 만료'
+</select>
+<select id="getAllTeacherPetCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE 
+	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = #{dA_id})
+</select>
+<select id="getTDaterangeCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE 
+	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = #{dA_id})
+	and ua_daterange = '기간 만료'
+</select>
+
+
+
 <!-- 원장: 선생님, 견주 삭제 -->
 <delete id="deleteTeacher" parameterType="com.dog.HC.apply.ApplyTeacher">
 delete Tapply_table where Ta_no = #{tA_no} 
@@ -178,6 +197,19 @@ select * from uApply_table where uA_agree = 1
 <!-- 기간 연장 재신청 -->
 <update id="reapplyPetOnlyDaterange" parameterType="com.dog.HC.apply.ApplyPet">
 update uApply_table set uA_agree = 0, uA_daterange = #{uA_daterange} where uA_no = #{uA_no}
+</update>
+
+
+<!-- 신청 내역에서 승인 전 내용 고치기 -->
+<update id="petapplyupdate" parameterType="com.dog.HC.apply.ApplyPet">
+update uapply_table 
+set ua_name = #{uA_name}, 
+	ua_gender = #{uA_gender}, 
+	ua_daterange = #{uA_daterange}, 
+	ua_age = #{uA_age}, 
+	ua_img = #{uA_img}, 
+	ua_ta_no = #{uA_ta_no} 
+where ua_no = #{uA_no}
 </update>
 
 <!--  날짜지난거 기간만료로 -->

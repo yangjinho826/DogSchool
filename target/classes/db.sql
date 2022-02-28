@@ -99,7 +99,9 @@ create table Uapply_table(
     Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
+select * from tapply_table
 select * from Uapply_table
+select * from dapply_table
 
 
 -- 알림장 테이블 --
