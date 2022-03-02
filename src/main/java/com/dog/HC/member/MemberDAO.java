@@ -135,6 +135,7 @@ public class MemberDAO {
 
 				if (ss.getMapper(MemberMapper.class).dsignup(m) == 1) {
 					req.setAttribute("result", "가입완료");
+					
 				} else {
 					req.setAttribute("result", "가입실패");
 				}
@@ -158,13 +159,16 @@ public class MemberDAO {
 		 			 + req.getParameter("phonesecond")
 		 			 + req.getParameter("phonethird");
 			String gender = req.getParameter("gender");
-
+			int typee = Integer.parseInt(req.getParameter("typee"));
+			System.out.println(typee);
+			
 			m.setId(id);
 			m.setPw(pw);
 			m.setName(name);
 			m.setPhonenumber(phonenumber);
 			m.setGender(gender);
-
+			m.setTypee(typee);
+			
 		if (ss.getMapper(MemberMapper.class).update(m) == 1) {
 			req.setAttribute("result", "수정성공");
 			req.getSession().setAttribute("loginMember", m);

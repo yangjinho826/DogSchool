@@ -25,7 +25,7 @@
 		update signup_table
 		set 
 		pw=#{pw}, name=#{name}, 
-		phonenumber=#{phonenumber}, gender=#{gender}
+		phonenumber=#{phonenumber}, gender=#{gender}, typee=#{typee}
 		where
 		id=#{id}
 	</update>
