@@ -1,6 +1,5 @@
 package com.dog.HC.Yuchiwon;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,6 @@ import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.apply.ApplyTeacher;
 import com.dog.HC.manage.ManageDAO;
 import com.dog.HC.member.MemberDAO;
-import com.dog.HC.schoolmain.postscript;
 
 @Controller
 public class YuchiwonC {

@@ -6,14 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.stereotype.Service;
 
-import com.dog.HC.apply.ApplySchool;
 import com.dog.HC.manage.ManageMapper;
 import com.dog.HC.member.Member;
-import com.dog.HC.schoolmain.notice;
-import com.dog.HC.schoolmain.noticemapper;
 
 @Service
 public class DiaryDAO {
@@ -165,7 +161,10 @@ public class DiaryDAO {
 	
 	public void writeReply(HttpServletRequest req, diaryReply dr) {
 		Member m = (Member) req.getSession().getAttribute("loginMember");
+		Diary d = (Diary) req.getSession().getAttribute("Diary");
+		int r_mp_no = d.getMp_da_no();
 		String r_owner = m.getName();
+		dr.setR_mp_no(r_mp_no);
 		dr.setR_owner(r_owner);
 
 		DiaryMapper dm = ss.getMapper(DiaryMapper.class);

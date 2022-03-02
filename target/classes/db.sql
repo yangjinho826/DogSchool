@@ -103,6 +103,7 @@ select * from tapply_table
 select * from Uapply_table
 select * from dapply_table
 
+drop table UAPPLY_TABLE
 
 -- 알림장 테이블 --
 create table mypet_table(
