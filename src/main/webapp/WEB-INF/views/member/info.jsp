@@ -121,9 +121,8 @@
 					여<input name="gender" type="radio" value="woman">
 				</span>
 			</div>
-			
+			<input name="typee" value ="${sessionScope.loginMember.typee}" hidden="hidden">
 			<div class="btn_area">
-				<button name="type" value="${param.type}" type="hidden"></button>
 				<button id="btnJoin" >수정</button><br>
 				<button id="btnJoin" onclick="bye();" type="button">탈퇴</button>
 			</div>
