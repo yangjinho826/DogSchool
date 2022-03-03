@@ -30,6 +30,66 @@ public class ApplyDAO {
 	@Autowired
 	private SqlSession ss;
 	
+    int TotalCount = 0;
+    
+    public void getTotal() {     
+         ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+         TotalCount = mm.getlistTotalCount();              
+    }
+     
+    public void pageView(ApplySchool s, HttpServletRequest req) {
+        String strPg = req.getParameter("pg");
+        
+        int rowSize = 15; //한페이지에 보여줄 글의 수
+        int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+        
+        if(strPg != null){ //list.jsp?pg=2
+            pg = Integer.parseInt(strPg); //.저장
+        }
+        
+        int from = (pg * rowSize) - (rowSize-1); //(1*10)-(10-1)=10-9=1 //from
+        int to=(pg * rowSize); //(1*10) = 10 //to
+        
+        s.setdA_no(from);
+        s.setdA_agree(to);
+        
+        
+        ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+        List<ApplySchool> passSchools = mm.getAlllist(s);
+        req.setAttribute("passSchools", passSchools);
+ 
+    }
+    
+    public void page(ApplySchool s, HttpServletRequest req) {
+        String strPg = req.getParameter("pg");
+            
+        int rowSize = 15; //한페이지에 보여줄 글의 수
+        int pg = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+       
+        if(strPg != null){ //list.jsp?pg=2
+            pg = Integer.parseInt(strPg); //.저장
+        }
+       
+        int total = TotalCount; //총 게시물 수
+        int allPage = (int) Math.ceil(total/(double)rowSize); //페이지수
+        int block = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
+
+        int fromPage = ((pg-1)/block*block)+1;  //보여줄 페이지의 시작
+        int toPage = ((pg-1)/block*block)+block; //보여줄 페이지의 끝
+        if(toPage> allPage){ // 예) 20>17
+            toPage = allPage;
+        }
+
+        req.setAttribute("pg", pg);
+        req.setAttribute("block", block);
+        req.setAttribute("fromPage", fromPage);
+        req.setAttribute("toPage", toPage);
+        req.setAttribute("allPage", allPage);
+        req.setAttribute("rowSize", rowSize);
+        req.setAttribute("TotalCount", total);
+    }
+    
+	
 	int TeacherDa_no = 0;
 
 	//원장-관리자 유치원 신청
@@ -133,6 +193,57 @@ public class ApplyDAO {
 			mf.transferTo(uploadFile);
 
 			if (ss.getMapper(ApplyMapper.class).petapply(p) == 1) {
+				req.getSession().setAttribute("successToken", token);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			new File(root + "\\" + changeFile).delete();
+		}
+	}
+	//견주-원장 강아지 신청
+	public void applyPetUpdate(@RequestParam("imggg") MultipartFile mf, ApplyPet p, HttpServletRequest req) {
+
+		String root = "";
+		String changeFile = "";
+		try {
+			String token = req.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+
+			if (token.equals(successToken)) {
+				return;
+			}
+
+			// path 가져오기
+			String path = req.getSession().getServletContext().getRealPath("resources");
+			root = path + "\\" + "img";
+			System.out.println(root);
+			File fileCheck = new File(root);
+			if (!fileCheck.exists()) {
+				fileCheck.mkdirs();
+			}
+			String originFile = mf.getOriginalFilename();
+			String ext = originFile.substring(originFile.lastIndexOf("."));
+			changeFile = UUID.randomUUID().toString() + ext;
+
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("originFile", originFile);
+			map.put("changeFile", changeFile);
+
+			p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+			p.setuA_da_no(Integer.parseInt(req.getParameter("uA_da_no")));
+			p.setuA_id(req.getParameter("uA_id"));
+			p.setuA_name(req.getParameter("uA_name"));
+			p.setuA_gender(req.getParameter("uA_gender"));
+			p.setuA_age(Integer.parseInt(req.getParameter("uA_age")));
+			p.setuA_img(changeFile);
+			p.setuA_ta_no(Integer.parseInt(req.getParameter("uA_ta_no")));
+			p.setuA_agree(0);
+				
+			// 파일업로드
+			File uploadFile = new File(root + "\\" + changeFile);
+			mf.transferTo(uploadFile);
+
+			if (ss.getMapper(ApplyMapper.class).petapplyupdate(p) == 1) {
 				req.getSession().setAttribute("successToken", token);
 			}
 		} catch (Exception e) {
@@ -330,18 +441,13 @@ public class ApplyDAO {
 		if(ap == null) {
 			return 0;
 		}
-		
-		
-	
+
 		req.getSession().setAttribute("school", ap.getdA_no());
 		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
 		return 1;
-		
-		
 	}
-	
 	// 선생님로그인 -> 리스트에서 세션 받아오기
 	public int gettlistSession(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
 		String id = req.getParameter("id");
@@ -376,9 +482,58 @@ public class ApplyDAO {
 			}
 		}
 		return 0;
+	}
+	
+	
+	//기간 만료 확인
+	// 유저로그인
+	public int getUDaterangeCheck(HttpServletRequest req, ApplySchool as) {
+		String id = req.getParameter("id");
+		as.setdA_id(id);
 			
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		
+		ApplySchool app = mm.getulistSession(as);
+
+		req.getSession().setAttribute("school", app.getdA_no());
+		req.getSession().setAttribute("schoolname", app.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", app);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+		int totalPet = mm.getAllPetCount(as); 	//해당 유저의 모든 강아지 카운트
+		int ap = mm.getUDaterangeCheck(as);		//해당 유저의 기간 만료 강아지 카운트
+
+		if(totalPet != 0 && totalPet != ap) {
+			return 4;
+		} else { //모든 강아지 == 기간 만료 강아지
+			return 5;
+		}
+	}
+	// 선생님로그인
+	public int getTDaterangeCheck(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
+		String id = req.getParameter("id");
+		as.setdA_id(id);
+			
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+
+		ApplySchool app = mm.gettlistSession(as);
+
+		req.getSession().setAttribute("school", app.getdA_no());
+		req.getSession().setAttribute("schoolname", app.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", app);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		
+		int totalPet = mm.getAllTeacherPetCount(as);//해당 유저의 모든 강아지 카운트
+		int ap = mm.getTDaterangeCheck(as);			//해당 유저의 기간 만료 강아지 카운트
+
+		if(totalPet != 0 && totalPet != ap) {
+			return 4;
+		} else { //모든 강아지 == 기간 만료 강아지
+			return 5;
+		}
 	}
 
+	
 	public void TeachCheck(ApplyTeacher a, HttpServletRequest req) {
 		ApplySchool as = (ApplySchool) req.getSession().getAttribute("getSchoolSession");
 		
@@ -513,6 +668,15 @@ public class ApplyDAO {
 			e.printStackTrace();
 		}
 	}
+	//견주가 신청 내역에서 정보 수정 시 갖고 올 정보 조회
+	public void myApplyPetInfo(ApplyPet p, HttpServletRequest req) {
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		try {
+			req.setAttribute("myApplyPet", ss.getMapper(ApplyMapper.class).getPetOne(p));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	//재신청
 	public void applyPetOnlyTeacher(ApplyPet p, HttpServletRequest req) {
 		String token = req.getParameter("token");
@@ -528,6 +692,22 @@ public class ApplyDAO {
 			req.getSession().setAttribute("successToken", token);
 		} else {
 			System.out.println("선생님 재신청 실패");
+		}
+	}
+	public void applyPetOnlyDaterange(ApplyPet p, HttpServletRequest req) {
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+		
+		p.setuA_no(Integer.parseInt(req.getParameter("uA_no")));
+		p.setuA_daterange(req.getParameter("uA_daterange"));
+
+		if (ss.getMapper(ApplyMapper.class).reapplyPetOnlyDaterange(p) == 1) {
+			System.out.println("기간 연장 재신청 성공");
+			req.getSession().setAttribute("successToken", token);
+		} else {
+			System.out.println("기간 연장 재신청 실패");
 		}
 	}
 	
@@ -643,5 +823,6 @@ public class ApplyDAO {
 		req.setAttribute("Schoolname", School.getdA_name());
 	}
 
+	
 	
 }

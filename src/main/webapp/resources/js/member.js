@@ -24,6 +24,26 @@ function Memberinfo(){
 
 function bye() {
 	var ok = confirm("탈퇴 하시겠습니까?");
+	
+	let pw= document.myForm.pw;
+	let pw1 = document.myForm.pw1;
+	
+	if (isEmpty(pw) || lessThan(pw1, 3)) {
+		alert('비밀번호를 입력해주세요.');
+		pw.value = "";
+		pw.focus();
+
+		return false;
+	}
+	if (notEquals(pw, pw1)) {
+		alert('비밀번호가 다릅니다.');
+		pw.value = "";
+		pw.focus();
+		pw1.value = "";
+		pw1.focus();
+		return false;
+	}
+	
 	if (ok) {
 		location.href = "member.bye";
 	}

@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="resources/js/gallery.js" defer></script>
 </head>
 <body>
+<section id="gallery_detail">
 	<h1>갤러리</h1>
 		<table class="gTbl_dt">
 			<tr>
@@ -17,7 +19,7 @@
 			<tr>
 				<td>
 			<c:forEach var="f" items="${g.filess }">
-				<img style="max-width: 200px"  src="resources/img/${f }">
+				<img style="width: 230px; height: 200px;" src="resources/img/${f }">
 			</c:forEach>
 				</td>
 			</tr>
@@ -35,5 +37,6 @@
 			</c:if>
 		</table>
 	<button onclick="location.href='yuchiwon.get.allgallery'">목록</button>
+</section>
 </body>
 </html>

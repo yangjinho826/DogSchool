@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,28 @@ public class ApplyController {
 	
 	@Autowired
 	private MemberDAO mDAOO;
+	
+	@Autowired
+	private SqlSession ss;
+	
+	//기간 만료만 있을 때 강아지 목록 막기 => 기간 만료 강아지 존재 = uapplytable에 하나라도 강아지 존재
+	@RequestMapping(value = "endDaterangeCheck", method = RequestMethod.GET)
+	public @ResponseBody int endDaterangeCheck(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
+		String typee = req.getParameter("typee");
+		String id = req.getParameter("id");
+		as.setdA_id(id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		int totalPet1 = mm.getAllPetCount(as);
+		int totalPet2 = mm.getAllTeacherPetCount(as);
+		
+		if(typee.equals("1") && totalPet1 != 0){
+			return aDAO.getUDaterangeCheck(req, as); 
+		}else if(typee.equals("2") && totalPet2 != 0) {
+			return aDAO.getTDaterangeCheck(req, as, at); 
+		}
+		return 6;
+	}
 	
 	//신청하는 폼으로 이동
 	@RequestMapping(value = "apply.go", method = RequestMethod.GET)
@@ -73,6 +96,7 @@ public class ApplyController {
 		}
 			
 		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
 			
 		aDAO.getMySchoolApply(m, req); //       유치원전체목록조회
 		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회
@@ -84,10 +108,79 @@ public class ApplyController {
 		return "index";
 	}
 	
+	//기간 연장 재신청하는 폼으로 이동
+	@RequestMapping(value = "reapply.daterange.go", method = RequestMethod.GET)
+	public String reapplyDaterange(ApplySchool s, ApplyTeacher t, ApplyPet p, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
+				
+		aDAO.myPetInfo(p, req);
+		aDAO.getOneSchool(s, req);
+		aDAO.getOneSchoolTeacher(t, req);
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyHomePet.jsp");	
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}	
+	//견주->원장 선생님만 변경 신청
+	@RequestMapping(value = "reapply.daterange", method = RequestMethod.GET)
+	public String reapplyDaterangeGo(Member m, ApplyPet p, HttpServletRequest req) {
+		if(mDAOO.loginCheck(req)) {
+			aDAO.applyPetOnlyDaterange(p, req);
+		}
+				
+		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);			//	승인된선생님전체
+				
+		aDAO.getMySchoolApply(m, req); //       유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회
+		aDAO.getMyPetApply(m, req); //			강아지전체목록조회
+			
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//신청 내용 수정 폼으로 이동(승인 전) apply.pet.update
+	@RequestMapping(value = "apply.go.pet.update", method = RequestMethod.GET)
+	public String applyGoPetUpdate(ApplySchool s, ApplyTeacher t, ApplyPet p, HttpServletRequest req) {
+		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
+			
+		aDAO.myApplyPetInfo(p, req);
+			
+		aDAO.getOneSchool(s, req);
+		aDAO.getOneSchoolTeacher(t, req);
+
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyHomePetUpdate.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
+	//신청 내용 수정하러 가기
+	@RequestMapping(value = "apply.pet.update", method = RequestMethod.POST)
+	public String applyPetUpdate(@RequestParam("imggg") MultipartFile mf, Member m, ApplyPet p, HttpServletRequest req) {
+		if(mDAOO.loginCheck(req)) {
+			aDAO.applyPetUpdate(mf, p, req);
+		}
+		
+		mDAO.getAllSchool(req);
+		mDAO.getAllTeacher(req);
+			
+		aDAO.getMySchoolApply(m, req); //       유치원전체목록조회
+		aDAO.getMyTeacherApply(m, req); //		선생님전체목록조회
+		aDAO.getMyPetApply(m, req); //			강아지전체목록조회
+		
+		req.setAttribute("MenuBar", "main/menu.jsp");
+		req.setAttribute("contentPage", "apply/applyWaiting.jsp");
+		req.setAttribute("footer", "main/footer.jsp");
+		return "index";
+	}
 	
 	//유치원 선택 후 견주 등록하는 폼으로 이동
 	@RequestMapping(value = "apply.go.pet", method = RequestMethod.GET)
-	public String applyGoPet(ApplySchool s, ApplyTeacher t, HttpServletRequest req) {
+	public String applyGoPet(ApplySchool s, ApplyTeacher t, ApplyPet p, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
 		TokenMaker.make(req);
 		

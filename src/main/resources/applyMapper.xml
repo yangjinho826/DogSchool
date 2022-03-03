@@ -150,6 +150,25 @@ where rownum = 1
 </select>
 
 
+<!-- 기간 만료 체크 -->
+<select id="getAllPetCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE where ua_agree = 1 and ua_id = #{dA_id}
+</select>
+<select id="getUDaterangeCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE where ua_id = #{dA_id} and ua_daterange = '기간 만료'
+</select>
+<select id="getAllTeacherPetCount" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE 
+	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = #{dA_id})
+</select>
+<select id="getTDaterangeCheck" parameterType="com.dog.HC.apply.ApplySchool" resultType="int">
+select count(*) from UAPPLY_TABLE 
+	where ua_ta_no = (select ta_no from TAPPLY_TABLE where ta_id = #{dA_id})
+	and ua_daterange = '기간 만료'
+</select>
+
+
+
 <!-- 원장: 선생님, 견주 삭제 -->
 <delete id="deleteTeacher" parameterType="com.dog.HC.apply.ApplyTeacher">
 delete Tapply_table where Ta_no = #{tA_no} 
@@ -167,7 +186,7 @@ delete uApply_table where uA_no = #{uA_no}
 <select id="getPetOne" resultType="com.dog.HC.apply.ApplyPet">
 select * from uApply_table where uA_no = #{uA_no}
 </select>
-<!-- 재신청 진행 -->
+<!-- 선생님 재신청 진행 -->
 <update id="reapplyPetOnlyTeacher" parameterType="com.dog.HC.apply.ApplyPet">
 update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_no}
 </update>
@@ -175,6 +194,23 @@ update uApply_table set uA_agree = 0, uA_ta_no = #{uA_ta_no} where uA_no = #{uA_
 <select id="getAllPetApply" resultType="com.dog.HC.apply.ApplyPet">
 select * from uApply_table where uA_agree = 1
 </select>
+<!-- 기간 연장 재신청 -->
+<update id="reapplyPetOnlyDaterange" parameterType="com.dog.HC.apply.ApplyPet">
+update uApply_table set uA_agree = 0, uA_daterange = #{uA_daterange}, Ua_endDay = null where uA_no = #{uA_no}
+</update>
+
+
+<!-- 신청 내역에서 승인 전 내용 고치기 -->
+<update id="petapplyupdate" parameterType="com.dog.HC.apply.ApplyPet">
+update uapply_table 
+set ua_name = #{uA_name}, 
+	ua_gender = #{uA_gender}, 
+	ua_daterange = #{uA_daterange}, 
+	ua_age = #{uA_age}, 
+	ua_img = #{uA_img}, 
+	ua_ta_no = #{uA_ta_no} 
+where ua_no = #{uA_no}
+</update>
 
 <!--  날짜지난거 기간만료로 -->
 <delete id="UpdateDaterange" parameterType="com.dog.HC.apply.ApplyPet">
@@ -210,5 +246,20 @@ where uA_no = #{uA_no} and uA_agree = 1
 	delete from uApply_table
 	where uA_no = #{uA_no} and uA_agree = 1
 </delete>
+
+
+<select id="getAlllist" resultType="com.dog.HC.apply.ApplySchool" parameterType="com.dog.HC.apply.ApplySchool">
+        select rn, da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+            from (select Rownum as rn,da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+                from (select da_no, da_id,da_name,da_schoolname, da_addr, da_phonenumber, da_agree
+                      from dapply_table
+                      order by da_no desc))
+        where RN between #{dA_no} and #{dA_agree} and dA_agree = 1
+    </select>
+    
+    
+<select id="getlistTotalCount" resultType="int">
+        select count(*) from Dapply_table
+</select>
 
 </mapper>

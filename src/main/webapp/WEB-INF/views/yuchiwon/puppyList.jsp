@@ -13,6 +13,7 @@
 	<h2 id="puppyListTitle">마이펫 목록</h2>
 	<table id="puppyListTbl" border="1">
 		<tr>
+			<th>유치원 이름</th>
 			<th>사진</th>
 			<th>강아지 이름</th>
 			<th>견주 아이디</th>
@@ -20,9 +21,14 @@
 		</tr>
 		<c:forEach var="p" items="${puppies }">
 		<c:if test="${p.uA_daterange ne '기간 만료' }">
-		<tr>
-			<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }"><img id="puppyListImg" src="resources/img/${p.uA_img }"></a></td>
-			<td><a href="yuchiwon.get.puppy?uA_no=${p.uA_no }">${p.uA_name }</a></td>
+		<tr class="trr" onClick="location.href='yuchiwon.get.puppy?uA_no=${p.uA_no }'">
+			<td>
+				<c:forEach var="dd" items="${passSchools }">
+				<c:if test="${dd.dA_no eq p.uA_da_no }">${dd.dA_schoolname }</c:if>
+				</c:forEach>
+			</td>
+			<td><img id="puppyListImg" src="resources/img/${p.uA_img }"></td>
+			<td>${p.uA_name }</td>
 			<td>${p.uA_id }</td>
 			<td>${p.uA_daterange}</td>
 		</tr>

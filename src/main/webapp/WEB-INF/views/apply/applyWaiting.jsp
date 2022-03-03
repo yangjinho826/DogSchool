@@ -208,7 +208,11 @@
 							<td><img src="resources/img/${p.uA_img }"><br>${p.uA_name }(${p.uA_gender }, ${p.uA_age }세)</td>
 							<td>
 								${p.uA_daterange }<br>
-								<c:if test="${p.uA_daterange eq '기간 만료' }"><button id="btnCancel" onClick="location.href='review_write.go?uA_da_no=${p.uA_da_no }&uA_no=${p.uA_no }'">후기 작성하기</button></c:if>
+								<c:if test="${p.uA_daterange eq '기간 만료' }">
+									<button id="btnCancel" onClick="goWriteReview(${p.uA_da_no }, ${p.uA_no })">후기 작성하기</button>
+									<button id="btnCancel" onClick="location.href='reapply.daterange.go?dA_no=${p.uA_da_no }&uA_no=${p.uA_no }'">기간 연장 재신청</button>
+									<button id="btnCancel" onClick="deleteMyPetRecode(${p.uA_no})">삭제하기</button>
+								</c:if>
 							</td>
 							<td>
 								<c:choose>
@@ -225,7 +229,8 @@
 							<td>
 								<c:if test="${p.uA_agree eq 1}">승인 완료</c:if>
 								<c:if test="${p.uA_agree eq 0}">승인 대기 중<br>
-									<button id="btnCancel" onClick="applyCancelUa(${p.uA_no})">신청 취소</button>
+									<button id="btnCancel" onClick="applyCancelUa(${p.uA_no})">신청 취소</button> 
+									<button id="btnCancel" onClick="location.href='apply.go.pet.update?dA_no=${p.uA_da_no}&uA_no=${p.uA_no }'">정보 수정</button>
 								</c:if>
 							</td>
 						</tr>

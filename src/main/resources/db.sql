@@ -9,6 +9,8 @@ create table signup_table(
     typee int not null
 );
 
+select * from signup_tablew
+
 -- 공지 테이블 --
 create table notice_table(
 	n_no number(3) primary key,
@@ -19,10 +21,6 @@ create table notice_table(
 	n_date date not null
 );
 create sequence notice_seq;
-
-	select *
-		from notice_table
-		order by n_date desc
 
 -- 선생님 후기 테이블 --
 create table postscript_table(
@@ -72,12 +70,7 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-select * from Dapply_table
 
-
-	select *
-	from Dapply_table d, Tapply_table t
-	where d.Da_no = t.Ta_da_no and t.Ta_id = 'dfg'
 
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
@@ -91,7 +84,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from Tapply_table
+select * from Uapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -108,50 +101,43 @@ create table Uapply_table(
     Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
+select * from tapply_table
 select * from Uapply_table
+select * from dapply_table
 
-alter table Uapply_table add(Ua_endDay varchar2(30 char))
-
-insert into UAPPLY_TABLE values(57, 61, 'wer', '별달', '암컷', '02/21/2022 - 02/21/2022', 4, 'a.jpg', 345, 1);
-
-update uApply_table 
-set Ua_endDay = '02-23-2022'
-where uA_name = '1'
 
 -- 알림장 테이블 --
 create table mypet_table(
-	mp_no number(3) primary key,				-- 알림장 번호
-	mp_title varchar2(30 char) not null,		-- 알림장 제목
-	mp_condition varchar2(30 char) not null,	-- 강아지 건강상태
-	mp_meal number(8) not null,					-- 우유량
-	mp_defecate number(3) not null,				-- 배변량
-	mp_supplies  varchar2(30 char) not null,	-- 준비물
-	mp_txt varchar2 (200 char) not null,		-- 내용
-	mp_da_no number(5) not null,				-- 유치원 번호
-	mp_tid varchar2(30 char) not null,			-- 선생님 아이디
-	mp_uid varchar2(30 char) not null,			-- 유저 아이디
-	mp_uname varchar2(30 char) not null, 		-- 강아지 이름
-	mp_date date not null						-- 알림장 작성 날짜
+    mp_no number(3) primary key,                -- 알림장 번호
+    mp_title varchar2(30 char) not null,        -- 알림장 제목
+    mp_condition varchar2(30 char) not null,    -- 강아지 건강상태
+    mp_meal number(8) not null,                    -- 우유량
+    mp_defecate number(3) not null,                -- 배변량
+    mp_supplies  varchar2(30 char) not null,    -- 준비물
+    mp_txt varchar2 (200 char) not null,        -- 내용
+    mp_da_no number(5) not null,                -- 유치원 번호
+    mp_tid varchar2(30 char) not null,            -- 선생님 아이디
+    mp_tnum number(5) not null,
+    mp_uid varchar2(30 char) not null,            -- 유저 아이디
+    mp_uname varchar2(30 char) not null,         -- 강아지 이름
+    mp_date date not null                        -- 알림장 작성 날짜
 );
-create sequence mypet_table_seq;
-
-
-
-
-
+	        
 -- 갤러리 테이블 --
 create table gallery_table(
-	g_no number(3) primary key,
-	g_title varchar2(30 char) not null,
-	g_img varchar2(100 char)not null,
-	g_da_no number(5),
-	g_tid varchar2(30 char) not null,
-	g_uid varchar2(30 char) not null,
-	g_uname varchar2(30 char) not null,
-	g_date date not null
+    g_no number(3) primary key,
+    g_title varchar2(30 char) not null,
+    g_img varchar2(1000 char)not null,
+    g_da_no number(5),
+    g_tid varchar2(30 char) not null,
+    g_tnum number(5) not null,
+    g_uid varchar2(30 char) not null,
+    g_uname varchar2(30 char) not null,
+    g_date date not null
 );
 create sequence gallery_table_seq;
 
+select * from gallery_table
 
 -- 유치원 후기 테이블 --
 create table review_table(
@@ -164,4 +150,5 @@ create table review_table(
 );
 create sequence review_table_seq;
 
-select * from review_table
+select * from mypet_table
+

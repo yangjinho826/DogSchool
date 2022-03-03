@@ -2,12 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dog.HC.Yuchiwon.GalleryMapper">
 
+<select id="gallerytotalcount" parameterType="com.dog.HC.Yuchiwon.gallery" resultType="int">
+		select count(*)
+		from gallery_table
+		where g_tnum=#{g_tnum} and g_uname=#{g_uname} and g_uid=#{g_uid}
+</select>
+
 <select id="getAllGallery" resultType="com.dog.HC.Yuchiwon.gallery">
-	select * from gallery_table
-	where g_tid = #{g_tid}
-	and g_uid = #{g_uid}
-	and g_uname = #{g_uname}
-	order by g_no desc
+    select rn, g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
+	from(
+	    select rownum as rn ,g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
+		from(
+	        select g_no,g_title,g_img,g_da_no,g_tid,g_tnum,g_uid,g_uname,g_date
+	        from gallery_table
+	        where g_tnum=#{g_tnum} and g_uid=#{g_uid} and g_uname=#{g_uname}
+	        order by g_no desc ))
+	where RN between #{from} and #{to}
 </select>
 
 <select id="getGallery" resultType="com.dog.HC.Yuchiwon.gallery">
@@ -23,12 +33,13 @@
 <insert id="writeGallery" parameterType="com.dog.HC.Yuchiwon.gallery">
 	insert into gallery_table
 	values(gallery_table_seq.nextval, #{g_title}, #{g_img}, #{g_da_no},
-	#{g_tid}, #{g_uid}, #{g_uname}, to_date(sysdate, 'yy.mm.dd'))
+	#{g_tid}, #{g_tnum} ,#{g_uid}, #{g_uname}, to_date(sysdate, 'yy.mm.dd'))
 </insert>
 
 <update id="updateGallery" parameterType="com.dog.HC.Yuchiwon.gallery">
 	update gallery_table
-	set g_title = #{g_title}, g_img = #{g_img} where g_no = #{g_no}
+	set g_title = #{g_title}, g_img = #{g_img} 
+	where g_no = #{g_no}
 </update>
 
 <delete id="deleteGallery">

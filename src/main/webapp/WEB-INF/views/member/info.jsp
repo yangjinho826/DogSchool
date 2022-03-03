@@ -13,21 +13,21 @@
 		<form action="member.update" method="post" name="myForm" onsubmit="return membercall()">
 			
 			<div id="memberh3">
-				<h2>아이디</h2>
+				<h2 id="memberid">아이디</h2>
 				<span class="box int_">  
 				<input readonly="readonly" class="int" value="${sessionScope.loginMember.id}" name="id">
 				</span>
 			</div>
 			
 			<div id="memberh3">
-				<h2>비밀번호</h2>
+				<h2 id="memberid">비밀번호</h2>
 				<span class="box int_">  
 				<input value="${sessionScope.loginMember.pw}" id="pw" name="pw" class="int" type="password" maxlength="15">
 				</span>
 			</div>
 			
 			<div id="memberh3">
-				<h2>비밀번호 확인</h2>
+				<h2 id="memberid">비밀번호 확인</h2>
 				<span class="box int_">  
 				<input id="pw1" name="pw1" type="password" maxlength="15" class="int">
 				</span>
@@ -36,14 +36,14 @@
 			</div>
 			
 			<div id="memberh3">
-				<h2>이름</h2> 
+				<h2 id="memberid">이름</h2> 
 				<span class="box int_">  
 				<input value="${sessionScope.loginMember.name}" name="name" class="int" maxlength="10">
 				</span>
 			</div>
 			
 			<div id="memberh3">
-				<h2>휴대전화번호</h2>
+				<h2 id="memberid">휴대전화번호</h2>
 				<span class="box int_">  
 				<c:choose>
 					<c:when test="${fn:substring(sessionScope.loginMember.phonenumber, 0, 3) eq '010'}">
@@ -115,15 +115,14 @@
 			</div>
 			
 			<div id="memberh3">
-				<h2>성 별</h2> 
+				<h2 id="memberid">성 별</h2> 
 				<span class="box int_">  
 					남<input name="gender" type="radio" checked="checked" value="man">
 					여<input name="gender" type="radio" value="woman">
 				</span>
 			</div>
-			
+			<input name="typee" value ="${sessionScope.loginMember.typee}" hidden="hidden">
 			<div class="btn_area">
-				<button name="type" value="${param.type}" type="hidden"></button>
 				<button id="btnJoin" >수정</button><br>
 				<button id="btnJoin" onclick="bye();" type="button">탈퇴</button>
 			</div>

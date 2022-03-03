@@ -22,4 +22,6 @@ public interface DiaryMapper {
 
 	List<diary> getFiveDiary();
 
+	public int diarytotalcount(diary d);
+
 }

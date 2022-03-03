@@ -19,9 +19,104 @@ import com.dog.HC.manage.ManageMapper;
 
 @Service
 public class GalleryDAO {
-
+	
+	int TotalCountG = 0;
+	String strPgG = null;
+	
 	@Autowired
 	private SqlSession ss;
+	
+	public void getTotal(gallery g, HttpServletRequest req) {
+		puppy p = (puppy) req.getSession().getAttribute("puppies");
+		
+		int g_tnum = p.getuA_ta_no();
+		String g_uid = p.getuA_id();
+		String g_uname = p.getuA_name();
+		
+		g.setG_tnum(g_tnum);
+		g.setG_uid(g_uid);
+		g.setG_uname(g_uname);
+		
+		GalleryMapper mm = ss.getMapper(GalleryMapper.class);
+		TotalCountG = mm.gallerytotalcount(g);
+		
+		
+	}
+
+	public void pageView(gallery g, HttpServletRequest req) {
+		puppy p = (puppy) req.getSession().getAttribute("puppies");
+
+		int rowSizeG = 5; //한페이지에 보여줄 글의 수
+		int pgG = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+		    
+		if(req.getParameter("pgG") != null) {
+			strPgG = req.getParameter("pgG");
+		}
+			
+		
+	    if(strPgG != null){ //list.jsp?pg=2
+	        pgG = Integer.parseInt(strPgG); //.저장
+	    }
+
+		int fromG = (pgG * rowSizeG) - (rowSizeG-1); //(1*10)-(10-1)=10-9=1 //from
+		int toG=(pgG * rowSizeG); //(1*10) = 10 //to
+		    
+		int mp_tnum = p.getuA_ta_no();
+		String mp_uid = p.getuA_id();
+		String mp_uname = p.getuA_name();
+		
+		g.setG_tnum(mp_tnum);
+		g.setG_uid(mp_uid);
+		g.setG_uname(mp_uname);
+		g.setFrom(fromG);
+		g.setTo(toG);
+		    
+		GalleryMapper mm = ss.getMapper(GalleryMapper.class);
+		List<gallery> galleries = mm.getAllGallery(g);
+		String[] imges = null;
+		for (gallery gg : galleries) {
+			imges = gg.getG_img().split("!");
+					gg.setFiless(imges);
+		}
+		req.setAttribute("galleries", galleries);
+		
+	}
+
+	public void page(gallery g, HttpServletRequest req) {
+		int rowSizeG = 5; //한페이지에 보여줄 글의 수
+		int pgG = 1; //페이지 , list.jsp로 넘어온 경우 , 초기값 =1
+		   
+	   	
+		if(req.getParameter("pgG") != null) {
+			strPgG = req.getParameter("pgG");
+		}
+		
+	    if(strPgG != null){ //list.jsp?pg=2
+	        pgG = Integer.parseInt(strPgG); //.저장
+	    }
+
+		
+	    int totalG = TotalCountG; //총 게시물 수
+	    int allPageG = (int) Math.ceil(totalG/(double)rowSizeG); //페이지수
+	    int blockG = 10; //한페이지에 보여줄  범위 << [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] >>
+
+	    int fromPageG = ((pgG-1)/blockG*blockG)+1;  //보여줄 페이지의 시작
+	    int toPageG = ((pgG-1)/blockG*blockG)+blockG; //보여줄 페이지의 끝
+	    if(toPageG> allPageG){ // 예) 20>17
+	        toPageG = allPageG;
+	    }
+
+	    req.setAttribute("pgG", pgG);
+	    req.setAttribute("blockG", blockG);
+	    req.setAttribute("fromPageG", fromPageG);
+	    req.setAttribute("toPageG", toPageG);
+	    req.setAttribute("allPageG", allPageG);
+	    req.setAttribute("rowSizeG", rowSizeG);
+	    req.setAttribute("TotalCountG", totalG);
+		
+		
+	}
+
 
 	public void getAllGallery(HttpServletRequest req, gallery g) {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
@@ -37,6 +132,8 @@ public class GalleryDAO {
 		GalleryMapper gm = ss.getMapper(GalleryMapper.class);
 		List<gallery> galleries = gm.getAllGallery(g);
 		String[] imges = null;
+		
+		
 		for (gallery gg : galleries) {
 			imges = gg.getG_img().split("!");
 					gg.setFiless(imges);
@@ -46,16 +143,12 @@ public class GalleryDAO {
 	}
 
 	public void getGallery(HttpServletRequest req, gallery g) {
-
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
-//		System.out.println(p);
-		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
-		String g_uid = p.getuA_id();
-		String g_uname = p.getuA_name();
+		
+		int g_no = Integer.parseInt(req.getParameter("g_no"));
+		
+		g.setG_no(g_no);
 
-		g.setG_tid(g_tid);
-		g.setG_uid(g_uid);
-		g.setG_uname(g_uname);
 		
 		GalleryMapper gm = ss.getMapper(GalleryMapper.class);
 		gallery gallery = gm.getGallery(g);
@@ -79,9 +172,11 @@ public class GalleryDAO {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
 
 		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
+		int g_tnum = p.getuA_ta_no();
 		String g_uid = p.getuA_id();
 		String g_uname = p.getuA_name();
 		
+		g.setG_tnum(g_tnum);
 		g.setG_title(g_title);
 		g.setG_tid(g_tid);
 		g.setG_uid(g_uid);
@@ -144,22 +239,16 @@ public class GalleryDAO {
 	}
 
 	public void updateGallery(String g_title, List<MultipartFile> multiFileList, HttpServletRequest req, String off, int g_no) {
-
-		String token = req.getParameter("token");
-		String successToken = (String) req.getSession().getAttribute("successToken");
-
 		
 		String[] of = off.split("!");
-		if (token.equals(successToken)) {
-			return;
-		}
+
 		gallery g = new gallery();
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
-
+		System.out.println("1"+p);
 		String g_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_da_no());
 		String g_uid = p.getuA_id();
 		String g_uname = p.getuA_name();
-		
+		System.out.println(g_tid);
 		g.setG_title(g_title);
 		g.setG_tid(g_tid);
 		g.setG_uid(g_uid);
@@ -204,7 +293,7 @@ public class GalleryDAO {
 			GalleryMapper gm = ss.getMapper(GalleryMapper.class);
 			if(gm.updateGallery(g)==1) {
 				System.out.println("수정성공");
-				req.getSession().setAttribute("successToken", token);
+
 				
 				for (String o : of) {
 					File oo = new File(root +"\\"+ o );
@@ -259,18 +348,10 @@ public class GalleryDAO {
 		
 	}
 
-	public void getFiveGallery(HttpServletRequest req) {
-		
-		GalleryMapper gm = ss.getMapper(GalleryMapper.class);
-		List<gallery> galleries = gm.getFiveGallery();
-		String[] imges = null;
-		for (gallery gg : galleries) {
-			imges = gg.getG_img().split("!");
-					gg.setFiless(imges);
-		}
-		
-		req.setAttribute("galleries", galleries);
-		
+	public void strPg_initialization() {
+		TotalCountG = 0;
+		strPgG = null;
 	}
+
 
 }

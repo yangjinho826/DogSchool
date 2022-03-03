@@ -289,9 +289,61 @@ function deletePet(num){
 	}
 }
 
+function goWriteReview(n1, n2){
+	var ok = confirm("후기 작성을 완료하면 신청 내역이 자동으로 삭제됩니다.\n이동하시겠습니까?");
+	if(ok){
+		location.href="review_write.go?uA_da_no=" + n1 + "&uA_no=" + n2;		
+	}
+}
+function deleteMyPetRecode(num){
+	var ok = confirm("신청 내역 기록을 삭제하시겠습니까?");
+	if(ok){
+		location.href = "apply.delete.p?uA_no=" + num;
+		alert("삭제되었습니다.");
+	}
+}
+
+
+//uapply_table 에 기간만료인 강아지만 있어서 강아지목록 이용 막기
+function endDaterangeCheck(){
+	$(".member_info_btn_list").click(function(){
+		const id = ($('.member_info_btn_list').data('id'));
+		const typee = ($('.member_info_btn_list').data('typee'));
+		
+		if(typee === 1){
+			  $.ajax({
+				  url : '/HC/endDaterangeCheck',
+				  type : 'GET',
+				  data : {id: id, typee:typee},
+			  	  success : function(result){	
+			  		  if(result === 4){
+			  			  location.href="yuchiwon.get.allpuppy?id="+id+"&typee="+typee;
+			  		  }else if(result === 5){
+			  			  alert("등록하신 강아지의 기간이 만료되어 이용할 수 없습니다.");
+			  		  }
+				  }
+			  })
+		}else if(typee === 2){
+			 $.ajax({
+				  url : '/HC/endDaterangeCheck',
+				  type : 'GET',
+				  data : {id: id, typee:typee},
+			  	  success : function(result){	
+			  		  if(result === 4){
+			  			  location.href="yuchiwon.get.allpuppy?id="+id+"&typee="+typee;			  			 
+			  		  }else if(result === 5){
+			  			  alert("관리 중인 강아지의 기간이 만료되어 이용할 수 없습니다.");
+			  		  }
+				  }
+			  })
+		}
+		
+	});
+}
 
 $(function() {
 	connectAddrSearchEvent();
 	daterangeSelectEvent();
 	checkTeacher();
+	endDaterangeCheck();
 });
