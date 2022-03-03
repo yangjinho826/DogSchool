@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="mempty">
 <h1 id="mtitle">회원 정보 수정</h1>
 	<div id="memberh3">
-		<span class="box int_">수정이 완료되었습니다. </span>
+		<span class="boxbye int_">수정이 완료되었습니다. </span>
 	</div>
+</div>
 </body>
 </body>
 </html>
