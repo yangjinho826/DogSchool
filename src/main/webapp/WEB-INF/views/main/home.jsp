@@ -16,8 +16,7 @@
 			
 			<section class="home_review">
 				<section id="review_Home">
-					<h1 class="review_title">유치원 목록</h1>
-					<button id="seemore2" onClick="location.href='list.go'">+</button>
+					<h1 class="review_title"><a href="list.go" >유치원 목록</a></h1>
 					<section id="review_Body">
 						<table class="review">
 							<tr class="review_tr">
@@ -49,12 +48,10 @@
 
 			<section class="home_review">
 				<section id="review_Home">
-					<h1 class="review_title">유치원 후기</h1>
-					<button id="seemore" onClick="location.href='review.go'">+</button>
+					<h1 class="review_title"><a href="review.go" >유치원 후기</a></h1>
 					<section id="review_Body">
 						<table class="review">
 							<tr class="review_tr">
-								<td class="review_table_title" style="width: 10%;">글 번호</td>
 								<td class="review_table_title" style="width: 50%;">제목</td>
 								<td class="review_table_title" style="width: 20%;">작성자</td>
 								<td class="review_table_title" style="width: 20%;">날짜</td>
@@ -65,7 +62,6 @@
 							
 							<c:forEach var="r" items="${reviews }">
 								<tr>
-									<td style="height: 45px">${r.r_no }</td>
 									<td><a href="review.Detail?r_no=${r.r_no}">${r.r_title }</a></td>
 									<td>${r.r_id }</td>
 									<td><fmt:formatDate value="${r.r_date }" type="both"
@@ -80,6 +76,5 @@
 				</section>
 			</section>
 		</section>
-	</section>
 </body>
 </html>

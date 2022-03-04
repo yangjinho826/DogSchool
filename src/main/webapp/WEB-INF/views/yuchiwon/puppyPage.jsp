@@ -12,10 +12,12 @@
 <body>
 	<section id="puppyPageHome">	
 		<div class="puppyDiaryPreview">
+		 <div class="puppyPageTitle">
 			<h1 id="puppyPageTitle">알림장</h1>
 			<c:if test="${sessionScope.loginMember.typee ==  2}">
 				<button onclick="writeDiaryGo()">작성하기</button>
 			</c:if>
+		  </div>
 				<div class="tableSort">
 				<c:forEach var="d" items="${diaries }">
 					<table border="1" id="dairyTbl">
@@ -89,10 +91,12 @@
 		
 		
 		<div class="puppyGalleryPreview">
+		 <div class="puppyPageTitle">
 			<h1 id="puppyPageTitle">갤러리</h1>
 			<c:if test="${sessionScope.loginMember.typee ==  2}">
 				<button onclick="GallerywriteWindow()">작성하기</button>
 			</c:if>
+		 </div>
 			<div class="tableSort">
 				<c:forEach var="g" items="${galleries }">
 				<table border="1" id="dairyTbl">
