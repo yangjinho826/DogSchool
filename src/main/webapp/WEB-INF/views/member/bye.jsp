@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 id="mtitle">회원 탈퇴가 완료되었습니다.</h1>
+<div id="mempty">
+<h1 id="mtitlebye">회원 탈퇴가 완료되었습니다.</h1>
 	<div id="memberh3">
 	
-		<span class="box int_"> 
+		<span class="boxbye int_"> 
 		Dog School을 이용해주셔서 감사합니다.
 		</span>
 		
@@ -19,5 +20,6 @@
 		</div>
 		
 	</div>
+</div>
 </body>
 </html>
