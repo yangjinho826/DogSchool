@@ -19,7 +19,7 @@ function gallerycallme(){
 	 let g_title = document.galleryForm.g_title;
 
 	 if(isEmpty(g_title)){
-		alert('가격을 입력하세요');
+		alert('제목을 입력하세요');
 		g_title.value = "";
 		g_title.focus();
 
