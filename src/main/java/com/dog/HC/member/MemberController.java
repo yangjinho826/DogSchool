@@ -185,5 +185,11 @@ public class MemberController {
 		return mDAOO.getMemberNum(req, m);
 	}
 	
+	@RequestMapping(value = "phonenumber.get", method = RequestMethod.GET)
+	public @ResponseBody int phonenumberGet(HttpServletRequest req, Member m) {
+		return mDAOO.getphonnumber(m, req);
+	}
+	
+	
 
 }

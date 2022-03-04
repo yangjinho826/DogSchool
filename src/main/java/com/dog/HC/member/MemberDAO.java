@@ -268,8 +268,21 @@ public class MemberDAO {
 		System.out.println(ss.getMapper(MemberMapper.class).getMemberNum(m));
 		return ss.getMapper(MemberMapper.class).getMemberNum(m);
 	}
+	
 
+	public int getphonnumber(Member m, HttpServletRequest req) {
+		MemberMapper mm = ss.getMapper(MemberMapper.class);
+		int member = mm.phonnumberget(m);
+		
+		String phonenumber = req.getParameter("phonenumber");
+		m.setPhonenumber(phonenumber);
+		
+		if(member > 0) {
+			return 0;			
+		}
+		return 1;
 
+	}
 
 
 }
