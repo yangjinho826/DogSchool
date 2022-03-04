@@ -17,6 +17,10 @@ select * from UAPPLY_TABLE
 
 select * from MYPET_TABLE
 
+select * from GALLERY_TABLE
+
+delete from MYPET_TABLE_REPLY
+
 -- 선생님이 가지고 있는 강아지만 출력
 -- 유저가입할때 입력한 선생님이름과 선생님 테이블의 ta_name은 같고
 -- 그 네임인데 agree = 1인 사람에 접근하여 그사람의 pk ta_no을 결국 알아야함
@@ -41,6 +45,13 @@ Uapply_table_seq.nextval, 21, 'mz10', '나의유일강아지', '암컷', '202202
 insert into UAPPLY_TABLE values(
 Uapply_table_seq.nextval, 1, 'asd', '요미', '여', '20220201', 2, 'ㅇ.jpg','선생엠지', 1);
 
+insert into GALLERY_TABLE values(
+61,'귀여3334576576', '8f6a344f-f0dc-4f8d-adbc-311e0fed43dd.jpg!697bf776-6ca7-4886-b256-85a1c03a3d55.jpg!',21,'t1',41,'u1','p1', '2022-02-16');
+
+65 p111         f9a3555d-620b-409d-a098-3bcf2fa79383.jpg!b84f6dd5-1fe9-4d86-893d-6356e11a4670.jpg!      21 t1    u1    p1      2022-02-14 00:00:00.0
+   62 귀여2368283    f5bd38f0-7f30-4fb7-8d95-72f8867097e1.jpg!3e9cb4ce-3c30-4d71-ad7a-bfb8da7bddd3.jpg!      21 t1    mz10  나의유일강아지 2022-02-14 00:00:00.0
+   61 귀여3334576576 8f6a344f-f0dc-4f8d-adbc-311e0fed43dd.jpg!697bf776-6ca7-4886-b256-85a1c03a3d55.jpg!      21 t1    mz10  나의유일강아지 2022-02-14 00:00:00.0
+   
 -- 유저가 가지고 있는 강아지만 출력
 select ua_name
 from UAPPLY_TABLE
@@ -97,9 +108,32 @@ select rn, r_no, r_da_no, r_id,r_title,r_txt, r_date
 		where RN between #{r_da_no} and #{r_no}
 
 
+select * from (select * from mypet_table order by mp_no desc)
+		where mp_tid = 't1'
+		and mp_uid = 'u1'
+		and mp_uname = 'p1'
+		and rownum &lt;= 5
+		order by mp_no desc
 
+select *
+from (select * from mypet_table order by mp_no desc)
+	where rownum <= 5
+	and mp_uname = 'p1'
+	and mp_tid = 't1'
+	and mp_uid = 'u1'
 
+insert into mypet_table values(mypet_table_seq.nextval, 'zz', 'zz',1,2,'aa'
+,'tt',1,'t1',41,'u1','p1',sysdate)
 
-
-
-
+select * from(
+select * from mypet_table
+		where mp_tnum = 41
+		and mp_uid = 'u1'
+		and mp_uname = 'p1'
+		order by mp_no desc)
+		where rownum between 1 and 3
+		
+		select count(*) from mypet_table where mp_da_no = 1
+		
+		
+select * from mypet_table_reply where r_mp_no = 11 order by r_no desc

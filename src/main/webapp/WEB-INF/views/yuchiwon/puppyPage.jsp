@@ -20,9 +20,9 @@
 		  </div>
 				<div class="tableSort">
 				<c:forEach var="d" items="${diaries }">
-					<table border="1" id="dairyTbl">
+					<table border="1" id="dairyTbl" onclick="location.href='diary.detail.go?mp_no=${d.mp_no}'">
 						<tr>
-							<td><a href="diary.detail.go?mp_no=${d.mp_no}">제목 : ${d.mp_title }</a></td>
+							<td>제목 : ${d.mp_title }</td>
 						</tr>
 						<tr>
 							<td>건강상태 : ${d.mp_condition }</td>

@@ -6,14 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.stereotype.Service;
 
-import com.dog.HC.apply.ApplySchool;
+import com.dog.HC.apply.ApplyTeacher;
 import com.dog.HC.manage.ManageMapper;
-import com.dog.HC.member.Member;
-import com.dog.HC.schoolmain.notice;
-import com.dog.HC.schoolmain.noticemapper;
 
 @Service
 public class DiaryDAO {
@@ -128,13 +124,13 @@ public class DiaryDAO {
 		
 		int mp_da_no = p.getuA_da_no();
 		int mp_tnum = p.getuA_ta_no();
-		String mp_tid = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
+		ApplyTeacher teacher = ss.getMapper(ManageMapper.class).getTeacherId(p.getuA_ta_no());
 		String mp_uid = p.getuA_id();
 		String mp_uname = p.getuA_name();
 
 		d.setMp_da_no(mp_da_no);
 		d.setMp_tnum(mp_tnum);
-		d.setMp_tid(mp_tid);
+		d.setMp_tid(teacher.gettA_id());
 		d.setMp_uid(mp_uid);
 		d.setMp_uname(mp_uname);
 
@@ -149,34 +145,40 @@ public class DiaryDAO {
 	}
 
 	
-	public void getDiary(HttpServletRequest req, diary d) {
+	public void getDiary(HttpServletRequest req, diary d, diaryReply dr) {
 		
-		int mp_no = Integer.parseInt(req.getParameter("mp_no"));
-
-		
-		d.setMp_no(mp_no);
+//		int mp_no = Integer.parseInt(req.getParameter("mp_no"));
+//		d.setMp_no(mp_no);
 		
 		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
-		diary dr = dm.getDiary(d);
+		d = dm.getDiary(d);
+		
+		List<diaryReply> replys = dm.getReply(d);
+		if(replys != null) {
+			d.setMp_replys(replys);
+		}
 
-		req.setAttribute("d", dr);
+		req.setAttribute("d", d);
 	}
 
 	
-	public void writeReply(HttpServletRequest req, diaryReply dr) {
-		Member m = (Member) req.getSession().getAttribute("loginMember");
-		String r_owner = m.getName();
-		dr.setR_owner(r_owner);
-
+	public void writeReply(HttpServletRequest req, diary d, diaryReply dr) {
+	
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		
+		if(token.equals(successToken)){ return; }
+		
 		DiaryMapper dm = ss.getMapper(DiaryMapper.class);
 		if (dm.writeReply(dr) == 1) {
 			System.out.println("댓글성공");
+			req.getSession().setAttribute("successToken", token);
 		} else {
 			System.out.println("댓글실패");
 		}
 	}
 
-	public void deleteReply(HttpServletRequest req, diaryReply dr) {
+	public void deleteReply(HttpServletRequest req, diary d, diaryReply dr) {
 
 		try {
 			if (ss.getMapper(DiaryMapper.class).deleteReply(dr) == 1) {
@@ -218,9 +220,9 @@ public class DiaryDAO {
 
 	}
 
-	public void getFiveDiary(HttpServletRequest req) {
+	public void getFiveDiary(HttpServletRequest req, diary d) {
 	    DiaryMapper mm = ss.getMapper(DiaryMapper.class);
-	    List<diary> diaries = mm.getFiveDiary();
+	    List<diary> diaries = mm.getFiveDiary(d);
 		req.setAttribute("diaries", diaries);
 		}
 
