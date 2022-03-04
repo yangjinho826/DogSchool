@@ -30,7 +30,7 @@
 				<td>날짜 : ${g.g_date }</td>
 			</tr>
 
-			<c:if test="${sessionScope.loginMember.id == g.g_tid}">
+			<c:if test="${sessionScope.loginMember.typee == 2}">
 				<tr>
 					<td>
 						<button onclick="updateGallery('${g.g_no}')">수정</button>
@@ -39,7 +39,7 @@
 				</tr>
 			</c:if>
 		</table>
-	<button onclick="location.href='yuchiwon.get.allgallery'">목록</button>
+	<button onclick="location.href='yuchiwon.get.puppy?uA_no=${sessionScope.puppies.uA_no }'">목록</button>
 </section>
 </body>
 </html>

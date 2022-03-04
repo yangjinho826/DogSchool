@@ -12,7 +12,7 @@ public interface DiaryMapper {
 
 	public int writeReply(diaryReply dr);
 
-	public List<diaryReply> getReply(diary diary);
+	public List<diaryReply> getReply(diary d);
 
 	public int deleteReply(diaryReply dr);
 

@@ -17,6 +17,10 @@ select * from UAPPLY_TABLE
 
 select * from MYPET_TABLE
 
+select * from GALLERY_TABLE
+
+delete from MYPET_TABLE_REPLY
+
 -- 선생님이 가지고 있는 강아지만 출력
 -- 유저가입할때 입력한 선생님이름과 선생님 테이블의 ta_name은 같고
 -- 그 네임인데 agree = 1인 사람에 접근하여 그사람의 pk ta_no을 결국 알아야함
@@ -130,3 +134,6 @@ select * from mypet_table
 		where rownum between 1 and 3
 		
 		select count(*) from mypet_table where mp_da_no = 1
+		
+		
+select * from mypet_table_reply where r_mp_no = 11 order by r_no desc

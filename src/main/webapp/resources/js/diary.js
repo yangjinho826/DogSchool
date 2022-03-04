@@ -1,7 +1,7 @@
-function deleteReply(n){
+function deleteReply(n, t){
 	var ok = confirm("댓글을 삭제하시겠습니까?");
 	if (ok) {
-		location.href = "diary.reply.delete?r_no=" + n;
+		location.href = "diary.reply.delete?r_no=" + n + "&mp_no=" + t;
 	}
 }
 

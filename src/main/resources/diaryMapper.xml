@@ -34,8 +34,7 @@
 		where rownum &lt;= 5
 	</select>
 
-	<insert id="writeDiary"
-		parameterType="com.dog.HC.Yuchiwon.diary">
+	<insert id="writeDiary" parameterType="com.dog.HC.Yuchiwon.diary">
 		insert into MYPET_TABLE
 		values(mypet_table_seq.nextval, #{mp_title}, #{mp_condition},
 		#{mp_meal}, #{mp_defecate}, #{mp_supplies}, #{mp_txt},
@@ -51,25 +50,21 @@
 		where mp_no = #{mp_no}
 	</update>
 
-	<delete id="deleteDiary"
-		parameterType="com.dog.HC.Yuchiwon.diary">
+	<delete id="deleteDiary" parameterType="com.dog.HC.Yuchiwon.diary">
 		delete from mypet_table where mp_no = #{mp_no}
 	</delete>
 
 	<!-- reply -->
 
-	<select id="getReply" parameterType="com.dog.HC.Yuchiwon.diary"
-		resultType="com.dog.HC.Yuchiwon.diaryReply">
-		select * from mypet_table_reply where r_mp_no = #{mp_no} order by r_no desc
+	<select id="getReply" parameterType="com.dog.HC.Yuchiwon.diary" resultType="com.dog.HC.Yuchiwon.diaryReply">
+		select * from mypet_table_reply where r_mp_no = #{mp_no} order by r_no
 	</select>
 
-	<insert id="writeReply"
-		parameterType="com.dog.HC.Yuchiwon.diaryReply">
+	<insert id="writeReply" parameterType="com.dog.HC.Yuchiwon.diaryReply">
 		insert into mypet_table_reply
 		values(mypet_table_reply_seq.nextval, #{r_mp_no}, #{r_owner}, #{r_txt}, sysdate)
 	</insert>
-	<delete id="deleteReply"
-		parameterType="com.dog.HC.Yuchiwon.diaryReply">
+	<delete id="deleteReply" parameterType="com.dog.HC.Yuchiwon.diaryReply">
 		delete from mypet_table_reply where r_no = #{r_no}
 	</delete>
 
