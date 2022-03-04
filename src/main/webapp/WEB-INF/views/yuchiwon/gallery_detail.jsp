@@ -11,10 +11,12 @@
 </head>
 <body>
 <section id="gallery_detail">
-	<h1>갤러리</h1>
+		 <section class="notice_Detail">
+			<h1 class="notice_title" >갤러리</h1>
+		 </section>
 		<table class="gTbl_dt">
 			<tr>
-				<td>제목 : ${g.g_title }</td>
+				<td class="g_title">제목 : ${g.g_title }</td>
 			</tr>
 			<tr>
 				<td>
@@ -24,13 +26,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td>작성자 : ${g.g_tid }</td>
-			</tr>
-			<tr>
 				<td>날짜 : ${g.g_date }</td>
 			</tr>
 
-			<c:if test="${sessionScope.loginMember.typee == 2}">
+			<c:if test="${sessionScope.loginMember.id == g.g_tid}">
 				<tr>
 					<td>
 						<button onclick="updateGallery('${g.g_no}')">수정</button>
@@ -39,7 +38,9 @@
 				</tr>
 			</c:if>
 		</table>
-	<button onclick="location.href='yuchiwon.get.puppy?uA_no=${sessionScope.puppies.uA_no }'">목록</button>
+		<div class="gallery_Detail_Button">
+			<button  class="notice_Detail_Btn" onclick="location.href='yuchiwon.get.puppy?&uA_no=${sessionScope.puppies.uA_no }'">목록</button>
+		</div>
 </section>
 </body>
 </html>

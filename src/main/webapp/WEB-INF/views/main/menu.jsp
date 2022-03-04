@@ -11,7 +11,7 @@
 	<div class="menu">
 		<div class="menu_title">
 			<img onClick="location.href='HC.go'" class="menu_title_img" src="resources/img/dog-solid-1.png">
-			<a href="HC.go"><h1 class="menu_title_t">강아지 유치원</h1></a>
+			<h1 class="menu_title_t"><a href="HC.go">강아지 유치원</a></h1>
 		</div>
 		<div class="menu_menubar">
 				<a href="list.go" class="menu_menubar_item">유치원 목록</a>

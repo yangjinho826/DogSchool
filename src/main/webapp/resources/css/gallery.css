@@ -4,7 +4,7 @@
 	border: 5px solid gray;
 	width: 300px;
 	height:500px;
-float: left;
+	float: left;
 }
 .gTbl td{
 text-align: center;
@@ -22,7 +22,7 @@ border: 1px solid black;
 	margin-right: auto;
 	border: 5px solid gray;
 	margin-bottom: 50px;
-	width: 500px;
+	width: 1000px;
 }
 
 
@@ -82,6 +82,11 @@ border: 1px solid black;
 	min-height: 57%;
 }
 
+.puppyPageTitle{
+	display: flex;
+	justify-content: space-between;
+}
+
 #puppyPageTitle{
 	padding:15px;
 }
@@ -124,8 +129,10 @@ border: 1px solid black;
 
 .puppyGalleryPreview{
 	width: 95%;
+	padding:10px;
 	margin-left:auto; margin-right:auto;
 	border:black 3px solid;
+	align-self: center;
 }
 
 .tableSort{
@@ -135,3 +142,63 @@ border: 1px solid black;
 #gallery_detail{
 	min-height: 57%;
 }
+
+/* 갤러리 작성 */
+   #gallery_write{
+	margin: 5px;
+ }
+  
+  .gallery_write_title{
+  	font-size: 35px;
+  	text-align: center;
+  	margin-top: 0;
+  	background-color: #e5edf1;
+  }
+  
+  .gallery_write_title{
+  	margin-bottom: 5px;
+  }
+  
+  .gallery_write_input{
+  	margin-top: 15px;
+  }
+  
+  .gallery_write_input_w{
+    font-weight: bold;
+  	font-size: 20px;
+  	padding-left: 10px;	
+  }
+  
+  .gallery{
+  	margin-left: 30px;
+  }
+  
+  .gallery1{
+  	margin-left: 10px;
+  }
+  
+  #gallery_write_btn{
+  	margin-top: 15px;
+  }
+  
+  
+ .gallery_write_btn{
+ 	float :left;
+ 	border: 3px solid black;
+ 	border-top-width: thin;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	height:30px;
+ 	border-radius : 4px;
+ 	margin: 10px;
+ 	transition: all ease 0.5s;
+ }
+ 
+  .gallery_write_btn:hover{
+ 	transform: scale(1.1) ;
+ 	
+ }
+ 
+ .gallery_Detail_Button{
+ 	margin-left : 20px;
+ }

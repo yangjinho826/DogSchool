@@ -49,7 +49,7 @@
 			<div id="memberh3">
 				<h2 id="memberid">휴대전화번호</h2>
 				<span class="box int_"> 
-	            <select name="phonefirst">
+	            <select name="phonefirst" class="phonefirst">
 	                   <option value="010">010</option>
 	                   <option value="011">011</option>
 	                   <option value="016">016</option>
@@ -57,9 +57,11 @@
 	                   <option value="018">018</option>
 	                   <option value="019">019</option>
 	            </select>
-	            - <input name="phonesecond" maxlength='4' style="width:50px;" >
-	            - <input name="phonethird" maxlength='4' style="width:50px;">
+	            - <input class="phonesecond" name="phonesecond" maxlength='4' style="width:50px;" >
+	            - <input class="phonethird" name="phonethird" maxlength='4' style="width:50px;">
+	            <input id="phonenumber" name="phonenumber" value="0" type="hidden"><br>
 				</span>
+				<span id="numbercheck"></span>
 			</div>
 			<br>
 			

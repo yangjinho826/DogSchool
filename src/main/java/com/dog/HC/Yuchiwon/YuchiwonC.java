@@ -209,6 +209,7 @@ public class YuchiwonC {
 	@RequestMapping(value = "diary.reply.delete", method = RequestMethod.GET)
 	public String replyDelete(HttpServletRequest req, diary d, diaryReply dr) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
 		ddao.deleteReply(req, d, dr);
 		ddao.getDiary(req, d, dr);
 		

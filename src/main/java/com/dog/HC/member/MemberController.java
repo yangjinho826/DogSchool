@@ -80,10 +80,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "member.usignup", method = RequestMethod.POST)
-	public String usignup(HttpServletRequest req, Member m) {
+	public String usignup(ApplySchool s, review r,HttpServletRequest req, Member m) {
 		
 		mDAOO.usingup(req, m);
 		mDAOO.loginCheck(req);
+		aDAO.pageView(s, req);
+		rDAO.pageView(r, req);
 		
 		req.setAttribute("MenuBar", "main/menu.jsp");
 		req.setAttribute("contentPage", "main/home.jsp");
@@ -184,6 +186,12 @@ public class MemberController {
 	public @ResponseBody int memberGet(HttpServletRequest req, Member m) {
 		return mDAOO.getMemberNum(req, m);
 	}
+	
+	@RequestMapping(value = "phonenumber.get", method = RequestMethod.GET)
+	public @ResponseBody int phonenumberGet(HttpServletRequest req, Member m) {
+		return mDAOO.getphonnumber(m, req);
+	}
+	
 	
 
 }

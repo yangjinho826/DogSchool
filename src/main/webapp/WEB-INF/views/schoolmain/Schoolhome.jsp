@@ -124,7 +124,7 @@
 				</c:if>
 				<c:if test="${mon eq '03월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">03월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">03월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -135,7 +135,7 @@
 		</c:if>
 		<c:if test="${mon eq '04월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">04월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">04월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -146,7 +146,7 @@
 		</c:if>
 		<c:if test="${mon eq '05월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">05월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">05월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -157,7 +157,7 @@
 		</c:if>
 		<c:if test="${mon eq '06월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">06월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">06월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -168,7 +168,7 @@
 		</c:if>
 		<c:if test="${mon eq '07월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">07월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">07월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -179,7 +179,7 @@
 		</c:if>
 		<c:if test="${mon eq '08월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">08월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">08월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -190,7 +190,7 @@
 		</c:if>
 		<c:if test="${mon eq '09월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">09월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">09월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -201,7 +201,7 @@
 		</c:if>
 		<c:if test="${mon eq '10월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">10월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">10월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -212,7 +212,7 @@
 		</c:if>
 		<c:if test="${mon eq '11월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">11월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">11월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
@@ -223,7 +223,7 @@
 		</c:if>
 		<c:if test="${mon eq '12월'}">
 			<div class="schedule_main">
-				<h3 class="schedule_month_title"><a href="schedule.go">12월</a></h3>					
+				<h3 class="Schoolhome_aisdetitle"><a href="schedule.go">12월</a></h3>					
 				<c:forEach var="ms" items="${ms }">	
 					<div class="schedule_month_body">
 						<span class="schedule_month_day"><fmt:formatDate value="${ms.s_day }" pattern="YY-MM-dd"/></span>
