@@ -55,12 +55,11 @@
 		<tr>
 			<td>
 				<form action="diary.reply.write">
-					<input type="hidden" name="r_mp_no" value="${d.mp_no }"> <input
-						type="hidden" name="r_owner"
-						value="${sessionScope.loginMember.name }"> <input
-						type="hidden" name="mp_no" value="${d.mp_no }"> <input
-						name="r_txt" maxlength="80" autocomplete="off"> <input
-						type="hidden" name="token" value="${token }">
+					<input type="hidden" name="r_mp_no" value="${d.mp_no }"> 
+					<input type="hidden" name="r_owner" value="${sessionScope.loginMember.name }"> 
+					<input type="hidden" name="mp_no" value="${d.mp_no }"> 
+					<input name="r_txt" maxlength="80" autocomplete="off">
+					<input hidden="hidden" name="token" value="${token }">
 					<button>쓰기</button>
 				</form>
 			</td>

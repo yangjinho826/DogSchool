@@ -194,6 +194,7 @@ public class YuchiwonC {
 	@RequestMapping(value = "diary.reply.write", method = RequestMethod.GET)
 	public String diaryReplyWrite(HttpServletRequest req, diary d, diaryReply dr) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
 		ddao.writeReply(req, d, dr);
 		ddao.getDiary(req, d, dr);
 		
@@ -208,6 +209,7 @@ public class YuchiwonC {
 	@RequestMapping(value = "diary.reply.delete", method = RequestMethod.GET)
 	public String replyDelete(HttpServletRequest req, diary d, diaryReply dr) {
 		mDAOO.loginCheck(req);
+		TokenMaker.make(req);
 		ddao.deleteReply(req, d, dr);
 		ddao.getDiary(req, d, dr);
 		
