@@ -271,11 +271,11 @@ public class MemberDAO {
 	
 
 	public int getphonnumber(Member m, HttpServletRequest req) {
-		MemberMapper mm = ss.getMapper(MemberMapper.class);
-		int member = mm.phonnumberget(m);
-		
 		String phonenumber = req.getParameter("phonenumber");
 		m.setPhonenumber(phonenumber);
+		
+		MemberMapper mm = ss.getMapper(MemberMapper.class);
+		int member = mm.phonnumberget(m);
 		
 		if(member > 0) {
 			return 0;			

@@ -16,8 +16,6 @@
 	
 	<div class="btn_area">
 		<button id="btnJoin" onClick="location.href='HC.go'">홈으로</button>
-		<br>
-		<button id="btnJoin" onClick="location.href='member.findidgo'">아이디 찾기</button>
 	</div>
 </div>
 </body>

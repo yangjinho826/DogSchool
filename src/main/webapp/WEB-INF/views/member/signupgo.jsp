@@ -59,7 +59,7 @@
 	            </select>
 	            - <input class="phonesecond" name="phonesecond" maxlength='4' style="width:50px;" >
 	            - <input class="phonethird" name="phonethird" maxlength='4' style="width:50px;">
-	            <input id="phonenumber" name="phonenumber" value="0" type="hidden"><br>
+	            <input id="phonenumbercheck" name="phonenumber" value="0" type="hidden"><br>
 				</span>
 				<span id="numbercheck"></span>
 			</div>

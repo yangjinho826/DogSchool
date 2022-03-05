@@ -65,7 +65,7 @@ function membercall(){
 	let name = document.myForm.name;
 	let phonesecond = document.myForm.phonesecond;
 	let phonethird = document.myForm.phonethird;
-	let phonenumber = document.myForm.phonenumber;
+	let phonenumbercheck = document.myForm.phonenumbercheck;
 	let kor =  /^[가-힣]+$/;
 	
 	let phonefirst = document.myForm.phonefirst.value;
@@ -129,27 +129,9 @@ function membercall(){
 	}
 
 	
-	if(isNotNumber(phonesecond)){
-		alert('전화번호에 숫자만 입력해주세요.');
-        phonesecond.value = "";
-        phonesecond.focus();
-
-        return false;
-	}
-	
-	if(isNotNumber(phonethird)){
-		alert('전화번호에 숫자만 입력해주세요.');
-        phonethird.value = "";
-        phonethird.focus();
-
-        return false;
-	}
-	
-	if(phonenumber.value == 0){
-		alert('중복된 전화번호 입니다.')
+	if(phonenumbercheck.value == 0){
+		alert('전화번호를 확인해주세요')
 		return false;
-	} else {
-		return true;
 	}
 	
 	if(id2.value == 0){
