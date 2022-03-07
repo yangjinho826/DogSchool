@@ -15,32 +15,33 @@
 			<h1 class="notice_title" >갤러리</h1>
 		 </section>
 		<table class="gTbl_dt">
-			<tr>
+			<tr class="gTr1">
 				<td class="g_title">제목 : ${g.g_title }</td>
 			</tr>
 			<tr>
 				<td>
 			<c:forEach var="f" items="${g.filess }">
-				<img style="width: 230px; height: 200px;" src="resources/img/${f }">
+				<img class="galleryImg" style="width: 230px; height: 200px;" src="resources/img/${f }">
 			</c:forEach>
 				</td>
 			</tr>
+			<tr class="gTr2">
+				<td class="gTdWriter">작성자 : ${g.g_tid}</td>
+			</tr>
 			<tr>
-				<td>날짜 : ${g.g_date }</td>
+				<td class="gTd">날짜 : ${g.g_date }</td>
 			</tr>
 
-			<c:if test="${sessionScope.loginMember.id == g.g_tid}">
 				<tr>
 					<td>
-						<button onclick="updateGallery('${g.g_no}')">수정</button>
-						<button onclick="deleteGallery(${g.g_no})">삭제</button>
+						<c:if test="${sessionScope.loginMember.id == g.g_tid}">
+						<button class="gallery_Detail_Btn" onclick="updateGallery('${g.g_no}')">수정</button>
+						<button class="gallery_Detail_Btn" onclick="deleteGallery(${g.g_no})">삭제</button>
+						</c:if>
+						<button  class="gallery_Detail_Button" onclick="location.href='yuchiwon.get.puppy?&uA_no=${sessionScope.puppies.uA_no }'">목록</button>
 					</td>
 				</tr>
-			</c:if>
 		</table>
-		<div class="gallery_Detail_Button">
-			<button  class="notice_Detail_Btn" onclick="location.href='yuchiwon.get.puppy?&uA_no=${sessionScope.puppies.uA_no }'">목록</button>
-		</div>
 </section>
 </body>
 </html>

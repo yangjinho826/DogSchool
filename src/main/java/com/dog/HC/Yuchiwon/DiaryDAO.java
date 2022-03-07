@@ -24,6 +24,7 @@ public class DiaryDAO {
 
 	public void getTotal(diary d, HttpServletRequest req) {
 		puppy p = (puppy) req.getSession().getAttribute("puppies");
+
 		
 		int mp_tnum = p.getuA_ta_no();
 		String mp_uid = p.getuA_id();

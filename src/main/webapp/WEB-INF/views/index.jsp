@@ -51,6 +51,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<link rel="stylesheet" href="resources/css/member.css"/>
 	<link rel="stylesheet" href="resources/css/review.css"/>
+	<link rel="stylesheet" href="resources/css/diary.css"/>
 
 	
 </head>

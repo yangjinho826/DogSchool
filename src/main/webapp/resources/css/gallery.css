@@ -1,204 +1,255 @@
 @charset "UTF-8";
 
-.gTbl{
+.gTbl {
 	border: 5px solid gray;
 	width: 300px;
-	height:500px;
+	height: 500px;
 	float: left;
 }
-.gTbl td{
-text-align: center;
+
+.gTbl td {
+	text-align: center;
 }
 
-#gDiv{
-height: 800px;
-border: 1px solid black;
+#gDiv {
+	height: 800px;
+	border: 1px solid black;
 }
 
 /* gallery_detail */
-
-.gTbl_dt{
+.gTbl_dt {
 	margin-left: auto;
 	margin-right: auto;
-	border: 5px solid gray;
 	margin-bottom: 50px;
-	width: 1000px;
+	border : 3px solid #98c5e4;
+	width: auto;
+	max-width : 1000px;
+	text-align: center;
 }
 
+.gTr1 {
+	border-bottom: 1px solid #98c5e4;
+}
+
+.gTr2 {
+	border-top: 1px solid #98c5e4;
+}
+
+.g_title {
+	font-size: 15pt;
+	font-weight: bold;
+	border-bottom: 1px solid #98c5e4;
+}
+
+.galleryImg{
+	border: 2px solid #606060;
+	padding: 5px;
+}
+
+.gTd {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+.gTdWriter {
+	border-top: 1px solid #98c5e4;
+	font-size: 12pt;
+	font-weight: bold;
+}
 
 /* puppyList */
-
-#viewPuppyList{
-	margin:40px 0 40px 0;
+#viewPuppyList {
+	margin: 40px 0 40px 0;
 	height: fill;
 }
 
-#puppyListTitle{
-	padding:10px;
-	text-align:center;
+#puppyListTitle {
+	padding: 10px;
+	text-align: center;
 }
 
-#puppyListTbl{
+#puppyListTbl {
 	border-collapse: collapse;
-	font-size:13pt;
+	font-size: 13pt;
 	width: 70%;
-	margin-left:auto; margin-right:auto;
-	align-self:center;
-	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+	align-self: center;
+	text-align: center;
 	/*color: #FFFFFF;*/
 	border-spacing: 0px;
 }
 
-#puppyListTbl th{
+#puppyListTbl th {
 	font-size: 14pt;
 	height: 60px;
-	padding:30px;
+	padding: 30px;
 	text-align: center;
-	border:#eeeeee 6px solid;
-	border-bottom:#98c5e4 7px solid;
-	border-top:#98c5e4 7px solid;
+	border: #eeeeee 6px solid;
+	border-bottom: #98c5e4 7px solid;
+	border-top: #98c5e4 7px solid;
 }
 
-#puppyListTbl td{
-	padding:5px;
-	border:#eeeeee 6px solid;
-	border-bottom:#98c5e4 7px solid;
-	border-top:#98c5e4 7px solid;
+#puppyListTbl td {
+	padding: 5px;
+	border: #eeeeee 6px solid;
+	border-bottom: #98c5e4 7px solid;
+	border-top: #98c5e4 7px solid;
 }
 
-#puppyListImg{
-	margin:10px;
-	width:200px;
+#puppyListImg {
+	margin: 10px;
+	width: 200px;
 }
 
-#puppyListTbl .trr:hover{
+#puppyListTbl .trr:hover {
 	background: #ffffee;
 }
 
-
 /* puppyPage.jsp */
-#puppyPageHome{
-	margin:60px 10px 60px 10px;
+#puppyPageHome {
+	margin: 60px 10px 60px 10px;
 	min-height: 57%;
 }
 
-.puppyPageTitle{
+.puppyPageTitle {
 	display: flex;
 	justify-content: space-between;
 }
 
-#puppyPageTitle{
-	padding:15px;
+#puppyPageTitle {
+	padding: 15px;
 }
 
-#puppyPageTitle :hover{
+#puppyPageTitle :hover {
 	transform: scale(1.1);
 }
 
-.puppyPageController{
+.puppyPageController {
 	width: 95%;
-	margin-left:auto; margin-right:auto;
-	padding-top:15px; padding-bottom:15px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
-#puppyPageBtn{
+#puppyPageBtn {
 	border-radius: 3px;
-	padding:7px;
-	font-size:13pt;
-	font-weight:600;
-	color:white;
+	padding: 7px;
+	font-size: 13pt;
+	font-weight: 600;
+	color: white;
 	background-color: #98c5e4;
 }
 
-.puppyDiaryPreview{
+.puppyDiaryPreview {
 	width: 95%;
-	padding:10px;
-	margin-left:auto; margin-right:auto;
-	border:black 3px solid;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	border: black 3px solid;
 	align-self: center;
 }
 
-#dairyTbl{
+#dairyTbl {
 	border-collapse: collapse;
 	width: 280px;
-	margin:20px;
-	text-align:center;
-	border:#98c5e4 5px solid;
+	margin: 20px;
+	text-align: center;
+	border: #98c5e4 5px solid;
 }
 
-
-.puppyGalleryPreview{
+.puppyGalleryPreview {
 	width: 95%;
-	padding:10px;
-	margin-left:auto; margin-right:auto;
-	border:black 3px solid;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	border: black 3px solid;
 	align-self: center;
 }
 
-.tableSort{
+.tableSort {
 	display: flex;
 }
 
-#gallery_detail{
+#gallery_detail {
 	min-height: 57%;
 }
 
 /* 갤러리 작성 */
-   #gallery_write{
+#gallery_write {
 	margin: 5px;
- }
-  
-  .gallery_write_title{
-  	font-size: 35px;
-  	text-align: center;
-  	margin-top: 0;
-  	background-color: #e5edf1;
-  }
-  
-  .gallery_write_title{
-  	margin-bottom: 5px;
-  }
-  
-  .gallery_write_input{
-  	margin-top: 15px;
-  }
-  
-  .gallery_write_input_w{
-    font-weight: bold;
-  	font-size: 20px;
-  	padding-left: 10px;	
-  }
-  
-  .gallery{
-  	margin-left: 30px;
-  }
-  
-  .gallery1{
-  	margin-left: 10px;
-  }
-  
-  #gallery_write_btn{
-  	margin-top: 15px;
-  }
-  
-  
- .gallery_write_btn{
- 	float :left;
- 	border: 3px solid black;
- 	border-top-width: thin;
- 	font-size: 20px;
- 	font-weight: bold;
- 	height:30px;
- 	border-radius : 4px;
- 	margin: 10px;
- 	transition: all ease 0.5s;
- }
- 
-  .gallery_write_btn:hover{
- 	transform: scale(1.1) ;
- 	
- }
- 
- .gallery_Detail_Button{
- 	margin-left : 20px;
- }
+}
+
+.gallery_write_title {
+	font-size: 35px;
+	text-align: center;
+	margin-top: 0;
+	background-color: #e5edf1;
+}
+
+.gallery_write_title {
+	margin-bottom: 5px;
+}
+
+.gallery_write_input {
+	margin-top: 15px;
+}
+
+.gallery_write_input_w {
+	font-weight: bold;
+	font-size: 20px;
+	padding-left: 10px;
+}
+
+.gallery {
+	margin-left: 30px;
+}
+
+.gallery1 {
+	margin-left: 10px;
+}
+
+#gallery_write_btn {
+	margin-top: 15px;
+}
+
+.gallery_write_btn {
+	float: left;
+	border: 3px solid black;
+	border-top-width: thin;
+	font-size: 20px;
+	font-weight: bold;
+	height: 30px;
+	border-radius: 4px;
+	margin: 10px;
+	transition: all ease 0.5s;
+}
+
+.gallery_write_btn:hover {
+	transform: scale(1.1);
+}
+
+.gallery_Detail_Button {
+	margin-left: 20px;
+}
+
+.gallery_Detail_Button {
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid black;
+	font-size: 13px;
+	height: 20px;
+	border-radius: 4px;
+	margin: 5px;
+}
+
+.gallery_Detail_Btn {
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid black;
+	font-size: 13px;
+	height: 20px;
+	border-radius: 4px;
+	margin: 5px;
+}
