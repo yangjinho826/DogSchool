@@ -12,15 +12,17 @@
 <body>
 	<section id="puppyPageHome">	
 		<div class="puppyDiaryPreview">
+		 <div class="puppyPageTitle">
 			<h1 id="puppyPageTitle">알림장</h1>
 			<c:if test="${sessionScope.loginMember.typee ==  2}">
 				<button onclick="writeDiaryGo()">작성하기</button>
 			</c:if>
+		  </div>
 				<div class="tableSort">
 				<c:forEach var="d" items="${diaries }">
-					<table border="1" id="dairyTbl">
+					<table border="1" id="dairyTbl" onclick="location.href='diary.detail.go?mp_no=${d.mp_no}'">
 						<tr>
-							<td><a href="diary.detail.go?mp_no=${d.mp_no}">제목 : ${d.mp_title }</a></td>
+							<td>제목 : ${d.mp_title }</td>
 						</tr>
 						<tr>
 							<td>건강상태 : ${d.mp_condition }</td>
@@ -89,10 +91,12 @@
 		
 		
 		<div class="puppyGalleryPreview">
+		 <div class="puppyPageTitle">
 			<h1 id="puppyPageTitle">갤러리</h1>
 			<c:if test="${sessionScope.loginMember.typee ==  2}">
 				<button onclick="GallerywriteWindow()">작성하기</button>
 			</c:if>
+		 </div>
 			<div class="tableSort">
 				<c:forEach var="g" items="${galleries }">
 				<table border="1" id="dairyTbl">

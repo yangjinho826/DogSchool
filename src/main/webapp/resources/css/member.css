@@ -23,7 +23,13 @@ input {
 }
 
 #mtitle {
-    padding-top: 20px;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#mtitlebye {
+    padding-top: 110px;
     padding-bottom: 20px;
     text-align: center;
 }
@@ -39,6 +45,18 @@ input {
     display: block;
     width: 30%;
     height: 30px;
+    border: solid 2px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: content-box;
+    background: #fff;
+    position: relative;
+}
+
+.boxbye {
+	margin:auto;
+    display: block;
+    width: 30%;
+    height: 25px;
     border: solid 2px #dadada;
     padding: 10px 14px 10px 14px;
     box-sizing: content-box;
@@ -72,3 +90,6 @@ input {
     font-weight: bold;
 }
 
+#mempty{
+ min-height : 57%
+}

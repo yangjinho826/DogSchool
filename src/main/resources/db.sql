@@ -9,7 +9,7 @@ create table signup_table(
     typee int not null
 );
 
-select * from signup_tablew
+select * from signup_table
 
 -- 공지 테이블 --
 create table notice_table(
@@ -105,6 +105,7 @@ select * from tapply_table
 select * from Uapply_table
 select * from dapply_table
 
+drop table UAPPLY_TABLE
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -137,6 +138,11 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
+<<<<<<< HEAD
+=======
+alter table gallery_table modify(g_img varchar2(4000));
+select * from gallery_table
+>>>>>>> 43d9774fa3d6d940c8b9d8da1d98ab240e97ad5e
 
 -- 유치원 후기 테이블 --
 create table review_table(

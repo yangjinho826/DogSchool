@@ -65,7 +65,11 @@ function membercall(){
 	let name = document.myForm.name;
 	let phonesecond = document.myForm.phonesecond;
 	let phonethird = document.myForm.phonethird;
+	let phonenumbercheck = document.myForm.phonenumbercheck;
 	let kor =  /^[가-힣]+$/;
+	
+	let phonefirst = document.myForm.phonefirst.value;
+	
 	
 	if (isEmpty(id)) {
         alert('아이디를 입력해주세요.');
@@ -125,36 +129,9 @@ function membercall(){
 	}
 
 	
-	if(isNotNumber(phonesecond)){
-		alert('전화번호에 숫자만 입력해주세요.');
-        phonesecond.value = "";
-        phonesecond.focus();
-
-        return false;
-	}
-	
-	if(isNotNumber(phonethird)){
-		alert('전화번호에 숫자만 입력해주세요.');
-        phonethird.value = "";
-        phonethird.focus();
-
-        return false;
-	}
-	
-	if(lessThan(phonesecond,4)){
-		alert('전화번호에 4자리를 입력해주세요.');
-        phonesecond.value = "";
-        phonesecond.focus();
-
-        return false;
-	}
-	
-	if(lessThan(phonethird,4)){
-		alert('전화번호에 4자리를 입력해주세요.');
-        phonethird.value = "";
-        phonethird.focus();
-
-        return false;
+	if(phonenumbercheck.value == 0){
+		alert('전화번호를 확인해주세요')
+		return false;
 	}
 	
 	if(id2.value == 0){
@@ -164,9 +141,6 @@ function membercall(){
 		return true;
 	}
 		
-	
-
-	
 }
 
 function logincall(){

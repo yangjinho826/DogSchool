@@ -50,6 +50,11 @@
 		select count(*) from signup_table where id = #{id}
 	</select>
 	
+	<select id="phonnumberget" parameterType="com.dog.HC.member.Member" resultType="int">
+		select count(*) from signup_table where phonenumber = #{phonenumber}
+	</select>
+	
+
 	
 
 </mapper>

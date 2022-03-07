@@ -21,6 +21,8 @@ public interface MemberMapper {
 	
 	public int getMemberNum(Member m);
 
+	public int phonnumberget(Member m);
+
 
 
 

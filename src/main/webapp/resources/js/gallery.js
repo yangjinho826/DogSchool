@@ -16,15 +16,32 @@ function closeWithSubmit()
 
 
 function gallerycallme(){
-	 let g_title = document.galleryForm.g_title;
+	let g_title = document.galleryForm.g_title;
+	let g_img = document.galleryForm.g_img;
 
 	 if(isEmpty(g_title)){
-		alert('가격을 입력하세요');
+		alert('제목을 입력하세요');
 		g_title.value = "";
 		g_title.focus();
 
 		 return false;
 	 }
+	 
+	 if (isEmpty(g_img)) {
+	        alert("사진을 첨부해 주세요.");
+	        g_img.value = "";
+	        g_img.focus();
+	        return false;
+	    }
+	    var img2 = g_img.value;
+	    var file = img2.substring(img2.lastIndexOf('.') + 1);
+
+	    if (file != "jpg" && file != "png" && file != "JPG" && file != "PNG") {
+	        alert("jpg 또는 png 형식만 첨부해 주세요.");
+	        g_img.value = "";
+	        g_img.focus();
+	        return false;
+	    }
 	 
 	 closeWithSubmit()
 }
@@ -47,15 +64,33 @@ function closeupdateWithSubmit()
 
 
 function gallerycallupdateme(){
-	 let g_title = document.galleryForm1.g_title;
+	let g_title = document.galleryForm1.g_title;
+	let g_img = document.galleryForm1.g_img;
 
 	 if(isEmpty(g_title)){
-		alert('가격을 입력하세요');
+		alert('제목을 입력하세요');
 		g_title.value = "";
 		g_title.focus();
 
 		 return false;
 	 }
+	 
+	 if (isEmpty(g_img)) {
+	        alert("사진을 첨부해 주세요.");
+	        g_img.value = "";
+	        g_img.focus();
+	        return false;
+	    }
+	    var img2 = g_img.value;
+	    var file = img2.substring(img2.lastIndexOf('.') + 1);
+
+	    if (file != "jpg" && file != "png" && file != "JPG" && file != "PNG") {
+	        alert("jpg 또는 png 형식만 첨부해 주세요.");
+	        g_img.value = "";
+	        g_img.focus();
+	        return false;
+	    }
+	 
 	 
 	 closeupdateWithSubmit()
 }

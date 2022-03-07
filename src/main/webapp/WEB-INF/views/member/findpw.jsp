@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="mempty">
 	<h1 id="mtitle">비밀번호 찾기 결과</h1>
 	
 	<div id="memberh3">
@@ -15,9 +16,7 @@
 	
 	<div class="btn_area">
 		<button id="btnJoin" onClick="location.href='HC.go'">홈으로</button>
-		<br>
-		<button id="btnJoin" onClick="location.href='member.findidgo'">아이디 찾기</button>
 	</div>
-	
+</div>
 </body>
 </html>
