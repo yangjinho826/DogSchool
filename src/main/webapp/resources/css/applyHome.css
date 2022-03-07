@@ -71,16 +71,18 @@
 }
 
 #showSchoolArea{
-	display:flex;
-	flex-wrap : wrap;
-	text-align:center;
+    place-items: center;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align:center;
 }
 
 #showOneSchool{
-	border:#98c5e4 4px solid;
-	width:315px;
-	height:150px;
-	margin:27px;
+    border:#98c5e4 4px solid;
+    width:370px;
+    height:200px;
+    padding: 10px;
+    margin:10px;
 }
 
 /* acceptHome */
