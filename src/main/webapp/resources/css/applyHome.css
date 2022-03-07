@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 /* applyHome */
@@ -71,20 +72,6 @@
 }
 
 #showSchoolArea{
-<<<<<<< HEAD
-    place-items: center;
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    text-align:center;
-}
-
-#showOneSchool{
-    border:#98c5e4 4px solid;
-    width:370px;
-    height:200px;
-    padding: 10px;
-    margin:10px;
-=======
 	place-items: center;
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -97,7 +84,6 @@
 	height:200px;
 	padding: 10px;
 	margin:27px;
->>>>>>> 43d9774fa3d6d940c8b9d8da1d98ab240e97ad5e
 }
 
 /* acceptHome */

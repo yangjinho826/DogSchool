@@ -138,11 +138,10 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
-<<<<<<< HEAD
-=======
+
 alter table gallery_table modify(g_img varchar2(4000));
 select * from gallery_table
->>>>>>> 43d9774fa3d6d940c8b9d8da1d98ab240e97ad5e
+
 
 -- 유치원 후기 테이블 --
 create table review_table(
@@ -154,6 +153,3 @@ create table review_table(
 	r_date date not null
 );
 create sequence review_table_seq;
-
-select * from mypet_table
-

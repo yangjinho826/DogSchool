@@ -39,9 +39,18 @@ public class ManageController {
 	@RequestMapping(value = "manage.delete", method = RequestMethod.GET)
 	public String deleteSchool(ApplySchool s, HttpServletRequest req) {
 		if(mDAOO.loginCheck(req)) {
-			mDAO.deleteSchool(s, req); //삭제 후
-			mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Teacher
-			mDAO.deleteSchoolU(s, req); //						User(Pet)
+			mDAO.deleteSchool(s, req); //Dapply_table에서 유치원 삭제
+			mDAO.deleteSchoolT(s, req); //해당 유치원의 선생님 모두 삭제 - Tapply_table
+			mDAO.deleteSchoolU(s, req); //						Uapply_table
+			
+			//유치원 후기 삭제 review_table
+			//유치원 가격표 삭제 priceTag_table
+			//유치원 공지 삭제 notice_table
+			//선생님 후기 삭제 postscript_table
+			//유치원 스케쥴 삭제 schedule_table
+			//알림장 삭제 mypet_table
+			//갤러리 삭제 gallery_table
+			mDAO.deleteAllOneSchool(s, req);
 		}
 
 		//다시 조회
