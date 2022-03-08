@@ -22,7 +22,7 @@
 	margin-right: auto;
 	margin-bottom: 50px;
 	border : 3px solid #98c5e4;
-	width: auto;
+	width: 100%;
 	max-width : 1000px;
 	text-align: center;
 }
@@ -252,4 +252,10 @@
 	height: 20px;
 	border-radius: 4px;
 	margin: 5px;
+	font-weight: bold;
+	transition: all ease 0.5s;
 }
+
+.gallery_Detail_Btn:hover{
+	transform: scale(1.1) ;
+}}
