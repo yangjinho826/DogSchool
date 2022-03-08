@@ -1,7 +1,12 @@
 // 스케줄 작성
 function schedulewriteWindow(){
 	document.domain = "localhost";
-	window.open("sechdule_write.go", "Popup", "width=420,height=380")
+	let width=420;
+	let height=380;
+	let left = Math.ceil(( window.screen.width - width )/2);
+	let top = Math.ceil(( window.screen.height - height )/2); 
+	
+	window.open("sechdule_write.go", "Popup", "width="+width+",height="+height+",left="+left+",top="+top)
 }
 
 function closeWithSubmit()
