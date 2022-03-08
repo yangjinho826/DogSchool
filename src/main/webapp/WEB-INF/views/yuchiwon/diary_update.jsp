@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td class="td1">알림 내용</td>
-				<td class="td2"><textarea name="mp_txt">${d.mp_txt }</textarea></td>
+				<td class="td2"><textarea class="mp_txt" name="mp_txt">${d.mp_txt }</textarea></td>
 			</tr>
 			<tr>
 				<td align="center" colspan="2"><button type="submit" name="mp_no" value="${d.mp_no }">수정하기</button></td>

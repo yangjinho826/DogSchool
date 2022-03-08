@@ -102,3 +102,15 @@ function diarycall(){
 	 
 	
 }
+
+function replycall(){
+	let r_txt = document.replyForm.r_txt;
+   
+	if(isEmpty(r_txt)){
+		alert('댓글을 입력해주세요.');
+		r_txt.value = "";
+		r_txt.focus();
+	
+	    return false;
+	}
+}
