@@ -17,7 +17,6 @@ function daterangeSelectEvent(){
 	var day = ('0' + today.getDate()).slice(-2);
 
 	var dateString = month + '/' + day + '/' + year;
-	console.log(dateString);
 	$('input[name="uA_daterange"]').daterangepicker({
 		/*
 		minDate:"'"+String(dateString)+"'",
