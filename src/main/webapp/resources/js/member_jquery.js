@@ -28,18 +28,32 @@ function connectJoinIdInputEvent() {
 }	
 
 function connectJoinpwInputEvent() {
-			$("input").keyup(function() {
-				var pw = $("#pw").val();
-				var pw1 = $("#pw1").val();
-					if (pw == pw1) {
-						$("#pwcheck").css("color", "black");
-						$("#pwcheck").html("비밀번호가 일치합니다.").css("font-weight","bold").css("font-size","20px");
-					} else {
-						$("#pwcheck").css("color", "#F44336");
-						$("#pwcheck").html("비밀번호가 일치하지 않습니다.").css("font-weight","bold").css("font-size","20px");
-					}
-	});
+	let pw;
+	let pw1;
+	
+	$("#pw").keyup(function(){
+		pw = $("#pw").val();
+		pwCheck(pw,pw1 );
+	}) ;
+			
+	$("#pw1").keyup(function(){
+		pw1 = $("#pw1").val();		
+		pwCheck(pw,pw1 );
+	}) ;
 
+}
+
+function pwCheck(pw, pw1){
+	let pw_1 = pw;
+	let pw1_1 = pw1;
+	
+	if (pw_1 == pw1_1) {
+		$("#pwcheck").css("color", "black");
+		$("#pwcheck").html("비밀번호가 일치합니다.").css("font-weight","bold").css("font-size","20px");
+	} else {
+		$("#pwcheck").css("color", "#F44336");
+		$("#pwcheck").html("비밀번호가 일치하지 않습니다.").css("font-weight","bold").css("font-size","20px");
+	}
 }
 
 function validphonenumber() {
