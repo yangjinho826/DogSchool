@@ -193,9 +193,10 @@ public class YuchiwonC {
 
 	@RequestMapping(value = "diary.reply.write", method = RequestMethod.GET)
 	public String diaryReplyWrite(HttpServletRequest req, diary d, diaryReply dr) {
-		mDAOO.loginCheck(req);
 		TokenMaker.make(req);
-		ddao.writeReply(req, d, dr);
+		if(mDAOO.loginCheck(req)) {
+			ddao.writeReply(req, d, dr);
+		}
 		ddao.getDiary(req, d, dr);
 		
 		

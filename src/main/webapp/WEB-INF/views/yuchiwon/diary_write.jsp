@@ -7,39 +7,42 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>알림장 작성</h1>
+	<section id="diaryWriteArea">
 	<form action="diary.write" name="dwForm" onsubmit="return diarycall()">
-		<table border="1">
+		<table border="1" class="diaryTbl">
 			<tr>
-				<td>제목</td>
-				<td><input name="mp_title"></td>
+				<td class="tdTitle" colspan="2" align="center">알림장 작성</td>
 			</tr>
 			<tr>
-				<td>건강상태</td>
-				<td><input name="mp_condition"></td>
+				<td class="td1">제목</td>
+				<td class="td2"><input name="mp_title"></td>
 			</tr>
 			<tr>
-				<td>우유량</td>
-				<td><input name="mp_meal"></td>
+				<td class="td1">건강상태</td>
+				<td class="td2"><input name="mp_condition"></td>
 			</tr>
 			<tr>
-				<td>배변량</td>
-				<td><input name="mp_defecate"></td>
+				<td class="td1">우유량</td>
+				<td class="td2"><input name="mp_meal"></td>
 			</tr>
 			<tr>
-				<td>준비물</td>
-				<td><input name="mp_supplies"></td>
+				<td class="td1">배변량</td>
+				<td class="td2"><input name="mp_defecate"></td>
 			</tr>
 			<tr>
-				<td>알림 내용</td>
-				<td><textarea name="mp_txt"></textarea></td>
+				<td class="td1">준비물</td>
+				<td class="td2"><input name="mp_supplies"></td>
+			</tr>
+			<tr>
+				<td class="td1">알림 내용</td>
+				<td class="td2"><textarea class="mp_txt" name="mp_txt"></textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><button type="submit">작성하기</button></td>
 			</tr>
 		</table>
 		<input name="token" value="${token }" hidden="hidden">
-		<button type="submit">작성하기</button>
-		
-		
 	</form>
-	
+	</section>
 </body>
 </html>

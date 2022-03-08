@@ -84,7 +84,7 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from Uapply_table
+select * from Tapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
