@@ -40,49 +40,41 @@
 			</tr>
 		</table>
 
-		<table class="diaryDetailTbl2" border="1">
+		<table class="diaryDetailTbl2">
 			<c:forEach var="dr" items="${d.mp_replys }">
 				<tr class="drTr">
 					<td class="drTd">${dr.r_owner }-&nbsp;${dr.r_txt }</td>
-					<td class="drTd2">(<fmt:formatDate value="${dr.r_when }"
-							type="both" dateStyle="short" timeStyle="short" />)
+					<td class="drTd2">(<fmt:formatDate value="${dr.r_when }" type="both" dateStyle="short" timeStyle="short" />)</td>
+					<td class="drTd3">
+						<c:if test="${sessionScope.loginMember.name == dr.r_owner }">
+							<button class="drButton" onclick="deleteReply(${dr.r_no}, ${d.mp_no });">삭제</button>
+						</c:if>
 					</td>
-					<td class="drTd3"><c:if
-							test="${sessionScope.loginMember.name == dr.r_owner }">
-							<button class="drButton"
-								onclick="deleteReply(${dr.r_no}, ${d.mp_no });">삭제</button>
-						</c:if></td>
 				<tr>
 			</c:forEach>
 
-			<form action="diary.reply.write">
-				<tr>
-					<td class="drWrite" colspan="2"><input type="hidden"
-						name="r_mp_no" value="${d.mp_no }"> <input type="hidden"
-						name="r_owner" value="${sessionScope.loginMember.name }">
-						<input type="hidden" name="mp_no" value="${d.mp_no }"> <input
-						hidden="hidden" name="token" value="${token }"> <input
-						class="drInput" name="r_txt" maxlength="80" autocomplete="off">
-					</td>
-					<td class="drTd3">
+			<tr>
+				<td class="drWrite" colspan="3">
+					<form action="diary.reply.write">
+						<input type="hidden" name="r_mp_no" value="${d.mp_no }">
+						<input type="hidden" name="r_owner" value="${sessionScope.loginMember.name }">
+						<input type="hidden" name="mp_no" value="${d.mp_no }">
+						<input hidden="hidden" name="token" value="${token }">
+						<input class="drInput" name="r_txt" maxlength="80" autocomplete="off">
 						<button class="drBtn">쓰기</button>
-					</td>
-				</tr>
-			</form>
+					</form>
+				</td>
+			</tr>
 			
 			<tr>
-				<td class="drTdUpDel" colspan="2"><c:if
-						test="${sessionScope.loginMember.typee ==  2}">
-						<button name="mp_no"
-							onclick="location.href='diary.update.go?mp_no=${d.mp_no}'"
-							class="diaryBtn">수정</button>
-						<button name="mp_no" onclick="deleteDiary('${d.mp_no}')"
-							class="diaryBtn">삭제</button>
-					</c:if></td>
+				<td class="drTdUpDel" colspan="2">
+					<c:if test="${sessionScope.loginMember.typee ==  2}">
+						<button name="mp_no" onclick="location.href='diary.update.go?mp_no=${d.mp_no}'" class="diaryBtn">수정</button>
+						<button name="mp_no" onclick="deleteDiary('${d.mp_no}')" class="diaryBtn">삭제</button>
+					</c:if>
+				</td>
 				<td class="drTd3">
-					<button
-						onclick="location.href='yuchiwon.get.puppy?uA_no=${sessionScope.puppies.uA_no }'"
-						class="diaryBtn">목록</button>
+					<button onclick="location.href='yuchiwon.get.puppy?uA_no=${sessionScope.puppies.uA_no }'" class="diaryBtn">목록</button>
 				</td>
 			</tr>
 		</table>
