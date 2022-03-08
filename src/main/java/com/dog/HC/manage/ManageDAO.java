@@ -114,18 +114,81 @@ public class ManageDAO {
 	}
 	public void deleteSchoolT(ApplySchool s, HttpServletRequest req) {
 		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
-		if (ss.getMapper(ManageMapper.class).deleteSchoolT(s) == 1) {
+		if (ss.getMapper(ManageMapper.class).deleteSchoolT(s) >= 1) {
 			System.out.println("해당 유치원에 등록된 선생님 삭제 성공"); //테이블에서 해당 컬럼 삭제
+		} else if(ss.getMapper(ManageMapper.class).deleteSchoolT(s) == 0) {
+			System.out.println("해당 유체원에 삭제할 선생님 없음"); //테이블에서 해당 컬럼 삭제
 		} else {
 			System.out.println("해당 유치원에 등록된 선생님 삭제 실패");
 		}
 	}
 	public void deleteSchoolU(ApplySchool s, HttpServletRequest req) {
 		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
-		if (ss.getMapper(ManageMapper.class).deleteSchoolU(s) == 1) {
+		if (ss.getMapper(ManageMapper.class).deleteSchoolU(s) >= 1) {
 			System.out.println("해당 유치원에 등록된 강아지(견주) 삭제 성공"); //테이블에서 해당 컬럼 삭제
+		} else if(ss.getMapper(ManageMapper.class).deleteSchoolU(s) == 0) {
+			System.out.println("해당 유체원에 삭제할 강아지(견주) 없음"); //테이블에서 해당 컬럼 삭제
 		} else {
 			System.out.println("해당 유치원에 등록된 강아지(견주) 삭제 실패");
+		}
+	}
+	//후기, 공지, 가격표, 테이블 등등 해당 유치원 관련 데이터 모두 삭제
+	public void deleteAllOneSchool(ApplySchool s, HttpServletRequest req) {
+		s.setdA_no(Integer.parseInt(req.getParameter("dA_no")));
+		if(ss.getMapper(ManageMapper.class).deleteReview(s) >= 1) {
+			System.out.println("유치원 후기 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deleteReview(s) == 0) {
+			System.out.println("삭제할 유치원 후기 없음");
+		} else {
+			System.out.println("유치원 후기 삭제 실패");
+		}
+		
+		if(ss.getMapper(ManageMapper.class).deletePricetag(s) >= 1) {
+			System.out.println("유치원 가격표 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deletePricetag(s) == 0) {
+			System.out.println("삭제할 유치원 가격표 없음");
+		} else {
+			System.out.println("유치원 가격표 삭제 실패");
+		}
+		
+		if(ss.getMapper(ManageMapper.class).deleteNotice(s) >= 1) {
+			System.out.println("유치원 공지 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deleteNotice(s) == 0) {
+			System.out.println("삭제할 유치원 공지 없음");
+		} else {
+			System.out.println("유치원 공지 삭제 실패");
+		}
+		
+		if(ss.getMapper(ManageMapper.class).deletePostscript(s) >= 1) {
+			System.out.println("선생님 후기 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deletePostscript(s) == 0) {
+			System.out.println("삭제할 선생님 후기 없음");
+		} else {
+			System.out.println("선생님 후기 삭제 실패");
+		}
+		
+		if(ss.getMapper(ManageMapper.class).deleteSchedule(s) >= 1) {
+			System.out.println("유치원 스케쥴 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deleteSchedule(s) == 0) {
+			System.out.println("삭제할 유치원 스케쥴 없음");
+		} else {
+			System.out.println("유치원 스케쥴 삭제 실패");
+		}
+		
+		if(ss.getMapper(ManageMapper.class).deleteMypetDiary(s) >= 1) {
+			System.out.println("알림장 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deleteMypetDiary(s) == 0) {
+			System.out.println("삭제할 알림장 없음");
+		} else {
+			System.out.println("알림장 삭제 실패");
+		}
+		
+		if(ss.getMapper(ManageMapper.class).deleteMypetGallery(s) >= 1) {
+			System.out.println("갤러리 삭제 성공");
+		} else if(ss.getMapper(ManageMapper.class).deleteMypetGallery(s) == 0) {
+			System.out.println("삭제할 갤러리 없음");
+		} else {
+			System.out.println("갤러리 삭제 실패");
 		}
 	}
 
@@ -195,5 +258,4 @@ public class ManageDAO {
 
 	    req.setAttribute("lists", ss.getMapper(ManageMapper.class).search(s));
 	}
-
 }

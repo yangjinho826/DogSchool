@@ -123,7 +123,7 @@ create table mypet_table(
     mp_uname varchar2(30 char) not null,         -- 강아지 이름
     mp_date date not null                        -- 알림장 작성 날짜
 );
-	        
+
 -- 갤러리 테이블 --
 create table gallery_table(
     g_no number(3) primary key,
@@ -138,8 +138,10 @@ create table gallery_table(
 );
 create sequence gallery_table_seq;
 
+
 alter table gallery_table modify(g_img varchar2(4000));
 select * from gallery_table
+
 
 -- 유치원 후기 테이블 --
 create table review_table(
@@ -151,6 +153,3 @@ create table review_table(
 	r_date date not null
 );
 create sequence review_table_seq;
-
-select * from mypet_table
-

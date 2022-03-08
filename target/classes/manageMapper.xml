@@ -20,6 +20,31 @@ delete Tapply_table where Ta_da_no = #{dA_no}
 delete Uapply_table where Ua_da_no = #{dA_no}
 </delete>
 
+<delete id="deleteReview" parameterType="com.dog.HC.apply.ApplySchool">
+delete review_table 
+where r_schoolName = (select da_schoolname from DAPPLY_TABLE where da_no = #{dA_no})
+</delete>
+<delete id="deleteNotice" parameterType="com.dog.HC.apply.ApplySchool">
+delete notice_table where n_da_no = #{dA_no}
+</delete>
+<delete id="deletePostscript" parameterType="com.dog.HC.apply.ApplySchool">
+delete postscript_table where p_da_no = #{dA_no}
+</delete>
+<delete id="deleteSchedule" parameterType="com.dog.HC.apply.ApplySchool">
+delete schedule_table where s_da_no = #{dA_no}
+</delete>
+<delete id="deleteMypetDiary" parameterType="com.dog.HC.apply.ApplySchool">
+delete mypet_table where mp_da_no = #{dA_no}
+</delete>
+<delete id="deleteMypetGallery" parameterType="com.dog.HC.apply.ApplySchool">
+delete gallery_table where g_da_no = #{dA_no}
+</delete>
+<delete id="deletePricetag" parameterType="com.dog.HC.apply.ApplySchool">
+delete priceTag_table where p_da_no = #{dA_no}
+</delete>
+
+
+
 <!-- 원장: 선생님 조회(승인된) -->
 <select id="getAllTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
 select * from Tapply_table where Ta_agree = 1 order by Ta_name

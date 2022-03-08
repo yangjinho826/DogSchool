@@ -22,4 +22,12 @@ public interface ManageMapper {
 	public List<ApplySchool> search(ApplySchool s);
 	public int getManageSearchTotalCount(ApplySchool s);
 	public ApplyTeacher getTeacherId(int getuA_da_no);
+	
+	public int deleteReview(ApplySchool s);
+	public int deleteNotice(ApplySchool s);
+	public int deletePostscript(ApplySchool s);
+	public int deleteSchedule(ApplySchool s);
+	public int deleteMypetDiary(ApplySchool s);
+	public int deletePricetag(ApplySchool s);
+	public int deleteMypetGallery(ApplySchool s);
 }

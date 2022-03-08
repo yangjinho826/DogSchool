@@ -820,7 +820,7 @@ public class ApplyDAO {
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		ApplySchool School = mm.getSchoolname(as);
-		req.setAttribute("Schoolname", School.getdA_name());
+		req.setAttribute("Schoolname", School.getdA_schoolname());
 	}
 
 	
