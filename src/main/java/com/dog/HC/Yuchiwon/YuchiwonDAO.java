@@ -43,6 +43,6 @@ public class YuchiwonDAO {
 		
 		req.getSession().setAttribute("puppies", puppies);
 		req.getSession().setMaxInactiveInterval(60 * 5);
-		System.out.println(req.getSession().getAttribute("puppies"));
+		req.getSession().getAttribute("puppies");
 	}
 }
