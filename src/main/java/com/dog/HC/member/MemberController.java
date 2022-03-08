@@ -180,9 +180,7 @@ public class MemberController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "member.get", 
-			method = RequestMethod.GET, 
-			produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "member.get", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody int memberGet(HttpServletRequest req, Member m) {
 		return mDAOO.getMemberNum(req, m);
 	}
