@@ -12,7 +12,7 @@
 <body>
 <section id="gallery_detail">
 		 <section class="notice_Detail">
-			<h1 class="notice_title" >갤러리</h1>
+			<h1 class="notice_title" id="mtitle" >갤러리</h1>
 		 </section>
 		<table class="gTbl_dt">
 			<tr class="gTr1">
@@ -21,7 +21,7 @@
 			<tr>
 				<td>
 			<c:forEach var="f" items="${g.filess }">
-				<img class="galleryImg" style="width: 230px; height: 200px;" src="resources/img/${f }">
+				<img class="galleryImg" style="width: 230px; height: 200px; margin: 10px;" src="resources/img/${f }">
 			</c:forEach>
 				</td>
 			</tr>
@@ -38,7 +38,7 @@
 						<button class="gallery_Detail_Btn" onclick="updateGallery('${g.g_no}')">수정</button>
 						<button class="gallery_Detail_Btn" onclick="deleteGallery(${g.g_no})">삭제</button>
 						</c:if>
-						<button  class="gallery_Detail_Button" onclick="location.href='yuchiwon.get.puppy?&uA_no=${sessionScope.puppies.uA_no }'">목록</button>
+						<button  class="gallery_Detail_Btn" onclick="location.href='yuchiwon.get.puppy?&uA_no=${sessionScope.puppies.uA_no }'">목록</button>
 					</td>
 				</tr>
 		</table>

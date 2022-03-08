@@ -22,7 +22,7 @@
 						select  ta_no
 						from TAPPLY_TABLE, SIGNUP_TABLE
 						where ta_id = id and
-						id = #{iddd}
+						id = #{iddd} and ua_agree = 1
 						) 
 					) order by ua_no asc
 			</when>
