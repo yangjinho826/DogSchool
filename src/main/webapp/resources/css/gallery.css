@@ -60,7 +60,7 @@
 /* puppyList */
 #viewPuppyList {
 	margin: 40px 0 40px 0;
-	height: fill;
+	min-height: 57%;
 }
 
 #puppyListTitle {
