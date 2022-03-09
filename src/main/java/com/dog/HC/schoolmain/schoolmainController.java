@@ -46,9 +46,8 @@ public class schoolmainController {
 	@RequestMapping(value = "schoolmain.go", method = RequestMethod.GET)
 	public String schoolmain(ApplySchool d, notice n, postscript p,priceTag pT, schedule s, HttpServletRequest req) {
 		mDAOO.loginCheck(req);
-		
+	
 		int result = req.getParameter("result") == null ? 1 : 0;
-		
 		
 		if(result == 0) {
 			aDAO.getCheckregTeacher(d, req);

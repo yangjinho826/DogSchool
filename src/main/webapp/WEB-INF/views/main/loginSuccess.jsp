@@ -12,6 +12,15 @@
 <section id="member" >
 		<div>
 			<button onclick="location.href='HC.go'" class="member_info_btn">홈페이지</button>
+			<c:if test="${sessionScope.loginMember.typee eq 3}">
+				<button class="member_info_btn my_School_btn_list" data-id="${sessionScope.loginMember.id}" data-typee="${sessionScope.loginMember.typee}">내유치원</button>
+			</c:if>
+			<c:if test="${sessionScope.loginMember.typee eq 2}">
+				<button class="member_info_btn my_School_btn_list" data-id="${sessionScope.loginMember.id}" data-typee="${sessionScope.loginMember.typee}">내유치원</button>
+			</c:if>
+			<c:if test="${sessionScope.loginMember.typee eq 1}">
+				<button class="member_info_btn my_School_btn_list" data-id="${sessionScope.loginMember.id}" data-typee="${sessionScope.loginMember.typee}">내유치원</button>
+			</c:if>
 		</div>
 		<div class="member_info">
 			<span id="loginInfo">
