@@ -446,12 +446,11 @@ public class ApplyDAO {
 		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
 		req.getSession().setAttribute("getSchoolSession", ap);
 		req.getSession().setMaxInactiveInterval(60 * 100);
-		return 1;
+		return ap.getdA_no();
 	}
 	// 선생님로그인 -> 리스트에서 세션 받아오기
 	public int gettlistSession(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
 		String id = req.getParameter("id");
-
 		as.setdA_id(id);
 		
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
@@ -484,6 +483,26 @@ public class ApplyDAO {
 		return 0;
 	}
 	
+	// 원장로그인 -> 리스트에서 세션 받아오기
+	public int getDlistSession(HttpServletRequest req, ApplySchool as, ApplyTeacher at) {
+		String id = req.getParameter("id");
+		
+		as.setdA_id(id);
+		
+		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
+		ApplySchool ap = mm.getDlistSession(as);
+		
+		if(ap == null) {
+			return 0;
+		}
+
+		req.getSession().setAttribute("school", ap.getdA_no());
+		req.getSession().setAttribute("schoolname", ap.getdA_schoolname());
+		req.getSession().setAttribute("getSchoolSession", ap);
+		req.getSession().setMaxInactiveInterval(60 * 100);
+		return ap.getdA_no();
+	}
+
 	
 	//기간 만료 확인
 	// 유저로그인
@@ -822,6 +841,7 @@ public class ApplyDAO {
 		ApplySchool School = mm.getSchoolname(as);
 		req.setAttribute("Schoolname", School.getdA_schoolname());
 	}
+
 
 	
 	

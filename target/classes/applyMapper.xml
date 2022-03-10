@@ -124,6 +124,9 @@ select * from uApply_table where uA_id = #{id}
 	where t.Ta_da_no = d.Da_no and t.Ta_id = #{dA_id} and d.Da_agree = 1
 </select>
 
+<select id="getDlistSession" parameterType="com.dog.HC.apply.ApplySchool" resultType="com.dog.HC.apply.ApplySchool">
+	select * from Dapply_table where Da_agree = 1 and dA_id = #{dA_id}
+</select>
 
 <select id="TeachCheck" parameterType="com.dog.HC.apply.ApplyTeacher" resultType="com.dog.HC.apply.ApplyTeacher">
 	select t.Ta_da_no

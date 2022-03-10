@@ -47,13 +47,20 @@ function pwCheck(pw, pw1){
 	let pw_1 = pw;
 	let pw1_1 = pw1;
 	
-	if (pw_1 == pw1_1) {
+	if(pw_1 == null || pw1_1 == null){
+		return;
+	}
+
+	if (pw_1 == pw1_1 && pw_1.length != 0 && pw1_1.length != 0  ) {
 		$("#pwcheck").css("color", "black");
 		$("#pwcheck").html("비밀번호가 일치합니다.").css("font-weight","bold").css("font-size","20px");
-	} else {
+	}else if(pw_1.length == 0 && pw1_1.length == 0 ){
+		$("#pwcheck").css("color", "black");
+		$("#pwcheck").html("");
+	}else {
 		$("#pwcheck").css("color", "#F44336");
-		$("#pwcheck").html("비밀번호가 일치하지 않습니다.").css("font-weight","bold").css("font-size","20px");
-	}
+		$("#pwcheck").html("비밀번호가 일치하지 않습니다.").css("font-weight","bold").css("font-size","20px"); }
+	
 }
 
 function validphonenumber() {

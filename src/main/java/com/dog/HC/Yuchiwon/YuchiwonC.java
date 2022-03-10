@@ -51,12 +51,13 @@ public class YuchiwonC {
 	public @ResponseBody int postscriptDelete(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
 		String typee = req.getParameter("typee");
 		String id = req.getParameter("id");
+
 		as.setdA_id(id);
-		
+	
 		ApplyMapper mm = ss.getMapper(ApplyMapper.class);
 		int totalPet1 = mm.getAllPetCount(as);
 		int totalPet2 = mm.getAllTeacherPetCount(as);
-		
+
 		if(typee.equals("1") && totalPet1 == 0){
 			return aDAO.getulistSession(req, as);
 		}else if(typee.equals("2") && totalPet2 == 0) {
@@ -64,6 +65,22 @@ public class YuchiwonC {
 		}
 		return 3;
 	}
+	
+	@RequestMapping(value = "my_School.go", method = RequestMethod.GET)
+	public @ResponseBody int my_SchoolGo(ApplySchool as, HttpServletRequest req, ApplyPet ap, ApplyTeacher at) {
+		String typee = req.getParameter("typee");
+		String id = req.getParameter("id");
+
+		if(typee.equals("1")){
+			return aDAO.getulistSession(req, as);
+		}else if(typee.equals("2")) {
+			return aDAO.gettlistSession(req, as, at);
+		}else if(typee.equals("3")) {
+			return aDAO.getDlistSession(req, as, at);
+		}
+		return 3;
+	}
+	
 	
 	@RequestMapping(value = "yuchiwon.get.allpuppy", method = RequestMethod.GET)
 	public String pList(HttpServletRequest req, signup s,ApplySchool as, ApplyPet ap) {

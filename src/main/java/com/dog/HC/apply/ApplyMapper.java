@@ -42,6 +42,8 @@ public interface ApplyMapper {
 	
 	public ApplySchool getulistSession(ApplySchool as);
 	public ApplySchool gettlistSession(ApplySchool as);
+	public ApplySchool getDlistSession(ApplySchool as);
+	
 	public int UpdateDaterange(ApplyPet ap);
 	public List<ApplyPet> getAllPetApply();
 	public ApplySchool getTeacherDano(ApplySchool d);
@@ -59,6 +61,7 @@ public interface ApplyMapper {
 	public int petapplyupdate(ApplyPet p);
 	public int getCheckPetEmpty(ApplySchool as);
 	public int getExistPetCount(ApplySchool as);
+
 	
 
 }

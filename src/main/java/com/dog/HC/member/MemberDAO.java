@@ -27,7 +27,6 @@ public class MemberDAO {
 				req.getSession().setAttribute("loginMember", dbMember);
 				req.getSession().setMaxInactiveInterval(60 * 5);
 			} else {
-
 				req.setAttribute("result", "로그인 실패(비밀번호 오류)");
 				System.out.println("로그인 실패(비밀번호 오류)");
 			}

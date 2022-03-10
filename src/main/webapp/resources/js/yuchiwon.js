@@ -37,8 +37,60 @@ function my_registrationCheck(){
 	});
 }
 
+function my_School(){
+	$(".my_School_btn_list").click(function(){
+		const id = ($('.my_School_btn_list').data('id'));
+		const typee = ($('.my_School_btn_list').data('typee'));
+		
+		if(typee === 1){
+			  $.ajax({
+				  url : '/HC/my_School.go',
+				  type : 'GET',
+				  data : {id: id, typee:typee},
+			  	  success : function(result){	
+			  		  if(result === 0){
+			  			alert("소속되어 있는 유치원이 없습니다."); 
+			  		  }else{
+			  			location.href="schoolmain.go?ps.dA_no="+result;
+			  		  }	  
+				  }
+			  })
+		}else if(typee === 2){
+			 $.ajax({
+				  url : '/HC/my_School.go',
+				  type : 'GET',
+				  data : {id: id, typee:typee},
+			  	  success : function(result){	
+			  		  if(result === 1){
+			  			location.href="schoolmain.go?result="+result;
+			  		  }else if(result === 2){
+			  		   alert("소속되어 있는 유치원이 없습니다."); 
+			  		  }else if(result === 0){
+			  			location.href="schoolmain.go?result="+result;
+			  		  }	  
+				  }
+			  })
+		}else if(typee === 3){
+			 $.ajax({
+				  url : '/HC/my_School.go',
+				  type : 'GET',
+				  data : {id: id, typee:typee},
+			  	  success : function(result){	
+			  		 if(result === 0){
+				  			alert("소속되어 있는 유치원이 없습니다."); 
+			  		 }else{
+				  			location.href="schoolmain.go?ps.dA_no="+result;
+				  	 }	  
+				  }
+			  })
+		}
+		
+	});
+}
+
 
 
 $(function(){
 	my_registrationCheck();
+	my_School();
 });
