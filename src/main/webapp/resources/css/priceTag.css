@@ -55,6 +55,12 @@
   	text-align: center;
   }
   
+  .priceTag_table_day{
+  	width: 25%;
+  }
+  .priceTag_table_price{
+  	width: 25%;
+  }
   
 /* 가격표 작성 */
    #priceTag_write{

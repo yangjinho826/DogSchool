@@ -30,10 +30,10 @@
 			<div class="notice_Detail_Button">
 				<c:choose> 
 				 	<c:when test="${memberTypee eq '2'}">
-				 	 <c:if test="${TCheck.tA_da_no eq getSchoolSession.dA_no}">
-						<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${note.n_no});">수정</button>
-						<button id="notice_TDelete" class="notice_Detail_Btn" value="${note.n_no}">삭제</button>
-					 </c:if>
+					 	 <c:if test="${TCheck.tA_da_no eq getSchoolSession.dA_no}">
+							<button class="notice_Detail_Btn" onclick="notice_UpdatePageGo(${note.n_no});">수정</button>
+							<button id="notice_TDelete" class="notice_Detail_Btn" value="${note.n_no}">삭제</button>
+						 </c:if>
 					</c:when>
 				 	<c:when test="${memberTypee eq '3'}">
 				 	  <c:if test="${DCheck.dA_no eq getSchoolSession.dA_no}">

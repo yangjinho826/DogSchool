@@ -133,7 +133,7 @@
 }
 .drTd3 {
 	text-align : center;
-	width : 8%;
+	width : 15%;
 	font-size: 12pt;
 	padding: 5px;
 }
@@ -154,7 +154,7 @@
 
 .drWrite {
 	margin: auto;
-	width : 15px;
+	width : 79%;
 	border-bottom:black solid 2px;
 }
 
@@ -162,7 +162,7 @@
 	border: none;
     background-color: transparent;
     font-size: 12pt;
-    width: 100%;
+  	width:85%;
     height: 40px;
     font-weight: 900;
 }

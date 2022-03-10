@@ -51,11 +51,12 @@ function gallerycallme(){
 }
 
 function updateGallery(n){
+	document.domain = "localhost";
 	let width=450;
 	let height=280;
 	let left = Math.ceil(( window.screen.width - width )/2);
 	let top = Math.ceil(( window.screen.height - height )/2); 
-	window.open("gallery.write.go", "Popup", "width="+width+",height="+height+",left="+left+",top="+top)
+	window.open("gallery.update.go?g_no="+n, "Popup", "width="+width+",height="+height+",left="+left+",top="+top)
 	
 }
 

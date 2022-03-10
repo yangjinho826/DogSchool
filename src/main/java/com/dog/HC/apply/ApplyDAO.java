@@ -166,7 +166,7 @@ public class ApplyDAO {
 			// path 가져오기
 			String path = req.getSession().getServletContext().getRealPath("resources");
 			root = path + "\\" + "img";
-			System.out.println(root);
+			
 			File fileCheck = new File(root);
 			if (!fileCheck.exists()) {
 				fileCheck.mkdirs();
@@ -608,9 +608,6 @@ public class ApplyDAO {
 		
 		int Ta_da_no = as.getdA_no();
 		String Ta_id = m.getId();
-		
-		System.out.println(Ta_da_no);
-		System.out.println(Ta_id);
 		
 		ap.setuA_da_no(Ta_da_no);
 		ap.setuA_id(Ta_id);

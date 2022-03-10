@@ -22,11 +22,11 @@
 				<td class="td2"><input name="mp_condition"></td>
 			</tr>
 			<tr>
-				<td class="td1">우유량</td>
+				<td class="td1">식사횟수</td>
 				<td class="td2"><input name="mp_meal"></td>
 			</tr>
 			<tr>
-				<td class="td1">배변량</td>
+				<td class="td1">배변횟수</td>
 				<td class="td2"><input name="mp_defecate"></td>
 			</tr>
 			<tr>

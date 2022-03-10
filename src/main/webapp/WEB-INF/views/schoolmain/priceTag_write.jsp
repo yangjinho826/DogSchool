@@ -30,13 +30,13 @@
 					</span>
 				</div>
 				<div class="priceTag_write_input">
+						<span class="priceTag_write_input_w">날짜 </span>
+						<input type="number" name="p_date" class="p_price" placeholder="1일 이상 입력" min="1">일
+				</div>
+				<div class="priceTag_write_input">
 						<input name="token" value="${token }" hidden="hidden">
 						<span class="priceTag_write_input_w">가격 </span>
 						<input type="number" name="p_price" class="p_price" placeholder="1000원 이상 입력" min="0">원
-				</div>
-				<div class="priceTag_write_input">
-						<span class="priceTag_write_input_w">날짜 </span>
-						<input type="number" name="p_date" class="p_price" placeholder="1일 이상 입력" min="1">일
 				</div>
 			<section id="priceTag_write_btn">
 					<div>

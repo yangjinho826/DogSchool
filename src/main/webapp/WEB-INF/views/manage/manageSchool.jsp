@@ -65,13 +65,13 @@
 					<table border="1" id="manageTbl">
 						<tr>
 							<th rowspan="4">${num }</th>
-							<th>유치원 이름(구분 코드)</th>
+							<th>유치원 이름</th>
 							<th>원장님(아이디)</th>
 							<th>연락처</th>
 							<th>관리</th>
 						</tr>
 						<tr>
-							<td>${s.dA_schoolname }(${s.dA_no })</td>
+							<td>${s.dA_schoolname }</td>
 							<td>${s.dA_name }(${s.dA_id })</td>
 							<td>${s.dA_phonenumber }</td>
 							<td rowspan="3"><button class="manageDelete" onClick="deleteSchool(${s.dA_no})">삭제</button></td>

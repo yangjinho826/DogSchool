@@ -37,12 +37,16 @@ public class scheduleDAO {
 		
 		if(token.equals(successToken)){ return; }
 		
+		
 		int s_da_no = as.getdA_no();
 		s.setS_da_no(s_da_no);
 		
 		String s_day = req.getParameter("s_day");
-        String s_day2 =  s_day.substring(5,7);
+       
+		String s_day2 =  s_day.substring(5,7);
         s_day2 +="월";
+        
+        
         s.setS_month(s_day2);
         
 		
