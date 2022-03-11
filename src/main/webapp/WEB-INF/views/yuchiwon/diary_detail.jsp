@@ -72,7 +72,7 @@
 	
 
 		
-		<table class="diaryDetailTbl2">
+		<table class="diaryDetailTbl2" border="1">
 			<form action="diary.reply.write" name="replyForm" onsubmit="return replycall()">
 				<tr>
 					<td class="drWrite" colspan="2">

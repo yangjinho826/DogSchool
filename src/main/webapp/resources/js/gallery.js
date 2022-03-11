@@ -55,7 +55,7 @@ function updateGallery(n){
 	let height=280;
 	let left = Math.ceil(( window.screen.width - width )/2);
 	let top = Math.ceil(( window.screen.height - height )/2); 
-	window.open("gallery.write.go", "Popup", "width="+width+",height="+height+",left="+left+",top="+top)
+	window.open("gallery.update.go", "Popup", "width="+width+",height="+height+",left="+left+",top="+top)
 	
 }
 
