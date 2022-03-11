@@ -53,7 +53,7 @@ create table schedule_table(
 	s_day date not null
 );
 create sequence schedule_seq;
-select * from Dapply_table
+
 
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
@@ -97,7 +97,7 @@ create table Uapply_table(
 );
 create sequence Uapply_table_seq;
 
-
+select * from Uapply_table
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -136,7 +136,7 @@ create table gallery_table(
     g_date date not null
 );
 create sequence gallery_table_seq;
-
+select * from gallery_table
 
 
 ---댓글 테이블---------------

@@ -115,7 +115,7 @@ function call_schedule1(){
 
 $(function() {
 	  $( "#datepicker1" ).datepicker({
-	    dateFormat: 'yy-mm-dd',
-	  
+		  dateFormat: 'yy-mm-dd',
+		  minDate: 0
 	  });
 	});

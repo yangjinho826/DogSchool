@@ -760,7 +760,7 @@ public class ApplyDAO {
 					Date endDay = sdf.parse(Udaterange2);
 					Calendar cal = Calendar.getInstance();	
 					cal.setTime(endDay);
-					cal.add(Calendar.DATE, 7); // 종료일 기준 +3
+					cal.add(Calendar.DATE, 6); // 종료일 기준 +7
 					String endDay2 = sdf.format(cal.getTime());
 					
 					ap.setuA_no(no);
