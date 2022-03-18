@@ -26,13 +26,14 @@
 						<input name="p_no" value="${pTag.p_no }" type="hidden">
 				</div>
 				<div class="priceTag_write_input">
-						<span class="priceTag_write_input_w">가 격 </span>
-						<input type="number" name="p_price" class="p_price2" id="p_price" placeholder="1000원 이상 입력"value="${pTag.p_price }">원
-				</div>
-				<div class="priceTag_write_input">
 						<span class="priceTag_write_input_w">날 짜 </span>
 						<input type="number" name="p_date" class="p_price2" placeholder="1일 이상 입력" value="${pTag.p_date }">일
 				</div>
+				<div class="priceTag_write_input">
+						<span class="priceTag_write_input_w">가 격 </span>
+						<input type="number" name="p_price" class="p_price2" id="p_price" placeholder="1000원 이상 입력"value="${pTag.p_price }">원
+				</div>
+				
 				<div>
 					 <c:if test="${TCheck.tA_da_no eq getSchoolSession.dA_no}">	
 						<button class="priceTag_write_btn">수정 </button>

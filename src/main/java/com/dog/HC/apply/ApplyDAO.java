@@ -166,7 +166,7 @@ public class ApplyDAO {
 			// path 가져오기
 			String path = req.getSession().getServletContext().getRealPath("resources");
 			root = path + "\\" + "img";
-			System.out.println(root);
+			
 			File fileCheck = new File(root);
 			if (!fileCheck.exists()) {
 				fileCheck.mkdirs();
@@ -609,9 +609,6 @@ public class ApplyDAO {
 		int Ta_da_no = as.getdA_no();
 		String Ta_id = m.getId();
 		
-		System.out.println(Ta_da_no);
-		System.out.println(Ta_id);
-		
 		ap.setuA_da_no(Ta_da_no);
 		ap.setuA_id(Ta_id);
 		
@@ -763,7 +760,7 @@ public class ApplyDAO {
 					Date endDay = sdf.parse(Udaterange2);
 					Calendar cal = Calendar.getInstance();	
 					cal.setTime(endDay);
-					cal.add(Calendar.DATE, 7); // 종료일 기준 +3
+					cal.add(Calendar.DATE, 6); // 종료일 기준 +7
 					String endDay2 = sdf.format(cal.getTime());
 					
 					ap.setuA_no(no);

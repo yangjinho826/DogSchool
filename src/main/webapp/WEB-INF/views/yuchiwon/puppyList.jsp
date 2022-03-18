@@ -10,7 +10,7 @@
 <body>
 
 <div id="viewPuppyList">
-	<h2 id="puppyListTitle">마이펫 목록</h2>
+	<h2 id="puppyListTitle">강아지 목록</h2>
 	<table id="puppyListTbl" border="1">
 		<tr>
 			<th>유치원 이름</th>

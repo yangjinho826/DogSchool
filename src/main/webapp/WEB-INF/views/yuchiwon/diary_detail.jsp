@@ -25,13 +25,13 @@
 		</span>
 	  </div>
 	  <div id="dmemberh3">
-	  	<h2 id="memberid">우유량</h2>
+	  	<h2 id="memberid">식사횟수</h2>
 	  	<span class="box int_">  
 			<input readonly onfocus="this.blur();" class="int" value="${d.mp_meal }" name="id" style='cursor:default;'>
 		</span>
 	  </div>
 	  <div id="dmemberh3">
-	  	<h2 id="memberid">배변량</h2>
+	  	<h2 id="memberid">배변횟수</h2>
 	  	<span class="box int_">  
 			<input readonly onfocus="this.blur();" class="int" value="${d.mp_defecate }" name="id" style='cursor:default;'>
 		</span>
@@ -72,7 +72,7 @@
 	
 
 		
-		<table class="diaryDetailTbl2" border="1">
+		<table class="diaryDetailTbl2" >
 			<form action="diary.reply.write" name="replyForm" onsubmit="return replycall()">
 				<tr>
 					<td class="drWrite" colspan="2">
@@ -95,8 +95,7 @@
 					<td class="drTd2">${dr.r_owner }</td>
 					<td class="drTd3"><c:if
 							test="${sessionScope.loginMember.name == dr.r_owner }">
-							<button class="drButton"
-								onclick="deleteReply(${dr.r_no}, ${d.mp_no });">삭제</button>
+							<button class="drButton" onclick="deleteReply(${dr.r_no}, ${d.mp_no });">삭제</button>
 						</c:if></td>
 				<tr>
 			</c:forEach>

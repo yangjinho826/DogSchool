@@ -28,7 +28,7 @@
 				<c:forEach var="r" items="${reviews }">
 				<tr>
 					<td>${num }</td>
-					<td>${r.r_schoolName }유치원</td>
+					<td>${r.r_schoolName }</td>
 					<td><a href="review.Detail?r_no=${r.r_no}">${r.r_title }</a></td>
 					<td>${r.r_id }</td>
 					<td><fmt:formatDate value="${r.r_date }" type="both" dateStyle="short" timeStyle="short"/></td>

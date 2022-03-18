@@ -139,6 +139,7 @@ public class schoolmainController {
 		mDAOO.loginCheck(req);
 		nDAO.getnotice(n, req);
 		
+		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_updatePage.jsp");
 		req.setAttribute("footer", "main/footer.jsp");
@@ -146,10 +147,12 @@ public class schoolmainController {
 	}
 	
 	@RequestMapping(value = "notice.update", method = RequestMethod.POST)
-	public String noticeUpdate(notice n, HttpServletRequest req) {
+	public String noticeUpdate(notice n, HttpServletRequest req, ApplyTeacher a, ApplySchool aps) {
 		mDAOO.loginCheck(req);
 		nDAO.noticeUpdate(n, req);
 		nDAO.getnotice(n, req);
+		aDAO.TeachCheck(a, req);
+		aDAO.DirectorCheck(aps, req);
 		
 		req.setAttribute("MenuBar", "schoolmain/SchoolMenu.jsp");
 		req.setAttribute("contentPage", "schoolmain/notice_Detail.jsp");

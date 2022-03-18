@@ -24,7 +24,7 @@
 			<div id="memberh3">
 				<h2 id="memberid">비밀번호 </h2>
 				<span class="box int_"> 
-				<input id="pw" name="pw" class="int" type="password" placeholder="필수, 영어/숫자만" maxlength="15" autocomplete="off">
+				<input id="pw" name="pw" class="int" type="password" placeholder="필수, 영어/숫자만/3자리이상" maxlength="15" autocomplete="off">
 				</span>
 			</div>
 			<br>
@@ -32,7 +32,7 @@
 			<div id="memberh3">
 				<h2 id="memberid">비밀번호 확인 </h2>
 				<span class="box int_"> 
-				<input id="pw1" name="pw1" class="int" type="password" placeholder="필수, 영어/숫자만" maxlength="15" autocomplete="off">
+				<input id="pw1" name="pw1" class="int" type="password" placeholder="필수, 영어/숫자만/3자리이상" maxlength="15" autocomplete="off">
 				</span>
 				<br>
 				<span id = "pwcheck" class="pwcheck"></span>

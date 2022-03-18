@@ -48,6 +48,7 @@ public class MemberDAO {
 			req.setAttribute("loginPage", "main/loginSuccess.jsp");
 			req.setAttribute("memberTypee", m.getTypee());
 			req.setAttribute("memberName", m.getName());
+			req.setAttribute("memberid", m.getId());
 			return true;
 		}else {
 			req.setAttribute("loginPage", "main/loginPage.jsp");
@@ -210,10 +211,7 @@ public class MemberDAO {
 		//사용자가 입력한 값
 		m.getName();
 		m.getPhonenumber();
-		
-		System.out.println(m.getName());
-		System.out.println(m.getPhonenumber());
-		
+				
 		// 이 값으로 select
 			if (dbMember != null) {
 				if (m.getName().equals(dbMember.getName())) {
@@ -240,10 +238,6 @@ public class MemberDAO {
 		m.getName();
 		m.getPhonenumber();
 
-		System.out.println(m.getId());
-		System.out.println(m.getName());
-		System.out.println(m.getPhonenumber());
-
 		// 이 값으로 select
 		if (dbMember != null) {
 			if (m.getName().equals(dbMember.getName())) {
@@ -264,7 +258,6 @@ public class MemberDAO {
 
 
 	public int getMemberNum(HttpServletRequest req, Member m) {
-		System.out.println(ss.getMapper(MemberMapper.class).getMemberNum(m));
 		return ss.getMapper(MemberMapper.class).getMemberNum(m);
 	}
 	

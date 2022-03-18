@@ -29,7 +29,7 @@
 				<button class="postscript_Detail_Btn" onclick="location.href='review.go'">목록</button>
 			</div>
 			<div class="postscript_Detail_Button">
-				<c:if test="${memberName eq rv.r_id}">
+				<c:if test="${memberid eq rv.r_id}">
 					<button class="postscript_Detail_Btn" onclick="review_UpdatePageGo(${review.r_no});">수정</button>
 					<button id="review_Delete" class="postscript_Detail_Btn" value="${review.r_no }">삭제</button>
 				</c:if>

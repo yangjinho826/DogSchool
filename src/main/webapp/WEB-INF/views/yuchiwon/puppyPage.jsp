@@ -28,7 +28,7 @@
 							<td>건강상태 : ${d.mp_condition }</td>
 						</tr>
 						<tr>
-							<td>식사량 : ${d.mp_meal }</td>
+							<td>식사횟수 : ${d.mp_meal }</td>
 						</tr>
 						<tr>
 							<td>배변 횟수 : ${d.mp_defecate }</td>

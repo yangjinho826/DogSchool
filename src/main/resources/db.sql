@@ -8,9 +8,7 @@ create table signup_table(
     gender varchar2(30 char) not null,
     typee int not null
 );
-
-select * from signup_table
-select * from Uapply_table
+insert into signup_table values('root','1234','관리자','01011111111','man',0);
 
 -- 공지 테이블 --
 create table notice_table(
@@ -33,9 +31,7 @@ create table postscript_table(
 	p_date date not null
 	
 );
-
 create sequence postscript_seq;
-
 
 -- 가격표 테이블
 create table priceTag_table(
@@ -58,6 +54,7 @@ create table schedule_table(
 );
 create sequence schedule_seq;
 
+
 -- 원장-관리자 신청 테이블 --
 create table Dapply_table(
     Da_no number(5) primary key, -- 유치원 구분
@@ -71,8 +68,6 @@ create table Dapply_table(
 );
 create sequence Dapply_table_seq;	
 
-
-
 -- 선생님-원장 신청 테이블 --
 create table Tapply_table(
     Ta_no number(5) primary key,
@@ -85,7 +80,6 @@ create table Tapply_table(
     Ta_agree number(3) not null 
 );
 create sequence Tapply_table_seq;
-select * from Tapply_table
 
 -- 견주-원장 신청 테이블 --
 create table Uapply_table(
@@ -102,11 +96,8 @@ create table Uapply_table(
     Ua_endDay varchar2(30 char)
 );
 create sequence Uapply_table_seq;
-select * from tapply_table
-select * from Uapply_table
-select * from dapply_table
 
-drop table UAPPLY_TABLE
+select * from Uapply_table
 
 -- 알림장 테이블 --
 create table mypet_table(
@@ -124,6 +115,13 @@ create table mypet_table(
     mp_uname varchar2(30 char) not null,         -- 강아지 이름
     mp_date date not null                        -- 알림장 작성 날짜
 );
+create sequence  mypet_table_seq;
+
+select * from mypet_table
+
+update mypet_table
+set mp_date = '2022-03-05'
+where mp_date ='2022-03-10' and mp_title= '사랑이'
 
 -- 갤러리 테이블 --
 create table gallery_table(
@@ -138,11 +136,18 @@ create table gallery_table(
     g_date date not null
 );
 create sequence gallery_table_seq;
-
-
-alter table gallery_table modify(g_img varchar2(4000));
 select * from gallery_table
 
+
+---댓글 테이블---------------
+create table mypet_table_reply(
+	r_no number(5) primary key,
+	r_mp_no number(5) not null,
+	r_owner varchar2(10 char) not null,
+	r_txt varchar2(100 char) not null,
+	r_when date not null
+);
+create sequence mypet_table_reply_seq;
 
 -- 유치원 후기 테이블 --
 create table review_table(
@@ -154,3 +159,4 @@ create table review_table(
 	r_date date not null
 );
 create sequence review_table_seq;
+
